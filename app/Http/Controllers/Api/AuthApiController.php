@@ -35,6 +35,8 @@ class AuthApiController extends Controller
         if ($user->sms_code != $request->sms_code) {
             return $this->error(['message' => __('auth.failed')], 422);
         }
+        $user->sms_code = null;
+        $user->save();
         $token = $user->createToken('name')->plainTextToken;
         $response = [
             'user' => $user,
