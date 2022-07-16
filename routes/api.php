@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('login', [AuthApiController::class, 'login']);
+Route::post('send-sms-code', [AuthApiController::class, 'sendSmsCode']);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'profile'], function () {
