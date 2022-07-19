@@ -5,28 +5,28 @@
             <x-column-order-caret column="id">ID</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="car_model_id">Car Model</x-column-order-caret>
+            <x-column-order-caret column="car_model_id">Модель Автомобиля</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="user_id">User</x-column-order-caret>
+            <x-column-order-caret column="user_id">Ползаватель</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="year">Year</x-column-order-caret>
+            <x-column-order-caret column="year">Год</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="status">Status</x-column-order-caret>
+            <x-column-order-caret column="status">Статус</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="last_visit">Last Visit</x-column-order-caret>
+            <x-column-order-caret column="last_visit">Последнее Посещение</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="vin">VIN</x-column-order-caret>
+            <x-column-order-caret column="vin">ВИН</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="mileage">Mileage</x-column-order-caret>
+            <x-column-order-caret column="mileage">Пробег</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="created_at">Created At</x-column-order-caret>
+            <x-column-order-caret column="created_at">Создано</x-column-order-caret>
         </th>
         <th></th>
     </x-slot>

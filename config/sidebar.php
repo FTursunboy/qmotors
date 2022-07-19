@@ -16,12 +16,12 @@ return [
 	'menu' => [
 		[
 			'icon' => 'fa fa-th-large',
-			'title' => 'Dashboard',
+			'title' => 'Дашбоард',
 			'url' => '/',
 		],
 		[
 			'icon' => 'fa fa-car',
-			'title' => 'User Cars',
+			'title' => 'Автомобили Ползавателя',
 			'url' => '/user-car',
 		],
 		// [

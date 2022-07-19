@@ -1,10 +1,10 @@
 <div>
     <form action="">
-        <x-dashboard.form-select label="Model" name="model_id" option="name" :options="$models" />
-        <x-dashboard.form-select label="User" name="user_id" option="full_name" :options="$users" />
+        <x-dashboard.form-select label="Модель Автомобиля" name="model_id" option="name" :options="$models" />
+        <x-dashboard.form-select label="Ползаватель" name="user_id" option="full_name" :options="$users" />
         <div class="d-flex">
-            <a class="btn btn-warning mr-auto" href="{{ url()->current() }}">Cancel</a>
-            <button class="btn btn-primary">Filter</button>
+            <button class="btn btn-primary">Фильтровать</button>
+            <a class="btn btn-warning ml-auto" href="{{ url()->current() }}">Очистить</a>
         </div>
     </form>
 
