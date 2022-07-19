@@ -9,12 +9,12 @@
 <!-- end page-header -->
 
 <div class="row">
-  <div class="col-md-10">
+  <div class="col-md-9">
     <x-dashboard.panel title="Cars">
       <x-dashboard.user-car-table />
     </x-dashboard.panel>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-3">
     <x-dashboard.panel title="Filter">
       <x-dashboard.user-car-filter />
     </x-dashboard.panel>

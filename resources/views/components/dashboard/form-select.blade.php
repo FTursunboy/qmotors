@@ -5,7 +5,7 @@ $selected = request($attributes['name']);
 @endphp
 <div class="form-group {{ $attributes['class'] }}">
     <label for="{{ $attributes['name'] }}-id">{{ $attributes['label'] }}</label>
-    <select name="{{ $attributes['name'] }}" class="form-control" id="{{ $attributes['name'] }}-id">
+    <select name="{{ $attributes['name'] }}" class="select2 form-control" id="{{ $attributes['name'] }}-id">
         <option value="{{ null }}">----------</option>
         @foreach ($options as $item)
         <option value="{{ $item->id }}" @if ($item->id == $selected)
