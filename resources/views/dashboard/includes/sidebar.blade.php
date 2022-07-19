@@ -16,7 +16,7 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 					</div>
 					<div class="info">
 						<b class="caret pull-right"></b>
-						{{ auth()->guard('web')->user()->email }}
+						{{ auth()->guard('admin')->user()->email }}
 						{{-- <small>Front end developer</small> --}}
 					</div>
 				</a>
