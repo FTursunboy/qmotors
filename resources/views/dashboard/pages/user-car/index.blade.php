@@ -16,6 +16,7 @@
   </div>
   <div class="col-md-2">
     <x-dashboard.panel title="Filter">
+      <x-dashboard.user-car-filter />
     </x-dashboard.panel>
   </div>
 </div>

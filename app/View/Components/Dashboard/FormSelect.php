@@ -2,14 +2,10 @@
 
 namespace App\View\Components\Dashboard;
 
-use App\Models\CarModel;
-use App\Models\User;
 use Illuminate\View\Component;
 
-class UserCarFilter extends Component
+class FormSelect extends Component
 {
-    public $models = [];
-    public $users = [];
     /**
      * Create a new component instance.
      *
@@ -17,8 +13,7 @@ class UserCarFilter extends Component
      */
     public function __construct()
     {
-        $this->models = CarModel::all();
-        $this->users = User::all();
+        //
     }
 
     /**
@@ -28,6 +23,6 @@ class UserCarFilter extends Component
      */
     public function render()
     {
-        return view('components.dashboard.user-car-filter');
+        return view('components.dashboard.form-select');
     }
 }
