@@ -16,7 +16,15 @@ class UserCarTable extends Component
     public function __construct()
     {
         $order = requestOrder();
-        $this->list = UserCar::orderBy($order['key'], $order['value'])
+        $this->list = UserCar::where(function ($query) {
+            if (request()->model_id != null) {
+                $query->where('car_model_id', request()->model_id);
+            }
+            if (request()->user_id != null) {
+                $query->where('user_id', request()->user_id);
+            }
+        })
+            ->orderBy($order['key'], $order['value'])
             ->paginate(request()->get('per_page', 20));
     }
 
