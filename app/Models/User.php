@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserCar::class);
     }
+
+    public function getFullNameAttribute()
+    {
+        return $this->surname . ' ' . $this->name;
+    }
 }
