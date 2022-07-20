@@ -16,7 +16,7 @@ return [
 	'menu' => [
 		[
 			'icon' => 'fa fa-th-large',
-			'title' => 'Дашбоард',
+			'title' => 'Дашборд',
 			'url' => '/',
 		],
 		[

@@ -18,7 +18,7 @@ $model = $attributes['model'];
         </tr>
         <tr>
             <td><b>Статус</b></td>
-            <td>{{ $model->status }}</td>
+            <td>{{ $model->status_text }}</td>
         </tr>
         <tr>
             <td><b>Последнее Посещение</b></td>

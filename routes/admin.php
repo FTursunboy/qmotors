@@ -21,5 +21,6 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'user-car', 'as' => 'user-car'], function () {
         Route::get('/', [UserCarController::class, 'index']);
         Route::get('/{id}', [UserCarController::class, 'show'])->name('.show');
+        Route::delete('/{id}', [UserCarController::class, 'delete'])->name('.delete');
     });
 });

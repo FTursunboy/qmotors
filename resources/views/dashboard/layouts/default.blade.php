@@ -42,6 +42,7 @@ $contentClass .= (!empty($contentInverseMode)) ? 'content-inverse-mode ' : '';
 		@includeWhen($sidebarTwo, 'dashboard.includes.sidebar-right')
 
 		<div id="content" class="content {{ $contentClass }}">
+			<x-dashboard.alert />
 			@yield('content')
 		</div>
 
