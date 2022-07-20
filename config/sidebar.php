@@ -17,7 +17,7 @@ return [
 		[
 			'icon' => 'fa fa-th-large',
 			'title' => 'Дашборд',
-			'url' => '/',
+			'url' => '/dashboard',
 		],
 		[
 			'icon' => 'fa fa-car',

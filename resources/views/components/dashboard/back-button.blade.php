@@ -1,0 +1,1 @@
+<button type="button" onclick="history.back()" class="btn btn-dark">Назад</button>

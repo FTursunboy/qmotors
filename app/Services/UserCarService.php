@@ -3,8 +3,10 @@
 namespace App\Services;
 
 use App\Models\UserCar;
+use App\Services\Contracts\UserCarServiceInterface;
+use Throwable;
 
-class UserCarService
+class UserCarService implements UserCarServiceInterface
 {
   public $class;
   public $request;
@@ -104,5 +106,22 @@ class UserCarService
     })
       ->orderBy($order['key'], $order['value'])
       ->paginate(request()->get('per_page', 20));
+  }
+
+  public function update($id, $request)
+  {
+    try {
+      $this->class::where('id', $id)->update([
+        'car_model_id' => $request->model_id,
+        'status' => $request->status,
+        'year' => $request->year,
+        'mileage' => $request->mileage,
+        'vin' => $request->vin,
+        'last_visit' => $request->last_visit,
+      ]);
+      return ['status' => true, 'message' => "Успешно обновлено: $id"];
+    } catch (Throwable $e) {
+      return ['status' => false, 'message' => 'Что-то пошло не так: ' . $e->getMessage()];
+    }
   }
 }

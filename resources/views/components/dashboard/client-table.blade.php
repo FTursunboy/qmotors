@@ -42,7 +42,7 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"
-                                onclick="return confirm('Are you sure?');"></i></button>
+                                onclick="return confirm('Ты уверен?');"></i></button>
                     </form>
                 </div>
             </td>

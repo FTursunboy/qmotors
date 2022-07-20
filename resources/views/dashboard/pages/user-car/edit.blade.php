@@ -6,15 +6,15 @@
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="/">Дашборд</a></li>
   <li class="breadcrumb-item"><a href="/user-car">Автомобили Пользавателя</a></li>
-  <li class="breadcrumb-item active">{{ $model->id }}</li>
+  <li class="breadcrumb-item"><a href="/user-car/{{ $model->id }}">{{ $model->id }}</a></li>
+  <li class="breadcrumb-item active">Изменить</li>
 </ol>
 <!-- begin page-header -->
 <h1 class="page-header">Автомобил Пользавателя #{{ $model->id }}</h1>
 <!-- end page-header -->
 
-<x-dashboard.panel title="Автомобил Пользавателя подробнее">
-  <x-dashboard.user-car-show :model="$model" />
+<x-dashboard.panel title="Автомобил Пользавателя Изменить">
+  <x-dashboard.user-car-form :model="$model" />
 </x-dashboard.panel>
-
 
 @endsection

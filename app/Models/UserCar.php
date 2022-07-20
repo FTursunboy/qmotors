@@ -15,7 +15,12 @@ class UserCar extends Model
         ['id' => 1, 'name' => 'Проданный'],
         ['id' => 2, 'name' => 'Удаленный'],
     ];
-
+    protected $guarded = [];
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
     public function model()
     {
         return $this->belongsTo(CarModel::class, 'car_model_id');
@@ -46,5 +51,11 @@ class UserCar extends Model
         if (isset(self::STATUSES[$this->status]['name']))
             return self::STATUSES[$this->status]['name'];
         return 'Недействительный статус';
+    }
+    public function getLastVisitDateAttribute()
+    {
+        if (!empty($this->last_visit))
+            return date('Y-m-d', strtotime($this->last_visit));
+        return $this->last_visit;
     }
 }

@@ -100,7 +100,7 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 				$subMenu .= renderSubMenu($menu['sub_menu'], $currentUrl);
 				$subMenu .= '</ul>';
 			}
-			$active = ($currentUrl == $menu['url']) ? 'active' : '';
+			$active = str_contains($currentUrl, $menu['url']) ? 'active' : '';
 			$active = (empty($active) && !empty($GLOBALS['parent_active'])) ? 'active' : $active;
 			echo '
 			<li class="'. $hasSub .' '. $active .'">

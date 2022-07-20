@@ -46,11 +46,12 @@
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('user-car.show', $item->id) }}"><i
                             class="fa fa-eye"></i></a>
-                    <a href="#" class="btn btn-primary mr-2"><i class="fa fa-pen"></i></a>
+                    <a href="{{ route('user-car.edit', $item->id) }}" class="btn btn-primary mr-2"><i
+                            class="fa fa-pen"></i></a>
                     <form action="{{ route('user-car.delete', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger"><i
+                        <button type="submit" onclick="return confirm('Ты уверен?')" class="btn btn-danger"><i
                                 class="fa fa-trash"></i></button>
                     </form>
                 </div>

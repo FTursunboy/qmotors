@@ -29,7 +29,7 @@
                     <form action="{{ route('dashboard.sliders.delete', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger"><i
+                        <button type="submit" onclick="return confirm('Ты уверен?')" class="btn btn-danger"><i
                                 class="fa fa-trash"></i></button>
                     </form>
                 </div>

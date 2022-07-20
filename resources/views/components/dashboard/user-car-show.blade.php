@@ -38,3 +38,12 @@ $model = $attributes['model'];
         </tr>
     </tbody>
 </table>
+<div class="d-flex">
+    <x-dashboard.back-button />
+    <a href="{{ route('user-car.edit', $model->id) }}" class="btn btn-primary ml-auto mr-2 ">Изменить</a>
+    <form action="{{ route('user-car.delete', $model->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Ты уверен?')">Удалить</button>
+    </form>
+</div>

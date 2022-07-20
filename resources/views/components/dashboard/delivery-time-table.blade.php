@@ -19,7 +19,7 @@
             <td>
                 <div class="btn-group"></div>
                 <button type="submit" class="btn btn-success" form="delivery-time-from-{{ $item->id }}">Save</button>
-                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger"
+                <button type="submit" onclick="return confirm('Ты уверен?')" class="btn btn-danger"
                     form="delete-form-{{ $item->id }}"><i class="fa fa-trash"></i></button>
                 <form action="{{ route('dashboard.delivery-times.delete', $item->id) }}" method="POST"
                     id="delete-form-{{ $item->id }}">
