@@ -4,11 +4,13 @@ namespace App\View\Components\Dashboard;
 
 use App\Models\CarModel;
 use App\Models\User;
+use App\Models\UserCar;
 use Illuminate\View\Component;
 
 class UserCarFilter extends Component
 {
     public $models = [];
+    public $statuses = [];
     /**
      * Create a new component instance.
      *
@@ -17,6 +19,7 @@ class UserCarFilter extends Component
     public function __construct()
     {
         $this->models = CarModel::all();
+        $this->statuses = UserCar::STATUSES;
     }
 
     /**

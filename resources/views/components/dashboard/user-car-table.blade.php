@@ -37,7 +37,7 @@
             <td>{{ optional($item->model)->name }}</td>
             <td>{{ optional($item->user)->full_name }}</td>
             <td>{{ $item->year }}</td>
-            <td>{{ $item->status }}</td>
+            <td>{{ $item->status_text }}</td>
             <td>{{ $item->last_visit }}</td>
             <td>{{ $item->vin }}</td>
             <td>{{ $item->mileage }}</td>

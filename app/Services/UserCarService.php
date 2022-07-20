@@ -29,6 +29,9 @@ class UserCarService
       if ($this->request->model_id != null) {
         $query->where('car_model_id', $this->request->model_id);
       }
+      if ($this->request->status != null) {
+        $query->where('status', $this->request->status);
+      }
       if ($this->request->user != null) {
         $query->whereHas('user', function ($query) {
           $query->where('surname', 'ilike', '%' . $this->request->user . '%')
