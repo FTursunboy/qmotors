@@ -13,6 +13,17 @@
         </tbody>
     </table>
     @if ($attributes['length'] == 0)
-    <p class="text-center">No result found</p>
+    <p class="text-center">Результатов не найдено</p>
     @endif
 </div>
+
+@push('scripts')
+<script>
+    function order(order) {
+        const curr_order = @json(request('order'));
+        if (curr_order == order) order = `-${order}`
+        const current_url = @json(url()->full());
+        location.href = updateQueryStringParameter(current_url,'order',order);
+    }
+</script>
+@endpush

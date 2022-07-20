@@ -15,19 +15,19 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 						<i class="fa fa-user"></i>
 					</div>
 					<div class="info">
-						<b class="caret pull-right"></b>
+						{{-- <b class="caret pull-right"></b> --}}
 						{{ auth()->guard('admin')->user()->email }}
 						{{-- <small>Front end developer</small> --}}
 					</div>
 				</a>
 			</li>
-			<li>
+			{{-- <li>
 				<ul class="nav nav-profile">
 					<li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
 					<li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
 					<li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li>
 				</ul>
-			</li>
+			</li> --}}
 		</ul>
 		<!-- end sidebar user -->
 		@endif
@@ -38,7 +38,7 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 				<input type="text" class="form-control" placeholder="Sidebar menu filter..." data-sidebar-search="true" />
 			</li>
 			@endif
-			<li class="nav-header">Navigation</li>
+			<li class="nav-header">Навигация</li>
 			@php
 			$currentUrl = (Request::path() != '/') ? '/'. Request::path() : '/';
 
@@ -117,8 +117,8 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 			}
 			@endphp
 			<!-- begin sidebar minify button -->
-			<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
-						class="fa fa-angle-double-left"></i></a></li>
+			{{-- <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
+						class="fa fa-angle-double-left"></i></a></li> --}}
 			<!-- end sidebar minify button -->
 		</ul>
 		<!-- end sidebar nav -->

@@ -2,13 +2,10 @@
 
 namespace App\View\Components\Dashboard;
 
-use App\Models\UserCar;
-use App\Services\UserCarService;
 use Illuminate\View\Component;
 
-class UserCarTable extends Component
+class FormRangeInput extends Component
 {
-    public $list = [];
     /**
      * Create a new component instance.
      *
@@ -16,8 +13,7 @@ class UserCarTable extends Component
      */
     public function __construct()
     {
-        $service = new UserCarService();
-        $this->list = $service->filter();
+        //
     }
 
     /**
@@ -27,6 +23,6 @@ class UserCarTable extends Component
      */
     public function render()
     {
-        return view('components.dashboard.user-car-table');
+        return view('components.dashboard.form-range-input');
     }
 }

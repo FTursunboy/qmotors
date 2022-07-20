@@ -18,4 +18,19 @@ class UserCar extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function freeDiagnostics()
+    {
+        return $this->hasMany(FreeDiagnostic::class);
+    }
+
+    public function reminders()
+    {
+        return $this->hasMany(Reminder::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

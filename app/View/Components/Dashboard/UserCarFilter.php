@@ -9,7 +9,6 @@ use Illuminate\View\Component;
 class UserCarFilter extends Component
 {
     public $models = [];
-    public $users = [];
     /**
      * Create a new component instance.
      *
@@ -18,7 +17,6 @@ class UserCarFilter extends Component
     public function __construct()
     {
         $this->models = CarModel::all();
-        $this->users = User::all();
     }
 
     /**

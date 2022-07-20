@@ -1,11 +1,11 @@
 @extends('dashboard.layouts.default')
 
-@section('title', 'Автомобили Ползавателя')
+@section('title', 'Автомобили Пользавателя')
 
 @section('content')
 
 <!-- begin page-header -->
-<h1 class="page-header">Автомобили Ползавателя</h1>
+<h1 class="page-header">Автомобили Пользавателя</h1>
 <!-- end page-header -->
 
 <div class="row">
