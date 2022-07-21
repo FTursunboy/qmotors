@@ -3,7 +3,7 @@
 
         <x-dashboard.form-select label="Модель Автомобиля" name="model_id" option="name" :options="$models" />
         <x-dashboard.form-select label="Статус" name="status" option="name" :options="$statuses" />
-        <x-dashboard.form-input label="Пользаватель" name="user" :value="request('user')" />
+        <x-dashboard.form-input label="Пользователь" name="user" :value="request('user')" />
         <x-dashboard.form-input label="ВИН" name="vin" :value="request('vin')" />
         <x-dashboard.form-range-input label="Год" name="year" type="number" />
         <x-dashboard.form-range-input label="Пробег" name="mileage" type="number" />
