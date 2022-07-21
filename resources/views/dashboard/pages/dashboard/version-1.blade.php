@@ -10,7 +10,6 @@
 <h1 class="page-header">Дашборд</h1>
 <!-- end page-header -->
 
-<x-dashboard.statistics2 />
-
+<x-dashboard.statistics />
 
 @endsection
