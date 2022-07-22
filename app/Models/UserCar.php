@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\ModelCommonMethods;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
 class UserCar extends Model
 {
-    use HasFactory;
+    use HasFactory, ModelCommonMethods;
 
     const  STATUSES = [
         ['id' => 0, 'name' => 'Активный'],

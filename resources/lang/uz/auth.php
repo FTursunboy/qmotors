@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -13,12 +12,10 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'out' => 'logged out',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'pass' => 'Password changed successfully',
-    'pass_error' => 'Password not changed',
-    'create_message' => 'Message sent successfully',
-
+    'failed'   => 'Bunday maʼlumotlarga ega foydalanuvchi mavjud emas.',
+    'out'   => 'tizimdan chiqdi',
+    'throttle' => 'Kirish uchun juda ko‘p urinishlar aniqlandi. Iltimos :seconds soniyadan so‘ng yana urinib ko‘ring.',
+    'pass_error' => 'Parol o\'zgartirilmagan',
+    'create_message' => 'Xabar muvaffaqiyatli yuborildi',
 
 ];
