@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginApiRequest;
 use App\Http\Requests\Api\SendSmsCodeRequest;
 use App\Models\User;
+use App\Services\Contracts\SmsServiceInterface;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 
 class AuthApiController extends Controller
 {
     use ApiResponse;
-    public function sendSmsCode(SendSmsCodeRequest $request)
+    public function sendSmsCode(SendSmsCodeRequest $request, SmsServiceInterface $smsService)
     {
         $user = User::where('phone_number', $request->phone_number)->first();
         if ($user == null) {
@@ -21,10 +22,13 @@ class AuthApiController extends Controller
             $user->id = $id;
             $user->phone_number = $request->phone_number;
         }
-        $user->sms_code = 1111; // TODO prod da random bo'ladi
-        // TODO sms service ulash va generatsiya qilingan sms code ni yuborish kerak
+        $user->sms_code = rand(100000, 999999);
         $user->save();
-        return $this->success();
+        $result = $smsService->send(filterPhone($user->phone_number), 'Ваш код для авторизация: ' . $user->sms_code);
+
+        if ($result)
+            return $this->success();
+        return $this->error();
     }
     public function login(LoginApiRequest $request)
     {

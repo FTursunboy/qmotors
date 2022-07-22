@@ -19,11 +19,11 @@ return [
 			'title' => 'Дашборд',
 			'url' => '/dashboard',
 		],
-		[
-			'icon' => 'fa fa-th-large',
-			'title' => 'Дашборд Версия 2',
-			'url' => '/version-1',
-		],
+		// [
+		// 	'icon' => 'fa fa-th-large',
+		// 	'title' => 'Дашборд Версия 2',
+		// 	'url' => '/version-1',
+		// ],
 		[
 			'icon' => 'fa fa-car',
 			'title' => 'Автомобили Пользователя',

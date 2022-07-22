@@ -4,12 +4,12 @@ namespace App\Traits;
 
 trait ApiResponse
 {
-  public function success($result = 'Success', $code = 200)
+  public function success($result = 'Успешно', $code = 200)
   {
     return response()->json(['result' => $result, 'error' => null], $code);
   }
 
-  public function error($result, $code = 400)
+  public function error($result = 'Что-то пошло не так', $code = 400)
   {
     return response()->json(['result' => null, 'error' => $result], $code);
   }

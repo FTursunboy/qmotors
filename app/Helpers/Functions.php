@@ -16,3 +16,8 @@ function requestOrder()
   }
   return $result;
 }
+
+function filterPhone($phone)
+{
+  return str_replace(['(', ')', ' ', '-'], '', $phone);
+}

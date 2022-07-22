@@ -31,7 +31,7 @@ class Statistics2 extends Component
             ],
             [
                 'title' => 'Автомобили',
-                'count' => User::count(),
+                'count' => UserCar::count(),
                 'info' => 'Статистика автомобиля',
                 'counts' => [
                     'Последние 7 дней' => UserCar::whereDate('created_at', '>=', date('Y-m-d', strtotime('-7 days')))->count(),
