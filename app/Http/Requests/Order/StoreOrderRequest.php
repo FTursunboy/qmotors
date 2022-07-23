@@ -38,7 +38,7 @@ class StoreOrderRequest extends FormRequest
             ],
             'number' => !$hasUserCarId ? 'required' : '',
             'order_type' => Rule::in([0, 1, 2, 3, 4]),
-            'date' => 'required|date'
+            'date' => 'required|date|after:yesterday'
         ];
     }
 }
