@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\CarModel;
 use App\Models\UserCar;
 use App\Services\Contracts\CarServiceInterface;
 use Illuminate\Support\Facades\Http;
@@ -31,5 +32,14 @@ class CarService implements CarServiceInterface
       ['status' => $request->get('status', 0)],
     ));
     return $model;
+  }
+
+  public function modelList($request)
+  {
+    return CarModel::where(function ($query) use ($request) {
+      if ($query->car_mark_id != null) {
+        $query->where('car_mark_id', $request->car_mark_id);
+      }
+    });
   }
 }

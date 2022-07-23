@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Api\AuthApiController;
 use App\Http\Controllers\Api\CarApiController;
+use App\Http\Controllers\Api\CarMarkApiController;
 use App\Http\Controllers\Api\CarModelApiController;
+use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,5 +36,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     });
     Route::group(['prefix' => 'car-model'], function () {
         Route::get('list', [CarModelApiController::class, 'list']);
+    });
+    Route::group(['prefix' => 'car-mark'], function () {
+        Route::get('list', [CarMarkApiController::class, 'list']);
+    });
+    Route::group(['prefix' => 'order'], function () {
+        Route::post('', [OrderApiController::class, 'store']);
     });
 });

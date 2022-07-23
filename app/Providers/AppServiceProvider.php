@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Services\CarService;
 use App\Services\Contracts\CarServiceInterface;
+use App\Services\OrderService;
+use App\Services\Contracts\OrderServiceInterface;
 use App\Services\Contracts\SmsServiceInterface;
 use App\Services\Contracts\UserCarServiceInterface;
 use App\Services\SmsService;
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserCarServiceInterface::class, UserCarService::class);
         $this->app->bind(SmsServiceInterface::class, SmsService::class);
         $this->app->bind(CarServiceInterface::class, CarService::class);
+        $this->app->bind(OrderServiceInterface::class, OrderService::class);
     }
 
     /**
