@@ -6,6 +6,6 @@ trait ModelCommonMethods
 {
   public static function nextID()
   {
-    return self::latest('id')->select('id')->first()->id + 1;
+    return optional(self::latest('id')->select('id')->first())->id + 1;
   }
 }

@@ -10,6 +10,7 @@ class Order extends Model
 {
     use HasFactory, ModelCommonMethods;
     protected $guarded = [];
+
     const TYPES = [
         [
             'id' => 1,
@@ -32,4 +33,9 @@ class Order extends Model
             'name' => "другое"
         ],
     ];
+
+    public function user_car()
+    {
+        return $this->belongsTo(UserCar::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Order;
+use App\Models\OrderPhoto;
 use App\Models\UserCar;
 use App\Services\Contracts\OrderServiceInterface;
 use App\Traits\ApiResponse;
@@ -35,5 +36,16 @@ class OrderService implements OrderServiceInterface
       ['user_car_id' => $car->id, 'id' => $this->class::nextID()],
     ));
     return $this->success($model, 201);
+  }
+
+  public function photo($id, $request)
+  {
+    $photo = uploadImage($request->file('photo'), 'order');
+    $model = OrderPhoto::create([
+      'id' => OrderPhoto::nextID(),
+      'order_id' => $id,
+      'photo' => $photo
+    ]);
+    return $model;
   }
 }
