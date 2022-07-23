@@ -6,4 +6,5 @@ interface OrderServiceInterface
 {
   public function store($request);
   public function photo($id, $request);
+  public function history($request);
 }

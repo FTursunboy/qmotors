@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Order;
 use App\Models\OrderPhoto;
+use App\Models\User;
 use App\Models\UserCar;
 use App\Services\Contracts\OrderServiceInterface;
 use App\Traits\ApiResponse;
@@ -47,5 +48,14 @@ class OrderService implements OrderServiceInterface
       'photo' => $photo
     ]);
     return $model;
+  }
+
+  public function history($request)
+  {
+    return UserCar::with('orders')->has('orders')->where(function ($query) use ($request) {
+      $query->where('user_id', auth()->id());
+      if ($request->user_car_id)
+        $query->where('id', $request->user_car_id);
+    })->get();
   }
 }
