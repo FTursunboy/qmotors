@@ -3,7 +3,7 @@
 @section('title', 'Дашборд')
 
 @section('content')
-<div class="profile">
+<div class="profile mb-2">
   <div class="profile-header">
     <!-- BEGIN profile-header-cover -->
     <div class="profile-header-cover"></div>
@@ -26,5 +26,7 @@
     <!-- END profile-header-content -->
   </div>
 </div>
-
+<x-dashboard.panel title="Информация о пользователе">
+  <x-dashboard.user-show :model="$model" />
+</x-dashboard.panel>
 @endsection

@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->surname . ' ' . $this->name;
     }
+
+    public function getGendeTestAttribute()
+    {
+        return $this->gender ? 'Мужской' : 'Женский';
+    }
 }
