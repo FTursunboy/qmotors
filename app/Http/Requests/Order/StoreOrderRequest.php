@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Order;
 
 use App\Models\CarModel;
+use App\Models\OrderType;
+use App\Models\TechCenter;
 use App\Models\UserCar;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -37,7 +39,8 @@ class StoreOrderRequest extends FormRequest
                 'exists:' . with(new CarModel)->getTable() . ',id'
             ],
             'number' => !$hasUserCarId ? 'required' : '',
-            'order_type' => Rule::in([0, 1, 2, 3, 4]),
+            'order_type_id' => 'required|exists:' . with(new OrderType)->getTable() . ',id',
+            'tech_center_id' => 'required|exists:' . with(new TechCenter)->getTable() . ',id',
             'date' => 'required|date|after:yesterday'
         ];
     }

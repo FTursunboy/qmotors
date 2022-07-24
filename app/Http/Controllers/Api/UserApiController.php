@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class UserApiController extends Controller
 {
     use ApiResponse;
+
     public function profile()
     {
         return $this->success(auth()->user());

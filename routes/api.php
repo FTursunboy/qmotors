@@ -5,6 +5,8 @@ use App\Http\Controllers\Api\CarApiController;
 use App\Http\Controllers\Api\CarMarkApiController;
 use App\Http\Controllers\Api\CarModelApiController;
 use App\Http\Controllers\Api\OrderApiController;
+use App\Http\Controllers\Api\OrderTypeApiController;
+use App\Http\Controllers\Api\TechCenterApiController;
 use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,5 +46,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('', [OrderApiController::class, 'store']);
         Route::post('{id}/photo', [OrderApiController::class, 'photo'])->middleware('order-owner');
         Route::get('history', [OrderApiController::class, 'history']);
+    });
+    Route::group(['prefix' => 'order-type'], function () {
+        Route::get('list', [OrderTypeApiController::class, 'list']);
+    });
+    Route::group(['prefix' => 'tech-center'], function () {
+        Route::get('list', [TechCenterApiController::class, 'list']);
     });
 });

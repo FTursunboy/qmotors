@@ -35,7 +35,7 @@
         <tr>
             <td><a href="{{ route('user-car.show', $item->id) }}">{{ $item->id }}</a></td>
             <td>{{ optional($item->model)->name }}</td>
-            <td> <a href="{{ route('user-car.user.show', optional($item->user)->id) }}">{{
+            <td> <a href="{{ route('user.show', optional($item->user)->id) }}">{{
                     optional($item->user)->full_name
                     }}</a></td>
             <td>{{ $item->year }}</td>

@@ -33,8 +33,12 @@ class OrderService implements OrderServiceInterface
       return $this->error(['message' => 'У вас нет доступа!'], 403);
     }
     $model = $this->class::create(array_merge(
-      $request->only('order_type', 'description', 'date'),
-      ['user_car_id' => $car->id, 'id' => $this->class::nextID()],
+      $request->only('order_type_id', 'tech_center_id', 'description', 'date'),
+      [
+        'user_car_id' => $car->id,
+        'id' => $this->class::nextID(),
+        'order_number' => $request->number
+      ],
     ));
     return $this->success($model, 201);
   }
@@ -57,5 +61,17 @@ class OrderService implements OrderServiceInterface
       if ($request->user_car_id)
         $query->where('id', $request->user_car_id);
     })->get();
+  }
+
+  public function filter()
+  {
+    $order = requestOrder();
+    return $this->class::where(function ($query) {
+      if (request()->guarantee != null) {
+        $query->where('guarantee', request()->guarantee);
+      }
+    })
+      ->orderBy($order['key'], $order['value'])
+      ->paginate(request()->get('per_page', 20));
   }
 }

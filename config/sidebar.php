@@ -29,6 +29,11 @@ return [
 			'title' => 'Автомобили Пользователя',
 			'url' => '/user-car',
 		],
+		[
+			'icon' => 'fa fa-medkit',
+			'title' => 'Заказы',
+			'url' => '/order',
+		],
 		// [
 		// 	'icon' => 'fa fa-desktop',
 		// 	'title' => 'Sliders',

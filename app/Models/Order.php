@@ -11,31 +11,23 @@ class Order extends Model
     use HasFactory, ModelCommonMethods;
     protected $guarded = [];
 
-    const TYPES = [
-        [
-            'id' => 1,
-            'name' => "Техническое обслуживание"
-        ],
-        [
-            'id' => 2,
-            'name' => "Слесарный ремонт"
-        ],
-        [
-            'id' => 3,
-            'name' => "Кузовной ремонт"
-        ],
-        [
-            'id' => 4,
-            'name' => "Детайлинг"
-        ],
-        [
-            'id' => 0,
-            'name' => "другое"
-        ],
-    ];
-
     public function user_car()
     {
         return $this->belongsTo(UserCar::class);
+    }
+
+    public function order_type_relation()
+    {
+        return $this->belongsTo(OrderType::class, 'order_type_id');
+    }
+
+    public function tech_center()
+    {
+        return $this->belongsTo(TechCenter::class);
+    }
+
+    public function getGuaranteeTextAttribute()
+    {
+        return $this->guarantee ? 'Да' : 'Нет';
     }
 }

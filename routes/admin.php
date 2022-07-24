@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\OrderController;
 use App\Http\Controllers\Dashboard\UserCarController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Models\User;
@@ -26,9 +27,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/{id}/edit', [UserCarController::class, 'edit'])->name('.edit');
         Route::put('/{id}', [UserCarController::class, 'update'])->name('.update');
         Route::delete('/{id}', [UserCarController::class, 'delete'])->name('.delete');
-
-        Route::group(['prefix' => 'user', 'as' => '.user'], function () {
-            Route::get('/{id}', [UserController::class, 'show'])->name('.show');
-        });
+    });
+    Route::group(['prefix' => 'user', 'as' => 'user'], function () {
+        Route::get('/{id}', [UserController::class, 'show'])->name('.show');
+    });
+    Route::group(['prefix' => 'order', 'as' => 'order'], function () {
+        Route::get('/', [OrderController::class, 'index']);
     });
 });

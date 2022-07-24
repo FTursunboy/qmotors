@@ -4,21 +4,20 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ListResource;
-use App\Models\CarMark;
+use App\Models\OrderType;
 use App\Traits\ApiResponse;
-use Illuminate\Http\Request;
 
-class CarMarkApiController extends Controller
+class OrderTypeApiController extends Controller
 {
     use ApiResponse;
 
     public function list()
     {
-        return $this->success(ListResource::collection(CarMark::all()));
+        return $this->success(ListResource::collection(OrderType::all()));
     }
 
     public function show($id)
     {
-        return $this->success(CarMark::findOrFail($id));
+        return $this->success(OrderType::findOrFail($id));
     }
 }

@@ -24,6 +24,7 @@ class UserCarService implements UserCarServiceInterface
       $this->class = $class;
     }
   }
+
   public function filter()
   {
     $order = requestOrder();
