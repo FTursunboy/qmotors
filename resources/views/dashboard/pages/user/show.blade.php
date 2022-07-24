@@ -12,7 +12,7 @@
     <div class="profile-header-content">
       <!-- BEGIN profile-header-img -->
       <div class="profile-header-img">
-        <img src="{{ $model->avatar }}" alt="">
+        <img src="{{ asset($model->avatar) }}" alt="">
       </div>
       <!-- END profile-header-img -->
       <!-- BEGIN profile-header-info -->
