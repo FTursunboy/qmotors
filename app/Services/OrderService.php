@@ -33,7 +33,13 @@ class OrderService implements OrderServiceInterface
       return $this->error(['message' => 'У вас нет доступа!'], 403);
     }
     $model = $this->class::create(array_merge(
-      $request->only('order_type_id', 'tech_center_id', 'description', 'date'),
+      $request->only(
+        'order_type_id',
+        'tech_center_id',
+        'description',
+        'date',
+        'guarantee'
+      ),
       [
         'user_car_id' => $car->id,
         'id' => $this->class::nextID(),

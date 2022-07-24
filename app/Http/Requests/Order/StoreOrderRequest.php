@@ -41,7 +41,8 @@ class StoreOrderRequest extends FormRequest
             'number' => !$hasUserCarId ? 'required' : '',
             'order_type_id' => 'required|exists:' . with(new OrderType)->getTable() . ',id',
             'tech_center_id' => 'required|exists:' . with(new TechCenter)->getTable() . ',id',
-            'date' => 'required|date|after:yesterday'
+            'date' => 'required|date|after:yesterday',
+            'guarantee' => 'boolean'
         ];
     }
 }
