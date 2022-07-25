@@ -18,7 +18,7 @@ class CarService implements CarServiceInterface
   public function store($request)
   {
     $model = $this->class::create(array_merge(
-      $request->only('car_model_id', 'year', 'last_visit', 'vin', 'mileage'),
+      $request->only('car_model_id', 'year', 'last_visit', 'vin', 'mileage', 'number'),
       ['user_id' => auth()->id(), 'status' => $request->get('status', 0), 'id' => $this->class::nextID()],
     ));
     return $model;

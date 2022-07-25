@@ -1,4 +1,6 @@
-<x-dashboard.table-search-form />
+<div class="mb-2">
+    <x-dashboard.table-search-form />
+</div>
 <x-dashboard.default-table length="{{ count($list) }}">
     <x-slot name="header">
         <th>

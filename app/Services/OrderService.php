@@ -29,9 +29,9 @@ class OrderService implements OrderServiceInterface
         'car_model_id' => $request->car_model_id
       ]);
     }
-    if ($car->user_id != auth()->id()) {
-      return $this->error(['message' => 'У вас нет доступа!'], 403);
-    }
+    // if ($car->user_id != auth()->id()) {
+    //   return $this->error(['message' => 'У вас нет доступа!'], 403);
+    // }
     $model = $this->class::create(array_merge(
       $request->only(
         'order_type_id',

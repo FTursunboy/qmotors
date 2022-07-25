@@ -19,6 +19,11 @@ return [
 			'title' => 'Дашборд',
 			'url' => '/dashboard',
 		],
+		[
+			'icon' => 'fa fa-users',
+			'title' => 'Пользователи',
+			'url' => '/users',
+		],
 		// [
 		// 	'icon' => 'fa fa-th-large',
 		// 	'title' => 'Дашборд Версия 2',

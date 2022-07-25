@@ -1,13 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Car;
+namespace App\Http\Requests\User;
 
-use App\Models\CarModel;
-use App\Models\UserCar;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class StoreCarRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,10 +24,9 @@ class StoreCarRequest extends FormRequest
     public function rules()
     {
         return [
-            'car_model_id' => 'required|exists:' . with(new CarModel)->getTable() . ',id',
-            'status' => Rule::in([0, 1, 2]),
-            'number' => 'unique:' . with(new UserCar)->getTable(),
-            'last_visit' => 'date'
+            'avatar' => 'file',
+            'is_complete' => 'required|boolean',
+            'email' => 'required'
         ];
     }
 }

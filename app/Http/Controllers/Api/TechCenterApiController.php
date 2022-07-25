@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ListResource;
+use App\Http\Resources\TechCenter\TechCentersResource;
 use App\Models\TechCenter;
 use App\Traits\ApiResponse;
-use Illuminate\Http\Request;
 
 class TechCenterApiController extends Controller
 {
@@ -14,7 +13,7 @@ class TechCenterApiController extends Controller
 
     public function list()
     {
-        return $this->success(ListResource::collection(TechCenter::all()));
+        return $this->success(TechCentersResource::collection(TechCenter::all()));
     }
 
     public function show($id)

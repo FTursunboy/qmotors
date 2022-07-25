@@ -28,8 +28,14 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::put('/{id}', [UserCarController::class, 'update'])->name('.update');
         Route::delete('/{id}', [UserCarController::class, 'delete'])->name('.delete');
     });
-    Route::group(['prefix' => 'user', 'as' => 'user'], function () {
+    Route::group(['prefix' => 'users', 'as' => 'user'], function () {
+        Route::get('/', [UserController::class, 'index']);
+        Route::get('/create', [UserController::class, 'create'])->name('.create');
+        Route::post('/', [UserController::class, 'store'])->name('.store');
+        Route::get('/{id}/edit', [UserController::class, 'edit'])->name('.edit');
+        Route::put('/{id}', [UserController::class, 'update'])->name('.update');
         Route::get('/{id}', [UserController::class, 'show'])->name('.show');
+        Route::delete('/{id}', [UserController::class, 'delete'])->name('.delete');
     });
     Route::group(['prefix' => 'order', 'as' => 'order'], function () {
         Route::get('/', [OrderController::class, 'index']);

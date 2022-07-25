@@ -1,7 +1,7 @@
 @php
 $pages = [10,20,50,100];
 @endphp
-<div class="d-flex justify-content-between mb-2 form-inline">
+<div class="form-inline">
     <div>
         Показать
         <select name="per_page" class="custom-select" id="per_page" onchange="per_page()">
