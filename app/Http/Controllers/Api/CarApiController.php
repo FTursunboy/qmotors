@@ -15,7 +15,7 @@ class CarApiController extends Controller
 
     public function index()
     {
-        return $this->success(auth()->user()->cars);
+        return $this->success(auth()->user()->user_cars);
     }
 
     public function show($id)
