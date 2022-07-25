@@ -37,9 +37,9 @@ class CarService implements CarServiceInterface
   public function modelList($request)
   {
     return CarModel::where(function ($query) use ($request) {
-      if ($query->car_mark_id != null) {
+      if ($request->car_mark_id != null) {
         $query->where('car_mark_id', $request->car_mark_id);
       }
-    });
+    })->get();
   }
 }
