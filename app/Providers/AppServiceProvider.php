@@ -7,9 +7,11 @@ use App\Services\Contracts\CarServiceInterface;
 use App\Services\OrderService;
 use App\Services\Contracts\OrderServiceInterface;
 use App\Services\Contracts\SmsServiceInterface;
+use App\Services\Contracts\TechCenterServiceInterface;
 use App\Services\Contracts\UserCarServiceInterface;
 use App\Services\Contracts\UserServiceInterface;
 use App\Services\SmsService;
+use App\Services\TechCenterService;
 use App\Services\UserCarService;
 use App\Services\UserService;
 use Illuminate\Pagination\Paginator;
@@ -29,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CarServiceInterface::class, CarService::class);
         $this->app->bind(OrderServiceInterface::class, OrderService::class);
         $this->app->bind(UserServiceInterface::class, UserService::class);
+        $this->app->bind(TechCenterServiceInterface::class, TechCenterService::class);
     }
 
     /**

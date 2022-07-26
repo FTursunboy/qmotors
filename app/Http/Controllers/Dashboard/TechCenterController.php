@@ -34,11 +34,11 @@ class TechCenterController extends Controller
         return view('dashboard.pages.tech-center.edit', compact('model'));
     }
 
-    public function store(StoreTechCenterRequest $request, TechCenterServiceInterface $techCenterService)
+    public function store(Request $request, TechCenterServiceInterface $techCenterService)
     {
         $result = $techCenterService->store($request);
         if ($result['status']) {
-            return redirect()->route('user')->with('success', $result['message']);
+            return redirect()->route('tech-center')->with('success', $result['message']);
         }
         return back()->with('not-allowed', $result['message'])->withInput();
     }
@@ -47,7 +47,7 @@ class TechCenterController extends Controller
     {
         $result = $techCenterService->update($id, $request);
         if ($result['status']) {
-            return redirect()->route('user', $id)->with('success', $result['message']);
+            return redirect()->route('tech-center', $id)->with('success', $result['message']);
         }
         return back()->with('not-allowed', $result['message'])->withInput();
     }
@@ -59,6 +59,6 @@ class TechCenterController extends Controller
         } catch (Throwable $e) {
             return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");
         }
-        return redirect()->route('user')->with('success', "Успешно удалено: $id!");
+        return redirect()->route('tech-center')->with('success', "Успешно удалено: $id!");
     }
 }

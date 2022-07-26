@@ -68,26 +68,19 @@ class TechCenterService implements TechCenterServiceInterface
   {
     $avatar = null;
     try {
-      if ($request->avatar != null) {
-        $avatar = uploadImage($request->file('avatar'), 'user');
-      }
-      $this->class::create(array_merge(
-        $request->only(
-          "surname",
-          "name",
-          "patronymic",
-          "phone_number",
-          "email",
-          "birthday",
-          "gender",
-          "is_complete",
-          "agree_notification",
-          "agree_sms",
-          "agree_calls",
-          "agree_data"
-        ),
-        ['avatar' => $avatar, 'id' => $this->class::nextID()]
-      ));
+      $this->class::create(
+        array_merge(
+          $request->only(
+            "title",
+            "phone",
+            "address",
+            "url",
+            "lat",
+            "lng",
+          ),
+          ['id' => $this->class::nextID()]
+        )
+      );
       return ['status' => true, 'message' => "Успешно создано!"];
     } catch (Throwable $e) {
       return ['status' => false, 'message' => 'Что-то пошло не так: ' . $e->getMessage()];
@@ -96,29 +89,17 @@ class TechCenterService implements TechCenterServiceInterface
 
   public function update($id, $request)
   {
-    $model = $this->class::findOrFail($id);
-    $avatar = $model->avatar;
     try {
-      if ($request->avatar != null) {
-        $avatar = uploadImage($request->file('avatar'), 'user', $avatar);
-      }
-      $model->update(array_merge(
+      $this->class::where('id', $id)->update(
         $request->only(
-          "surname",
-          "name",
-          "patronymic",
-          "phone_number",
-          "email",
-          "birthday",
-          "gender",
-          "is_complete",
-          "agree_notification",
-          "agree_sms",
-          "agree_calls",
-          "agree_data"
+          "title",
+          "phone",
+          "address",
+          "url",
+          "lat",
+          "lng",
         ),
-        ['avatar' => $avatar]
-      ));
+      );
       return ['status' => true, 'message' => "Успешно обновлено: $id"];
     } catch (Throwable $e) {
       return ['status' => false, 'message' => 'Что-то пошло не так: ' . $e->getMessage()];

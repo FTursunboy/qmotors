@@ -5,8 +5,8 @@
 @section('content')
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="/">Дашборд</a></li>
-  <li class="breadcrumb-item"><a href="/user-car">Пользователи</a></li>
-  <li class="breadcrumb-item"><a href="/user-car/{{ $model->id }}">{{ $model->id }}</a></li>
+  <li class="breadcrumb-item"><a href="/users">Пользователи</a></li>
+  <li class="breadcrumb-item"><a href="/users/{{ $model->id }}">{{ $model->id }}</a></li>
   <li class="breadcrumb-item active">Изменить</li>
 </ol>
 <!-- begin page-header -->

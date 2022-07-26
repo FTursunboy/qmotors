@@ -1,11 +1,11 @@
 @extends('dashboard.layouts.default')
 
-@section('title', 'Техцентры')
+@section('title', 'Техцентр')
 
 @section('content')
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="/">Дашборд</a></li>
-  <li class="breadcrumb-item"><a href="/user-car">Техцентры</a></li>
+  <li class="breadcrumb-item"><a href="/tech-center">Техцентры</a></li>
   <li class="breadcrumb-item active">{{ $model->id }}</li>
 </ol>
 <!-- begin page-header -->
