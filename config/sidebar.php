@@ -39,6 +39,11 @@ return [
 			'title' => 'Заказы',
 			'url' => '/order',
 		],
+		[
+			'icon' => 'fa fa-building',
+			'title' => 'Техцентры',
+			'url' => '/tech-center',
+		],
 		// [
 		// 	'icon' => 'fa fa-desktop',
 		// 	'title' => 'Sliders',

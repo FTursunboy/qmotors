@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\OrderController;
+use App\Http\Controllers\Dashboard\TechCenterController;
 use App\Http\Controllers\Dashboard\UserCarController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Models\User;
@@ -36,6 +37,15 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::put('/{id}', [UserController::class, 'update'])->name('.update');
         Route::get('/{id}', [UserController::class, 'show'])->name('.show');
         Route::delete('/{id}', [UserController::class, 'delete'])->name('.delete');
+    });
+    Route::group(['prefix' => 'tech-center', 'as' => 'tech-center'], function () {
+        Route::get('/', [TechCenterController::class, 'index']);
+        Route::get('/create', [TechCenterController::class, 'create'])->name('.create');
+        Route::post('/', [TechCenterController::class, 'store'])->name('.store');
+        Route::get('/{id}/edit', [TechCenterController::class, 'edit'])->name('.edit');
+        Route::put('/{id}', [TechCenterController::class, 'update'])->name('.update');
+        Route::get('/{id}', [TechCenterController::class, 'show'])->name('.show');
+        Route::delete('/{id}', [TechCenterController::class, 'delete'])->name('.delete');
     });
     Route::group(['prefix' => 'order', 'as' => 'order'], function () {
         Route::get('/', [OrderController::class, 'index']);
