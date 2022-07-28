@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\CarModel;
 use App\Models\UserCar;
+use App\Models\UserCarPhoto;
 use App\Services\Contracts\CarServiceInterface;
 use Illuminate\Support\Facades\Http;
 
@@ -41,5 +42,16 @@ class CarService implements CarServiceInterface
         $query->where('car_mark_id', $request->car_mark_id);
       }
     })->get();
+  }
+
+  public function photo($id, $request)
+  {
+    $photo = uploadImage($request->file('photo'), 'user_car');
+    $model = UserCarPhoto::create([
+      'id' => UserCarPhoto::nextID(),
+      'user_car_id' => $id,
+      'photo' => $photo
+    ]);
+    return $model;
   }
 }

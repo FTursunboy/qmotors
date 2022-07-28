@@ -47,6 +47,11 @@ class UserCar extends Model
         return $this->hasMany(Order::class);
     }
 
+    public function user_car_photos()
+    {
+        return $this->hasMany(UserCarPhoto::class);
+    }
+
     public function getStatusTextAttribute()
     {
         if (isset(self::STATUSES[$this->status]['name']))

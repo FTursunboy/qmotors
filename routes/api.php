@@ -29,12 +29,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'profile'], function () {
         Route::get('', [UserApiController::class, 'profile']);
         Route::get('autos', [UserApiController::class, 'autos']);
+        Route::post('update', [UserApiController::class, 'update']);
     });
     Route::group(['prefix' => 'car'], function () {
         Route::get('', [CarApiController::class, 'index']);
         Route::get('{id}', [CarApiController::class, 'show']);
         Route::post('', [CarApiController::class, 'store']);
         Route::put('{id}', [CarApiController::class, 'update'])->middleware('car-owner');
+        Route::post('{id}/photo', [CarApiController::class, 'photo'])->middleware('car-owner');
     });
     Route::group(['prefix' => 'car-model'], function () {
         Route::get('list', [CarModelApiController::class, 'list']);

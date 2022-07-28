@@ -49,5 +49,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     });
     Route::group(['prefix' => 'order', 'as' => 'order'], function () {
         Route::get('/', [OrderController::class, 'index']);
+        Route::get('/{id}', [OrderController::class, 'show'])->name('.show');
+        Route::get('/{id}/edit', [OrderController::class, 'edit'])->name('.edit');
+        Route::delete('/{id}', [OrderController::class, 'delete'])->name('.delete');
     });
 });

@@ -13,7 +13,7 @@
 <!-- end page-header -->
 
 <x-dashboard.panel title="Заказ подробнее">
-  <x-dashboard.user-car-show :model="$model" />
+  <x-dashboard.order-show :model="$model" />
 </x-dashboard.panel>
 
 

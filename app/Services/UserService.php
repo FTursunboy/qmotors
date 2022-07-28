@@ -119,9 +119,35 @@ class UserService implements UserServiceInterface
         ),
         ['avatar' => $avatar]
       ));
-      return ['status' => true, 'message' => "Успешно обновлено: $id"];
+      return ['status' => true, 'message' => "Успешно обновлено: $id", "model" => $model];
     } catch (Throwable $e) {
       return ['status' => false, 'message' => 'Что-то пошло не так: ' . $e->getMessage()];
     }
+  }
+
+  public function updateApi($request)
+  {
+    $model = auth()->user();
+    $avatar = $model->avatar;
+    if ($request->avatar != null) {
+      $avatar = uploadImage($request->file('avatar'), 'user', $avatar);
+    }
+    $model->update(array_merge(
+      $request->only(
+        "surname",
+        "name",
+        "patronymic",
+        "phone_number",
+        "email",
+        "birthday",
+        "gender",
+        "agree_notification",
+        "agree_sms",
+        "agree_calls",
+        "agree_data"
+      ),
+      ['avatar' => $avatar]
+    ));
+    return $model;
   }
 }

@@ -22,6 +22,7 @@ class OrderApiController extends Controller
     {
         return $this->success($orderService->photo($id, $request));
     }
+
     public function history(Request $request, OrderServiceInterface $orderService)
     {
         return $this->success($orderService->history($request));

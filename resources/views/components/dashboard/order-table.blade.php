@@ -1,4 +1,7 @@
-<x-dashboard.table-search-form />
+<div class="d-flex mb-2">
+    <x-dashboard.table-search-form />
+    {{-- <a href="{{ route('user.create') }}" class="ml-auto btn btn-primary">Добавить</a> --}}
+</div>
 <x-dashboard.default-table length="{{ count($list) }}">
     <x-slot name="header">
         <th>
@@ -50,9 +53,10 @@
             <td>{{ $item->created_at }}</td>
             <td>
                 <div class="d-flex float-right">
-                    <a class="btn btn-info mr-2" href="#"><i class="fa fa-eye"></i></a>
+                    <a class="btn btn-info mr-2" href="{{ route('order.show', $item->id) }}"><i
+                            class="fa fa-eye"></i></a>
                     <a href="#" class="btn btn-primary mr-2"><i class="fa fa-pen"></i></a>
-                    <form action="#" method="POST">
+                    <form action="{{ route('order.delete', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" onclick="return confirm('Ты уверен?')" class="btn btn-danger"><i
