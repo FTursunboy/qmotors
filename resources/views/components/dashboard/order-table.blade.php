@@ -39,7 +39,7 @@
     <x-slot name="body">
         @foreach ($list as $index => $item)
         <tr>
-            <td><a href="#">{{ $item->id }}</a></td>
+            <td><a href="{{ route('order.show', $item->id) }}">{{ $item->id }}</a></td>
             <td>{{ $item->order_number }}</td>
             <td> <a href="{{ route('user-car.show', $item->user_car_id) }}">{{
                     optional($item->user_car)->model->name
