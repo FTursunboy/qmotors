@@ -80,4 +80,22 @@ class OrderService implements OrderServiceInterface
       ->orderBy($order['key'], $order['value'])
       ->paginate(request()->get('per_page', 20));
   }
+
+  public function update($id, $request)
+  {
+    // dd($request->all());
+    $model = $this->class::findOrFail($id);
+    $model->update($request->only(
+      'order_type_id',
+      'tech_center_id',
+      'description',
+      'date',
+      'guarantee',
+      'user_car_id',
+      'order_number',
+    ));
+    $model->guarantee = $request->has('guarantee');
+    $model->save();
+    return ['status' => true, 'model' => $model, 'message' => "Успешно обновлено: $id"];
+  }
 }

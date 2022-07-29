@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/', [OrderController::class, 'index']);
         Route::get('/{id}', [OrderController::class, 'show'])->name('.show');
         Route::get('/{id}/edit', [OrderController::class, 'edit'])->name('.edit');
+        Route::put('/{id}', [OrderController::class, 'update'])->name('.update');
         Route::delete('/{id}', [OrderController::class, 'delete'])->name('.delete');
     });
 });

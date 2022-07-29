@@ -55,7 +55,8 @@
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('order.show', $item->id) }}"><i
                             class="fa fa-eye"></i></a>
-                    <a href="#" class="btn btn-primary mr-2"><i class="fa fa-pen"></i></a>
+                    <a href="{{ route('order.edit', $item->id) }}" class="btn btn-primary mr-2"><i
+                            class="fa fa-pen"></i></a>
                     <form action="{{ route('order.delete', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')

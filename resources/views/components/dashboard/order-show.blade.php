@@ -6,10 +6,10 @@ $model = $attributes['model'];
         <td><b>Номер Заказа</b></td>
         <td>{{ $model->order_number }}</td>
     </tr>
-    <tr>
+    {{-- <tr>
         <td><b>Телефон</b></td>
         <td>{{ $model->phone }}</td>
-    </tr>
+    </tr> --}}
     <tr>
         <td><b>Автомобиль</b></td>
         <td><a href="{{ route('user-car.show', $model->user_car_id) }}">{{

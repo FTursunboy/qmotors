@@ -2,12 +2,17 @@
 
 namespace App\View\Components\Dashboard;
 
+use App\Models\OrderType;
 use App\Models\Product;
+use App\Models\TechCenter;
+use App\Models\UserCar;
 use Illuminate\View\Component;
 
 class OrderForm extends Component
 {
-    public $products = [];
+    public $cars = [];
+    public $techCenters = [];
+    public $orderTypes = [];
     /**
      * Create a new component instance.
      *
@@ -15,7 +20,9 @@ class OrderForm extends Component
      */
     public function __construct()
     {
-        $this->products = Product::latest('id')->get();
+        // $this->cars = UserCar::latest('id')->get();
+        $this->techCenters = TechCenter::latest('id')->get();
+        $this->orderTypes = OrderType::latest('id')->get();
     }
 
     /**

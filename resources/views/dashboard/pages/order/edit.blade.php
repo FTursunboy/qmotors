@@ -14,7 +14,7 @@
 <!-- end page-header -->
 
 <x-dashboard.panel title="Изменить Заказ">
-  <x-dashboard.user-car-form :model="$model" />
+  <x-dashboard.order-form :model="$model" />
 </x-dashboard.panel>
 
 @endsection
