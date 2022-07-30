@@ -21,6 +21,6 @@ class CarOwner
     {
         if (UserCar::findOrFail($request->id)->user_id == auth()->id())
             return $next($request);
-        return $this->error(['message' => 'У вас нет доступа!'], 403);
+        return $this->notAccess();
     }
 }

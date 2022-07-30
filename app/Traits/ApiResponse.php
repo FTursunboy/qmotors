@@ -13,4 +13,8 @@ trait ApiResponse
   {
     return response()->json(['result' => null, 'errors' => $result], $code);
   }
+  public function notAccess($message = 'У вас нет доступа!', $code = 403)
+  {
+    return $this->error(['message' => $message], $code);
+  }
 }

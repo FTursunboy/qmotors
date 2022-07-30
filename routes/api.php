@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CarMarkApiController;
 use App\Http\Controllers\Api\CarModelApiController;
 use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\OrderTypeApiController;
+use App\Http\Controllers\Api\ReminderApiController;
 use App\Http\Controllers\Api\TechCenterApiController;
 use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Http\Request;
@@ -54,5 +55,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     });
     Route::group(['prefix' => 'tech-center'], function () {
         Route::get('list', [TechCenterApiController::class, 'list']);
+    });
+    Route::group(['prefix' => 'reminder'], function () {
+        Route::get('', [ReminderApiController::class, 'index']);
+        Route::post('', [ReminderApiController::class, 'store']);
+        Route::get('{id}', [ReminderApiController::class, 'show']);
+        Route::delete('{id}', [ReminderApiController::class, 'destroy'])->middleware('reminder-owner');
     });
 });

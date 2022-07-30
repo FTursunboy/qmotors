@@ -30,7 +30,7 @@ class OrderService implements OrderServiceInterface
       ]);
     }
     // if ($car->user_id != auth()->id()) {
-    //   return $this->error(['message' => 'У вас нет доступа!'], 403);
+    //   return $this->notAccess();
     // }
     $model = $this->class::create(array_merge(
       $request->only(

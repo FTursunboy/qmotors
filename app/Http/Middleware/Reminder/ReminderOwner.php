@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Middleware\Order;
+namespace App\Http\Middleware\Reminder;
 
-use App\Models\Order;
+use App\Models\Reminder;
 use App\Traits\ApiResponse;
 use Closure;
 use Illuminate\Http\Request;
 
-class OrderOwner
+class ReminderOwner
 {
     use ApiResponse;
     /**
@@ -19,8 +19,12 @@ class OrderOwner
      */
     public function handle(Request $request, Closure $next)
     {
-        if (optional(Order::findOrFail($request->id)->user_car)->user_id == auth()->id())
+        $id = $request->route()->parameter('id');
+        if (Reminder::where('id', $id)->whereHas('user_car', function ($query) {
+            $query->where('user_id', auth()->id());
+        })->exists())
             return $next($request);
+
         return $this->notAccess();
     }
 }
