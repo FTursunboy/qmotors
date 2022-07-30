@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('', [ReminderApiController::class, 'index']);
         Route::post('', [ReminderApiController::class, 'store']);
         Route::get('{id}', [ReminderApiController::class, 'show']);
+        Route::put('{id}', [ReminderApiController::class, 'update']);
         Route::delete('{id}', [ReminderApiController::class, 'destroy'])->middleware('reminder-owner');
     });
 });

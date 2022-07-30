@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Reminder\StoreReminderRequest;
+use App\Http\Requests\Reminder\UpdateReminderRequest;
 use App\Models\Reminder;
 use App\Services\Contracts\ReminderServiceInterface;
 use App\Traits\ApiResponse;
@@ -26,7 +27,12 @@ class ReminderApiController extends Controller
         return  $this->success($reminderService->store($request));
     }
 
-    public function show($id)
+    public function update($id, UpdateReminderRequest $request, ReminderServiceInterface $reminderService)
+    {
+        return  $this->success($reminderService->update($id, $request));
+    }
+
+    public function show($id, UpdateReminderRequest $request)
     {
         return $this->success(Reminder::with('user_car')->findOrFail($id));
     }

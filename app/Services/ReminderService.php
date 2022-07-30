@@ -25,4 +25,15 @@ class ReminderService implements ReminderServiceInterface
     ]));
     return $model;
   }
+
+  public function update($id, $request)
+  {
+    $model = Reminder::findOrFail($id);
+    $model->update($request->only(
+      'user_car_id',
+      'date',
+      'text'
+    ));
+    return $model;
+  }
 }
