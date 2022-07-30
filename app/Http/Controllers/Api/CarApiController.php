@@ -16,12 +16,13 @@ class CarApiController extends Controller
 
     public function index()
     {
-        return $this->success(auth()->user()->user_cars);
+        $result = UserCar::with(['user_car_photos', 'model.mark'])->where('user_id', auth()->id())->get();
+        return $this->success($result);
     }
 
     public function show($id)
     {
-        return $this->success(UserCar::with('user_car_photos')->findOrFail($id));
+        return $this->success(UserCar::with(['user_car_photos', 'model.mark'])->findOrFail($id));
     }
 
     public function store(StoreCarRequest $request, CarServiceInterface $carService)
