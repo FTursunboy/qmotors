@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\OrderController;
+use App\Http\Controllers\Dashboard\ReminderController;
 use App\Http\Controllers\Dashboard\TechCenterController;
 use App\Http\Controllers\Dashboard\UserCarController;
 use App\Http\Controllers\Dashboard\UserController;
@@ -53,5 +54,12 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/{id}/edit', [OrderController::class, 'edit'])->name('.edit');
         Route::put('/{id}', [OrderController::class, 'update'])->name('.update');
         Route::delete('/{id}', [OrderController::class, 'delete'])->name('.delete');
+    });
+    Route::group(['prefix' => 'reminder', 'as' => 'reminder'], function () {
+        Route::get('/', [ReminderController::class, 'index']);
+        Route::get('/{id}', [ReminderController::class, 'show'])->name('.show');
+        Route::get('/{id}/edit', [ReminderController::class, 'edit'])->name('.edit');
+        Route::put('/{id}', [ReminderController::class, 'update'])->name('.update');
+        Route::delete('/{id}', [ReminderController::class, 'delete'])->name('.delete');
     });
 });

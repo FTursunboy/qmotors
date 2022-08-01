@@ -44,6 +44,11 @@ return [
 			'title' => 'Техцентры',
 			'url' => '/tech-center',
 		],
+		[
+			'icon' => 'fa fa-bell',
+			'title' => 'Напоминания',
+			'url' => '/reminder',
+		],
 		// [
 		// 	'icon' => 'fa fa-desktop',
 		// 	'title' => 'Sliders',

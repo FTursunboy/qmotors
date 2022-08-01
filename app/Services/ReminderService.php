@@ -8,10 +8,47 @@ use App\Services\Contracts\ReminderServiceInterface;
 class ReminderService implements ReminderServiceInterface
 {
   private $class;
+  private $request;
 
   public function __construct()
   {
     $this->class = Reminder::class;
+    $this->request = request();
+  }
+
+  public function filter()
+  {
+    $order = requestOrder();
+    return $this->class::where(function ($query) {
+      if ($this->request->model_id != null) {
+        $query->whereHas('user_car', function ($query) {
+          $query->where('car_model_id', $this->request->model_id);
+        });
+      }
+      if ($this->request->text != null) {
+        $query->where('text', 'ilike', '%' . $this->request->text . '%');
+      }
+      if ($this->request->date_start != null) {
+        $query->whereDate('date', '>=', $this->request->date_start);
+      }
+      if ($this->request->date_end != null) {
+        $query->whereDate('date', '<=', $this->request->date_end);
+      }
+      if ($this->request->created_at_start != null) {
+        $query->whereDate('created_at', '>=', $this->request->created_at_start);
+      }
+      if ($this->request->created_at_end != null) {
+        $query->whereDate('created_at', '<=', $this->request->created_at_end);
+      }
+      if ($this->request->updated_at_start != null) {
+        $query->whereDate('updated_at', '>=', $this->request->updated_at_start);
+      }
+      if ($this->request->updated_at_end != null) {
+        $query->whereDate('updated_at', '<=', $this->request->updated_at_end);
+      }
+    })
+      ->orderBy($order['key'], $order['value'])
+      ->paginate(request()->get('per_page', 20));
   }
 
   public function store($request)

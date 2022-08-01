@@ -29,7 +29,7 @@ class OrderController extends Controller
     {
         $result = $orderService->update($id, $request);
         if ($result['status']) {
-            return redirect()->route('order', $id)->with('success', $result['message']);
+            return redirect()->route('order.show', $id)->with('success', $result['message']);
         }
         return back()->with('not-allowed', $result['message'])->withInput();
     }
