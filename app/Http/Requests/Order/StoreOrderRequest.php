@@ -28,17 +28,13 @@ class StoreOrderRequest extends FormRequest
      */
     public function rules()
     {
-        $hasUserCarId = request()->has('user_car_id');
+        // $hasUserCarId = request()->has('user_car_id');
         return [
             'user_car_id' => [
-                $hasUserCarId ? 'required' : '',
+                'required',
                 'exists:' . with(new UserCar)->getTable() . ',id'
             ],
-            'car_model_id' => [
-                !$hasUserCarId ? 'required' : '',
-                'exists:' . with(new CarModel)->getTable() . ',id'
-            ],
-            'number' => !$hasUserCarId ? 'required' : '',
+            'number' => 'required',
             'order_type_id' => 'required|exists:' . with(new OrderType)->getTable() . ',id',
             'tech_center_id' => 'required|exists:' . with(new TechCenter)->getTable() . ',id',
             'date' => 'required|date|after:yesterday',

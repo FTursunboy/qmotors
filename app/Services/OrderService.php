@@ -20,15 +20,15 @@ class OrderService implements OrderServiceInterface
 
   public function store($request)
   {
-    if ($request->has('user_car_id')) {
-      $car = UserCar::find($request->user_car_id);
-    } else {
-      $car = UserCar::firstOrCreate($request->only('number'), [
-        'id' => UserCar::nextID(),
-        'user_id' => auth()->id(),
-        'car_model_id' => $request->car_model_id
-      ]);
-    }
+    // if ($request->has('user_car_id')) {
+    //   $car = UserCar::find($request->user_car_id);
+    // } else {
+    //   $car = UserCar::firstOrCreate($request->only('number'), [
+    //     'id' => UserCar::nextID(),
+    //     'user_id' => auth()->id(),
+    //     'car_model_id' => $request->car_model_id
+    //   ]);
+    // }
     // if ($car->user_id != auth()->id()) {
     //   return $this->notAccess();
     // }
@@ -41,7 +41,7 @@ class OrderService implements OrderServiceInterface
         'guarantee'
       ),
       [
-        'user_car_id' => $car->id,
+        'user_car_id' => $request->user_car_id,
         'id' => $this->class::nextID(),
         'order_number' => $request->number
       ],
