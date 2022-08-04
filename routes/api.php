@@ -26,6 +26,10 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', [AuthApiController::class, 'login']);
 Route::post('send-sms-code', [AuthApiController::class, 'sendSmsCode']);
 
+Route::group(['prefix' => 'tech-center'], function () {
+    Route::get('list', [TechCenterApiController::class, 'list']);
+});
+
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'profile'], function () {
         Route::get('', [UserApiController::class, 'profile']);
@@ -52,9 +56,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     });
     Route::group(['prefix' => 'order-type'], function () {
         Route::get('list', [OrderTypeApiController::class, 'list']);
-    });
-    Route::group(['prefix' => 'tech-center'], function () {
-        Route::get('list', [TechCenterApiController::class, 'list']);
     });
     Route::group(['prefix' => 'reminder'], function () {
         Route::get('', [ReminderApiController::class, 'index']);

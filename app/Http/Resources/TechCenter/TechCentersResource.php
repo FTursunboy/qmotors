@@ -19,6 +19,8 @@ class TechCentersResource extends JsonResource
             'title' => $this->title,
             'address' => $this->address,
             'phone' => $this->phone,
+            'lat' => $this->lat,
+            'lng' => $this->lng,
         ];
     }
 }
