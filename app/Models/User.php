@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, ModelCommonMethods;
-    const TEST_ACCOUNT_PHONE_NUMBER = '+9 (999) 999 99 99';
+    const TEST_ACCOUNT_PHONE_NUMBER = '+9 (999) 999-99-99';
     const STATUSES = [
         [
             'id' => 1,
