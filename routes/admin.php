@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\BonusController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\OrderController;
 use App\Http\Controllers\Dashboard\ReminderController;
@@ -61,5 +62,14 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/{id}/edit', [ReminderController::class, 'edit'])->name('.edit');
         Route::put('/{id}', [ReminderController::class, 'update'])->name('.update');
         Route::delete('/{id}', [ReminderController::class, 'delete'])->name('.delete');
+    });
+    Route::group(['prefix' => 'bonus', 'as' => 'bonus'], function () {
+        Route::get('/', [BonusController::class, 'index']);
+        Route::get('/create', [BonusController::class, 'create'])->name('.create');
+        Route::post('/store', [BonusController::class, 'store'])->name('.store');
+        Route::get('/{id}', [BonusController::class, 'show'])->name('.show');
+        Route::get('/{id}/edit', [BonusController::class, 'edit'])->name('.edit');
+        Route::put('/{id}', [BonusController::class, 'update'])->name('.update');
+        Route::delete('/{id}', [BonusController::class, 'delete'])->name('.delete');
     });
 });

@@ -49,6 +49,11 @@ return [
 			'title' => 'Напоминания',
 			'url' => '/reminder',
 		],
+		[
+			'icon' => 'fa fa-gift',
+			'title' => 'Бонусы',
+			'url' => '/bonus',
+		],
 		// [
 		// 	'icon' => 'fa fa-desktop',
 		// 	'title' => 'Sliders',

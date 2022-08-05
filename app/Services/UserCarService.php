@@ -38,7 +38,8 @@ class UserCarService implements UserCarServiceInterface
       if ($this->request->user != null) {
         $query->whereHas('user', function ($query) {
           $query->where('surname', 'ilike', '%' . $this->request->user . '%')
-            ->orWhere('name', 'ilike', '%' . $this->request->user . '%');
+            ->orWhere('name', 'ilike', '%' . $this->request->user . '%')
+            ->orWhere('id', 'ilike', '%' . $this->request->user . '%');
         });
       }
       if ($this->request->has('vin')) {

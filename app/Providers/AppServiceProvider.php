@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Services\BonusService;
 use App\Services\CarService;
+use App\Services\Contracts\BonusServiceInterface;
 use App\Services\Contracts\CarServiceInterface;
 use App\Services\OrderService;
 use App\Services\Contracts\OrderServiceInterface;
@@ -35,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserServiceInterface::class, UserService::class);
         $this->app->bind(TechCenterServiceInterface::class, TechCenterService::class);
         $this->app->bind(ReminderServiceInterface::class, ReminderService::class);
+        $this->app->bind(BonusServiceInterface::class, BonusService::class);
     }
 
     /**

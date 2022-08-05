@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthApiController;
+use App\Http\Controllers\Api\BonusApiController;
 use App\Http\Controllers\Api\CarApiController;
 use App\Http\Controllers\Api\CarMarkApiController;
 use App\Http\Controllers\Api\CarModelApiController;
@@ -43,6 +44,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::put('{id}', [CarApiController::class, 'update'])->middleware('car-owner');
         Route::post('{id}/photo', [CarApiController::class, 'photo'])->middleware('car-owner');
     });
+    Route::group(['prefix' => 'car'], function () {
+        Route::get('', [CarApiController::class, 'index']);
+        Route::get('{id}', [CarApiController::class, 'show']);
+        Route::post('', [CarApiController::class, 'store']);
+        Route::put('{id}', [CarApiController::class, 'update'])->middleware('car-owner');
+        Route::post('{id}/photo', [CarApiController::class, 'photo'])->middleware('car-owner');
+    });
     Route::group(['prefix' => 'car-model'], function () {
         Route::get('list', [CarModelApiController::class, 'list']);
     });
@@ -63,5 +71,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('{id}', [ReminderApiController::class, 'show']);
         Route::put('{id}', [ReminderApiController::class, 'update']);
         Route::delete('{id}', [ReminderApiController::class, 'destroy'])->middleware('reminder-owner');
+    });
+    Route::group(['prefix' => 'bonus'], function () {
+        Route::get('', [BonusApiController::class, 'index']);
+        Route::get('{id}', [BonusApiController::class, 'show']);
+        Route::post('', [BonusApiController::class, 'store']);
+        Route::put('{id}', [BonusApiController::class, 'update']);
+        Route::delete('{id}', [BonusApiController::class, 'delete']);
     });
 });
