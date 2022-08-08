@@ -11,6 +11,6 @@ class CarModel extends Model
 
     public function mark()
     {
-        return $this->belongsTo(CarMark::class);
+        return $this->belongsTo(CarMark::class, 'car_mark_id');
     }
 }
