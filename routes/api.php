@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     });
     Route::group(['prefix' => 'order'], function () {
         Route::post('', [OrderApiController::class, 'store']);
+        Route::get('{id}', [OrderApiController::class, 'show']);
         Route::post('{id}/photo', [OrderApiController::class, 'photo'])->middleware('order-owner');
         Route::get('history', [OrderApiController::class, 'history']);
     });
