@@ -16,5 +16,7 @@
   <x-dashboard.user-car-show :model="$model" />
 </x-dashboard.panel>
 
+<x-dashboard.photo-gallery :photos="$model->user_car_photos" />
+
 
 @endsection

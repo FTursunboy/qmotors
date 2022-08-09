@@ -8,4 +8,5 @@ interface CarServiceInterface
   public function update($id, $request);
   public function modelList($request);
   public function photo($id, $request);
+  public function photoDelete($id);
 }

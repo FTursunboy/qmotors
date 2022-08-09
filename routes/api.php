@@ -43,13 +43,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('', [CarApiController::class, 'store']);
         Route::put('{id}', [CarApiController::class, 'update'])->middleware('car-owner');
         Route::post('{id}/photo', [CarApiController::class, 'photo'])->middleware('car-owner');
-    });
-    Route::group(['prefix' => 'car'], function () {
-        Route::get('', [CarApiController::class, 'index']);
-        Route::get('{id}', [CarApiController::class, 'show']);
-        Route::post('', [CarApiController::class, 'store']);
-        Route::put('{id}', [CarApiController::class, 'update'])->middleware('car-owner');
-        Route::post('{id}/photo', [CarApiController::class, 'photo'])->middleware('car-owner');
+        Route::delete('photo/{id}', [CarApiController::class, 'photoDelete']);
     });
     Route::group(['prefix' => 'car-model'], function () {
         Route::get('list', [CarModelApiController::class, 'list']);

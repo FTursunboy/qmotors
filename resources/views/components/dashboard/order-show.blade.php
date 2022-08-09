@@ -1,6 +1,7 @@
 @php
 $model = $attributes['model'];
 @endphp
+
 <x-dashboard.info route="order" :model="$model">
     <tr>
         <td><b>Номер Заказа</b></td>
@@ -35,6 +36,9 @@ $model = $attributes['model'];
     <tr>
         <td><b>Запись по Акции</b></td>
         <td></td>
+    <tr>
+        <td><b>Комментрия</b></td>
+        <td>{{ $model->description }}</td>
     </tr>
     <tr>
         <td><b>Создано</b></td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Car\DeletePhotoCarRequest;
 use App\Http\Requests\Car\PhotoCarRequest;
 use App\Http\Requests\Car\StoreCarRequest;
 use App\Http\Requests\Car\UpdateCarRequest;
@@ -35,9 +36,13 @@ class CarApiController extends Controller
         return $this->success($carService->update($id, $request));
     }
 
-
-    public function photo($id, PhotoCarRequest $request, CarServiceInterface $orderService)
+    public function photo($id, PhotoCarRequest $request, CarServiceInterface $carService)
     {
-        return $this->success($orderService->photo($id, $request));
+        return $this->success($carService->photo($id, $request));
+    }
+
+    public function photoDelete($id, DeletePhotoCarRequest $request, CarServiceInterface $carService)
+    {
+        return $this->success($carService->photoDelete($id));
     }
 }

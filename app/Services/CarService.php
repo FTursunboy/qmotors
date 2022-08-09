@@ -54,4 +54,12 @@ class CarService implements CarServiceInterface
     ]);
     return $model;
   }
+
+  public function photoDelete($id)
+  {
+    $model = UserCarPhoto::find($id);
+    deletePhoto($model->photo);
+    $model->delete();
+    return true;
+  }
 }

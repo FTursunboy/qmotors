@@ -26,6 +26,11 @@ class Order extends Model
         return $this->belongsTo(TechCenter::class);
     }
 
+    public function order_photos()
+    {
+        return $this->hasMany(OrderPhoto::class);
+    }
+
     public function getGuaranteeTextAttribute()
     {
         return $this->guarantee ? 'Да' : 'Нет';

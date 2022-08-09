@@ -16,5 +16,7 @@
   <x-dashboard.order-show :model="$model" />
 </x-dashboard.panel>
 
+<x-dashboard.photo-gallery :photos="$model->order_photos" />
+
 
 @endsection
