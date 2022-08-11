@@ -45,7 +45,7 @@ return [
 			'url' => '/tech-center',
 		],
 		[
-			'icon' => 'fa fa-bell',
+			'icon' => 'fa fa-calendar-alt',
 			'title' => 'Напоминания',
 			'url' => '/reminder',
 		],
