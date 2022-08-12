@@ -45,4 +45,9 @@ class CarApiController extends Controller
     {
         return $this->success($carService->photoDelete($id));
     }
+
+    public function delete($id, CarServiceInterface $carService)
+    {
+        return $this->success($carService->delete($id));
+    }
 }

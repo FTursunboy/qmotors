@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\CarModel;
+use App\Models\Order;
+use App\Models\Reminder;
 use App\Models\UserCar;
 use App\Models\UserCarPhoto;
 use App\Services\Contracts\CarServiceInterface;
@@ -61,5 +63,13 @@ class CarService implements CarServiceInterface
     deletePhoto($model->photo);
     $model->delete();
     return true;
+  }
+
+  public function delete($id)
+  {
+    Order::where('user_car_id', $id)->delete();
+    Reminder::where('user_car_id', $id)->delete();
+    UserCarPhoto::where('user_car_id', $id)->delete();
+    return UserCar::where('id', $id)->delete();
   }
 }

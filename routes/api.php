@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'car'], function () {
         Route::get('', [CarApiController::class, 'index']);
         Route::get('{id}', [CarApiController::class, 'show']);
+        Route::delete('{id}', [CarApiController::class, 'delete']);
         Route::post('', [CarApiController::class, 'store']);
         Route::put('{id}', [CarApiController::class, 'update'])->middleware('car-owner');
         Route::post('{id}/photo', [CarApiController::class, 'photo'])->middleware('car-owner');
