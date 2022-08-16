@@ -42,7 +42,7 @@ class UserCarService implements UserCarServiceInterface
             ->orWhere('id', 'ilike', '%' . $this->request->user . '%');
         });
       }
-      if ($this->request->has('vin')) {
+      if ($this->request->vin != null) {
         $query->where('vin', 'ilike', '%' . $this->request->vin . '%');
       }
       if ($this->request->year_start != null) {

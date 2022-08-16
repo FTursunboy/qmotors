@@ -13,7 +13,7 @@
 <!-- end page-header -->
 
 <x-dashboard.panel title="Увидомление">
-  <form action="{{ route('notification.store') }}" method="POST" enctype="multipart/form-data">
+  <form action="{{ route('notification.store') }}" method="POST">
     @csrf
     <x-dashboard.notification-form :model="$model" />
   </form>

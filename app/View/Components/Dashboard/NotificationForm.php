@@ -2,10 +2,12 @@
 
 namespace App\View\Components\Dashboard;
 
+use App\Models\User;
 use Illuminate\View\Component;
 
 class NotificationForm extends Component
 {
+    public $users = [];
     /**
      * Create a new component instance.
      *
@@ -13,7 +15,7 @@ class NotificationForm extends Component
      */
     public function __construct()
     {
-        //
+        $this->users = User::latest()->get();
     }
 
     /**

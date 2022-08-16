@@ -10,4 +10,19 @@ class Notification extends Model
 {
     use HasFactory, ModelCommonMethods;
     public $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getNotificationTypeTextAttribute()
+    {
+        return $this->notification_type;
+    }
+
+    public function getAdditionalTextAttribute()
+    {
+        return $this->additional_id;
+    }
 }

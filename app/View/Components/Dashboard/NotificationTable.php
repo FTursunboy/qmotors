@@ -2,10 +2,13 @@
 
 namespace App\View\Components\Dashboard;
 
+use App\Services\NotificationService;
 use Illuminate\View\Component;
 
 class NotificationTable extends Component
 {
+    public $list = [];
+
     /**
      * Create a new component instance.
      *
@@ -13,7 +16,8 @@ class NotificationTable extends Component
      */
     public function __construct()
     {
-        //
+        $notificationService = new NotificationService();
+        $this->list = $notificationService->filter();
     }
 
     /**

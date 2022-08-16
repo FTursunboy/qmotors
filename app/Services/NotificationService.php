@@ -26,23 +26,17 @@ class NotificationService implements NotificationServiceInterface
             ->orWhere('id', 'ilike', '%' . $this->request->user . '%');
         });
       }
-      if ($this->request->status != null) {
-        $query->where('status', $this->request->status);
+      if ($this->request->title != null) {
+        $query->where('title', 'ilike', '%' . $this->request->title . '%');
       }
-      if ($this->request->bonus_type != null) {
-        $query->where('bonus_type', $this->request->bonus_type);
+      if ($this->request->text != null) {
+        $query->where('text', 'ilike', '%' . $this->request->text . '%');
       }
-      if ($this->request->points_start != null) {
-        $query->where('points', '>=', $this->request->points_start);
+      if ($this->request->notification_type != null) {
+        $query->where('notification_type', 'ilike', '%' . $this->request->notification_type . '%');
       }
-      if ($this->request->points_end != null) {
-        $query->where('points', '<=', $this->request->points_end);
-      }
-      if ($this->request->remainder_start != null) {
-        $query->where('remainder', '>=', $this->request->remainder_start);
-      }
-      if ($this->request->remainder_end != null) {
-        $query->where('remainder', '<=', $this->request->remainder_end);
+      if ($this->request->additional_id != null) {
+        $query->where('additional_id', 'ilike', '%' . $this->request->additional_id . '%');
       }
       if ($this->request->created_at_start != null) {
         $query->whereDate('created_at', '>=', $this->request->created_at_start);
@@ -75,12 +69,7 @@ class NotificationService implements NotificationServiceInterface
   public function update($id, $request)
   {
     $model = $this->class::findOrFail($id);
-    $model->update(array_merge(
-      $request->only('user_id', 'title', 'text', 'notification_type', 'additional_id'),
-      [
-        'id' => $this->class::nextID()
-      ]
-    ));
+    $model->update($request->only('user_id', 'title', 'text', 'notification_type', 'additional_id'));
     return $model;
   }
 }

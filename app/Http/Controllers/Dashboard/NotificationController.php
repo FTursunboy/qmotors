@@ -25,13 +25,20 @@ class NotificationController extends Controller
         $model = Notification::findOrFail($id);
         return view('dashboard.pages.notification.edit', compact('model'));
     }
+    public function create()
+    {
+        $model = new Notification();
+        return view('dashboard.pages.notification.create', compact('model'));
+    }
+    public function store(Request $request, NotificationServiceInterface $notificationService)
+    {
+        $result = $notificationService->store($request);
+        return redirect()->route('notification.show', $result->id)->with('success', 'Успешно создано!');
+    }
     public function update($id, Request $request, NotificationServiceInterface $notificationService)
     {
         $result = $notificationService->update($id, $request);
-        if ($result['status']) {
-            return redirect()->route('notification.show', $id)->with('success', $result['message']);
-        }
-        return back()->with('not-allowed', $result['message'])->withInput();
+        return redirect()->route('notification.show', $id)->with('success', 'Успешно обновлено!');
     }
     public function delete($id)
     {
@@ -40,6 +47,6 @@ class NotificationController extends Controller
         } catch (Throwable  $e) {
             return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");
         }
-        return redirect()->route('order')->with('success', "Успешно удалено: $id!");
+        return redirect()->route('notification')->with('success', "Успешно удалено: $id!");
     }
 }

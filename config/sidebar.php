@@ -54,6 +54,11 @@ return [
 			'title' => 'Бонусы',
 			'url' => '/bonus',
 		],
+		[
+			'icon' => 'fa fa-bell',
+			'title' => 'Уведомления',
+			'url' => '/notification',
+		],
 		// [
 		// 	'icon' => 'fa fa-desktop',
 		// 	'title' => 'Sliders',
