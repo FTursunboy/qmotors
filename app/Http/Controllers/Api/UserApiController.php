@@ -24,6 +24,7 @@ class UserApiController extends Controller
     public function update(UpdateProfileRequest $request, UserServiceInterface $userService)
     {
         $result = $userService->updateApi($request);
+        // return $this->success(auth()->user());
         return $this->success($result);
     }
 }

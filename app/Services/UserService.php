@@ -148,6 +148,6 @@ class UserService implements UserServiceInterface
       ),
       ['avatar' => $avatar]
     ));
-    return $model;
+    return User::find($model->id);
   }
 }
