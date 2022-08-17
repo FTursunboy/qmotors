@@ -31,7 +31,7 @@ class CarService implements CarServiceInterface
   {
     $model = $this->class::findOrFail($id);
     $model->update(array_merge(
-      $request->only('car_model_id', 'year', 'last_visit', 'vin', 'mileage'),
+      $request->only('car_model_id', 'year', 'last_visit', 'vin', 'mileage', 'number'),
       ['status' => $request->get('status', 0)],
     ));
     return $model;
