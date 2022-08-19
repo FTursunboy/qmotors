@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\CarModelApiController;
 use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\OrderTypeApiController;
 use App\Http\Controllers\Api\ReminderApiController;
+use App\Http\Controllers\Api\ReviewApiController;
 use App\Http\Controllers\Api\TechCenterApiController;
 use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Http\Request;
@@ -74,5 +75,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('', [BonusApiController::class, 'store']);
         Route::put('{id}', [BonusApiController::class, 'update']);
         Route::delete('{id}', [BonusApiController::class, 'delete']);
+    });
+    Route::group(['prefix' => 'review'], function () {
+        // Route::get('', [ReviewApiController::class, 'index']);
+        Route::post('', [ReviewApiController::class, 'store']);
+        Route::get('{id}', [ReviewApiController::class, 'show']);
+        // Route::put('{id}', [ReviewApiController::class, 'update']);
+        // Route::delete('{id}', [ReviewApiController::class, 'delete']);
     });
 });

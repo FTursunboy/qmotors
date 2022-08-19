@@ -4,7 +4,7 @@ namespace App\View\Components\Dashboard;
 
 use Illuminate\View\Component;
 
-class ProductForm extends Component
+class ReviewShow extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class ProductForm extends Component
      */
     public function render()
     {
-        return view('components.dashboard.product-form');
+        return view('components.dashboard.review-show');
     }
 }

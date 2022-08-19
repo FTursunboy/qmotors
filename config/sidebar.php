@@ -59,94 +59,10 @@ return [
 			'title' => 'Уведомления',
 			'url' => '/notification',
 		],
-		// [
-		// 	'icon' => 'fa fa-desktop',
-		// 	'title' => 'Sliders',
-		// 	'url' => '/dashboard/sliders',
-		// 	'caret' => true,
-		// 	'sub_menu' => [
-		// 		[
-		// 			'url' => '/dashboard/sliders/add',
-		// 			'title' => 'Add'
-		// 		]
-		// 	]
-		// ],
-		// [
-		// 	'icon' => 'fa fa-users',
-		// 	'title' => 'Customers',
-		// 	'url' => '/dashboard/clients',
-		// ],
-		// [
-		// 	'icon' => 'fa fa-coffee',
-		// 	'title' => 'Products',
-		// 	'url' => '/dashboard/products',
-		// 	'caret' => true,
-		// 	'sub_menu' => [
-		// 		[
-		// 			'url' => '/dashboard/products/add',
-		// 			'title' => 'Add'
-		// 		]
-		// 	]
-		// ],
-		// [
-		// 	'icon' => 'fa fa-shopping-basket',
-		// 	'title' => 'One Time Orders',
-		// 	'url' => '/dashboard/orders/one-time',
-		// ],
-		// [
-		// 	'icon' => 'fa fa-shopping-cart',
-		// 	'title' => 'Subscription Orders',
-		// 	'url' => '/dashboard/orders/subscription',
-		// ],
-		// [
-		// 	'icon' => 'fa fa-cog',
-		// 	'title' => 'Settings',
-		// 	'url' => '/dashboard/settings',
-		// ],
-		// [
-		// 	'icon' => 'fa fa-clock',
-		// 	'title' => 'Delivery Times',
-		// 	'url' => '/dashboard/delivery-times',
-		// 	'caret' => true,
-		// 	'sub_menu' => [
-		// 		[
-		// 			'url' => '/dashboard/delivery-times/add',
-		// 			'title' => 'Add'
-		// 		]
-		// 	]
-		// ],
-		// [
-		// 	'icon' => 'fa fa-align-left',
-		// 	'title' => 'Menu Level',
-		// 	'url' => 'javascript:;',
-		// 	'caret' => true,
-		// 	'sub_menu' => [[
-		// 		'url' => 'javascript:;',
-		// 		'title' => 'Menu 1.1',
-		// 		'sub_menu' => [[
-		// 			'url' => 'javascript:;',
-		// 			'title' => 'Menu 2.1',
-		// 			'sub_menu' => [[
-		// 				'url' => 'javascript:;',
-		// 				'title' => 'Menu 3.1',
-		// 			], [
-		// 				'url' => 'javascript:;',
-		// 				'title' => 'Menu 3.2'
-		// 			]]
-		// 		], [
-		// 			'url' => 'javascript:;',
-		// 			'title' => 'Menu 2.2'
-		// 		], [
-		// 			'url' => 'javascript:;',
-		// 			'title' => 'Menu 2.3'
-		// 		]]
-		// 	], [
-		// 		'url' => 'javascript:;',
-		// 		'title' => 'Menu 1.2'
-		// 	], [
-		// 		'url' => 'javascript:;',
-		// 		'title' => 'Menu 1.3'
-		// 	]]
-		// ]
+		[
+			'icon' => 'fa fa-comments',
+			'title' => 'Отзывы',
+			'url' => '/review',
+		],
 	]
 ];

@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Dashboard\OrderController;
 use App\Http\Controllers\Dashboard\ReminderController;
+use App\Http\Controllers\Dashboard\ReviewController;
 use App\Http\Controllers\Dashboard\TechCenterController;
 use App\Http\Controllers\Dashboard\UserCarController;
 use App\Http\Controllers\Dashboard\UserController;
@@ -81,5 +82,12 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/{id}/edit', [NotificationController::class, 'edit'])->name('.edit');
         Route::put('/{id}', [NotificationController::class, 'update'])->name('.update');
         Route::delete('/{id}', [NotificationController::class, 'delete'])->name('.delete');
+    });
+    Route::group(['prefix' => 'review', 'as' => 'review'], function () {
+        Route::get('/', [ReviewController::class, 'index']);
+        Route::get('/{id}', [ReviewController::class, 'show'])->name('.show');
+        Route::get('/{id}/edit', [ReviewController::class, 'edit'])->name('.edit');
+        Route::put('/{id}', [ReviewController::class, 'update'])->name('.update');
+        Route::delete('/{id}', [ReviewController::class, 'delete'])->name('.delete');
     });
 });
