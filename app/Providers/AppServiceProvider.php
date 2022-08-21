@@ -12,6 +12,7 @@ use App\Services\Contracts\OrderServiceInterface;
 use App\Services\Contracts\ReminderServiceInterface;
 use App\Services\Contracts\ReviewServiceInterface;
 use App\Services\Contracts\SmsServiceInterface;
+use App\Services\Contracts\StockServiceInterface;
 use App\Services\Contracts\TechCenterServiceInterface;
 use App\Services\Contracts\UserCarServiceInterface;
 use App\Services\Contracts\UserServiceInterface;
@@ -19,6 +20,7 @@ use App\Services\NotificationService;
 use App\Services\ReminderService;
 use App\Services\ReviewService;
 use App\Services\SmsService;
+use App\Services\StockService;
 use App\Services\TechCenterService;
 use App\Services\UserCarService;
 use App\Services\UserService;
@@ -44,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(BonusServiceInterface::class, BonusService::class);
         $this->app->bind(NotificationServiceInterface::class, NotificationService::class);
         $this->app->bind(ReviewServiceInterface::class, ReviewService::class);
+        $this->app->bind(StockServiceInterface::class, StockService::class);
     }
 
     /**

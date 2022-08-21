@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Dashboard\OrderController;
 use App\Http\Controllers\Dashboard\ReminderController;
 use App\Http\Controllers\Dashboard\ReviewController;
+use App\Http\Controllers\Dashboard\StockController;
 use App\Http\Controllers\Dashboard\TechCenterController;
 use App\Http\Controllers\Dashboard\UserCarController;
 use App\Http\Controllers\Dashboard\UserController;
@@ -89,5 +90,14 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/{id}/edit', [ReviewController::class, 'edit'])->name('.edit');
         Route::put('/{id}', [ReviewController::class, 'update'])->name('.update');
         Route::delete('/{id}', [ReviewController::class, 'delete'])->name('.delete');
+    });
+    Route::group(['prefix' => 'stock', 'as' => 'stock'], function () {
+        Route::get('/', [StockController::class, 'index']);
+        Route::get('/create', [StockController::class, 'create'])->name('.create');
+        Route::post('/store', [StockController::class, 'store'])->name('.store');
+        Route::get('/{id}', [StockController::class, 'show'])->name('.show');
+        Route::get('/{id}/edit', [StockController::class, 'edit'])->name('.edit');
+        Route::put('/{id}', [StockController::class, 'update'])->name('.update');
+        Route::delete('/{id}', [StockController::class, 'delete'])->name('.delete');
     });
 });

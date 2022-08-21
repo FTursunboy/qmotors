@@ -64,5 +64,10 @@ return [
 			'title' => 'Отзывы',
 			'url' => '/review',
 		],
+		[
+			'icon' => 'fa fa-shopping-bag',
+			'title' => 'Акции',
+			'url' => '/stock',
+		],
 	]
 ];

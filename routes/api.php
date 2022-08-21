@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\OrderTypeApiController;
 use App\Http\Controllers\Api\ReminderApiController;
 use App\Http\Controllers\Api\ReviewApiController;
+use App\Http\Controllers\Api\StockApiController;
 use App\Http\Controllers\Api\TechCenterApiController;
 use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Http\Request;
@@ -82,5 +83,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('{id}', [ReviewApiController::class, 'show']);
         // Route::put('{id}', [ReviewApiController::class, 'update']);
         // Route::delete('{id}', [ReviewApiController::class, 'delete']);
+    });
+    Route::group(['prefix' => 'stock'], function () {
+        Route::get('', [StockApiController::class, 'index']);
+        Route::get('{id}', [StockApiController::class, 'show']);
     });
 });
