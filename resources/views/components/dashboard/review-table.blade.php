@@ -43,12 +43,12 @@
                             class="fa fa-eye"></i></a>
                     <a href="{{ route('review.edit', $item->id) }}" class="btn btn-primary mr-2"><i
                             class="fa fa-pen"></i></a>
-                    {{-- <form action="{{ route('review.delete', $item->id) }}" method="POST">
+                    <form action="{{ route('review.delete', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" onclick="return confirm('Ты уверен?')" class="btn btn-danger"><i
                                 class="fa fa-trash"></i></button>
-                    </form> --}}
+                    </form>
                 </div>
             </td>
         </tr>

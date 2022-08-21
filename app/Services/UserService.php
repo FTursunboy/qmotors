@@ -96,6 +96,7 @@ class UserService implements UserServiceInterface
 
   public function update($id, $request)
   {
+    // dd($request->all());
     $model = $this->class::findOrFail($id);
     $avatar = $model->avatar;
     try {
