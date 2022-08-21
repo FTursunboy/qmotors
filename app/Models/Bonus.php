@@ -10,7 +10,16 @@ class Bonus extends Model
 {
     use HasFactory, ModelCommonMethods;
     const STATUSES = [];
-    const BONUS_TYPES = [];
+    const BONUS_TYPES = [
+        [
+            'id' => 1,
+            'name' => 'Начисление'
+        ],
+        [
+            'id' => 2,
+            'name' => 'Списание'
+        ]
+    ];
     protected $guarded = [];
     public function user()
     {
@@ -23,6 +32,6 @@ class Bonus extends Model
     }
     public function getBonusTypeTextAttribute()
     {
-        return $this->bonus_type;
+        return optional(collect(self::BONUS_TYPES)->firstWhere('id', $this->bonus_type))['name'];
     }
 }
