@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ArticleApiController;
 use App\Http\Controllers\Api\AuthApiController;
 use App\Http\Controllers\Api\BonusApiController;
 use App\Http\Controllers\Api\CarApiController;
@@ -87,5 +88,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'stock'], function () {
         Route::get('', [StockApiController::class, 'index']);
         Route::get('{id}', [StockApiController::class, 'show']);
+    });
+    Route::group(['prefix' => 'article'], function () {
+        Route::get('', [ArticleApiController::class, 'index']);
+        Route::get('{id}', [ArticleApiController::class, 'show']);
     });
 });

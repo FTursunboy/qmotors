@@ -69,5 +69,10 @@ return [
 			'title' => 'Акции',
 			'url' => '/stock',
 		],
+		[
+			'icon' => 'fa fa-newspaper',
+			'title' => 'Статьи',
+			'url' => '/article',
+		],
 	]
 ];

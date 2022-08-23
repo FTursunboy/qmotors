@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Services\ArticleService;
 use App\Services\BonusService;
 use App\Services\CarService;
+use App\Services\Contracts\ArticleServiceInterface;
 use App\Services\Contracts\BonusServiceInterface;
 use App\Services\Contracts\CarServiceInterface;
 use App\Services\Contracts\NotificationServiceInterface;
@@ -47,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(NotificationServiceInterface::class, NotificationService::class);
         $this->app->bind(ReviewServiceInterface::class, ReviewService::class);
         $this->app->bind(StockServiceInterface::class, StockService::class);
+        $this->app->bind(ArticleServiceInterface::class, ArticleService::class);
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\ArticleController;
 use App\Http\Controllers\Dashboard\BonusController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\NotificationController;
@@ -99,5 +100,14 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/{id}/edit', [StockController::class, 'edit'])->name('.edit');
         Route::put('/{id}', [StockController::class, 'update'])->name('.update');
         Route::delete('/{id}', [StockController::class, 'delete'])->name('.delete');
+    });
+    Route::group(['prefix' => 'article', 'as' => 'article'], function () {
+        Route::get('/', [ArticleController::class, 'index']);
+        Route::get('/create', [ArticleController::class, 'create'])->name('.create');
+        Route::post('/store', [ArticleController::class, 'store'])->name('.store');
+        Route::get('/{id}', [ArticleController::class, 'show'])->name('.show');
+        Route::get('/{id}/edit', [ArticleController::class, 'edit'])->name('.edit');
+        Route::put('/{id}', [ArticleController::class, 'update'])->name('.update');
+        Route::delete('/{id}', [ArticleController::class, 'delete'])->name('.delete');
     });
 });
