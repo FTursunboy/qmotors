@@ -27,8 +27,8 @@
     tinymce.init({
 selector: 'textarea.text-editor', // Replace this CSS selector to match the placeholder element for TinyMCE
 file_picker_types: 'file image media',
-plugins: 'code table lists image',
-toolbar: 'undo redo | formatselect| bold italic | image | alignleft aligncenter alignright | indent outdent | bullist | numlist | code | table',
+plugins: 'code table lists image media',
+toolbar: 'undo redo | formatselect| bold italic | image media | alignleft aligncenter alignright | indent outdent | bullist | numlist | code | table',
 image_title: true,
 /* enable automatic uploads of images represented by blob or data URIs*/
 automatic_uploads: true,
@@ -38,7 +38,11 @@ https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
 images_upload_url: 'postAcceptor.php',
 here we add custom filepicker only to Image dialog
 */
+media_live_embeds: true,
 file_picker_types: 'image',
+// video_template_callback: function(data) {
+//    return '<video width="' + data.width + '" height="' + data.height + '"' + (data.poster ? ' poster="' + data.poster + '"' : '') + ' controls="controls">\n' + '<source src="' + data.source + '"' + (data.sourcemime ? ' type="' + data.sourcemime + '"' : '') + ' />\n' + (data.altsource ? '<source src="' + data.altsource + '"' + (data.altsourcemime ? ' type="' + data.altsourcemime + '"' : '') + ' />\n' : '') + '</video>';
+//  },
 file_picker_callback: (cb, value, meta) => {
 const input = document.createElement('input');
 input.setAttribute('type', 'file');
