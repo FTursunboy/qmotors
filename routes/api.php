@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\BonusApiController;
 use App\Http\Controllers\Api\CarApiController;
 use App\Http\Controllers\Api\CarMarkApiController;
 use App\Http\Controllers\Api\CarModelApiController;
+use App\Http\Controllers\Api\NotificationApiController;
 use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\OrderTypeApiController;
 use App\Http\Controllers\Api\ReminderApiController;
@@ -92,5 +93,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'article'], function () {
         Route::get('', [ArticleApiController::class, 'index']);
         Route::get('{id}', [ArticleApiController::class, 'show']);
+    });
+    Route::group(['prefix' => 'notification'], function () {
+        Route::get('', [NotificationApiController::class, 'index']);
+        Route::get('{id}', [NotificationApiController::class, 'show']);
     });
 });
