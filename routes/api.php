@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\BonusApiController;
 use App\Http\Controllers\Api\CarApiController;
 use App\Http\Controllers\Api\CarMarkApiController;
 use App\Http\Controllers\Api\CarModelApiController;
+use App\Http\Controllers\Api\HelpApiController;
 use App\Http\Controllers\Api\NotificationApiController;
 use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\OrderTypeApiController;
@@ -98,4 +99,5 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('', [NotificationApiController::class, 'index']);
         Route::get('{id}', [NotificationApiController::class, 'show']);
     });
+    Route::get('help', [HelpApiController::class, 'index']);
 });
