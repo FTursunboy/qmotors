@@ -74,5 +74,10 @@ return [
 			'title' => 'Статьи',
 			'url' => '/article',
 		],
+		[
+			'icon' => 'fa fa-info',
+			'title' => 'Помощь',
+			'url' => '/help',
+		],
 	]
 ];

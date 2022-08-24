@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\ArticleController;
 use App\Http\Controllers\Dashboard\BonusController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\HelpController;
 use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Dashboard\OrderController;
 use App\Http\Controllers\Dashboard\ReminderController;
@@ -109,5 +110,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/{id}/edit', [ArticleController::class, 'edit'])->name('.edit');
         Route::put('/{id}', [ArticleController::class, 'update'])->name('.update');
         Route::delete('/{id}', [ArticleController::class, 'delete'])->name('.delete');
+    });
+    Route::group(['prefix' => 'help', 'as' => 'help'], function () {
+        Route::get('/', [HelpController::class, 'index']);
+        Route::put('/', [HelpController::class, 'update'])->name('.update');
     });
 });

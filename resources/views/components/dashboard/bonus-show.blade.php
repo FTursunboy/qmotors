@@ -11,11 +11,11 @@ $model = $attributes['model'];
         <td>{{ $model->bonus_type_text }}</td>
     </tr>
     <tr>
-        <td><b>Називание</b></td>
+        <td><b>Название</b></td>
         <td>{{ $model->title }}</td>
     </tr>
     <tr>
-        <td><b>Балы</b></td>
+        <td><b>Баллы</b></td>
         <td>{{ $model->points }}</td>
     </tr>
     <tr>

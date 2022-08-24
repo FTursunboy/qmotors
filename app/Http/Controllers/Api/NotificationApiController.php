@@ -12,7 +12,7 @@ class NotificationApiController extends Controller
     use ApiResponse;
     public function index()
     {
-        return $this->success(Notification::where('user_id', auth()->id())->exclude('text')->latest()->get());
+        return $this->success(Notification::where('user_id', auth()->id())->latest()->get());
     }
 
     public function show($id)

@@ -15,7 +15,11 @@ class BonusApiController extends Controller
     use ApiResponse;
     public function index()
     {
-        return $this->success(Bonus::where('user_id', auth()->id())->latest()->get());
+        $query = Bonus::where('user_id', auth()->id())->latest();
+        return $this->success([
+            'bonuses' => $query->get(),
+            'balance' => $query->sum('points')
+        ]);
     }
 
     public function show($id)

@@ -14,10 +14,10 @@
             <x-column-order-caret column="bonus_type">Тип</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="title">Називание</x-column-order-caret>
+            <x-column-order-caret column="title">Название</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="points">Балы</x-column-order-caret>
+            <x-column-order-caret column="points">Баллы</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="remainder">Остаток</x-column-order-caret>
