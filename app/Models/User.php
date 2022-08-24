@@ -70,6 +70,11 @@ class User extends Authenticatable
         return $this->hasMany(UserCar::class);
     }
 
+    public function bonuses()
+    {
+        return $this->hasMany(Bonus::class)->latest();
+    }
+
     public function getFullNameAttribute()
     {
         return $this->surname . ' ' . $this->name;
@@ -83,5 +88,19 @@ class User extends Authenticatable
     public function getIsCompleteTextAttribute()
     {
         return $this->is_complete ? 'Да' : 'Нет';
+    }
+
+    public function getBalanceAttribute()
+    {
+        $sum = 0;
+        foreach ($this->bonuses as $item) {
+            if ($item->type == 0) {
+                $sum += $item->points;
+            }
+            if ($item->type == 1) {
+                $sum -= $item->points;
+            }
+        }
+        return $sum;
     }
 }

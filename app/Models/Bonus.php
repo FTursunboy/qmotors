@@ -12,11 +12,11 @@ class Bonus extends Model
     const STATUSES = [];
     const BONUS_TYPES = [
         [
-            'id' => 1,
+            'id' => 0,
             'name' => 'Начисление'
         ],
         [
-            'id' => 2,
+            'id' => 1,
             'name' => 'Списание'
         ]
     ];
