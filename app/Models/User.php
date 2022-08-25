@@ -94,10 +94,10 @@ class User extends Authenticatable
     {
         $sum = 0;
         foreach ($this->bonuses as $item) {
-            if ($item->bonus_type == 0) {
+            if ($item->bonus_type === 0) {
                 $sum += $item->points;
             }
-            if ($item->bonus_type == 1) {
+            if ($item->bonus_type === 1) {
                 $sum -= $item->points;
             }
         }

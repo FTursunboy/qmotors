@@ -33,7 +33,7 @@ class BonusController extends Controller
             $result = $bonusService->store($request);
             return redirect()->route('bonus')->with('success', 'Успешно добавлено: ' . $result->id . '!');
         } catch (Throwable $e) {
-            return back()->with('error', $e->getMessage());
+            return back()->with('not-allowed', $e->getMessage());
         }
     }
 

@@ -12,13 +12,13 @@ class Bonus extends Model
     const STATUSES = [];
     const BONUS_TYPES = [
         [
+            'id' => 1,
+            'name' => 'Списание'
+        ],
+        [
             'id' => 0,
             'name' => 'Начисление'
         ],
-        [
-            'id' => 1,
-            'name' => 'Списание'
-        ]
     ];
     protected $guarded = [];
     public function user()

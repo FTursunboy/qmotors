@@ -70,7 +70,7 @@ class BonusService implements BonusServiceInterface
       [
         'id' => $this->class::nextID(),
         'status' => $request->get('status', 0) ?? 0,
-        'bonus_type' => $request->get('bonus_type', 0) ?? 0,
+        'bonus_type' => $request->bonus_type,
         'remainder' => $request->points
       ]
     ));

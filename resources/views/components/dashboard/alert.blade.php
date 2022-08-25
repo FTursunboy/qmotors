@@ -34,9 +34,3 @@
     setTimeout(function(){ $('.alert').hide(); }, 20000);
 </script>
 @endif
-
-@if (count($errors->interpolation) > 0)
-<div class="alert small alert-danger">
-    {{ $errors->interpolation->first() }}
-</div>
-@endif
