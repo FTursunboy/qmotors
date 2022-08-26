@@ -47,6 +47,11 @@ class UserCar extends Model
         return $this->hasMany(Order::class);
     }
 
+    public function free_diagnostics()
+    {
+        return $this->hasMany(FreeDiagnostic::class);
+    }
+
     public function user_car_photos()
     {
         return $this->hasMany(UserCarPhoto::class);
@@ -63,5 +68,10 @@ class UserCar extends Model
         if (!empty($this->last_visit))
             return date('Y-m-d', strtotime($this->last_visit));
         return $this->last_visit;
+    }
+
+    public function getTitleAttribute()
+    {
+        return $this->model->name . ' (' . $this->id . ')';
     }
 }

@@ -25,9 +25,8 @@
         @foreach ($list as $index => $item)
         <tr>
             <td><a href="{{ route('reminder.show', $item->id) }}">{{ $item->id }}</a></td>
-            <td> <a href="{{ route('user-car.show', $item->user_car_id) }}">{{
-                    optional($item->user_car)->model->name
-                    }} ({{ $item->user_car_id }})</a></td>
+            <td> <a href="{{ route('user-car.show', $item->user_car_id) }}">
+                    {{ $item->user_car->title }}</a></td>
             <td>{{ $item->date }}</td>
             <td>{{ $item->text }}</td>
             <td>{{ $item->created_at }}</td>

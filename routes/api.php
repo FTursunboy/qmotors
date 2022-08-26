@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\BonusApiController;
 use App\Http\Controllers\Api\CarApiController;
 use App\Http\Controllers\Api\CarMarkApiController;
 use App\Http\Controllers\Api\CarModelApiController;
+use App\Http\Controllers\Api\FreeDiagnosticApiController;
 use App\Http\Controllers\Api\HelpApiController;
 use App\Http\Controllers\Api\NotificationApiController;
 use App\Http\Controllers\Api\OrderApiController;
@@ -100,4 +101,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('{id}', [NotificationApiController::class, 'show']);
     });
     Route::get('help', [HelpApiController::class, 'index']);
+    Route::group(['prefix' => 'free-diagnostic'], function () {
+        Route::get('history', [FreeDiagnosticApiController::class, 'history']);
+        Route::get('{id}', [FreeDiagnosticApiController::class, 'show']);
+    });
 });

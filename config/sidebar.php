@@ -40,6 +40,11 @@ return [
 			'url' => '/order',
 		],
 		[
+			'icon' => 'fa fa-medkit',
+			'title' => 'Безплатные диагностики',
+			'url' => '/free-diagnostic',
+		],
+		[
 			'icon' => 'fa fa-building',
 			'title' => 'Техцентры',
 			'url' => '/tech-center',

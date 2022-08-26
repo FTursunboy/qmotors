@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\ArticleController;
 use App\Http\Controllers\Dashboard\BonusController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\FreeDiagnosticController;
 use App\Http\Controllers\Dashboard\HelpController;
 use App\Http\Controllers\Dashboard\NotificationController;
 use App\Http\Controllers\Dashboard\OrderController;
@@ -110,6 +111,15 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/{id}/edit', [ArticleController::class, 'edit'])->name('.edit');
         Route::put('/{id}', [ArticleController::class, 'update'])->name('.update');
         Route::delete('/{id}', [ArticleController::class, 'delete'])->name('.delete');
+    });
+    Route::group(['prefix' => 'free-diagnostic', 'as' => 'free-diagnostic'], function () {
+        Route::get('/', [FreeDiagnosticController::class, 'index']);
+        Route::get('/create', [FreeDiagnosticController::class, 'create'])->name('.create');
+        Route::post('/store', [FreeDiagnosticController::class, 'store'])->name('.store');
+        Route::get('/{id}', [FreeDiagnosticController::class, 'show'])->name('.show');
+        Route::get('/{id}/edit', [FreeDiagnosticController::class, 'edit'])->name('.edit');
+        Route::put('/{id}', [FreeDiagnosticController::class, 'update'])->name('.update');
+        Route::delete('/{id}', [FreeDiagnosticController::class, 'delete'])->name('.delete');
     });
     Route::group(['prefix' => 'help', 'as' => 'help'], function () {
         Route::get('/', [HelpController::class, 'index']);

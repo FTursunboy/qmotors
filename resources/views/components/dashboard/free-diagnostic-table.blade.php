@@ -1,14 +1,11 @@
 <div class="d-flex mb-2">
     <x-dashboard.table-search-form />
-    {{-- <a href="{{ route('user.create') }}" class="ml-auto btn btn-primary">Добавить</a> --}}
+    <a href="{{ route('free-diagnostic.create') }}" class="ml-auto btn btn-primary">Добавить</a>
 </div>
 <x-dashboard.default-table length="{{ count($list) }}">
     <x-slot name="header">
         <th>
             <x-column-order-caret column="id">ID</x-column-order-caret>
-        </th>
-        <th>
-            <x-column-order-caret column="order_number">Номер Заказа</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="user_car_id">Автомобиль</x-column-order-caret>
@@ -20,18 +17,6 @@
             <x-column-order-caret column="date">Дата</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="order_type_id">Тип Заказа</x-column-order-caret>
-        </th>
-        <th>
-            <x-column-order-caret column="guarantee">Запрос по гарантии</x-column-order-caret>
-        </th>
-        <th>
-            <x-column-order-caret column="guarantee">Гарантийный Заказ</x-column-order-caret>
-        </th>
-        <th>
-            <x-column-order-caret column="id">Запись по Акции</x-column-order-caret>
-        </th>
-        <th>
             <x-column-order-caret column="created_at">Создано</x-column-order-caret>
         </th>
         <th></th>
@@ -39,23 +24,24 @@
     <x-slot name="body">
         @foreach ($list as $index => $item)
         <tr>
-            <td><a href="{{ route('order.show', $item->id) }}">{{ $item->id }}</a></td>
-            <td>{{ $item->order_number }}</td>
-            <td> <a href="{{ route('user-car.show', $item->user_car_id) }}">{{ $item->user_car->title }}</a></td>
-            <td>{{ optional($item->tech_center)->title }}</td>
+            <td><a href="{{ route('free-diagnostic.show', $item->id) }}">{{ $item->id }}</a></td>
+            <td> <a href="{{ route('user-car.show', $item->user_car_id) }}">{{
+                    optional(optional($item->user_car)->model)->name
+                    }} ({{ $item->user_car_id }})</a></td>
+            <td>
+                <a href="{{ route('tech-center.show', $item->tech_center_id) }}">
+                    {{ optional($item->tech_center)->title }}
+                </a>
+            </td>
             <td>{{ $item->date }}</td>
-            <td>{{ optional($item->order_type_relation)->name }}</td>
-            <td>{{ $item->guarantee_text }}</td>
-            <td>{{ $item->guarantee_text }}</td>
-            <td></td>
             <td>{{ $item->created_at }}</td>
             <td>
                 <div class="d-flex float-right">
-                    <a class="btn btn-info mr-2" href="{{ route('order.show', $item->id) }}"><i
+                    <a class="btn btn-info mr-2" href="{{ route('free-diagnostic.show', $item->id) }}"><i
                             class="fa fa-eye"></i></a>
-                    <a href="{{ route('order.edit', $item->id) }}" class="btn btn-primary mr-2"><i
+                    <a href="{{ route('free-diagnostic.edit', $item->id) }}" class="btn btn-primary mr-2"><i
                             class="fa fa-pen"></i></a>
-                    <form action="{{ route('order.delete', $item->id) }}" method="POST">
+                    <form action="{{ route('free-diagnostic.delete', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" onclick="return confirm('Ты уверен?')" class="btn btn-danger"><i
