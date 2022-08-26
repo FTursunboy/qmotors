@@ -40,7 +40,7 @@ return [
 			'url' => '/order',
 		],
 		[
-			'icon' => 'fa fa-medkit',
+			'icon' => 'fa fa-charging-station',
 			'title' => 'Безплатные диагностики',
 			'url' => '/free-diagnostic',
 		],
