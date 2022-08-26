@@ -82,7 +82,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::delete('{id}', [BonusApiController::class, 'delete']);
     });
     Route::group(['prefix' => 'review'], function () {
-        // Route::get('', [ReviewApiController::class, 'index']);
+        Route::get('', [ReviewApiController::class, 'index']);
         Route::post('', [ReviewApiController::class, 'store']);
         Route::get('{id}', [ReviewApiController::class, 'show']);
         // Route::put('{id}', [ReviewApiController::class, 'update']);

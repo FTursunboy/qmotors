@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Review;
+use App\Models\TechCenter;
 use App\Services\Contracts\ReviewServiceInterface;
 
 class ReviewService implements ReviewServiceInterface
@@ -70,5 +71,15 @@ class ReviewService implements ReviewServiceInterface
       $request->only('rating', 'comment', 'order_id', 'moderated'),
     );
     return $model;
+  }
+
+  public function list($request)
+  {
+    $result = TechCenter::with('reviews')->where(function ($query) use ($request) {
+      if ($request->tech_center_id) {
+        $query->where('id', $request->tech_center_id);
+      }
+    })->get();
+    return $result;
   }
 }

@@ -10,4 +10,9 @@ class TechCenter extends Model
 {
     use HasFactory, ModelCommonMethods;
     protected $guarded = [];
+
+    public function reviews()
+    {
+        return $this->hasManyThrough(Review::class, Order::class);
+    }
 }

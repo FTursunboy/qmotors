@@ -13,6 +13,11 @@ class ReviewApiController extends Controller
 {
     use ApiResponse;
 
+    public function index(Request $request, ReviewServiceInterface $reviewService)
+    {
+        return $this->success($reviewService->list($request));
+    }
+
     public function show($id)
     {
         return $this->success(Review::findOrFail($id));
