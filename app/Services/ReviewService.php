@@ -75,7 +75,7 @@ class ReviewService implements ReviewServiceInterface
 
   public function list($request)
   {
-    $result = TechCenter::with('reviews')->where(function ($query) use ($request) {
+    $result = TechCenter::with('reviews')->has('reviews')->where(function ($query) use ($request) {
       if ($request->tech_center_id) {
         $query->where('id', $request->tech_center_id);
       }
