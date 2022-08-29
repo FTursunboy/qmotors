@@ -13,7 +13,8 @@ $selected = request()->get($attributes['name'], null);
 @endphp
 <div class="form-group {{ $attributes['class'] }}">
     <label for="{{ $attributes['name'] }}-id">{{ $attributes['label'] }}</label>
-    <select name="{{ $attributes['name'] }}" class="select2 form-control" id="{{ $attributes['name'] }}-id">
+    <select name="{{ $attributes['name'] }}" class="select2 form-control" id="{{ $attributes['name'] }}-id"
+        @if($attributes['required']) required @endif>
         @if(!$attributes['not-nullable'])
         <option value="{{ null }}">----------</option>
         @endif

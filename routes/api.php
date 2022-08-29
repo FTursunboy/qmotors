@@ -99,6 +99,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'notification'], function () {
         Route::get('', [NotificationApiController::class, 'index']);
         Route::get('{id}', [NotificationApiController::class, 'show']);
+        Route::post('device-token', [NotificationApiController::class, 'device']);
     });
     Route::get('help', [HelpApiController::class, 'index']);
     Route::group(['prefix' => 'free-diagnostic'], function () {
