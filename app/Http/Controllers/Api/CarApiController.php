@@ -17,7 +17,9 @@ class CarApiController extends Controller
 
     public function index()
     {
-        $result = UserCar::with(['user_car_photos', 'model.mark'])->where('user_id', auth()->id())->get();
+        $result = UserCar::with(['user_car_photos', 'model.mark'])
+            ->where('user_id', auth()->id())
+            ->orderBy('status')->get();
         return $this->success($result);
     }
 
