@@ -81,7 +81,6 @@ class ReviewService implements ReviewServiceInterface
         $query->where('id', $request->tech_center_id);
       }
     })->get();
-    $result['reviews'] = ReviewResource::collection($result['reviews']);
     return $result;
   }
 }
