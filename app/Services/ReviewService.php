@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Resources\Review\ReviewResource;
 use App\Models\Review;
 use App\Models\TechCenter;
 use App\Services\Contracts\ReviewServiceInterface;
@@ -80,6 +81,7 @@ class ReviewService implements ReviewServiceInterface
         $query->where('id', $request->tech_center_id);
       }
     })->get();
+    $result['reviews'] = ReviewResource::collection($result['reviews']);
     return $result;
   }
 }
