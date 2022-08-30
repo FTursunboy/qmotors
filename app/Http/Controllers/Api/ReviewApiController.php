@@ -16,7 +16,7 @@ class ReviewApiController extends Controller
 
     public function index(Request $request, ReviewServiceInterface $reviewService)
     {
-        return $this->success(ReviewResource::collection($reviewService->list($request)));
+        return $this->success($reviewService->list($request));
     }
 
     public function show($id)
