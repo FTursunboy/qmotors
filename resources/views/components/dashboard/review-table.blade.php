@@ -34,7 +34,13 @@
             <td>{{ $item->rating }}</td>
             <td>{{ $item->comment }}</td>
             <td>{{ $item->moderated_text }}</td>
-            <td><a href="{{ route('order.show', $item->order_id) }}">{{ $item->order_id }}</a></td>
+            <td>
+                @if ($item->order_id)
+                <a href="{{ route('order.show', $item->order_id) }}">{{ $item->order_id }}</a>
+                @else
+                Заказ не выбран
+                @endif
+            </td>
             <td>{{ $item->created_at }}</td>
             <td>{{ $item->updated_at }}</td>
             <td>
