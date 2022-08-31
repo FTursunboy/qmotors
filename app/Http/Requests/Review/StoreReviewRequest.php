@@ -24,7 +24,7 @@ class StoreReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            'order_id' => 'exists:orders,id',
+            'order_id' => 'required|exists:orders,id',
             'rating' => 'required|numeric'
         ];
     }
