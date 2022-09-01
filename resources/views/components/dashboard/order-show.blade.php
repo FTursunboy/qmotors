@@ -34,6 +34,10 @@ $model = $attributes['model'];
         <td>{{ $model->guarantee_text }}</td>
     </tr>
     <tr>
+        <td><b>Запрос по бесплатная диагностика</b></td>
+        <td>{{ $model->free_diagnostics_text }}</td>
+    </tr>
+    <tr>
         <td><b>Запись по Акции</b></td>
         <td>{{ optional($model->stock)->title }}</td>
     <tr>

@@ -23,6 +23,8 @@ $model = $attributes['model'];
       :value="$model->stock_id" />
     <x-dashboard.form-switcher name="guarantee" label="Запрос по гарантии" class="col-md-6"
       :value="$model->guarantee" />
+    <x-dashboard.form-switcher name="free_diagnostics" label="Запрос по бесплатная диагностика" class="col-md-6"
+      :value="$model->free_diagnostics" />
   </div>
   <div class="d-flex">
     <x-dashboard.back-button />

@@ -39,12 +39,13 @@ class OrderService implements OrderServiceInterface
         'description',
         'date',
         'guarantee',
+        'free_diagnostics',
         'stock_id'
       ),
       [
         'user_car_id' => $request->user_car_id,
         'id' => $this->class::nextID(),
-        'order_number' => $request->number
+        'order_number' => $request->order_number
       ],
     ));
     return $this->success($model, 201);
@@ -92,11 +93,13 @@ class OrderService implements OrderServiceInterface
       'description',
       'date',
       'guarantee',
+      'free_diagnostics',
       'user_car_id',
       'order_number',
       'stock_id',
     ));
-    $model->guarantee = $request->has('guarantee');
+    $model->guarantee = $request->get('guarantee', false);
+    $model->free_diagnostics = $request->get('free_diagnostics', false);
     $model->save();
     return ['status' => true, 'model' => $model, 'message' => "Успешно обновлено: $id"];
   }

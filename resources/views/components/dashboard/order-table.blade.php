@@ -29,6 +29,9 @@
             <x-column-order-caret column="guarantee">Гарантийный Заказ</x-column-order-caret>
         </th>
         <th>
+            <x-column-order-caret column="guarantee">Запрос по бесплатная диагностика</x-column-order-caret>
+        </th>
+        <th>
             <x-column-order-caret column="stock_id">Запись по Акции</x-column-order-caret>
         </th>
         <th>
@@ -47,6 +50,7 @@
             <td>{{ optional($item->order_type_relation)->name }}</td>
             <td>{{ $item->guarantee_text }}</td>
             <td>{{ $item->guarantee_text }}</td>
+            <td>{{ $item->free_diagnostics_text }}</td>
             <td>{{ optional($item->stock)->title }}</td>
             <td>{{ $item->created_at }}</td>
             <td>
