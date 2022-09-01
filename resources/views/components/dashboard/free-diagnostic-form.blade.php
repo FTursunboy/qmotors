@@ -11,6 +11,8 @@ $model = $attributes['model'];
     :value="$model->user_car_id" />
   <x-dashboard.form-select name="tech_center_id" label="Технический центр" option="title" :options="$techCenters"
     class="col-md-6" :value="$model->tech_center_id" />
+  <x-dashboard.form-select name="free_diagnostic_type_id" label="Тип" option="name" :options="$types" class="col-md-6"
+    :value="$model->free_diagnostic_type_id" />
   <x-dashboard.form-input type="datetime-local" name="date" label="Дата" class="col-md-6" :value="$model->date" />
 </div>
 <div class="d-flex">

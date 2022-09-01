@@ -14,6 +14,9 @@
             <x-column-order-caret column="tech_center_id">Технический центр</x-column-order-caret>
         </th>
         <th>
+            <x-column-order-caret column="free_diagnostic_type_id">Тип</x-column-order-caret>
+        </th>
+        <th>
             <x-column-order-caret column="date">Дата</x-column-order-caret>
         </th>
         <th>
@@ -33,6 +36,7 @@
                     {{ optional($item->tech_center)->title }}
                 </a>
             </td>
+            <td>{{ optional($item->free_diagnostic_type)->name }}</td>
             <td>{{ $item->date }}</td>
             <td>{{ $item->created_at }}</td>
             <td>

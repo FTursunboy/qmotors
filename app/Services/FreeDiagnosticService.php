@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\FreeDiagnostic;
+use App\Models\FreeDiagnosticType;
 use App\Models\UserCar;
 use App\Services\Contracts\FreeDiagnosticServiceInterface;
 
@@ -27,6 +28,9 @@ class FreeDiagnosticService implements FreeDiagnosticServiceInterface
       //       ->orWhere('id', 'ilike', '%' . $this->request->user . '%');
       //   });
       // }
+      if ($this->request->free_diagnostic_type_id != null) {
+        $query->where('free_diagnostic_type_id', $this->request->free_diagnostic_type_id);
+      }
       if ($this->request->tech_center_id != null) {
         $query->where('tech_center_id', $this->request->tech_center_id);
       }
@@ -72,10 +76,17 @@ class FreeDiagnosticService implements FreeDiagnosticServiceInterface
 
   public function history($request)
   {
-    return UserCar::with('free_diagnostics')->has('free_diagnostics')->where(function ($query) use ($request) {
-      $query->where('user_id', auth()->id());
-      if ($request->user_car_id)
-        $query->where('id', $request->user_car_id);
-    })->get();
+    return FreeDiagnosticType::with(['free_diagnostics' => function ($query) use ($request) {
+      $query->whereHas('user_car', function ($query) use ($request) {
+        $query->where('user_cars.user_id', auth()->id());
+        if ($request->user_car_id)
+          $query->where('user_cars.id', $request->user_car_id);
+      });
+    }])->get();
+    // return UserCar::with('free_diagnostics')->has('free_diagnostics')->where(function ($query) use ($request) {
+    //   $query->where('user_id', auth()->id());
+    //   if ($request->user_car_id)
+    //     $query->where('id', $request->user_car_id);
+    // })->get();
   }
 }

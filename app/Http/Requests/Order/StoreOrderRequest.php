@@ -4,6 +4,7 @@ namespace App\Http\Requests\Order;
 
 use App\Models\CarModel;
 use App\Models\OrderType;
+use App\Models\Stock;
 use App\Models\TechCenter;
 use App\Models\UserCar;
 use Illuminate\Foundation\Http\FormRequest;
@@ -38,7 +39,8 @@ class StoreOrderRequest extends FormRequest
             'order_type_id' => 'required|exists:' . with(new OrderType)->getTable() . ',id',
             'tech_center_id' => 'required|exists:' . with(new TechCenter)->getTable() . ',id',
             'date' => 'required|date|after:yesterday',
-            'guarantee' => 'boolean'
+            'guarantee' => 'boolean',
+            'stock_id' => 'exists:' . with(new Stock)->getTable() . ',id'
         ];
     }
 }

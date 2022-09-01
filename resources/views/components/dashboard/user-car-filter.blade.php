@@ -5,7 +5,7 @@
     <x-dashboard.form-input label="ВИН" name="vin" :value="request('vin')" />
     <x-dashboard.form-range-input label="Год" name="year" type="number" />
     <x-dashboard.form-range-input label="Пробег" name="mileage" type="number" />
-    <x-dashboard.form-range-input label="Безплатная Диагностика" name="free_diagnostics" type="date" />
+    <x-dashboard.form-range-input label="Бесплатная Диагностика" name="free_diagnostics" type="date" />
     <x-dashboard.form-range-input label="Напоминание" name="reminder" type="date" />
     <x-dashboard.form-range-input label="Заказ" name="order" type="date" />
     <x-dashboard.form-range-input label="Последнее Посещение" name="last_visit" type="date" />

@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Dashboard;
 
+use App\Models\FreeDiagnosticType;
 use App\Models\TechCenter;
 use Illuminate\View\Component;
 
@@ -9,6 +10,7 @@ class FreeDiagnosticFilter extends Component
 {
     public $cars = [];
     public $techCenters = [];
+    public $types = [];
     /**
      * Create a new component instance.
      *
@@ -18,6 +20,7 @@ class FreeDiagnosticFilter extends Component
     {
         // $this->cars = UserCar::latest('id')->get();
         $this->techCenters = TechCenter::latest('id')->get();
+        $this->types = FreeDiagnosticType::latest('id')->get();
     }
 
     /**

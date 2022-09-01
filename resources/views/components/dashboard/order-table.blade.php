@@ -29,7 +29,7 @@
             <x-column-order-caret column="guarantee">Гарантийный Заказ</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="id">Запись по Акции</x-column-order-caret>
+            <x-column-order-caret column="stock_id">Запись по Акции</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="created_at">Создано</x-column-order-caret>
@@ -47,7 +47,7 @@
             <td>{{ optional($item->order_type_relation)->name }}</td>
             <td>{{ $item->guarantee_text }}</td>
             <td>{{ $item->guarantee_text }}</td>
-            <td></td>
+            <td>{{ optional($item->stock)->title }}</td>
             <td>{{ $item->created_at }}</td>
             <td>
                 <div class="d-flex float-right">

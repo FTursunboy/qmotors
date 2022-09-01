@@ -19,6 +19,8 @@ $model = $attributes['model'];
     <x-dashboard.form-input type="datetime-local" name="date" label="Дата" class="col-md-6" :value="$model->date" />
     <x-dashboard.form-select name="order_type_id" label="Тип Заказа" option="name" :options="$orderTypes"
       class="col-md-6" :value="$model->order_type_id" />
+    <x-dashboard.form-select name="stock_id" label="Акция" option="title" :options="$stocks" class="col-md-6"
+      :value="$model->stock_id" />
     <x-dashboard.form-switcher name="guarantee" label="Запрос по гарантии" class="col-md-6"
       :value="$model->guarantee" />
   </div>

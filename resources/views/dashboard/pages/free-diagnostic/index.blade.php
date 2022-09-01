@@ -1,14 +1,14 @@
 @extends('dashboard.layouts.default')
 
-@section('title', 'Безплатные диагностики')
+@section('title', 'Бесплатные диагностики')
 
 @section('content')
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="/">Дашборд</a></li>
-  <li class="breadcrumb-item active">Безплатные диагностики</li>
+  <li class="breadcrumb-item active">Бесплатные диагностики</li>
 </ol>
 <!-- begin page-header -->
-<h1 class="page-header">Безплатные диагностики</h1>
+<h1 class="page-header">Бесплатные диагностики</h1>
 <!-- end page-header -->
 
 <div class="row">
@@ -16,7 +16,7 @@
 
     {{--
     <x-dashboard.free-diagnostic-filter /> --}}
-    <x-dashboard.panel title="Безплатные диагностики">
+    <x-dashboard.panel title="Бесплатные диагностики">
       <x-dashboard.free-diagnostic-table />
     </x-dashboard.panel>
 

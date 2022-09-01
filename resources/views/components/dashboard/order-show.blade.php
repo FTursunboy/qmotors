@@ -35,7 +35,7 @@ $model = $attributes['model'];
     </tr>
     <tr>
         <td><b>Запись по Акции</b></td>
-        <td></td>
+        <td>{{ optional($model->stock)->title }}</td>
     <tr>
         <td><b>Комментрия</b></td>
         <td>{{ $model->description }}</td>

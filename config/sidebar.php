@@ -41,7 +41,7 @@ return [
 		],
 		[
 			'icon' => 'fa fa-charging-station',
-			'title' => 'Безплатные диагностики',
+			'title' => 'Бесплатные диагностики',
 			'url' => '/free-diagnostic',
 		],
 		[

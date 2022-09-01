@@ -38,7 +38,8 @@ class OrderService implements OrderServiceInterface
         'tech_center_id',
         'description',
         'date',
-        'guarantee'
+        'guarantee',
+        'stock_id'
       ),
       [
         'user_car_id' => $request->user_car_id,
@@ -93,6 +94,7 @@ class OrderService implements OrderServiceInterface
       'guarantee',
       'user_car_id',
       'order_number',
+      'stock_id',
     ));
     $model->guarantee = $request->has('guarantee');
     $model->save();
