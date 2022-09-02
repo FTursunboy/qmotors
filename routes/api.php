@@ -103,6 +103,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     });
     Route::get('help', [HelpApiController::class, 'index']);
     Route::group(['prefix' => 'free-diagnostic'], function () {
+        Route::get('', [FreeDiagnosticApiController::class, 'index']);
         Route::get('history', [FreeDiagnosticApiController::class, 'history']);
         Route::get('{id}', [FreeDiagnosticApiController::class, 'show']);
     });

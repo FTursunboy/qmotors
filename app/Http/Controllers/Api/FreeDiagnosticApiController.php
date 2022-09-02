@@ -12,6 +12,11 @@ class FreeDiagnosticApiController extends Controller
 {
     use ApiResponse;
 
+    public function index(Request $request, FreeDiagnosticServiceInterface $freeDiagnosticService)
+    {
+        return $this->success($freeDiagnosticService->list($request));
+    }
+
     public function show($id)
     {
         return $this->success(FreeDiagnostic::findOrFail($id));
