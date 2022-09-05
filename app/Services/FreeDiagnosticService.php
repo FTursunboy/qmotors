@@ -76,21 +76,17 @@ class FreeDiagnosticService implements FreeDiagnosticServiceInterface
 
   public function list($request)
   {
-    return FreeDiagnosticType::with([
-      'free_diagnostics'
-      // => function ($query) use ($request) {
-      // $query->whereHas('user_car', function ($query) use ($request) {
-      //   $query->where('user_cars.user_id', auth()->id());
-      //   if ($request->user_car_id)
-      //     $query->where('user_cars.id', $request->user_car_id);
-      // });
-      // }
-    ])->get();
-    // return UserCar::with('free_diagnostics')->has('free_diagnostics')->where(function ($query) use ($request) {
-    //   $query->where('user_id', auth()->id());
+    return $this->class::TYPES;
+    // return FreeDiagnosticType::with([
+    //   'free_diagnostics'
+    // => function ($query) use ($request) {
+    // $query->whereHas('user_car', function ($query) use ($request) {
+    //   $query->where('user_cars.user_id', auth()->id());
     //   if ($request->user_car_id)
-    //     $query->where('id', $request->user_car_id);
-    // })->get();
+    //     $query->where('user_cars.id', $request->user_car_id);
+    // });
+    // }
+    // ])->get();
   }
   public function history($request)
   {

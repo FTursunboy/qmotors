@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\ArticleController;
 use App\Http\Controllers\Dashboard\BonusController;
+use App\Http\Controllers\Dashboard\ChatController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\FreeDiagnosticController;
 use App\Http\Controllers\Dashboard\HelpController;
@@ -124,5 +125,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'help', 'as' => 'help'], function () {
         Route::get('/', [HelpController::class, 'index']);
         Route::put('/', [HelpController::class, 'update'])->name('.update');
+    });
+    Route::group(['prefix' => 'chat', 'as' => 'chat'], function () {
+        Route::get('/', [ChatController::class, 'index']);
     });
 });
