@@ -53,7 +53,7 @@ class OrderService implements OrderServiceInterface
 
   public function photo($id, $request)
   {
-    $photo = uploadImage($request->file('photo'), 'order');
+    $photo = uploadFile($request->file('photo'), 'order');
     $model = OrderPhoto::create([
       'id' => OrderPhoto::nextID(),
       'order_id' => $id,

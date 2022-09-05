@@ -49,6 +49,8 @@
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('user.show', $item->id) }}"><i
                             class="fa fa-eye"></i></a>
+                    <a class="btn btn-warning mr-2" href="{{ route('user.chat', $item->id) }}"><i
+                            class="fa fa-comment"></i></a>
                     <a href="{{ route('user.edit', $item->id) }}" class="btn btn-primary mr-2"><i
                             class="fa fa-pen"></i></a>
                     <form action="{{ route('user.delete', $item->id) }}" method="POST">

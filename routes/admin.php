@@ -46,6 +46,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::put('/{id}', [UserController::class, 'update'])->name('.update');
         Route::get('/{id}', [UserController::class, 'show'])->name('.show');
         Route::delete('/{id}', [UserController::class, 'delete'])->name('.delete');
+        Route::group(['prefix' => 'chat', 'as' => '.chat'], function () {
+            Route::get('{user_id}', [ChatController::class, 'index']);
+            Route::post('{id}', [ChatController::class, 'message'])->name('.message');
+        });
     });
     Route::group(['prefix' => 'tech-center', 'as' => 'tech-center'], function () {
         Route::get('/', [TechCenterController::class, 'index']);
@@ -125,8 +129,5 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::group(['prefix' => 'help', 'as' => 'help'], function () {
         Route::get('/', [HelpController::class, 'index']);
         Route::put('/', [HelpController::class, 'update'])->name('.update');
-    });
-    Route::group(['prefix' => 'chat', 'as' => 'chat'], function () {
-        Route::get('/', [ChatController::class, 'index']);
     });
 });

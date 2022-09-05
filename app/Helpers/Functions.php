@@ -22,16 +22,20 @@ function filterPhone($phone)
   return str_replace(['(', ')', ' ', '-'], '', $phone);
 }
 
-function uploadImage($file, $path, $old = null)
+function uploadFile($file, $path, $old = null)
 {
-  deletePhoto($old);
-  $names = explode(".", $file->getClientOriginalName());
-  $image = time() . '.' .  $names[count($names) - 1];
-  $file->storeAs("public/$path", $image);
-  return "/storage/$path/" . $image;
+  $result = null;
+  deleteFile($old);
+  if ($file != null) {
+    $names = explode(".", $file->getClientOriginalName());
+    $model = time() . '.' .  $names[count($names) - 1];
+    $file->storeAs("public/$path", $model);
+    $result = "/storage/$path/" . $model;
+  }
+  return $result;
 }
 
-function deletePhoto($path)
+function deleteFile($path)
 {
   if ($path != null && file_exists(public_path() . $path)) {
     unlink(public_path() . $path);

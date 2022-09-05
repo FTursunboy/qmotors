@@ -14,4 +14,9 @@ class AdminUser extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, ModelCommonMethods;
     protected $guarded = [];
     protected $guard = 'admin';
+
+    public function getFullNameAttribute()
+    {
+        return $this->email;
+    }
 }

@@ -48,7 +48,7 @@ class CarService implements CarServiceInterface
 
   public function photo($id, $request)
   {
-    $photo = uploadImage($request->file('photo'), 'user_car');
+    $photo = uploadFile($request->file('photo'), 'user_car');
     $model = UserCarPhoto::create([
       'id' => UserCarPhoto::nextID(),
       'user_car_id' => $id,
@@ -60,7 +60,7 @@ class CarService implements CarServiceInterface
   public function photoDelete($id)
   {
     $model = UserCarPhoto::find($id);
-    deletePhoto($model->photo);
+    deleteFile($model->photo);
     $model->delete();
     return true;
   }

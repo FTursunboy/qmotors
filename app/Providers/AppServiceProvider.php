@@ -5,9 +5,11 @@ namespace App\Providers;
 use App\Services\ArticleService;
 use App\Services\BonusService;
 use App\Services\CarService;
+use App\Services\ChatService;
 use App\Services\Contracts\ArticleServiceInterface;
 use App\Services\Contracts\BonusServiceInterface;
 use App\Services\Contracts\CarServiceInterface;
+use App\Services\Contracts\ChatServiceInterface;
 use App\Services\Contracts\FreeDiagnosticServiceInterface;
 use App\Services\Contracts\HelpServiceInterface;
 use App\Services\Contracts\NotificationServiceInterface;
@@ -56,6 +58,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ArticleServiceInterface::class, ArticleService::class);
         $this->app->bind(HelpServiceInterface::class, HelpService::class);
         $this->app->bind(FreeDiagnosticServiceInterface::class, FreeDiagnosticService::class);
+        $this->app->bind(ChatServiceInterface::class, ChatService::class);
     }
 
     /**

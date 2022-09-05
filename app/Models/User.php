@@ -90,6 +90,11 @@ class User extends Authenticatable
         return $this->is_complete ? 'Да' : 'Нет';
     }
 
+    public function chat()
+    {
+        return $this->hasOne(Chat::class);
+    }
+
     public function getBalanceAttribute()
     {
         $sum = 0;

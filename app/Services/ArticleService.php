@@ -50,7 +50,7 @@ class ArticleService implements ArticleServiceInterface
     // dd($request->all());
     $preview = null;
     if ($request->file('preview') != null) {
-      $preview = uploadImage($request->file('preview'), 'article');
+      $preview = uploadFile($request->file('preview'), 'article');
     }
     $model = $this->class::create(array_merge(
       $request->only('title', 'subtitle', 'text'),
@@ -67,7 +67,7 @@ class ArticleService implements ArticleServiceInterface
     $model = $this->class::findOrFail($id);
     $preview = $model->preview;
     if ($request->preview != null) {
-      $preview = uploadImage($request->file('preview'), 'user', $preview);
+      $preview = uploadFile($request->file('preview'), 'user', $preview);
     }
     $model->update(array_merge(
       $request->only('title', 'subtitle', 'text'),

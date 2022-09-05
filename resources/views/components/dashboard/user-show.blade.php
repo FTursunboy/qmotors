@@ -26,4 +26,11 @@ $model = $attributes['model'];
         <td><b>Дополнительный номер телефона</b></td>
         <td><a href="tel:{{ $model->addtional_phone_number }}">{{ $model->addtional_phone_number }}</a></td>
     </tr>
+    <tr>
+        <td>
+            <a target="blank" href="{{ route('user.chat', $model->id) }}">
+                <b class="text-dark">Чат</b>
+                <i class="fa fa-external-link-alt"></i></a>
+        </td>
+    </tr>
 </x-dashboard.info>

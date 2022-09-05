@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\BonusApiController;
 use App\Http\Controllers\Api\CarApiController;
 use App\Http\Controllers\Api\CarMarkApiController;
 use App\Http\Controllers\Api\CarModelApiController;
+use App\Http\Controllers\Api\ChatApiController;
 use App\Http\Controllers\Api\FreeDiagnosticApiController;
 use App\Http\Controllers\Api\HelpApiController;
 use App\Http\Controllers\Api\NotificationApiController;
@@ -106,5 +107,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('', [FreeDiagnosticApiController::class, 'index']);
         Route::get('history', [FreeDiagnosticApiController::class, 'history']);
         Route::get('{id}', [FreeDiagnosticApiController::class, 'show']);
+    });
+    Route::group(['prefix' => 'chat'], function () {
+        Route::get('', [ChatApiController::class, 'index']);
+        Route::get('messages', [ChatApiController::class, 'messages']);
+        Route::post('', [ChatApiController::class, 'message']);
     });
 });

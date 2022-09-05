@@ -4,16 +4,25 @@
 
 @section('content')
 <ol class="breadcrumb float-xl-right">
+    <li class="breadcrumb-item"><a href="/">Дашборд</a></li>
+    <li class="breadcrumb-item"><a href="/users">Пользователи</a></li>
+    <li class="breadcrumb-item"><a href="/users/{{ $user->id }}">{{ $user->full_name }}</a></li>
     <li class="breadcrumb-item active">Чат</li>
 </ol>
 <!-- begin page-header -->
 <h1 class="page-header">Чат</h1>
 <!-- end page-header -->
+{{-- @dd($user->full_name); --}}
+<x-dashboard.panel :title="$user->full_name">
+    <x-dashboard.chat-messages />
+    <x-slot name="footer">
+        <x-dashboard.chat-form :chat="$user->chat" />
+    </x-slot>
+</x-dashboard.panel>
 
-<div class="panel panel-inverse" data-sortable-id="index-2">
+{{-- <div class="panel panel-inverse" data-sortable-id="index-2">
     <div class="panel-heading">
         <h4 class="panel-title">Chat History</h4>
-        <span class="label bg-teal">4 message</span>
     </div>
     <div class="panel-body bg-light">
         <div class="chats" data-scrollbar="true" data-height="63vh">
@@ -30,7 +39,7 @@
                 <span class="date-time">08:12am</span>
                 <a href="javascript:;" class="name"><span class="label label-primary">ADMIN</span> Me</a>
                 <a href="javascript:;" class="image"><img alt="" src="../assets/img/user/user-13.jpg" /></a>
-                <div class="message bg-gradient-aqua">
+                <div class="message bg-gradient-aqua text-white">
                     Nullam posuere, nisl a varius rhoncus, risus tellus hendrerit neque.
                 </div>
             </div>
@@ -71,18 +80,11 @@
                 <input type="text" class="form-control" name="message" placeholder="Enter your message here.">
                 <span class="input-group-append">
                     <button class="btn btn-primary" type="submit"><i class="fab fa-telegram-plane"></i></button>
+                    <button class="btn btn-primary" type="submit"><i class="fab fa-telegram-plane"></i></button>
                 </span>
             </div>
         </form>
     </div>
-</div>
+</div> --}}
 
 @endsection
-
-@push('scripts')
-<script>
-    function onClickButton(id){
-        document.getElementById(id).click();
-    }
-</script>
-@endpush

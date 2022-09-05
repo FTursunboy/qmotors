@@ -69,7 +69,7 @@ class UserService implements UserServiceInterface
     $avatar = null;
     try {
       if ($request->avatar != null) {
-        $avatar = uploadImage($request->file('avatar'), 'user');
+        $avatar = uploadFile($request->file('avatar'), 'user');
       }
       $this->class::create(array_merge(
         $request->only(
@@ -101,7 +101,7 @@ class UserService implements UserServiceInterface
     $avatar = $model->avatar;
     try {
       if ($request->avatar != null) {
-        $avatar = uploadImage($request->file('avatar'), 'user', $avatar);
+        $avatar = uploadFile($request->file('avatar'), 'user', $avatar);
       }
       $model->update(array_merge(
         $request->only(
@@ -131,7 +131,7 @@ class UserService implements UserServiceInterface
     $model = auth()->user();
     $avatar = $model->avatar;
     if ($request->avatar != null) {
-      $avatar = uploadImage($request->file('avatar'), 'user', $avatar);
+      $avatar = uploadFile($request->file('avatar'), 'user', $avatar);
     }
     $model->update(array_merge(
       $request->only(

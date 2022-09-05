@@ -20,6 +20,8 @@ class CreateChatMessagesTable extends Migration
             $table->foreignId('admin_user_id')->nullable()->constrained('admin_users')->nullOnDelete();
             $table->text('message')->nullable();
             $table->string('file')->nullable();
+            $table->string('video')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
