@@ -24,14 +24,18 @@ class ChatService implements ChatServiceInterface
   {
     $id = $this->getID($id);
     $user = $is_admin ? ['admin_user_id' => auth()->guard('admin')->id()] : ['user_id' => auth()->id()];
-    $model = ChatMessages::create([
-      'chat_id' => $id,
-      'message' => $request->message,
-      'video' => uploadFile($request->file('video'), 'chat'),
-      'photo' => uploadFile($request->file('photo'), 'chat'),
-      'file' => uploadFile($request->file('file'), 'chat'),
-      ...$user
-    ]);
+    $model = ChatMessages::create(
+      array_merge(
+        [
+          'chat_id' => $id,
+          'message' => $request->message,
+          'video' => uploadFile($request->file('video'), 'chat'),
+          'photo' => uploadFile($request->file('photo'), 'chat'),
+          'file' => uploadFile($request->file('file'), 'chat'),
+        ],
+        $user
+      )
+    );
     return $model;
   }
 
