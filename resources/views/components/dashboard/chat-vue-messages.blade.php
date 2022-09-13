@@ -52,6 +52,10 @@ $chat = $attributes['chat'];
             }, 100);
             setInterval(() => {
                 this.fetchData();
+                setTimeout(() => {
+                    var container = document.querySelector("#chat-vue-messages");
+                    container.scrollTop = container.scrollHeight;
+                }, 100);
             }, 5000);
         },
         isAdmin(item){
