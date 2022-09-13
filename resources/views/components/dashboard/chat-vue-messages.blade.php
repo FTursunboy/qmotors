@@ -47,14 +47,16 @@ $chat = $attributes['chat'];
         async mounted(){
             await this.fetchData();
             setTimeout(() => {
-                var container = document.querySelector("#chat-vue-messages");
-                container.scrollTop = container.scrollHeight;
+                const container = document.querySelector("#chat-vue-messages");
+                container.scrollTo({top:container.scrollHeight, behavior: 'smooth'});
+                // container.scrollTop = container.scrollHeight;
             }, 100);
             setInterval(() => {
                 this.fetchData();
                 setTimeout(() => {
-                    var container = document.querySelector("#chat-vue-messages");
-                    container.scrollTop = container.scrollHeight;
+                    const container = document.querySelector("#chat-vue-messages");
+                    container.scrollTo({top:container.scrollHeight, behavior: 'smooth'});
+                    // container.scrollTop = container.scrollHeight;
                 }, 100);
             }, 5000);
         },
