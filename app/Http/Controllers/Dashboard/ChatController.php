@@ -20,4 +20,8 @@ class ChatController extends Controller
         $service->message($request, $user_id, true);
         return back();
     }
+    public function messages($id, ChatServiceInterface $service)
+    {
+        return $service->messages($id);
+    }
 }

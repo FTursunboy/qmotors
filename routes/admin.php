@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::group(['prefix' => 'chat', 'as' => '.chat'], function () {
             Route::get('{user_id}', [ChatController::class, 'index']);
             Route::post('{id}', [ChatController::class, 'message'])->name('.message');
+            Route::get('{id}/messages', [ChatController::class, 'messages'])->name('.messages');
         });
     });
     Route::group(['prefix' => 'tech-center', 'as' => 'tech-center'], function () {

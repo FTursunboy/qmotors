@@ -14,7 +14,10 @@
 <!-- end page-header -->
 {{-- @dd($user->full_name); --}}
 <x-dashboard.panel :title="$user->full_name">
-    <x-dashboard.chat-messages />
+    {{--
+    <x-dashboard.chat-messages :chat="$user->chat" /> --}}
+
+    <x-dashboard.chat-vue-messages :chat="$user->chat" />
     <x-slot name="footer">
         <x-dashboard.chat-form :chat="$user->chat" />
     </x-slot>
@@ -88,3 +91,11 @@
 </div> --}}
 
 @endsection
+
+@push('scripts')
+<script>
+    // setTimeout(() => {
+    //         window.location.reload();
+    //     }, 5000);
+</script>
+@endpush
