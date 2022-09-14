@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\ProcessPushNotification;
 use App\Models\Stock;
 use App\Services\Contracts\StockServiceInterface;
 
@@ -53,6 +54,9 @@ class StockService implements StockServiceInterface
         'id' => $this->class::nextID()
       ]
     ));
+    // PushNotificationService::send($request, $model);
+    ProcessPushNotification::dispatch($request->collect(), $model);
+
     return $model;
   }
 

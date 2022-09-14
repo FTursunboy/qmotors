@@ -10,6 +10,7 @@ $model = $attributes['model'];
         :value="$model->bonus_type" class="col-md-6" not-nullable />
     <x-dashboard.form-input name="points" type="number" label="Баллы" class="col-md-6" :value="$model->points" />
     <x-dashboard.form-input name="title" label="Название" class="col-md-6" :value="$model->title" />
+    <x-dashboard.form-switcher name="send" label="Отправить уведомление" class="col-md-12" />
 </div>
 <div class="d-flex">
     <x-dashboard.back-button />

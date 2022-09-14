@@ -5,7 +5,7 @@ $chat = $attributes['chat'];
     @vue:mounted="mounted">
 
     <div v-for="(item, index) in messages" :key="index" :class="isOwn(item) ? 'right' : 'left'">
-        <span class="date-time" v-text="item.created_at"></span>
+        <span class="date-time" v-text="formatDate(item.created_at)"></span>
         <a href="javascript:;" class="name">
             <span class="label label-primary" v-if="isAdmin(item)">Админ</span>
             <span v-if="isOwn(item)">
@@ -34,15 +34,17 @@ $chat = $attributes['chat'];
 </div>
 
 @push('scripts')
+<script src="{{ asset('dash/assets/js/moment.js') }}"></script>
+
 <script type="module">
-    import {createApp} from"{{ asset('dash/assets/js/vue-petite.js') }}";
+    import { createApp } from"{{ asset('dash/assets/js/vue-petite.js') }}";
     createApp({
         admin: @json(auth()->guard('admin')->user()),
         messages: [],
+        moment: moment(),
         async fetchData(){
             const res = await fetch("{{ route('user.chat.messages', $chat->id) }}");
             this.messages = await res.json();
-            console.log('fechdata', this.messages);
         },
         async mounted(){
             await this.fetchData();
@@ -76,8 +78,19 @@ $chat = $attributes['chat'];
             return this.isOwn(item) 
                 ? 'message bg-gradient-aqua text-white'
                 : 'message';
+        },
+        formatDate(time){
+            return moment.utc(time).local().format('YYYY-MM-DD HH:mm:ss');
         }
     }).mount();
 </script>
 
+@endpush
+
+@push('css')
+<style>
+    .message::before {
+        content: none !important;
+    }
+</style>
 @endpush

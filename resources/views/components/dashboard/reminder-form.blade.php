@@ -10,6 +10,7 @@ $model = $attributes['model'];
             disabled="1" />
         <x-dashboard.form-input type="datetime-local" name="date" label="Дата" class="col-md-6" :value="$model->date" />
         <x-dashboard.form-textarea class="col-md-12" name="text" :value="$model->text" label="Текст" />
+        <x-dashboard.form-switcher name="send" label="Отправить уведомление" class="col-md-12" />
     </div>
     <div class="d-flex">
         <x-dashboard.back-button />

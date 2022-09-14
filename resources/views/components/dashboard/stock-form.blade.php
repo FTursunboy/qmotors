@@ -7,6 +7,7 @@ $model = $attributes['model'];
     <x-dashboard.form-input name="subtitle" label="Подзаголовок" class="col-md-6" :value="$model->subtitle" />
     <x-dashboard.form-textarea name="description" label="Описание" class="col-md-12" :value="$model->description" />
     <x-dashboard.form-text-editor name="text" label="Текст" class="col-md-12" :value="$model->text" />
+    <x-dashboard.form-switcher name="send" label="Отправить уведомление" class="col-md-12" />
 </div>
 <div class="d-flex">
     <x-dashboard.back-button />

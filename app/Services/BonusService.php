@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\ProcessPushNotification;
 use App\Models\Bonus;
 use App\Models\CarModel;
 use App\Models\UserCarPhoto;
@@ -74,6 +75,8 @@ class BonusService implements BonusServiceInterface
         'remainder' => $request->points
       ]
     ));
+    ProcessPushNotification::dispatch($request->collect(), $model);
+
     return $model;
   }
 

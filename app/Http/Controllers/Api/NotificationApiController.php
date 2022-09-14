@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Notification;
-use App\Services\Contracts\NotificationServiceInterface;
+use App\Services\Contracts\PushNotificationServiceInterface;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 
@@ -21,7 +21,7 @@ class NotificationApiController extends Controller
         return $this->success(Notification::find($id));
     }
 
-    public function device(Request $request, NotificationServiceInterface $service)
+    public function device(Request $request, PushNotificationServiceInterface $service)
     {
         return $this->success($service->setDeviceToken($request));
     }

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\ProcessPushNotification;
 use App\Models\Reminder;
 use App\Services\Contracts\ReminderServiceInterface;
 
@@ -60,6 +61,7 @@ class ReminderService implements ReminderServiceInterface
     ), [
       'id' => $this->class::nextID()
     ]));
+    ProcessPushNotification::dispatch($request->collect(), $model);
     return $model;
   }
 

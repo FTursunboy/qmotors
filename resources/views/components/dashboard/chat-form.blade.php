@@ -17,9 +17,11 @@ $chat = $attributes['chat'];
             {{-- <button class="btn btn-primary" type="button" onclick="onClickButton('file-id')"><i
                     class="fa fa-paperclip"></i></button> --}}
         </div>
-        <input type="text" class="form-control" name="message" placeholder="Введите ваше сообщение здесь.">
+        <input type="text" class="form-control" required name="message" placeholder="Введите ваше сообщение здесь."
+            oninput="onInput(this.value)">
         <span class="input-group-append">
-            <button class="btn btn-primary" type="submit"><i class="fab fa-telegram-plane"></i></button>
+            <button class="btn btn-primary invisible" type="submit" id="submit-button"><i
+                    class="fab fa-telegram-plane"></i></button>
         </span>
     </div>
 </form>
@@ -28,6 +30,15 @@ $chat = $attributes['chat'];
 <script>
     function onClickButton(id){
         document.getElementById(id).click();
+    }
+    function onInput(val){
+        var element = document.getElementById("submit-button");
+        if(val == ''){
+            element.classList.add("invisible");
+        } else {
+            element.classList.remove("invisible");  
+        }
+        console.log(val);
     }
 </script>
 @endpush
