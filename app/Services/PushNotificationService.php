@@ -30,9 +30,9 @@ class PushNotificationService implements PushNotificationServiceInterface
 
   public static function send($request, $model, $user_id = null)
   {
-    if ($request?->send) {
-      if ($user_id == null && $request?->user_id !== null) {
-        $user_id = $request?->user_id;
+    if ($request['send'] == 1) {
+      if ($user_id == null && $request['user_id'] !== null) {
+        $user_id = $request['user_id'];
       }
       if ($user_id == null) {
         $registration_ids = User::orderBy('id')->get()->pluck('device_token')->all();
@@ -45,8 +45,8 @@ class PushNotificationService implements PushNotificationServiceInterface
           "registration_ids" => $tokens,
           "data" => $model,
           // "data" => [
-          //   "title" => $request->title,
-          //   "text" => $request->text,
+          //   "title" => $request['title'],
+          //   "text" => $request['text'],
           // ],
           "content_available" => true,
           "priority" => "high",
