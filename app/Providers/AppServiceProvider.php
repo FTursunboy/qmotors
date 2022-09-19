@@ -15,6 +15,7 @@ use App\Services\Contracts\HelpServiceInterface;
 use App\Services\Contracts\NotificationServiceInterface;
 use App\Services\OrderService;
 use App\Services\Contracts\OrderServiceInterface;
+use App\Services\Contracts\PushNotificationServiceInterface;
 use App\Services\Contracts\ReminderServiceInterface;
 use App\Services\Contracts\ReviewServiceInterface;
 use App\Services\Contracts\SmsServiceInterface;
@@ -25,6 +26,7 @@ use App\Services\Contracts\UserServiceInterface;
 use App\Services\FreeDiagnosticService;
 use App\Services\HelpService;
 use App\Services\NotificationService;
+use App\Services\PushNotificationService;
 use App\Services\ReminderService;
 use App\Services\ReviewService;
 use App\Services\SmsService;
@@ -59,6 +61,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(HelpServiceInterface::class, HelpService::class);
         $this->app->bind(FreeDiagnosticServiceInterface::class, FreeDiagnosticService::class);
         $this->app->bind(ChatServiceInterface::class, ChatService::class);
+        $this->app->bind(PushNotificationServiceInterface::class, PushNotificationService::class);
     }
 
     /**
