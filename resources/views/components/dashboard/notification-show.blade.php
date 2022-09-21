@@ -12,9 +12,15 @@ $model = $attributes['model'];
     </tr>
     <tr>
         <td><b>Пользователь</b></td>
-        <td><a href="{{ route('user.show', $model->user_id??1) }}">{{ optional($model->user)->full_name }} ({{
+        <td>
+            @if ($model->user_id)
+            <a href="{{ route('user.show', $model->user_id) }}">{{ optional($model->user)->full_name }} ({{
                 $model->user_id
-                }})</a></td>
+                }})</a>
+            @else
+            Все пользователи
+            @endif
+        </td>
     </tr>
     <tr>
         <td><b>Тип Уведомления</b></td>

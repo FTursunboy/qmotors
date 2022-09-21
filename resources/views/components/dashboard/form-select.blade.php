@@ -10,13 +10,14 @@ $selected = $attributes['value'];
 }else{
 $selected = request()->get($attributes['name'], null);
 }
+$defaultOptionLabel = $attributes['default-option-label']??'----------';
 @endphp
 <div class="form-group {{ $attributes['class'] }}">
     <label for="{{ $attributes['name'] }}-id">{{ $attributes['label'] }}</label>
     <select name="{{ $attributes['name'] }}" class="select2 form-control" id="{{ $attributes['name'] }}-id"
         @if($attributes['required']) required @endif>
         @if(!$attributes['not-nullable'])
-        <option value="{{ null }}">----------</option>
+        <option value="{{ null }}">{{ $defaultOptionLabel }}</option>
         @endif
         @foreach ($options as $item)
         <option value="{{ $item['id'] }}" @if ($selected!==null and $item['id']==$selected) selected @endif>

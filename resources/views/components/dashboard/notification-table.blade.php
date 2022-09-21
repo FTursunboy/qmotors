@@ -33,9 +33,16 @@
             <td><a href="{{ route('notification.show', $item->id) }}">{{ $item->id }}</a></td>
             <td>{{ $item->title }}</td>
             <td>{{ $item->text }}</td>
-            <td><a href="{{ route('user.show', $item->user_id??1) }}">{{ optional($item->user)->full_name }} ({{
+            <td>
+                @if ($item->user_id)
+                <a href="{{ route('user.show', $item->user_id) }}">{{ optional($item->user)->full_name }} ~[~]({{
                     $item->user_id
-                    }})</a></td>
+                    }})
+                </a>
+                @else
+                Все пользователи
+                @endif
+            </td>
             <td>{{ $item->notification_type_text }}</td>
             <td>{{ $item->additional_text }}</td>
             <td>{{ $item->created_at }}</td>

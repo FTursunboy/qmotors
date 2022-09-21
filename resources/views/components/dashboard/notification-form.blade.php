@@ -5,7 +5,7 @@ $model = $attributes['model'];
 <div class="row">
     <x-dashboard.form-input name="title" label="Заголовок" class="col-md-6" :value="$model->title" required />
     <x-dashboard.form-select label="Пользователь" name="user_id" option="full_name" :options="$users"
-        :value="$model->user_id" class="col-md-6" required />
+        :value="$model->user_id" class="col-md-6" default-option-label="Все пользователи" />
     <x-dashboard.form-input type="number" name="notification_type" label="Тип Уведомления" class="col-md-6"
         :value="$model->notification_type" required />
     <x-dashboard.form-input type="number" name="additional_id" label="Допонительная ссылка" class="col-md-6"
