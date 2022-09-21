@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Jobs\ProcessPushNotification;
 use App\Models\Reminder;
+use App\Models\UserCar;
 use App\Services\Contracts\ReminderServiceInterface;
 
 class ReminderService implements ReminderServiceInterface
@@ -61,7 +62,7 @@ class ReminderService implements ReminderServiceInterface
     ), [
       'id' => $this->class::nextID()
     ]));
-    ProcessPushNotification::dispatch($request->collect(), $model);
+    $this->sendPushNotification($request, $model);
     return $model;
   }
 
@@ -73,6 +74,14 @@ class ReminderService implements ReminderServiceInterface
       'date',
       'text'
     ));
+    $this->sendPushNotification($request, $model);
     return $model;
+  }
+
+  private function sendPushNotification($request, $model)
+  {
+    $user_id = UserCar::find($model->user_car_id)->user_id;
+    $request->merge(['user_id' => $user_id]);
+    ProcessPushNotification::dispatch($request->collect(), $model);
   }
 }

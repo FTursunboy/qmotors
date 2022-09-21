@@ -11,7 +11,7 @@ use Illuminate\View\Component;
 
 class OrderForm extends Component
 {
-    public $cars = [];
+    public $user_cars = [];
     public $techCenters = [];
     public $orderTypes = [];
     public $stocks = [];
@@ -22,7 +22,7 @@ class OrderForm extends Component
      */
     public function __construct()
     {
-        // $this->cars = UserCar::latest('id')->get();
+        $this->user_cars = UserCar::latest('id')->get();
         $this->techCenters = TechCenter::latest('id')->get();
         $this->orderTypes = OrderType::latest('id')->get();
         $this->stocks = Stock::latest('id')->get();

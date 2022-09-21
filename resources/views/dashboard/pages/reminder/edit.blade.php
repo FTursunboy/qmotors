@@ -14,7 +14,11 @@
 <!-- end page-header -->
 
 <x-dashboard.panel title="Изменить Напоминание">
-  <x-dashboard.reminder-form :model="$model" />
+  <form action="{{ route('reminder.update', $model->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    <x-dashboard.reminder-form :model="$model" />
+  </form>
 </x-dashboard.panel>
 
 @endsection

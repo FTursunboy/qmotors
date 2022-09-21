@@ -14,7 +14,11 @@
 <!-- end page-header -->
 
 <x-dashboard.panel title="Изменить Заказ">
-  <x-dashboard.order-form :model="$model" />
+  <form action="{{ route('order.update', $model->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    <x-dashboard.order-form :model="$model" />
+  </form>
 </x-dashboard.panel>
 
 @endsection

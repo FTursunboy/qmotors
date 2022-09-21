@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Chat;
 use App\Models\ChatMessages;
 use App\Services\Contracts\ChatServiceInterface;
+use App\View\Components\Dashboard\ChatMessage;
 
 class ChatService implements ChatServiceInterface
 {
@@ -18,6 +19,9 @@ class ChatService implements ChatServiceInterface
   public function messages($id = null)
   {
     $id = $this->getID($id);
+    if (auth()->user()->getTable() == 'users') {
+      ChatMessages::whereNull('user_id')->where('chat_id', $id)->update(['read_at' => date('Y-m-d H:i:s')]);
+    }
     return ChatMessages::with(['user', 'admin_user'])->where('chat_id', $id)->get();
   }
   public function message($request, $id = null, $is_admin = false)

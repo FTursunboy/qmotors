@@ -2,10 +2,12 @@
 
 namespace App\View\Components\Dashboard;
 
+use App\Models\UserCar;
 use Illuminate\View\Component;
 
 class ReminderForm extends Component
 {
+    public $user_cars = [];
     /**
      * Create a new component instance.
      *
@@ -13,7 +15,7 @@ class ReminderForm extends Component
      */
     public function __construct()
     {
-        //
+        $this->user_cars = UserCar::all();
     }
 
     /**

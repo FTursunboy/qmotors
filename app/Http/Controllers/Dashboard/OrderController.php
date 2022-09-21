@@ -14,7 +14,16 @@ class OrderController extends Controller
     {
         return view('dashboard.pages.order.index');
     }
-
+    public function create()
+    {
+        $model = new Order();
+        return view('dashboard.pages.order.create', compact('model'));
+    }
+    public function store(Request $request, OrderServiceInterface $orderService)
+    {
+        $result = $orderService->store($request);
+        return redirect()->route('order.show', $result->id)->with('success', 'Успешно создано!');
+    }
     public function show($id)
     {
         $model = Order::findOrFail($id);

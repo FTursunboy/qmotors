@@ -63,6 +63,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     });
     Route::group(['prefix' => 'order', 'as' => 'order'], function () {
         Route::get('/', [OrderController::class, 'index']);
+        Route::get('/create', [OrderController::class, 'create'])->name('.create');
+        Route::post('/store', [OrderController::class, 'store'])->name('.store');
         Route::get('/{id}', [OrderController::class, 'show'])->name('.show');
         Route::get('/{id}/edit', [OrderController::class, 'edit'])->name('.edit');
         Route::put('/{id}', [OrderController::class, 'update'])->name('.update');
@@ -70,6 +72,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     });
     Route::group(['prefix' => 'reminder', 'as' => 'reminder'], function () {
         Route::get('/', [ReminderController::class, 'index']);
+        Route::get('/create', [ReminderController::class, 'create'])->name('.create');
+        Route::post('/store', [ReminderController::class, 'store'])->name('.store');
         Route::get('/{id}', [ReminderController::class, 'show'])->name('.show');
         Route::get('/{id}/edit', [ReminderController::class, 'edit'])->name('.edit');
         Route::put('/{id}', [ReminderController::class, 'update'])->name('.update');

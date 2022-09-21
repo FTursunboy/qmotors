@@ -14,7 +14,16 @@ class ReminderController extends Controller
     {
         return view('dashboard.pages.reminder.index');
     }
-
+    public function create()
+    {
+        $model = new Reminder();
+        return view('dashboard.pages.reminder.create', compact('model'));
+    }
+    public function store(Request $request, ReminderServiceInterface $reminderService)
+    {
+        $result = $reminderService->store($request);
+        return redirect()->route('reminder.show', $result->id)->with('success', 'Успешно создано!');
+    }
     public function show($id)
     {
         $model = Reminder::findOrFail($id);

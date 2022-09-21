@@ -1,6 +1,6 @@
 <div class="d-flex mb-2">
     <x-dashboard.table-search-form />
-    {{-- <a href="{{ route('user.create') }}" class="ml-auto btn btn-primary">Добавить</a> --}}
+    <a href="{{ route('reminder.create') }}" class="ml-auto btn btn-primary">Добавить</a>
 </div>
 <x-dashboard.default-table length="{{ count($list) }}">
     <x-slot name="header">

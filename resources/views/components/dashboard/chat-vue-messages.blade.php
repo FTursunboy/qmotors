@@ -8,6 +8,7 @@ $chat = $attributes['chat'];
         <span class="date-time" v-text="formatDate(item.created_at)"></span>
         <a href="javascript:;" class="name">
             <span class="label label-primary" v-if="isAdmin(item)">Админ</span>
+            <span class="label label-warning" v-if="isAdmin(item)" v-text="readAtText(item)" />
             <span v-if="isOwn(item)">
                 Я
             </span>
@@ -81,6 +82,12 @@ $chat = $attributes['chat'];
         },
         formatDate(time){
             return moment.utc(time).local().format('YYYY-MM-DD HH:mm:ss');
+        },
+        readAtText(item){
+            if(item.read_at){
+                return "Читал в: " + this.formatDate(item.read_at);
+            }
+            return "Не читал";
         }
     }).mount();
 </script>
