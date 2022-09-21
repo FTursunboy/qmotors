@@ -20,7 +20,10 @@ class ChatService implements ChatServiceInterface
   {
     $id = $this->getID($id);
     if (auth()->user()->getTable() == 'users') {
-      ChatMessages::whereNull('user_id')->where('chat_id', $id)->update(['read_at' => date('Y-m-d H:i:s')]);
+      ChatMessages::whereNull('user_id')
+        ->whereNull('read_at')
+        ->where('chat_id', $id)
+        ->update(['read_at' => date('Y-m-d H:i:s')]);
     }
     return ChatMessages::with(['user', 'admin_user'])->where('chat_id', $id)->get();
   }
