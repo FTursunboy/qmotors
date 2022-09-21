@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chat;
 use App\Models\User;
 use App\Services\Contracts\ChatServiceInterface;
 use Illuminate\Http\Request;
@@ -11,7 +12,9 @@ class ChatController extends Controller
 {
     public function index($user_id)
     {
+        Chat::firstOrCreate(['user_id' => $user_id]);
         $user = User::find($user_id);
+
         return view('dashboard.pages.chat.index', compact('user'));
     }
 
