@@ -67,9 +67,6 @@ class CarService implements CarServiceInterface
 
   public function delete($id)
   {
-    Order::where('user_car_id', $id)->delete();
-    Reminder::where('user_car_id', $id)->delete();
-    UserCarPhoto::where('user_car_id', $id)->delete();
-    return UserCar::where('id', $id)->delete();
+    return $this->class::where('id', $id)->update(['status' => $this->class::getDeleteStatusId()]);
   }
 }

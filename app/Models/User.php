@@ -77,7 +77,11 @@ class User extends Authenticatable
 
     public function getFullNameAttribute()
     {
-        return $this->surname . ' ' . $this->name;
+        $fullname = $this->surname . ' ' . $this->name . ' ' . $this->patronymic;
+        if (strlen($fullname) < 3) {
+            $fullname = 'фио нет';
+        }
+        return $fullname . ' [' . $this->phone_number . ']';
     }
 
     public function getGenderTextAttribute()

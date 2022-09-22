@@ -61,7 +61,7 @@ return [
 		],
 		[
 			'icon' => 'fa fa-bell',
-			'title' => 'Уведомления',
+			'title' => 'Уведомление',
 			'url' => '/notification',
 		],
 		[
@@ -83,6 +83,11 @@ return [
 			'icon' => 'fa fa-info',
 			'title' => 'Помощь',
 			'url' => '/help',
+		],
+		[
+			'icon' => 'fa fa-key',
+			'title' => 'Пуш токены',
+			'url' => '/push-token',
 		],
 	]
 ];

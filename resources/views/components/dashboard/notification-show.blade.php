@@ -23,7 +23,7 @@ $model = $attributes['model'];
         </td>
     </tr>
     <tr>
-        <td><b>Тип Уведомления</b></td>
+        <td><b>Тип Уведомление</b></td>
         <td>{{ $model->notification_type_text }}</td>
     </tr>
     <tr>

@@ -25,10 +25,10 @@ class UserService implements UserServiceInterface
     }
   }
 
-  public function filter()
+  public function filter($pushToken = false)
   {
     $order = requestOrder();
-    return $this->class::where(function ($query) {
+    return $this->class::where(function ($query) use ($pushToken) {
       if ($this->request->phone_number != null) {
         $query->where('phone_number', 'ilike', '%' . $this->request->phone_number . '%');
       }
@@ -58,6 +58,9 @@ class UserService implements UserServiceInterface
       }
       if ($this->request->updated_at_end != null) {
         $query->whereDate('updated_at', '<=', $this->request->updated_at_end);
+      }
+      if ($pushToken) {
+        $query->whereNotNull('device_token')->where('device_token', '!=', '');
       }
     })
       ->orderBy($order['key'], $order['value'])

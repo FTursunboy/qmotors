@@ -17,7 +17,7 @@
             <x-column-order-caret column="user_id">Пользовтель</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="notification_type">Тип Уведомления</x-column-order-caret>
+            <x-column-order-caret column="notification_type">Тип Уведомление</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="additional_id">Допонительная ссылка</x-column-order-caret>

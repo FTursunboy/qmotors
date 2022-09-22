@@ -48,7 +48,7 @@ class OrderService implements OrderServiceInterface
         'order_number' => $request->order_number
       ],
     ));
-    return $this->success($model, 201);
+    return $model;
   }
 
   public function photo($id, $request)

@@ -16,6 +16,11 @@ class UserController extends Controller
         return view('dashboard.pages.user.index');
     }
 
+    public function pushToken(Request $request)
+    {
+        return view('dashboard.pages.user.push-token');
+    }
+
     public function show($id)
     {
         $model = User::findOrFail($id);

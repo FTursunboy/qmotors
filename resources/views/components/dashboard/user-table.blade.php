@@ -38,8 +38,8 @@
         <tr>
             <td><a href="{{ route('user.show', $item->id) }}">{{ $item->id }}</a></td>
             <td class="with-img"><img src="{{ asset($item->avatar) }}" alt="avatar" width="100"></td>
-            <td>{{ $item->phone_number }}</td>
-            <td> {{ $item->surname }}</td>
+            <td><a href="tel:{{ $item->phone_number }}">{{ $item->phone_number }}</a></td>
+            <td>{{ $item->surname }}</td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->patronymic }}</td>
             <td>{{ $item->is_complete_text }}</td>

@@ -21,7 +21,7 @@ class OrderApiController extends Controller
 
     public function store(StoreOrderRequest $request, OrderServiceInterface $orderService)
     {
-        return $orderService->store($request);
+        return $this->success($orderService->store($request), 201);
     }
 
     public function photo($id, PhotoOrderRequest $request, OrderServiceInterface $orderService)

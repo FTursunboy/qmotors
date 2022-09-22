@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\UserCar;
+use App\Services\Contracts\CarServiceInterface;
 use App\Services\Contracts\UserCarServiceInterface;
 use Illuminate\Http\Request;
 use Throwable;
@@ -36,13 +37,13 @@ class UserCarController extends Controller
         return back()->with('not-allowed', $result['message']);
     }
 
-    public function delete($id)
+    public function delete($id, CarServiceInterface $service)
     {
         try {
-            UserCar::findOrFail($id)->delete();
+            $service->delete($id);
         } catch (Throwable $e) {
             return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");
         }
-        return redirect()->route('user-car')->with('success', "Успешно удалено: $id!");
+        return redirect()->route('user-car')->with('success', "Авто в статусе удаленно: $id!");
     }
 }

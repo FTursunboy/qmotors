@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::put('/{id}', [UserCarController::class, 'update'])->name('.update');
         Route::delete('/{id}', [UserCarController::class, 'delete'])->name('.delete');
     });
+    Route::get('/push-token', [UserController::class, 'pushToken']);
     Route::group(['prefix' => 'users', 'as' => 'user'], function () {
         Route::get('/', [UserController::class, 'index']);
         Route::get('/create', [UserController::class, 'create'])->name('.create');

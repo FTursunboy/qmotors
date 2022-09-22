@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 class UserCar extends Model
 {
     use HasFactory, ModelCommonMethods;
-
     const  STATUSES = [
         ['id' => 0, 'name' => 'Активный'],
         ['id' => 1, 'name' => 'Проданный'],
@@ -73,5 +72,10 @@ class UserCar extends Model
     public function getTitleAttribute()
     {
         return $this->model->name . ' (' . $this->id . ')';
+    }
+
+    public static function getDeleteStatusId()
+    {
+        return collect(self::STATUSES)->firstWhere('name', 'Удаленный')['id'];
     }
 }

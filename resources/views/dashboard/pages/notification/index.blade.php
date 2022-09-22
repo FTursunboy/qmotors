@@ -1,19 +1,19 @@
 @extends('dashboard.layouts.default')
 
-@section('title', 'Уведомления')
+@section('title', 'Уведомление')
 
 @section('content')
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="/">Дашборд</a></li>
-  <li class="breadcrumb-item active">Уведомления</li>
+  <li class="breadcrumb-item active">Уведомление</li>
 </ol>
 <!-- begin page-header -->
-<h1 class="page-header">Уведомления</h1>
+<h1 class="page-header">Уведомление</h1>
 <!-- end page-header -->
 
 <div class="row">
   <div class="col-md-9">
-    <x-dashboard.panel title="Уведомления">
+    <x-dashboard.panel title="Уведомление">
       <x-dashboard.notification-table />
     </x-dashboard.panel>
   </div>

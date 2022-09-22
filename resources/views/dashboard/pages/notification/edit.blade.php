@@ -5,7 +5,7 @@
 @section('content')
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="/">Дашборд</a></li>
-  <li class="breadcrumb-item"><a href="/notification">Уведомления</a></li>
+  <li class="breadcrumb-item"><a href="/notification">Уведомление</a></li>
   <li class="breadcrumb-item"><a href="/notification/{{ $model->id }}">{{ $model->id }}</a></li>
   <li class="breadcrumb-item active">Изменить</li>
 </ol>

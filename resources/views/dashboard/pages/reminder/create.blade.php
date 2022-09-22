@@ -5,7 +5,7 @@
 @section('content')
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="/">Дашборд</a></li>
-  <li class="breadcrumb-item"><a href="/users">Уведомления</a></li>
+  <li class="breadcrumb-item"><a href="/users">Уведомление</a></li>
   <li class="breadcrumb-item active">Создать</li>
 </ol>
 <!-- begin page-header -->
