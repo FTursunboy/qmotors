@@ -24,7 +24,17 @@ class UserService implements UserServiceInterface
       $this->class = $class;
     }
   }
-
+  public function list($request)
+  {
+    return $this->class::where(function ($query) use ($request) {
+      if ($request->q) {
+        $query->where('phone_number', 'ilike', '%' . $this->request->q . '%')
+          ->orWhere('surname', 'ilike', '%' . $this->request->q . '%')
+          ->orWhere('name', 'ilike', '%' . $this->request->q . '%')
+          ->orWhere('patronymic', 'ilike', '%' . $this->request->q . '%');
+      }
+    })->get()->append('fullname');
+  }
   public function filter($pushToken = false)
   {
     $order = requestOrder();

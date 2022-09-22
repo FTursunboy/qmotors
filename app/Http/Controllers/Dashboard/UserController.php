@@ -16,6 +16,11 @@ class UserController extends Controller
         return view('dashboard.pages.user.index');
     }
 
+    public function list(Request $request, UserServiceInterface $service)
+    {
+        return $service->list($request);
+    }
+
     public function pushToken(Request $request)
     {
         return view('dashboard.pages.user.push-token');

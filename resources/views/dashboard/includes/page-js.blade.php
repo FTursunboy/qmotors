@@ -7,14 +7,15 @@
 <script src="{{ asset('/dash/assets/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="{{ asset('/dash/assets/js/select2.js') }}"></script>
 
 <!-- ================== END BASE JS ================== -->
 
 <script>
+    const selectData = {};
     $(document).ready(function () {
       $('.select2').select2();
-  });
+    });
 
   function updateQueryStringParameter(uri, key, value) {
       var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");

@@ -28,3 +28,18 @@ $defaultOptionLabel = $attributes['default-option-label']??'----------';
     <span class="text-danger">{{ $message }}</span>
     @enderror
 </div>
+{{--
+@push('scripts')
+<script>
+    selectData["{{ $attributes['name'] }}"] = @json($options);
+    $(document).ready(function () {
+        $("#{{ $attributes['name'] }}-id").select2({
+            data: $.map(selectData["{{ $attributes['name'] }}"], function (obj) {
+                obj.id = obj.id; // replace pk with your identifier
+                obj.text = obj["{{ $option }}"]
+                return obj;
+            }),
+        });
+    });
+</script>
+@endpush --}}

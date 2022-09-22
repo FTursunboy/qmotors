@@ -16,6 +16,11 @@ class UserCarController extends Controller
         return view('dashboard.pages.user-car.index');
     }
 
+    public function list(Request $request, UserCarServiceInterface $service)
+    {
+        return $service->list($request);
+    }
+
     public function show($id, Request $request)
     {
         $model = UserCar::findOrFail($id);

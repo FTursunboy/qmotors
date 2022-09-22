@@ -7,8 +7,10 @@ $model = $attributes['model'];
   <x-dashboard.form-input name="null" label="Автомобиль" class="col-md-6" :value="$model->user_car->model->name"
     disabled="1" /> --}}
 
+  
   <x-dashboard.form-select name="user_car_id" label="Автомобиль" option="title" :options="$user_cars" class="col-md-6"
     :value="$model->user_car_id" required />
+  {{-- <x-dashboard.user-car-select class="col-md-6" required /> --}}
   <x-dashboard.form-select name="tech_center_id" label="Технический центр" option="title" :options="$techCenters"
     class="col-md-6" :value="$model->tech_center_id" />
   <x-dashboard.form-input name="order_number" label="Номер Заказа" class="col-md-6" :value="$model->order_number" />

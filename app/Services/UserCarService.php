@@ -24,7 +24,17 @@ class UserCarService implements UserCarServiceInterface
       $this->class = $class;
     }
   }
-
+  public function list($request)
+  {
+    return $this->class::where(function ($query) use ($request) {
+      if ($request->q) {
+        $query->where('id', 'ilike', '%' . $this->request->q . '%')
+          ->orWhereHas('model', function ($query) use ($request) {
+            $query->where('name', 'ilike', '%' . $this->request->q . '%');
+          });
+      }
+    })->get()->append('title');
+  }
   public function filter()
   {
     $order = requestOrder();

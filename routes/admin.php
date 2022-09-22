@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     // Route::get('/version-1', [DashboardController::class, 'index1']);
     Route::group(['prefix' => 'user-car', 'as' => 'user-car'], function () {
         Route::get('/', [UserCarController::class, 'index']);
+        Route::get('/list', [UserCarController::class, 'list'])->name('.list');
         Route::get('/{id}', [UserCarController::class, 'show'])->name('.show');
         Route::get('/{id}/edit', [UserCarController::class, 'edit'])->name('.edit');
         Route::put('/{id}', [UserCarController::class, 'update'])->name('.update');
@@ -41,6 +42,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/push-token', [UserController::class, 'pushToken']);
     Route::group(['prefix' => 'users', 'as' => 'user'], function () {
         Route::get('/', [UserController::class, 'index']);
+        Route::get('/list', [UserController::class, 'list'])->name('.list');
         Route::get('/create', [UserController::class, 'create'])->name('.create');
         Route::post('/', [UserController::class, 'store'])->name('.store');
         Route::get('/{id}/edit', [UserController::class, 'edit'])->name('.edit');

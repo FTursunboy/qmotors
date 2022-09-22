@@ -4,4 +4,5 @@
     <x-dashboard.form-input label="Имя" name="name" :value="request('name')" />
     <x-dashboard.form-input label="Очество" name="patronymic" :value="request('patronymic')" />
     <x-dashboard.form-select label="Пол" name="gender" option="name" :options="$genders" />
+    <x-dashboard.user-select />
 </x-dashboard.filter-form>
