@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
+use App\Jobs\ProcessPushNotification;
 use App\Models\Chat;
 use App\Models\ChatMessages;
 use App\Services\Contracts\ChatServiceInterface;
-use App\View\Components\Dashboard\ChatMessage;
 
 class ChatService implements ChatServiceInterface
 {
@@ -43,6 +43,14 @@ class ChatService implements ChatServiceInterface
         $user
       )
     );
+    if ($is_admin) {
+      $user_id = $this->class::find($id)->user_id;
+      $request->merge(['user_id' => $user_id]);
+      ProcessPushNotification::dispatch($request->collect(), [
+        'title' => 'Вам пришло новое сообщение',
+        'body' => $request->message
+      ]);
+    }
     return $model;
   }
 
