@@ -37,7 +37,20 @@ Route::post('send-sms-code', [AuthApiController::class, 'sendSmsCode']);
 Route::group(['prefix' => 'tech-center'], function () {
     Route::get('list', [TechCenterApiController::class, 'list']);
 });
-
+Route::get('help', [HelpApiController::class, 'index']);
+Route::group(['prefix' => 'article'], function () {
+    Route::get('', [ArticleApiController::class, 'index']);
+    Route::get('{id}', [ArticleApiController::class, 'show']);
+});
+Route::group(['prefix' => 'stock'], function () {
+    Route::get('', [StockApiController::class, 'index']);
+    Route::get('{id}', [StockApiController::class, 'show']);
+});
+Route::group(['prefix' => 'free-diagnostic'], function () {
+    Route::get('', [FreeDiagnosticApiController::class, 'index']);
+    // Route::get('history', [FreeDiagnosticApiController::class, 'history']);
+    Route::get('{id}', [FreeDiagnosticApiController::class, 'show']);
+});
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'profile'], function () {
         Route::get('', [UserApiController::class, 'profile']);
@@ -89,25 +102,19 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         // Route::put('{id}', [ReviewApiController::class, 'update']);
         // Route::delete('{id}', [ReviewApiController::class, 'delete']);
     });
-    Route::group(['prefix' => 'stock'], function () {
-        Route::get('', [StockApiController::class, 'index']);
-        Route::get('{id}', [StockApiController::class, 'show']);
+
+    Route::group(['prefix' => 'free-diagnostic'], function () {
+        // Route::get('', [FreeDiagnosticApiController::class, 'index']);
+        Route::get('history', [FreeDiagnosticApiController::class, 'history']);
+        // Route::get('{id}', [FreeDiagnosticApiController::class, 'show']);
     });
-    Route::group(['prefix' => 'article'], function () {
-        Route::get('', [ArticleApiController::class, 'index']);
-        Route::get('{id}', [ArticleApiController::class, 'show']);
-    });
+
     Route::group(['prefix' => 'notification'], function () {
         Route::get('', [NotificationApiController::class, 'index']);
         Route::get('{id}', [NotificationApiController::class, 'show']);
         Route::post('device-token', [NotificationApiController::class, 'device']);
     });
-    Route::get('help', [HelpApiController::class, 'index']);
-    Route::group(['prefix' => 'free-diagnostic'], function () {
-        Route::get('', [FreeDiagnosticApiController::class, 'index']);
-        Route::get('history', [FreeDiagnosticApiController::class, 'history']);
-        Route::get('{id}', [FreeDiagnosticApiController::class, 'show']);
-    });
+
     Route::group(['prefix' => 'chat'], function () {
         Route::get('', [ChatApiController::class, 'index']);
         Route::get('messages', [ChatApiController::class, 'messages']);
