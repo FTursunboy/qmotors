@@ -24,7 +24,7 @@ class PushNotificationService implements PushNotificationServiceInterface
 
   public function setDeviceToken($request)
   {
-    auth()->user()->update(['device_token' => $request->token]);
+    auth()->user()->update(['fcmtoken' => $request->token]);
     return 'Токен успешно сохранен.';
   }
 
@@ -38,9 +38,9 @@ class PushNotificationService implements PushNotificationServiceInterface
         $user_id = $request['user_id'];
       }
       if ($user_id == null) {
-        $registration_ids = User::orderBy('id')->get()->pluck('device_token')->all();
+        $registration_ids = User::orderBy('id')->get()->pluck('fcmtoken')->all();
       } else {
-        $registration_ids = User::where('id', $user_id)->get()->pluck('device_token')->all();
+        $registration_ids = User::where('id', $user_id)->get()->pluck('fcmtoken')->all();
       }
       $chunks =  array_chunk($registration_ids, 1000);
       foreach ($chunks as $tokens) {

@@ -23,7 +23,7 @@
             <x-column-order-caret column="gender">Пол</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="device_token">Токен</x-column-order-caret>
+            <x-column-order-caret column="fcmtoken">Токен</x-column-order-caret>
         </th>
     </x-slot>
     <x-slot name="body">
@@ -35,7 +35,7 @@
             <td>{{ $item->name }}</td>
             <td>{{ $item->patronymic }}</td>
             <td>{{ $item->gender_text }}</td>
-            <td>{{ $item->device_token }}</td>
+            <td>{{ $item->fcmtoken }}</td>
         </tr>
         @endforeach
     </x-slot>

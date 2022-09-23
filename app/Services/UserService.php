@@ -70,7 +70,7 @@ class UserService implements UserServiceInterface
         $query->whereDate('updated_at', '<=', $this->request->updated_at_end);
       }
       if ($pushToken) {
-        $query->whereNotNull('device_token')->where('device_token', '!=', '');
+        $query->whereNotNull('fcmtoken')->where('fcmtoken', '!=', '');
       }
     })
       ->orderBy($order['key'], $order['value'])
