@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\FirebaseLog;
 use App\Models\Notification;
 use App\Models\User;
 use App\Services\Contracts\PushNotificationServiceInterface;
@@ -66,6 +67,11 @@ class PushNotificationService implements PushNotificationServiceInterface
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
         $response = curl_exec($ch);
+        FirebaseLog::create([
+          'fcmtokens' => json_encode($tokens),
+          'data' => $dataString,
+          'response' => $response
+        ]);
         Log::channel('firebase')->info($response . '  ' . $dataString);
         // dd($response);
       }

@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::delete('/{id}', [UserCarController::class, 'delete'])->name('.delete');
     });
     Route::get('/push-token', [UserController::class, 'pushToken']);
+    Route::get('/firebase-log', [UserController::class, 'firebaseLog']);
     Route::group(['prefix' => 'users', 'as' => 'user'], function () {
         Route::get('/', [UserController::class, 'index']);
         Route::get('/list', [UserController::class, 'list'])->name('.list');

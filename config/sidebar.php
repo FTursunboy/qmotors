@@ -89,5 +89,10 @@ return [
 			'title' => 'Пуш токены',
 			'url' => '/push-token',
 		],
+		[
+			'icon' => 'fa fa-fire',
+			'title' => 'Firebase логи',
+			'url' => '/firebase-log',
+		],
 	]
 ];

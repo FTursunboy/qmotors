@@ -25,6 +25,10 @@ class UserController extends Controller
     {
         return view('dashboard.pages.user.push-token');
     }
+    public function firebaseLog(Request $request)
+    {
+        return view('dashboard.pages.user.firebase-log');
+    }
 
     public function show($id)
     {
