@@ -40,7 +40,7 @@ class PushNotificationService implements PushNotificationServiceInterface
         $user_id = $request['user_id'];
       }
       if ($user_id == null) {
-        $registration_ids = User::orderBy('id')->get()->pluck('fcmtoken')->all();
+        $registration_ids = User::orderBy('id')->whereNotNull('fcmtoken')->get()->pluck('fcmtoken')->all();
       } else {
         $registration_ids = User::where('id', $user_id)->get()->pluck('fcmtoken')->all();
       }
