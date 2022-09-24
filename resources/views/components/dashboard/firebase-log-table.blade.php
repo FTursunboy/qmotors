@@ -24,15 +24,9 @@
         @foreach ($list as $index => $item)
         <tr class="@if(json_decode($item->response)->success)bg-green-transparent-3 @else bg-red-transparent-3 @endif">
             <td>{{ $item->id }}</td>
-            <td>
-                {{ ($item->response) }}
-            </td>
-            <td>
-                <pre>{{ ($item->fcmtokens) }}</pre>
-            </td>
-            <td>
-                <pre>@json(json_decode($item->data))</pre>
-            </td>
+            <td>{{ ($item->response) }}</td>
+            <td>{{ ($item->fcmtokens) }}</td>
+            <td>{{ $item->data }}</td>
             <td>{{ $item->created_at }}</td>
         </tr>
         @endforeach
