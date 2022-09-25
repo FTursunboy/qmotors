@@ -13,7 +13,7 @@ class OrderTypeApiController extends Controller
 
     public function list()
     {
-        return $this->success(ListResource::collection(OrderType::all()));
+        return $this->success(ListResource::collection(OrderType::orderBy('id')));
     }
 
     public function show($id)
