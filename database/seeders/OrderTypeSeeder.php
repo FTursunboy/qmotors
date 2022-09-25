@@ -18,7 +18,7 @@ class OrderTypeSeeder extends Seeder
             'name' => "Кузовной ремонт"
         ],
         [
-            'name' => "Детайлинг"
+            'name' => "Детейлинг"
         ],
         [
             'name' => "другое"
