@@ -15,7 +15,7 @@ class FirebaseLogTable extends Component
      */
     public function __construct()
     {
-        $this->list = FirebaseLog::paginate(request()->get('per_page', 20));
+        $this->list = FirebaseLog::latest('id')->paginate(request()->get('per_page', 20));
     }
 
     /**
