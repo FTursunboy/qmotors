@@ -82,6 +82,10 @@ class ReminderService implements ReminderServiceInterface
   {
     $user_id = UserCar::find($model->user_car_id)->user_id;
     $request->merge(['user_id' => $user_id]);
-    ProcessPushNotification::dispatch($request->collect(), $model);
+    ProcessPushNotification::dispatch(
+      $request->collect(),
+      $model,
+      ['title' => 'Новое напоминание', 'body' => $request->text]
+    );
   }
 }

@@ -66,7 +66,11 @@ class NotificationService implements NotificationServiceInterface
         'id' => $this->class::nextID()
       ]
     ));
-    ProcessPushNotification::dispatch($request->collect(), $model);
+    ProcessPushNotification::dispatch(
+      $request->collect(),
+      $model,
+      ['title' => 'Новое уведомление', 'body' => $request->title]
+    );
     return $model;
   }
 

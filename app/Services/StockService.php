@@ -55,7 +55,11 @@ class StockService implements StockServiceInterface
       ]
     ));
     // PushNotificationService::send($request, $model);
-    ProcessPushNotification::dispatch($request->collect(), $model);
+    ProcessPushNotification::dispatch(
+      $request->collect(),
+      $model,
+      ['title' => 'Новая акция', 'body' => $request->title]
+    );
 
     return $model;
   }
