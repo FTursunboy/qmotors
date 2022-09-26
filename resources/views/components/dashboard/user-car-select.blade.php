@@ -15,9 +15,9 @@ $defaultOptionLabel = $attributes['default-option-label']??'----------';
 @endphp
 <div class="form-group {{ $attributes['class'] }}">
     <label for="{{ $name }}-id">{{ $attributes['label']??'Автомобиль' }}</label>
-    <select name="{{ $name }}" class="form-control" id="{{ $name }}-id" @if($attributes['required']) required @endif>
+    <select name="user_car_id" class="form-control" id="{{ $name }}-id" @if($attributes['required']) required @endif>
         @if(!$attributes['not-nullable'])
-        <option value="{{ null }}">{{ $defaultOptionLabel }}</option>
+        <option value="{{ $attributes['value']?->id }}" selected>{{ $attributes['value']?->title }}</option>
         @endif
         {{-- @foreach ($options as $item)
         <option value="{{ $item['id'] }}" @if ($selected!==null and $item['id']==$selected) selected @endif>
@@ -33,19 +33,46 @@ $defaultOptionLabel = $attributes['default-option-label']??'----------';
 <script>
     $(document).ready(function () {
         $("#{{ $name }}-id").select2({
+            placeholder:'Введите ид или название модели',
             ajax: {
                 url: "{{ route('user-car.list') }}",
+                data: function (params) {
+                    var query = {
+                        search: params.term,
+                        per_page: params.per_page || 100,
+                        page: params.page || 1
+                    }
+                    return query;
+                },
                 dataType: 'json',
-                // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-                processResults: function (data) {
+                processResults: function (data, params) {
                     return {
-                        results: $.map(data, function(obj) {
-                            return { id: obj.id, text: obj.title };
-                        })
+                        results: $.map(data.result, function(obj) {
+                            return { 
+                                id: obj.id,
+                                text: obj.title,
+                            };
+                        }),
+                        pagination: {
+                            more: (data.page * 100) < data.filteredCount
+                        }
                     };
                 }
             },
         });
     });
+
+    // $("#{{ $name }}-id").select2({
+    //     ajax: {
+    //         url: 'https://api.github.com/search/repositories',
+    //         data: function (params) {
+    //             var query = {
+    //                 search: params.term,
+    //                 page: params.page || 1
+    //             }
+    //             return query;
+    //         }
+    //     }
+    // });
 </script>
 @endpush

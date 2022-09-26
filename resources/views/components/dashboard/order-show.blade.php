@@ -15,7 +15,8 @@ $model = $attributes['model'];
         <td><b>Автомобиль</b></td>
         <td><a href="{{ route('user-car.show', $model->user_car_id) }}">{{
                 optional($model->user_car)->model->name
-                }} ({{ $model->user_car_id }})</a></td>
+                }} ({{ $model->user_car_id }})</a>
+        </td>
     </tr>
     <tr>
         <td><b>Технический центр</b></td>

@@ -37,15 +37,36 @@ $defaultOptionLabel = $attributes['default-option-label']??'----------';
             allowClear: true,
             ajax: {
                 url: "{{ route('user.list') }}",
+                data: function (params) {
+                    var query = {
+                        search: params.term,
+                        per_page: params.per_page || 100,
+                        page: params.page || 1
+                    }
+                    return query;
+                },
                 dataType: 'json',
-                // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-                processResults: function (data) {
+                processResults: function (data, params) {
                     return {
-                        results: $.map(data, function(obj) {
-                            return { id: obj.id, text: obj.fullname };
-                        })
+                        results: $.map(data.result, function(obj) {
+                            return { 
+                                id: obj.id,
+                                text: obj.fullname,
+                            };
+                        }),
+                        pagination: {
+                            more: (data.page * 100) < data.filteredCount
+                        }
                     };
                 }
+                // dataType: 'json',
+                // processResults: function (data) {
+                //     return {
+                //         results: $.map(data, function(obj) {
+                //             return { id: obj.id, text: obj.fullname };
+                //         })
+                //     };
+                // }
             },
         });
     });

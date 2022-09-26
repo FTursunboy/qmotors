@@ -26,14 +26,18 @@ class UserCarService implements UserCarServiceInterface
   }
   public function list($request)
   {
-    return $this->class::where(function ($query) use ($request) {
-      if ($request->q) {
-        $query->where('id', 'ilike', '%' . $this->request->q . '%')
+    $query = $this->class::where(function ($query) use ($request) {
+      if ($request->search) {
+        $query->where('id', 'ilike', '%' . $this->request->search . '%')
           ->orWhereHas('model', function ($query) use ($request) {
-            $query->where('name', 'ilike', '%' . $this->request->q . '%');
+            $query->where('name', 'ilike', '%' . $request->search . '%');
           });
       }
-    })->get()->append('title');
+    });
+    $filteredCount = $query->count();
+    $result = $query->paginate($request->get('per_page', 20))->append('title');
+    $page = $request->page;
+    return compact('result', 'filteredCount', 'page');
   }
   public function filter()
   {
