@@ -17,7 +17,8 @@ $defaultOptionLabel = $attributes['default-option-label']??'----------';
     <label for="{{ $name }}-id">{{ $attributes['label']??'Автомобиль' }}</label>
     <select name="user_car_id" class="form-control" id="{{ $name }}-id" @if($attributes['required']) required @endif>
         @if(!$attributes['not-nullable'])
-        <option value="{{ $attributes['value']?->id }}" selected>{{ $attributes['value']?->title }}</option>
+        <option value="{{ optional($attributes['value'])->id }}" selected>{{ optional($attributes['value'])->title }}
+        </option>
         @endif
         {{-- @foreach ($options as $item)
         <option value="{{ $item['id'] }}" @if ($selected!==null and $item['id']==$selected) selected @endif>
