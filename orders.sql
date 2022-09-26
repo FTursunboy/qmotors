@@ -1,5 +1,5 @@
 COPY public.orders (id, user_car_id, tech_center_id, order_id, date, order_type, description, guarantee, created_at, updated_at, stock_id, mileage, order_number, status, order_type_id) FROM stdin;
-1	378851	1	\N	2022-08-20 00:00:00	\N	dklajdd	f	2022-07-24 08:59:00	2022-07-24 08:59:00	\N	\N	H123PC426	0	1
+-- 1	378851	1	\N	2022-08-20 00:00:00	\N	dklajdd	f	2022-07-24 08:59:00	2022-07-24 08:59:00	\N	\N	H123PC426	0	1
 2	378851	1	\N	2022-08-20 00:00:00	\N	dklajdd	f	2022-07-24 09:07:53	2022-07-24 09:07:53	\N	\N	H123PC426	0	1
 3	378851	1	\N	2022-08-20 00:00:00	\N	dklajdd	t	2022-07-24 09:10:03	2022-07-24 09:10:03	\N	\N	H123PC426	0	1
 4	378851	1	\N	2022-08-20 00:00:00	\N	dklajdd	t	2022-07-27 06:11:34	2022-07-27 06:11:34	\N	\N	H123PC426	0	1
