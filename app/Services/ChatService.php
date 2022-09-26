@@ -46,10 +46,17 @@ class ChatService implements ChatServiceInterface
     if ($is_admin) {
       $user_id = $this->class::find($id)->user_id;
       $request->merge(['user_id' => $user_id, 'send' => 1]);
-      ProcessPushNotification::dispatch($request->collect(), [
-        'title' => 'Вам пришло новое сообщение',
-        'body' => $request->message
-      ]);
+      ProcessPushNotification::dispatch(
+        $request->collect(),
+        [
+          'title' => 'Вам пришло новое сообщение',
+          'body' => $request->message
+        ],
+        [
+          'title' => 'Вам пришло новое сообщение',
+          'body' => $request->message
+        ]
+      );
     }
     return $model;
   }

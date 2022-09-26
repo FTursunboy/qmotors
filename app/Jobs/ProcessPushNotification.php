@@ -16,6 +16,7 @@ class ProcessPushNotification implements ShouldQueue
 
     public $request;
     public $model;
+    public $notification;
     public $user_id;
 
     /**
@@ -23,10 +24,11 @@ class ProcessPushNotification implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($request, $model, $user_id = null)
+    public function __construct($request, $model, $notification = [], $user_id = null)
     {
         $this->request = $request;
         $this->model = $model;
+        $this->notification = $notification;
         $this->user_id = $user_id;
     }
 
@@ -37,6 +39,6 @@ class ProcessPushNotification implements ShouldQueue
      */
     public function handle()
     {
-        PushNotificationService::send($this->request, $this->model, $this->user_id);
+        PushNotificationService::send($this->request, $this->model, $this->notification, $this->user_id);
     }
 }

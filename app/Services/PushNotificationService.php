@@ -30,7 +30,7 @@ class PushNotificationService implements PushNotificationServiceInterface
     return 'Токен успешно сохранен.';
   }
 
-  public static function send($request, $model, $user_id = null)
+  public static function send($request, $model, $notification = ['title' => 'Test', 'body' => 'Test'], $user_id = null)
   {
     if ($request['send'] == 1) {
       if (!isset($request['user_id'])) {
@@ -49,7 +49,8 @@ class PushNotificationService implements PushNotificationServiceInterface
         $data = [
           "registration_ids" => $tokens,
           "data" => $model,
-          // "data" => [
+          "notification" => $notification,
+          // "notification" => [
           //   "title" => $request['title'],
           //   "text" => $request['text'],
           // ],
