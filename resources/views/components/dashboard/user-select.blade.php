@@ -33,6 +33,8 @@ $defaultOptionLabel = $attributes['default-option-label']??'----------';
 <script>
     $(document).ready(function () {
         $("#{{ $name }}-id").select2({
+            placeholder: "Введите ид , номер телефон или фио (Оставьте пустым, чтобы выбрать всех пользователей)",
+            allowClear: true,
             ajax: {
                 url: "{{ route('user.list') }}",
                 dataType: 'json',
