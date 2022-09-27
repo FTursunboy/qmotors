@@ -1,7 +1,7 @@
 @php
 // $options = $attributes['options'];
 // $option = $attributes['option'];
-$name = $attribute['name']??'user_car_id';
+$name = $attribute['name']??'user_id';
 if(isset($attributes['value'])){
 if(old($name)){
 $selected = old($name);
@@ -17,7 +17,8 @@ $defaultOptionLabel = $attributes['default-option-label']??'----------';
     <label for="{{ $name }}-id">{{ $attributes['label']??'Пользователь' }}</label>
     <select name="{{ $name }}" class="form-control" id="{{ $name }}-id" @if($attributes['required']) required @endif>
         @if(!$attributes['not-nullable'])
-        <option value="{{ null }}">{{ $defaultOptionLabel }}</option>
+        <option value="{{ optional($attributes['value'])->id }}" selected>{{ optional($attributes['value'])->fullname }}
+        </option>
         @endif
         {{-- @foreach ($options as $item)
         <option value="{{ $item['id'] }}" @if ($selected!==null and $item['id']==$selected) selected @endif>

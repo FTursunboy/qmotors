@@ -4,8 +4,11 @@ $model = $attributes['model'];
 
 
 <div class="row">
+    {{--
     <x-dashboard.form-select label="Пользователь" name="user_id" option="full_name" :options="$users"
-        :value="$model->user_id" class="col-md-6" />
+        :value="$model->user_id" class="col-md-6" /> --}}
+    <x-dashboard.user-select default-option-label="Все пользователи" :options="$users" :value="$model->user"
+        class="col-md-6" />
     <x-dashboard.form-select label="Тип" name="bonus_type" option="name" :options="$bonusTypes"
         :value="$model->bonus_type" class="col-md-6" not-nullable />
     <x-dashboard.form-input name="points" type="number" label="Баллы" class="col-md-6" :value="$model->points" />
