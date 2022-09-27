@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Str;
+
 function requestOrder()
 {
   $order = request()->get('order', '-id');
@@ -40,4 +42,12 @@ function deleteFile($path)
   if ($path != null && file_exists(public_path() . $path)) {
     unlink(public_path() . $path);
   }
+}
+
+function customAsset($model, $field)
+{
+  if (str_contains($model->$field, 'storage')) {
+    return asset($model->$field);
+  }
+  return asset('storage/uploads/' . Str::singular($model->getTable()) . "/$field/" . $model->id . '/' . $model->$field);
 }
