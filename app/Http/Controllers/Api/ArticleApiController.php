@@ -12,11 +12,11 @@ class ArticleApiController extends Controller
     use ApiResponse;
     public function index()
     {
-        return $this->success(Article::exclude('text')->latest()->get());
+        return $this->success(Article::exclude('text')->latest()->get()->append('preview_path'));
     }
 
     public function show($id)
     {
-        return $this->success(Article::find($id));
+        return $this->success(Article::find($id)->append('preview_path'));
     }
 }
