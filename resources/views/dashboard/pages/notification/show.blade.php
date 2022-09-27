@@ -9,10 +9,10 @@
   <li class="breadcrumb-item active">{{ $model->id }}</li>
 </ol>
 <!-- begin page-header -->
-<h1 class="page-header">Увидомление #{{ $model->id }}</h1>
+<h1 class="page-header">Уведомление #{{ $model->id }}</h1>
 <!-- end page-header -->
 
-<x-dashboard.panel title="Увидомление подробнее">
+<x-dashboard.panel title="Уведомление подробнее">
   <x-dashboard.notification-show :model="$model" />
 </x-dashboard.panel>
 

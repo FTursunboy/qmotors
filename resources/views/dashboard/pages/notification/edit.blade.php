@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.default')
 
-@section('title', 'Изменит Увидомление')
+@section('title', 'Изменит Уведомление')
 
 @section('content')
 <ol class="breadcrumb float-xl-right">
@@ -10,10 +10,10 @@
   <li class="breadcrumb-item active">Изменить</li>
 </ol>
 <!-- begin page-header -->
-<h1 class="page-header"> Увидомление #{{ $model->id }}</h1>
+<h1 class="page-header"> Уведомление #{{ $model->id }}</h1>
 <!-- end page-header -->
 
-<x-dashboard.panel title="Изменит Увидомление">
+<x-dashboard.panel title="Изменит Уведомление">
   <form action="{{ route('notification.update', $model->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')

@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.default')
 
-@section('title', 'Увидомление')
+@section('title', 'Уведомление')
 
 @section('content')
 <ol class="breadcrumb float-xl-right">
@@ -9,10 +9,10 @@
   <li class="breadcrumb-item active">Создать</li>
 </ol>
 <!-- begin page-header -->
-<h1 class="page-header">Увидомление</h1>
+<h1 class="page-header">Уведомление</h1>
 <!-- end page-header -->
 
-<x-dashboard.panel title="Увидомление">
+<x-dashboard.panel title="Уведомление">
   <form action="{{ route('notification.store') }}" method="POST">
     @csrf
     <x-dashboard.notification-form :model="$model" />
