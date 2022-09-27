@@ -5,7 +5,7 @@ $model = $attributes['model'];
 <div class="row">
     <x-dashboard.form-input name="title" label="Заголовок" class="col-md-6" :value="$model->title" />
     <x-dashboard.form-input name="subtitle" label="Подзаголовок" class="col-md-6" :value="$model->subtitle" />
-    <x-dashboard.image-uploader name="preview" label="Превью" :default-image="asset($model->preview)"
+    <x-dashboard.image-uploader name="preview" label="Превью" :default-image="asset($model->preview_path)"
         class="col-md-12" />
 
     <x-dashboard.form-text-editor name="text" label="Текст" class="col-md-12" :value="$model->text" />

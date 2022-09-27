@@ -25,7 +25,7 @@
         @foreach ($list as $index => $item)
         <tr>
             <td><a href="{{ route('article.show', $item->id) }}">{{ $item->id }}</a></td>
-            <td><img src="{{ customAsset($item, 'preview') }}" width="100"></td>
+            <td><img src="{{ asset($item->preview_path) }}" width="100"></td>
             <td>{{ $item->title }}</td>
             <td>{{ $item->subtitle }}</td>
             <td>{{ $item->created_at }}</td>

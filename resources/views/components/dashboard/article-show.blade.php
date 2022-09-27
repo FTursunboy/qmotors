@@ -12,7 +12,7 @@ $model = $attributes['model'];
     </tr>
     <tr>
         <td><b>Превью</b></td>
-        <td><img src="{{ asset($model->preview) }}" width="300"></td>
+        <td><img src="{{ asset($model->preview_path) }}" width="300"></td>
     </tr>
     <tr>
         <td><b>Текст</b></td>
