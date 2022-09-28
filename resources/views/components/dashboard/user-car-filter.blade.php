@@ -1,4 +1,5 @@
 <x-dashboard.filter-form>
+    <x-dashboard.form-input label="Номер" name="number" :value="request('number')" />
     <x-dashboard.form-select label="Модель Автомобиля" name="model_id" option="name" :options="$models" />
     <x-dashboard.form-select label="Статус" name="status" option="name" :options="$statuses" />
     <x-dashboard.form-input label="Пользователь" name="user" :value="request('user')" />

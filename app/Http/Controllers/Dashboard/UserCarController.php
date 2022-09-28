@@ -27,6 +27,20 @@ class UserCarController extends Controller
         return view('dashboard.pages.user-car.show', compact('model'));
     }
 
+    public function create()
+    {
+        $model = new UserCar;
+        return view('dashboard.pages.user-car.create', compact('model'));
+    }
+
+    public function store(Request $request, UserCarServiceInterface $userCarService)
+    {
+        $result = $userCarService->store($request);
+        if ($result['status']) {
+            return redirect()->route('user-car')->with('success', $result['message']);
+        }
+        return back()->with('not-allowed', $result['message']);
+    }
     public function edit($id)
     {
         $model = UserCar::findOrFail($id);

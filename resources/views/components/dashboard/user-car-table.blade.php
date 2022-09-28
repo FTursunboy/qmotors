@@ -1,10 +1,14 @@
-<div class="mb-2">
+<div class="d-flex mb-2">
     <x-dashboard.table-search-form />
+    <a href="{{ route('user-car.create') }}" class="ml-auto btn btn-primary">Добавить</a>
 </div>
 <x-dashboard.default-table length="{{ count($list) }}">
     <x-slot name="header">
         <th>
             <x-column-order-caret column="id">ID</x-column-order-caret>
+        </th>
+        <th>
+            <x-column-order-caret column="number">Номер</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="car_model_id">Модель Автомобиля</x-column-order-caret>
@@ -36,6 +40,7 @@
         @foreach ($list as $index => $item)
         <tr>
             <td><a href="{{ route('user-car.show', $item->id) }}">{{ $item->id }}</a></td>
+            <td>{{ $item->number }}</td>
             <td>{{ optional($item->model)->name }}</td>
             <td> <a href="{{ route('user.show', optional($item->user)->id) }}">{{
                     optional($item->user)->full_name

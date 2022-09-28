@@ -71,7 +71,7 @@ class UserCar extends Model
 
     public function getTitleAttribute()
     {
-        return $this->model->name . ' (' . $this->id . ')';
+        return $this->model->name . ' (' . $this->id . ')[' . $this->number . ']';
     }
 
     public static function getDeleteStatusId()

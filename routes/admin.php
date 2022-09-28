@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     // Route::get('/version-1', [DashboardController::class, 'index1']);
     Route::group(['prefix' => 'user-car', 'as' => 'user-car'], function () {
         Route::get('/', [UserCarController::class, 'index']);
+        Route::get('/create', [UserCarController::class, 'create'])->name('.create');
+        Route::post('/', [UserCarController::class, 'store'])->name('.store');
         Route::get('/list', [UserCarController::class, 'list'])->name('.list');
         Route::get('/{id}', [UserCarController::class, 'show'])->name('.show');
         Route::get('/{id}/edit', [UserCarController::class, 'edit'])->name('.edit');

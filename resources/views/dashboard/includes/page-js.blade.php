@@ -8,11 +8,12 @@
 </script>
 
 <script src="{{ asset('/dash/assets/js/select2.js') }}"></script>
+<script src="{{ asset('/dash/assets/js/select2-ru.js') }}"></script>
 
 <!-- ================== END BASE JS ================== -->
 
 <script>
-    const selectData = {};
+  const selectData = {};
     $(document).ready(function () {
       $('.select2').select2();
     });

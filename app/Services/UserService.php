@@ -27,11 +27,11 @@ class UserService implements UserServiceInterface
   public function list($request)
   {
     $query = $this->class::where(function ($query) use ($request) {
-      if ($request->q) {
-        $query->where('phone_number', 'ilike', '%' . $this->request->q . '%')
-          ->orWhere('surname', 'ilike', '%' . $this->request->q . '%')
-          ->orWhere('name', 'ilike', '%' . $this->request->q . '%')
-          ->orWhere('patronymic', 'ilike', '%' . $this->request->q . '%');
+      if ($request->search) {
+        $query->where('phone_number', 'ilike', '%' . $this->request->search . '%')
+          ->orWhere('surname', 'ilike', '%' . $this->request->search . '%')
+          ->orWhere('name', 'ilike', '%' . $this->request->search . '%')
+          ->orWhere('patronymic', 'ilike', '%' . $this->request->search . '%');
       }
     });
     $filteredCount = $query->count();

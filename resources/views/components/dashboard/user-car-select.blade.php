@@ -35,6 +35,7 @@ $defaultOptionLabel = $attributes['default-option-label']??'----------';
     $(document).ready(function () {
         $("#{{ $name }}-id").select2({
             placeholder:'Введите ид или название модели',
+            language:'ru',
             ajax: {
                 url: "{{ route('user-car.list') }}",
                 data: function (params) {

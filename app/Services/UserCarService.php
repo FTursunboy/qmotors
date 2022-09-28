@@ -31,7 +31,8 @@ class UserCarService implements UserCarServiceInterface
         $query->where('id', 'ilike', '%' . $this->request->search . '%')
           ->orWhereHas('model', function ($query) use ($request) {
             $query->where('name', 'ilike', '%' . $request->search . '%');
-          });
+          })
+          ->orWhere('number', 'ilike', '%' . $this->request->search . '%');
       }
     });
     $filteredCount = $query->count();
@@ -58,6 +59,9 @@ class UserCarService implements UserCarServiceInterface
       }
       if ($this->request->vin != null) {
         $query->where('vin', 'ilike', '%' . $this->request->vin . '%');
+      }
+      if ($this->request->number != null) {
+        $query->where('number', 'ilike', '%' . $this->request->number . '%');
       }
       if ($this->request->year_start != null) {
         $query->where('year', '>=', $this->request->year_start);
@@ -124,13 +128,36 @@ class UserCarService implements UserCarServiceInterface
       ->paginate(request()->get('per_page', 20));
   }
 
+  public function store($request)
+  {
+    try {
+      $this->class::create([
+        'id' => $this->class::nextID(),
+        'user_id' => $request->user_id,
+        'number' => $request->number,
+        'car_model_id' => $request->model_id,
+        'status' => $request->status,
+        'year' => $request->year,
+        'number' => $request->number,
+        'mileage' => $request->mileage,
+        'vin' => $request->vin,
+        'last_visit' => $request->last_visit,
+      ]);
+      return ['status' => true, 'message' => "Успешно создано!"];
+    } catch (Throwable $e) {
+      return ['status' => false, 'message' => 'Что-то пошло не так: ' . $e->getMessage()];
+    }
+  }
   public function update($id, $request)
   {
     try {
       $this->class::where('id', $id)->update([
+        'user_id' => $request->user_id,
+        'number' => $request->number,
         'car_model_id' => $request->model_id,
         'status' => $request->status,
         'year' => $request->year,
+        'number' => $request->number,
         'mileage' => $request->mileage,
         'vin' => $request->vin,
         'last_visit' => $request->last_visit,

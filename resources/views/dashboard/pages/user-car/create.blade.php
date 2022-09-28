@@ -6,17 +6,15 @@
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="/">Дашборд</a></li>
   <li class="breadcrumb-item"><a href="/user-car">Автомобили Пользователя</a></li>
-  <li class="breadcrumb-item"><a href="/user-car/{{ $model->id }}">{{ $model->id }}</a></li>
-  <li class="breadcrumb-item active">Изменить</li>
+  <li class="breadcrumb-item active">Создать</li>
 </ol>
 <!-- begin page-header -->
-<h1 class="page-header">Автомобил Пользователя #{{ $model->id }}</h1>
+<h1 class="page-header">Автомобил Пользователя</h1>
 <!-- end page-header -->
 
-<x-dashboard.panel title="Автомобил Пользователя Изменить">
-  <form action="{{ route('user-car.update', $model->id) }}" method="POST">
+<x-dashboard.panel title="Автомобил Пользователя Создать">
+  <form action="{{ route('user-car.store') }}" method="POST">
     @csrf
-    @method('PUT')
     <x-dashboard.user-car-form :model="$model" />
   </form>
 </x-dashboard.panel>
