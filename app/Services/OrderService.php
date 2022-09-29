@@ -40,7 +40,8 @@ class OrderService implements OrderServiceInterface
         'date',
         'guarantee',
         'free_diagnostics',
-        'stock_id'
+        'stock_id',
+        'mileage'
       ),
       [
         'user_car_id' => $request->user_car_id,
@@ -97,6 +98,7 @@ class OrderService implements OrderServiceInterface
       'user_car_id',
       'order_number',
       'stock_id',
+      'mileage'
     ));
     $model->guarantee = $request->get('guarantee', false);
     $model->free_diagnostics = $request->get('free_diagnostics', false);

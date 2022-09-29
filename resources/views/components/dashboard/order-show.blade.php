@@ -19,6 +19,10 @@ $model = $attributes['model'];
         </td>
     </tr>
     <tr>
+        <td><b>Пробег</b></td>
+        <td>{{ $model->mileage }}</td>
+    </tr>
+    <tr>
         <td><b>Технический центр</b></td>
         <td>{{ optional($model->tech_center)->title }}</td>
     </tr>
