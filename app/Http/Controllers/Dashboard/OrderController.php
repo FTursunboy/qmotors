@@ -45,7 +45,9 @@ class OrderController extends Controller
     public function delete($id)
     {
         try {
-            Order::findOrFail($id)->delete();
+            $model = Order::findOrFail($id);
+            $model->order_photos()->delete();;
+            $model->delete();
         } catch (Throwable $e) {
             return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");
         }
