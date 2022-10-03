@@ -5,7 +5,7 @@ $model = $attributes['model'];
 <div class="row">
     <x-dashboard.form-input name="title" label="Название" class="col-md-6" :value="$model->title" />
     <x-dashboard.form-input name="phone" label="Телефон" class="col-md-6" :value="$model->phone" />
-    <x-dashboard.form-input name="address" label="Очество" class="col-md-6" :value="$model->address" />
+    <x-dashboard.form-input name="address" label="Отчество" class="col-md-6" :value="$model->address" />
     <x-dashboard.form-input name="url" label="Url" class="col-md-6" :value="$model->url" />
     <x-dashboard.form-input name="lat" label="Широта" class="col-md-6" :value="$model->lat" />
     <x-dashboard.form-input name="lng" label="Долгота" class="col-md-6" :value="$model->lng" />

@@ -55,7 +55,7 @@
             <td>{{ $item->guarantee_text }}</td>
             <td>{{ $item->guarantee_text }}</td>
             <td>{{ $item->free_diagnostics_text }}</td>
-            <td>{{ optional($item->stock)->title }}</td>
+            <td>{{ $item->stock_text }}</td>
             <td>{{ $item->created_at }}</td>
             <td>
                 <div class="d-flex float-right">

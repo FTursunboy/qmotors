@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.default')
 
-@section('title', 'Изменит Пользовател')
+@section('title', 'Изменит Пользователь')
 
 @section('content')
 <ol class="breadcrumb float-xl-right">
@@ -10,10 +10,10 @@
   <li class="breadcrumb-item active">Изменить</li>
 </ol>
 <!-- begin page-header -->
-<h1 class="page-header"> Пользовател #{{ $model->id }}</h1>
+<h1 class="page-header"> Пользователь #{{ $model->id }}</h1>
 <!-- end page-header -->
 
-<x-dashboard.panel title="Изменит Пользовател">
+<x-dashboard.panel title="Изменит Пользователь">
   <form action="{{ route('user.update', $model->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')

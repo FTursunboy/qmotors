@@ -40,8 +40,14 @@ class Order extends Model
     {
         return $this->guarantee ? 'Да' : 'Нет';
     }
+
     public function getFreeDiagnosticsTextAttribute()
     {
         return $this->free_diagnostics ? 'Да' : 'Нет';
+    }
+
+    public function getStockTextAttribute()
+    {
+        return $this->stock_id ? 'Да' : 'Нет';
     }
 }

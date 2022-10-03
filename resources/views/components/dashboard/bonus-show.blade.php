@@ -23,7 +23,7 @@ $model = $attributes['model'];
         <td>{{ $model->remainder }}</td>
     </tr>
     <tr>
-        <td><b>Пользователь</b></td>
+        <td><b>Пользовательь</b></td>
         <td><a href="{{ route('user.show', $model->user_id) }}">{{ $model->user->full_name }} ({{ $model->user_id
                 }})</a>
         </td>

@@ -7,7 +7,7 @@ $model = $attributes['model'];
         <td>{{ $model->model->name }}</td>
     </tr>
     <tr>
-        <td><b>Пользователь</b></td>
+        <td><b>Пользовательь</b></td>
         <td>{{ $model->user->full_name }}</td>
     </tr>
     <tr>

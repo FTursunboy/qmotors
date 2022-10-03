@@ -11,7 +11,7 @@ $model = $attributes['model'];
         <td>{{ $model->text }}</td>
     </tr>
     <tr>
-        <td><b>Пользователь</b></td>
+        <td><b>Пользовательь</b></td>
         <td>
             @if ($model->user_id)
             <a href="{{ route('user.show', $model->user_id) }}">{{ optional($model->user)->full_name }} ({{

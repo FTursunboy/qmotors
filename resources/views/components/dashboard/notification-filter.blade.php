@@ -1,5 +1,5 @@
 <x-dashboard.filter-form>
-    <x-dashboard.form-input label="Пользователь" name="user" :value="request('user')" />
+    <x-dashboard.form-input label="Пользовательь" name="user" :value="request('user')" />
     <x-dashboard.form-input label="Заголовок" name="title" :value="request('title')" />
     <x-dashboard.form-input label="Текст" name="text" :value="request('text')" />
     <x-dashboard.form-input label="Тип Уведомление" name="notification_type" :value="request('notification_type')" />

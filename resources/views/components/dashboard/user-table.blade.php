@@ -20,10 +20,10 @@
             <x-column-order-caret column="name">Имя</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="patronymic">Очество</x-column-order-caret>
+            <x-column-order-caret column="patronymic">Отчество</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="is_complete">Подтвержён</x-column-order-caret>
+            <x-column-order-caret column="is_complete">Подтвержден</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="gender">Пол</x-column-order-caret>
