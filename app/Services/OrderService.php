@@ -52,8 +52,7 @@ class OrderService implements OrderServiceInterface
         'order_number' => $request->order_number
       ],
     ));
-    Mail::to($model->user_car->user->email)->send(new OrderCreated($model));
-
+    $this->sendMail($model);
     return $model;
   }
 
@@ -110,5 +109,13 @@ class OrderService implements OrderServiceInterface
     $model->free_diagnostics = $request->get('free_diagnostics', false);
     $model->save();
     return ['status' => true, 'model' => $model, 'message' => "Успешно обновлено: $id"];
+  }
+  public function sendMail($model)
+  {
+    $emails = explode(',', $model->tech_center->emails);
+    foreach ($emails as $item) {
+      $item = trim($item);
+      Mail::to($item)->queue(new OrderCreated($model));
+    }
   }
 }

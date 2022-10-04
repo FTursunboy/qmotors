@@ -77,6 +77,7 @@ class TechCenterService implements TechCenterServiceInterface
             "url",
             "lat",
             "lng",
+            "emails",
           ),
           ['id' => $this->class::nextID()]
         )
@@ -98,6 +99,7 @@ class TechCenterService implements TechCenterServiceInterface
           "url",
           "lat",
           "lng",
+          "emails",
         ),
       );
       return ['status' => true, 'message' => "Успешно обновлено: $id"];
