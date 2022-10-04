@@ -2,12 +2,14 @@
 
 namespace App\Services;
 
+use App\Mail\OrderCreated;
 use App\Models\Order;
 use App\Models\OrderPhoto;
 use App\Models\User;
 use App\Models\UserCar;
 use App\Services\Contracts\OrderServiceInterface;
 use App\Traits\ApiResponse;
+use Illuminate\Support\Facades\Mail;
 
 class OrderService implements OrderServiceInterface
 {
@@ -41,7 +43,8 @@ class OrderService implements OrderServiceInterface
         'guarantee',
         'free_diagnostics',
         'stock_id',
-        'mileage'
+        'mileage',
+        'description'
       ),
       [
         'user_car_id' => $request->user_car_id,
@@ -49,6 +52,8 @@ class OrderService implements OrderServiceInterface
         'order_number' => $request->order_number
       ],
     ));
+    Mail::to($model->user_car->user->email)->send(new OrderCreated($model));
+
     return $model;
   }
 
@@ -98,7 +103,8 @@ class OrderService implements OrderServiceInterface
       'user_car_id',
       'order_number',
       'stock_id',
-      'mileage'
+      'mileage',
+      'description'
     ));
     $model->guarantee = $request->get('guarantee', false);
     $model->free_diagnostics = $request->get('free_diagnostics', false);
