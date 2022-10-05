@@ -12,6 +12,7 @@ class OrderCreated extends Mailable
     use Queueable, SerializesModels;
 
     public $model;
+    public $url;
     /**
      * Create a new message instance.
      *
@@ -20,6 +21,7 @@ class OrderCreated extends Mailable
     public function __construct($model)
     {
         $this->model = $model;
+        $this->url = route('order.show', $model->id);
     }
 
     /**

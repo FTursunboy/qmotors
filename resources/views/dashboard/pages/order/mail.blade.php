@@ -41,5 +41,5 @@
         <td>{{ optional($model->stock)->title }}</td>
     <tr>
 </table>
-
+{{-- @dd($url); --}}
 <p><a href="{{ route('order.show', $model->id) }}">Подробнее</a></p>

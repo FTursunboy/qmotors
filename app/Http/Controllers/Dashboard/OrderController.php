@@ -26,6 +26,7 @@ class OrderController extends Controller
     }
     public function show($id)
     {
+        dd(env('APP_URL'));
         $model = Order::findOrFail($id);
         return view('dashboard.pages.order.show', compact('model'));
     }
