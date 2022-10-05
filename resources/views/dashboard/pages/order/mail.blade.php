@@ -41,4 +41,4 @@
         <td>{{ optional($model->stock)->title }}</td>
     <tr>
 </table>
-<p><a href="{{ env('APP_URL') . '/order/' . $model->id }}">Подробнее</a></p>
+<p><a href="{{ 'http://89.223.65.138/order/' . $model->id }}">Подробнее</a></p>
