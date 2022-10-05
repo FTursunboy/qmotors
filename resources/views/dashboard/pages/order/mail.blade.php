@@ -32,10 +32,18 @@
         <td><b>Номер авто</b></td>
         <td>{{ optional($model->user_car)->number }}</td>
     </tr>
-    <tr>
+    {{-- <tr>
         <td><b>Номер заказа</b></td>
         <td>{{ $model->number }}</td>
-    </tr>
+    </tr> --}}
+    <tr>
+        <td><b>ФИО</b></td>
+        <td>{{ optional($model->user_car)->user->fullname }}</td>
+    <tr>
+    <tr>
+        <td><b>Номер телефона</b></td>
+        <td>{{ optional($model->user_car)->user->phone_number }}</td>
+    <tr>
     <tr>
         <td><b>Название акции</b></td>
         <td>{{ optional($model->stock)->title }}</td>

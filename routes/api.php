@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('', [UserApiController::class, 'profile']);
         Route::get('autos', [UserApiController::class, 'autos']);
         Route::post('update', [UserApiController::class, 'update']);
+        Route::delete('delete', [UserApiController::class, 'delete']);
     });
     Route::group(['prefix' => 'car'], function () {
         Route::get('', [CarApiController::class, 'index']);

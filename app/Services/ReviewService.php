@@ -21,6 +21,7 @@ class ReviewService implements ReviewServiceInterface
   {
     $order = requestOrder();
     return $this->class::where(function ($query) {
+      $query->where('moderated', true);
       if ($this->request->comment != null) {
         $query->where('comment', 'ilike', '%' . $this->request->comment . '%');
       }

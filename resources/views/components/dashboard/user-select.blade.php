@@ -14,7 +14,7 @@ $selected = request()->get($name, null);
 $defaultOptionLabel = $attributes['default-option-label']??'----------';
 @endphp
 <div class="form-group {{ $attributes['class'] }}">
-    <label for="{{ $name }}-id">{{ $attributes['label']??'Пользовательь' }}</label>
+    <label for="{{ $name }}-id">{{ $attributes['label']??'Пользователь' }}</label>
     <select name="{{ $name }}" class="form-control" id="{{ $name }}-id" @if($attributes['required']) required @endif>
         @if(!$attributes['not-nullable'])
         <option value="{{ optional($attributes['value'])->id }}" selected>{{ optional($attributes['value'])->fullname }}

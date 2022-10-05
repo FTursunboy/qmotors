@@ -11,7 +11,7 @@ $model = $attributes['model'];
         <td>{{ $model->comment }}</td>
     </tr>
     <tr>
-        <td><b>Промодирирован</b></td>
+        <td><b>Модерация</b></td>
         <td>{{ $model->moderated_text }}</td>
     </tr>
     <tr>

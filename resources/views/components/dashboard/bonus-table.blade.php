@@ -23,7 +23,7 @@
             <x-column-order-caret column="remainder">Остаток</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="user_id">Пользовтель</x-column-order-caret>
+            <x-column-order-caret column="user_id">Пользователь</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="created_at">Создано</x-column-order-caret>

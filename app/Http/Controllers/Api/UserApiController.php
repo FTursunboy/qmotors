@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\UpdateProfileRequest;
 use App\Services\Contracts\UserServiceInterface;
 use App\Traits\ApiResponse;
+use Illuminate\Http\Request;
 
 class UserApiController extends Controller
 {
@@ -26,5 +27,11 @@ class UserApiController extends Controller
         $result = $userService->updateApi($request);
         // return $this->success(auth()->user());
         return $this->success($result);
+    }
+
+    public function delete(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+        auth()->user()->delete();
     }
 }

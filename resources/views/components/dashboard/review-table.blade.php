@@ -14,7 +14,7 @@
             <x-column-order-caret column="comment">Комментарии</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="modirated">Промодирирован</x-column-order-caret>
+            <x-column-order-caret column="moderated">Модерация</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="order_id">Заказ-наряд</x-column-order-caret>

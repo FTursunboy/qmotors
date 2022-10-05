@@ -17,7 +17,7 @@
             <x-column-order-caret column="address">Адрес</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="url">Ссилка</x-column-order-caret>
+            <x-column-order-caret column="url">Ссылка</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="lat">Широта</x-column-order-caret>

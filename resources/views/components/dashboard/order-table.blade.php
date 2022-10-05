@@ -32,7 +32,7 @@
             <x-column-order-caret column="guarantee">Гарантийный Заказ</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="guarantee">Запрос по бесплатная диагностика</x-column-order-caret>
+            <x-column-order-caret column="guarantee">Запрос по бесплатной диагностике</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="stock_id">Запись по Акции</x-column-order-caret>

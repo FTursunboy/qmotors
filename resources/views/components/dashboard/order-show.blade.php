@@ -37,7 +37,7 @@ $model = $attributes['model'];
         <td>{{ $model->guarantee_text }}</td>
     </tr>
     <tr>
-        <td><b>Запрос по бесплатная диагностика</b></td>
+        <td><b>Запрос по бесплатной диагностике</b></td>
         <td>{{ $model->free_diagnostics_text }}</td>
     </tr>
     <tr>

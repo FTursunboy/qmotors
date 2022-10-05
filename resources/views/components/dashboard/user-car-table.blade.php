@@ -14,7 +14,7 @@
             <x-column-order-caret column="car_model_id">Модель Автомобиля</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="user_id">Пользовательь</x-column-order-caret>
+            <x-column-order-caret column="user_id">Пользователь</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="year">Год</x-column-order-caret>

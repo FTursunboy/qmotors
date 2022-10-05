@@ -31,7 +31,7 @@ return [
 		// ],
 		[
 			'icon' => 'fa fa-car',
-			'title' => 'Автомобили Пользователья',
+			'title' => 'Автомобили пользователья',
 			'url' => '/user-car',
 		],
 		[
@@ -61,7 +61,7 @@ return [
 		],
 		[
 			'icon' => 'fa fa-bell',
-			'title' => 'Уведомление',
+			'title' => 'Уведомления',
 			'url' => '/notification',
 		],
 		[

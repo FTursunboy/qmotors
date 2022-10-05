@@ -69,7 +69,7 @@ class OrderService implements OrderServiceInterface
 
   public function history($request)
   {
-    return UserCar::with('orders')->has('orders')->where(function ($query) use ($request) {
+    return UserCar::with('orders.stock')->has('orders')->where(function ($query) use ($request) {
       $query->where('user_id', auth()->id());
       if ($request->user_car_id)
         $query->where('id', $request->user_car_id);

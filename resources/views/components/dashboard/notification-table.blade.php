@@ -14,10 +14,10 @@
             <x-column-order-caret column="text">Текст</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="user_id">Пользовтель</x-column-order-caret>
+            <x-column-order-caret column="user_id">Пользователь</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="notification_type">Тип Уведомление</x-column-order-caret>
+            <x-column-order-caret column="notification_type">Тип уведомления</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="additional_id">Допонительная ссылка</x-column-order-caret>

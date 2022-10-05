@@ -5,7 +5,7 @@ $model = $attributes['model'];
 
 <div class="row">
     {{--
-    <x-dashboard.form-select label="Пользовательь" name="user_id" option="full_name" :options="$users"
+    <x-dashboard.form-select label="Пользователь" name="user_id" option="full_name" :options="$users"
         :value="$model->user_id" class="col-md-6" /> --}}
     <x-dashboard.user-select default-option-label="Все пользователи" :options="$users" :value="$model->user"
         class="col-md-6" />
