@@ -42,4 +42,4 @@
     <tr>
 </table>
 
-<x-dashboard.photo-gallery :photos="$model->order_photos" />
+<p><a href="{{ route('order.show', $model->id) }}">Подробнее</a></p>
