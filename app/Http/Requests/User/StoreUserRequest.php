@@ -26,7 +26,7 @@ class StoreUserRequest extends FormRequest
         return [
             'avatar' => 'file',
             'is_complete' => 'required|boolean',
-            'email' => 'required'
+            // 'email' => 'required'
         ];
     }
 }
