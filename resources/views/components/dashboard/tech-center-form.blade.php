@@ -71,8 +71,8 @@ $model = $attributes['model'];
                     var street = res.geoObjects.get(0);
                     address = street.properties.get('description') + ', ' + street.properties.get('name');
                     //$("#items-address").val(address);
-                    $("#lat-id").val(coordinates[1]);
-                    $("#lng-id").val(coordinates[0]);
+                    $("#lat-id").val(coordinates[0]);
+                    $("#lng-id").val(coordinates[1]);
                 }
             );
         });
