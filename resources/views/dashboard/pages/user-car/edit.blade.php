@@ -10,10 +10,10 @@
   <li class="breadcrumb-item active">Изменить</li>
 </ol>
 <!-- begin page-header -->
-<h1 class="page-header">Автомобил Пользователья #{{ $model->id }}</h1>
+<h1 class="page-header">Автомобил пользователя #{{ $model->id }}</h1>
 <!-- end page-header -->
 
-<x-dashboard.panel title="Автомобил Пользователья Изменить">
+<x-dashboard.panel title="Автомобил пользователя Изменить">
   <form action="{{ route('user-car.update', $model->id) }}" method="POST">
     @csrf
     @method('PUT')

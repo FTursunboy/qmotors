@@ -9,10 +9,10 @@
   <li class="breadcrumb-item active">{{ $model->id }}</li>
 </ol>
 <!-- begin page-header -->
-<h1 class="page-header">Автомобиль пользователья #{{ $model->id }}</h1>
+<h1 class="page-header">Автомобиль пользователя #{{ $model->id }}</h1>
 <!-- end page-header -->
 
-<x-dashboard.panel title="Автомобил Пользователья подробнее">
+<x-dashboard.panel title="Автомобил пользователя подробнее">
   <x-dashboard.user-car-show :model="$model" />
 </x-dashboard.panel>
 

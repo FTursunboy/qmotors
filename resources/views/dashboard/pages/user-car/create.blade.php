@@ -9,10 +9,10 @@
   <li class="breadcrumb-item active">Создать</li>
 </ol>
 <!-- begin page-header -->
-<h1 class="page-header">Автомобил Пользователья</h1>
+<h1 class="page-header">Автомобил пользователя</h1>
 <!-- end page-header -->
 
-<x-dashboard.panel title="Автомобил Пользователья Создать">
+<x-dashboard.panel title="Автомобил пользователя Создать">
   <form action="{{ route('user-car.store') }}" method="POST">
     @csrf
     <x-dashboard.user-car-form :model="$model" />
