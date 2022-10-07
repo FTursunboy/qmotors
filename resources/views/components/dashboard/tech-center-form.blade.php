@@ -1,7 +1,6 @@
 @php
 $model = $attributes['model'];
 @endphp
-
 <div class="row">
     <x-dashboard.form-input name="title" label="Название" class="col-md-6" :value="$model->title" />
     <x-dashboard.form-input name="phone" label="Телефон" class="col-md-6" :value="$model->phone" />
@@ -45,7 +44,7 @@ $model = $attributes['model'];
         // Указывается идентификатор HTML-элемента.
         map = new ymaps.Map('map', {
             zoom: 10,
-            center: [cord_y, cord_x],
+            center: [cord_x, cord_y],
             controls: []
         });
 
@@ -122,7 +121,7 @@ $model = $attributes['model'];
                     showResult(obj);
                 }
             }, function (e) {
-                console.log(e)
+                // console.log(e)
             })
         }
 
