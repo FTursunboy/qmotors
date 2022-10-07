@@ -29,7 +29,7 @@ class AuthApiController extends Controller
             $user->sms_code = rand(100000, 999999);
             $result = $smsService->send(filterPhone($user->phone_number), 'Ваш код для авторизация: ' . $user->sms_code);
         }
-        $user->save();
+        $user->save();  
 
         if ($result)
             return $this->success();

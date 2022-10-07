@@ -40,6 +40,11 @@ class UserService implements UserServiceInterface
     $filteredCount = $query->count();
     $result = $query->paginate($request->get('per_page', 20))->append('fullname');
     $page = $request->page;
+    // $result = $query->get();
+    // foreach ($result as $item) {
+    //   $item->phone_number = str_replace([' ', '-', '(', ')'], '', $item->phone_number);
+    // }
+    // $result = $result->where('phone_number')
     return compact('result', 'filteredCount', 'page');
   }
   public function filter($pushToken = false)
