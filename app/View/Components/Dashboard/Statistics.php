@@ -48,7 +48,7 @@ class Statistics extends Component
                 'color' => 'red'
             ],
             [
-                'title' => 'Бесплатние диагностики',
+                'title' => 'Бесплатные диагностики',
                 'count' => FreeDiagnostic::whereDate('date', '>', date('Y-m-d'))->count(),
                 'icon' => 'cog',
                 'url' => '#',

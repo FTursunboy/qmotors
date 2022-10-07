@@ -22,11 +22,10 @@ class AuthApiController extends Controller
             $user->id = $id;
             $user->phone_number = $request->phone_number;
         }
-        // if ($request->phone_number == User::TEST_ACCOUNT_PHONE_NUMBER) {
-        //     $user->sms_code = 111111;
-        //     $result = true;
-        // } 
-        else {
+        if ($request->phone_number == User::TEST_ACCOUNT_PHONE_NUMBER) {
+            $user->sms_code = 111111;
+            $result = true;
+        } else {
             $user->sms_code = rand(100000, 999999);
             $result = $smsService->send(filterPhone($user->phone_number), 'Ваш код для авторизация: ' . $user->sms_code);
         }

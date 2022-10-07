@@ -28,7 +28,10 @@ class UserService implements UserServiceInterface
   {
     $query = $this->class::where(function ($query) use ($request) {
       if ($request->search) {
-        $query->where('phone_number', 'ilike', '%' . $this->request->search . '%')
+        $query
+          // ->whereRaw('phone_number ilike %' . $request->search . '%')
+          // ->whereRaw('REPLACE(REPLACE(REPLACE(REPLACE(phone_number, " ", ""), "-", ""), ")", ""), "(", "") ilike %?%', [$request->phone_number])
+          ->where('phone_number', 'ilike', '%' . $this->request->search . '%')
           ->orWhere('surname', 'ilike', '%' . $this->request->search . '%')
           ->orWhere('name', 'ilike', '%' . $this->request->search . '%')
           ->orWhere('patronymic', 'ilike', '%' . $this->request->search . '%');

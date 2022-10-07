@@ -39,7 +39,7 @@ class Statistics2 extends Component
                 ]
             ],
             [
-                'title' => 'Бесплатние диагностики',
+                'title' => 'Бесплатные диагностики',
                 'count' => FreeDiagnostic::count(),
                 'info' => 'Статистика бесплатной диагностики',
                 'counts' => [
@@ -52,7 +52,7 @@ class Statistics2 extends Component
                 'count' => Order::whereDate('date',  date('Y-m-d'))->count(),
                 'info' => 'Статистика заказов',
                 'counts' => [
-                    'Сегодния' => Order::whereDate('created_at', date('Y-m-d'))->count(),
+                    'Сегодня' => Order::whereDate('created_at', date('Y-m-d'))->count(),
                     'Завтра' => Order::whereDate('created_at', date('Y-m-d', strtotime('+1 day')))->count(),
                 ]
             ],

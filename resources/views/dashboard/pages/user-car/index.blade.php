@@ -1,14 +1,14 @@
 @extends('dashboard.layouts.default')
 
-@section('title', 'Автомобили пользователья')
+@section('title', 'Автомобили пользователя')
 
 @section('content')
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="/">Дашборд</a></li>
-  <li class="breadcrumb-item active">Автомобили пользователья</li>
+  <li class="breadcrumb-item active">Автомобили пользователя</li>
 </ol>
 <!-- begin page-header -->
-<h1 class="page-header">Автомобили пользователья</h1>
+<h1 class="page-header">Автомобили пользователя</h1>
 <!-- end page-header -->
 
 <div class="row">
