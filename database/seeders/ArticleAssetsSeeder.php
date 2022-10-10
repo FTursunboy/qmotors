@@ -16,7 +16,7 @@ class ArticleAssetsSeeder extends Seeder
     {
         $data = Article::all();
         foreach ($data as $item) {
-            $item->text = str_replace('src="/uploads"', 'src="/storage/uploads', $item->text);
+            $item->text = str_replace('src="/uploads', 'src="/storage/uploads', $item->text);
             $item->save();
         }
     }
