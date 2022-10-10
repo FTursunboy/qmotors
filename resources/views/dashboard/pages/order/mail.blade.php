@@ -49,4 +49,4 @@
         <td>{{ optional($model->stock)->title }}</td>
     <tr>
 </table>
-<p><a href="{{ config('app.url') . '/' . $model->id }}">Подробнее</a></p>
+<p><a href="{{ asset('/') . $model->id }}">Подробнее</a></p>

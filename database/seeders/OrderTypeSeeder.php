@@ -21,7 +21,7 @@ class OrderTypeSeeder extends Seeder
             'name' => "Детейлинг"
         ],
         [
-            'name' => "другое"
+            'name' => "Другое"
         ],
     ];
     /**
