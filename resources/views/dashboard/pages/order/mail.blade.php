@@ -49,4 +49,4 @@
         <td>{{ optional($model->stock)->title }}</td>
     <tr>
 </table>
-<p><a href="{{ asset('/') . $model->id }}">Подробнее</a></p>
+<p><a href="{{ asset('/order/' . $model->id)  }}">Подробнее</a></p>
