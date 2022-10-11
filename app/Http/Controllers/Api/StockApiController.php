@@ -17,6 +17,6 @@ class StockApiController extends Controller
 
     public function show($id)
     {
-        return $this->success(Stock::find($id));
+        return $this->success(Stock::find($id)->append('body'));
     }
 }
