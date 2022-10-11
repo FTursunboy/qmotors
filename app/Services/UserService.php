@@ -92,31 +92,38 @@ class UserService implements UserServiceInterface
   public function store($request)
   {
     $avatar = null;
-    try {
-      if ($request->avatar != null) {
-        $avatar = uploadFile($request->file('avatar'), 'user');
-      }
-      $this->class::create(array_merge(
-        $request->only(
-          "surname",
-          "name",
-          "patronymic",
-          "phone_number",
-          "email",
-          "birthday",
-          "gender",
-          "is_complete",
-          "agree_notification",
-          "agree_sms",
-          "agree_calls",
-          "agree_data"
-        ),
-        ['avatar' => $avatar, 'id' => $this->class::nextID()]
-      ));
-      return ['status' => true, 'message' => "Успешно создано!"];
-    } catch (Throwable $e) {
-      return ['status' => false, 'message' => 'Что-то пошло не так: ' . $e->getMessage()];
+    // try {
+    if ($request->avatar != null) {
+      $avatar = uploadFile($request->file('avatar'), 'user');
     }
+    $model = $this->class::create(array_merge(
+      $request->only(
+        "surname",
+        "name",
+        "patronymic",
+        "phone_number",
+        "email",
+        "birthday",
+        "gender",
+        "is_complete",
+        "agree_notification",
+        "agree_sms",
+        "agree_calls",
+        "agree_data"
+      ),
+      ['avatar' => $avatar, 'id' => $this->class::nextID()]
+    ));
+    $bonusService = new BonusService();
+    $bonusService->store($request->merge([
+      'title' => 'Для регистрации',
+      'points' => 350,
+      'user_id' => $model->id,
+      'bonus_type' => 0
+    ]));
+    return ['status' => true, 'message' => "Успешно создано!"];
+    // } catch (Throwable $e) {
+    //   return ['status' => false, 'message' => 'Что-то пошло не так: ' . $e->getMessage()];
+    // }
   }
 
   public function update($id, $request)

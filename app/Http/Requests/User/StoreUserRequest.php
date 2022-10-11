@@ -26,7 +26,7 @@ class StoreUserRequest extends FormRequest
         return [
             'avatar' => 'file',
             'is_complete' => 'required|boolean',
-            'phone_number' => 'required'
+            'phone_number' => 'required|unique:users'
         ];
     }
 }
