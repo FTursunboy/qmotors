@@ -49,7 +49,7 @@ class Statistics2 extends Component
             ],
             [
                 'title' => 'Заказы',
-                'count' => Order::whereDate('date',  date('Y-m-d'))->count(),
+                'count' => Order::count(),
                 'info' => 'Статистика заказов',
                 'counts' => [
                     'Сегодня' => Order::whereDate('date', date('Y-m-d'))->count(),
