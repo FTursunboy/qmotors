@@ -43,8 +43,8 @@ class Statistics2 extends Component
                 'count' => FreeDiagnostic::count(),
                 'info' => 'Статистика бесплатной диагностики',
                 'counts' => [
-                    'Последние 7 дней' => UserCar::whereDate('created_at', '>=', date('Y-m-d', strtotime('-7 days')))->count(),
-                    'Новый' => UserCar::whereDate('created_at', '>=', date('Y-m-d'))->count(),
+                    'Последние 7 дней' => UserCar::whereDate('date', '>=', date('Y-m-d', strtotime('-7 days')))->count(),
+                    'Новый' => UserCar::whereDate('date', '>=', date('Y-m-d'))->count(),
                 ]
             ],
             [
@@ -52,8 +52,8 @@ class Statistics2 extends Component
                 'count' => Order::whereDate('date',  date('Y-m-d'))->count(),
                 'info' => 'Статистика заказов',
                 'counts' => [
-                    'Сегодня' => Order::whereDate('created_at', date('Y-m-d'))->count(),
-                    'Завтра' => Order::whereDate('created_at', date('Y-m-d', strtotime('+1 day')))->count(),
+                    'Сегодня' => Order::whereDate('date', date('Y-m-d'))->count(),
+                    'Завтра' => Order::whereDate('date', date('Y-m-d', strtotime('+1 day')))->count(),
                 ]
             ],
         ];
