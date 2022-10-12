@@ -62,6 +62,7 @@ class ReminderService implements ReminderServiceInterface
     ), [
       'id' => $this->class::nextID()
     ]));
+    $request->merge(['send' => 1]);
     $this->sendPushNotification($request, $model);
     return $model;
   }
