@@ -183,8 +183,8 @@ return [
         'cadastralNumber' => 'Kadastr raqami',
         'nameW' => 'Ism',
         'variant' => 'Tur',
-        "bos_name"=> 'Boshliq nomi',
-        "website"=>'Web sayt',
-        "inn"=> 'Soliq to\'lovchining identifikatsiya raqami'
-        ]
+        "bos_name" => 'Boshliq nomi',
+        "website" => 'Web sayt',
+        "inn" => 'Soliq to\'lovchining identifikatsiya raqami'
+    ]
 ];
