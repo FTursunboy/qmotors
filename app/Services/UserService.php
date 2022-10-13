@@ -183,4 +183,12 @@ class UserService implements UserServiceInterface
     ));
     return User::find($model->id);
   }
+
+  public function delete($id)
+  {
+    $user = User::find($id);
+    $user->bonuses()->delete();
+    $user->user_cars()->delete();
+    $user->delete();
+  }
 }

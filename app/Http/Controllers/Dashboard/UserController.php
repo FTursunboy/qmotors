@@ -66,10 +66,11 @@ class UserController extends Controller
         return back()->with('not-allowed', $result['message'])->withInput();
     }
 
-    public function delete($id)
+    public function delete($id, UserServiceInterface $service)
     {
+        // $service->delete($id);
         try {
-            User::findOrFail($id)->delete();
+            $service->delete($id);
         } catch (Throwable $e) {
             return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");
         }

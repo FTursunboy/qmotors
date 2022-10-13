@@ -9,4 +9,5 @@ interface UserServiceInterface
   public function store($request);
   public function update($id, $request);
   public function updateApi($request);
+  public function delete($id);
 }
