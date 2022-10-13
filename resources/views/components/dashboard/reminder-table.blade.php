@@ -29,7 +29,7 @@
                     {{ $item->user_car->title }}</a></td>
             <td>{{ $item->date }}</td>
             <td>{{ $item->text }}</td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ localDatetime($item->created_at) }}</td>
             <td>
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('reminder.show', $item->id) }}"><i

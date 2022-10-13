@@ -50,7 +50,7 @@
             <td>{{ $item->last_visit }}</td>
             <td>{{ $item->vin }}</td>
             <td>{{ $item->mileage }}</td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ localDatetime($item->created_at) }}</td>
             <td>
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('user-car.show', $item->id) }}"><i

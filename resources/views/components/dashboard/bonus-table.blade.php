@@ -45,7 +45,7 @@
             <td><a href="{{ route('user.show', $item->user_id??1) }}">{{ optional($item->user)->full_name }} ({{
                     $item->user_id
                     }})</a></td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ localDatetime($item->created_at) }}</td>
             <td></td>
             <td>
                 <div class="d-flex float-right">

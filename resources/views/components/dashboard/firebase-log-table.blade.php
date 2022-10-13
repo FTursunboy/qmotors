@@ -27,7 +27,7 @@
             <td>{{ ($item->response) }}</td>
             <td>{{ ($item->fcmtokens) }}</td>
             <td>{{ $item->data }}</td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ localDatetime($item->created_at) }}</td>
         </tr>
         @endforeach
     </x-slot>

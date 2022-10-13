@@ -38,7 +38,7 @@
             </td>
             <td>{{ optional($item->free_diagnostic_type)->name }}</td>
             <td>{{ $item->date }}</td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ localDatetime($item->created_at) }}</td>
             <td>
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('free-diagnostic.show', $item->id) }}"><i

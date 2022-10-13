@@ -28,7 +28,7 @@
             <td><img src="{{ asset($item->preview_path) }}" width="100"></td>
             <td>{{ $item->title }}</td>
             <td>{{ $item->subtitle }}</td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ localDatetime($item->created_at) }}</td>
             <td>
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('article.show', $item->id) }}"><i

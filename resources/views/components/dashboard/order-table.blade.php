@@ -56,7 +56,7 @@
             <td>{{ $item->guarantee_text }}</td>
             <td>{{ $item->free_diagnostics_text }}</td>
             <td>{{ $item->stock_text }}</td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ localDatetime($item->created_at) }}</td>
             <td>
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('order.show', $item->id) }}"><i

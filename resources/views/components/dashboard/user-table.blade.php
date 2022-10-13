@@ -44,7 +44,7 @@
             <td>{{ $item->patronymic }}</td>
             <td>{{ $item->is_complete_text }}</td>
             <td>{{ $item->gender_text }}</td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ localDatetime($item->created_at) }}</td>
             <td>
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('user.show', $item->id) }}"><i

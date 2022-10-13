@@ -40,7 +40,7 @@
             <td><a href="{{ $item->url }}" target="blank">{{ $item->url }}</a></td>
             <td>{{ $item->lat }}</td>
             <td>{{ $item->lng }}</td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ localDatetime($item->created_at) }}</td>
             <td>
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('tech-center.show', $item->id) }}"><i

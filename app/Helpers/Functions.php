@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 function requestOrder()
@@ -50,4 +51,11 @@ function customAsset($model, $field)
     return asset($model->$field);
   }
   return asset('storage/uploads/' . Str::singular($model->getTable()) . "/$field/" . $model->id . '/' . $model->$field);
+}
+
+function localDatetime($date, $timezone = 'Europe/Moscow')
+{
+  if ($date)
+    $date = Carbon::parse($date)->setTimezone($timezone)->format('Y-m-d H:i:s');
+  return $date;
 }

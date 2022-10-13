@@ -28,7 +28,7 @@
             <td>{{ $item->title }}</td>
             <td>{{ $item->subtitle }}</td>
             <td>{{ $item->description }}</td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ localDatetime($item->created_at) }}</td>
             <td>
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('stock.show', $item->id) }}"><i

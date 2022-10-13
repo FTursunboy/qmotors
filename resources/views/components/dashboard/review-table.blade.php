@@ -41,7 +41,7 @@
                 Заказ не выбран
                 @endif
             </td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ localDatetime($item->created_at) }}</td>
             <td>{{ $item->updated_at }}</td>
             <td>
                 <div class="d-flex float-right">

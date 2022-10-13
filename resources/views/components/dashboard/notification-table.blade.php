@@ -45,7 +45,7 @@
             </td>
             <td>{{ $item->notification_type_text }}</td>
             <td>{{ $item->additional_text }}</td>
-            <td>{{ $item->created_at }}</td>
+            <td>{{ localDatetime($item->created_at) }}</td>
             <td>
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('notification.show', $item->id) }}"><i
