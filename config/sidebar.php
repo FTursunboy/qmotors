@@ -46,7 +46,7 @@ return [
 		],
 		[
 			'icon' => 'fa fa-building',
-			'title' => 'Техцентры',
+			'title' => 'Автосервисы',
 			'url' => '/tech-center',
 		],
 		[
