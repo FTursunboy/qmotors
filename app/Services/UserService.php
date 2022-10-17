@@ -192,10 +192,11 @@ class UserService implements UserServiceInterface
       $item->user_car_photos()->delete();
       $item->reminders()->delete();
       $item->orders()->delete();
+      $item->orders()->delete();
+      $item->free_diagnostics()->delete();
     })->delete();
     $user->chat()->delete();
     $user->chat_messages()->delete();
-    $user->free_diagnostics()->delete();
     $user->notifications()->delete();
     $user->delete();
   }
