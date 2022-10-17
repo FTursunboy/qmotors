@@ -189,6 +189,12 @@ class UserService implements UserServiceInterface
     $user = User::find($id);
     $user->bonuses()->delete();
     $user->user_cars()->delete();
+    $user->chat()->delete();
+    $user->chat_messages()->delete();
+    $user->free_diagnostics()->delete();
+    $user->notifications()->delete();
+    $user->orders()->delete();
+    $user->reminders()->delete();
     $user->delete();
   }
 }

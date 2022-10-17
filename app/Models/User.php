@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\ModelCommonMethods;
+use App\View\Components\Dashboard\ChatMessage;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -75,6 +76,36 @@ class User extends Authenticatable
         return $this->hasMany(Bonus::class)->latest();
     }
 
+    public function chat()
+    {
+        return $this->hasOne(Chat::class);
+    }
+
+    public function chat_messages()
+    {
+        return $this->hasMany(ChatMessage::class);
+    }
+
+    public function free_diagnostics()
+    {
+        return $this->hasMany(FreeDiagnostic::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function reminders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
     public function getFullNameAttribute()
     {
         $fullname = $this->surname . ' ' . $this->name . ' ' . $this->patronymic;
@@ -92,11 +123,6 @@ class User extends Authenticatable
     public function getIsCompleteTextAttribute()
     {
         return $this->is_complete ? 'Да' : 'Нет';
-    }
-
-    public function chat()
-    {
-        return $this->hasOne(Chat::class);
     }
 
     public function getBalanceAttribute()
