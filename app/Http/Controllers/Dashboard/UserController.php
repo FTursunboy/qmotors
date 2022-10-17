@@ -69,11 +69,11 @@ class UserController extends Controller
     public function delete($id, UserServiceInterface $service)
     {
         // $service->delete($id);
-        try {
-            $service->delete($id);
-        } catch (Throwable $e) {
-            return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");
-        }
+        // try {
+        $service->delete($id);
+        // } catch (Throwable $e) {
+        //     return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");
+        // }
         return redirect()->route('user')->with('success', "Успешно удалено: $id!");
     }
 }
