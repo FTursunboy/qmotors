@@ -172,7 +172,7 @@ class UserCarService implements UserCarServiceInterface
   {
     $model->user_car_photos()->delete();
     $model->reminders()->delete();
-    $model->orders()->each(function($item)=>{
+    $model->orders()->each(function ($item) {
       with(new OrderService)->delete($item);
     });
     $model->orders()->delete();
