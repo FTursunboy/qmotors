@@ -190,8 +190,8 @@ class UserService implements UserServiceInterface
     $user->bonuses()->delete();
     $user->user_cars()->each(function ($item) {
       $item->user_car_photos()->delete();
-      $item->remenders()->delete();
-      $item->orders->delete();
+      $item->reminders()->delete();
+      $item->orders()->delete();
     })->delete();
     $user->chat()->delete();
     $user->chat_messages()->delete();
