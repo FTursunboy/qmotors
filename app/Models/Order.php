@@ -31,6 +31,11 @@ class Order extends Model
         return $this->hasMany(OrderPhoto::class);
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
     public function stock()
     {
         return $this->belongsTo(Stock::class);

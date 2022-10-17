@@ -167,4 +167,13 @@ class UserCarService implements UserCarServiceInterface
       return ['status' => false, 'message' => 'Что-то пошло не так: ' . $e->getMessage()];
     }
   }
+
+  public function delete($model)
+  {
+    $model->user_car_photos()->delete();
+    $model->reminders()->delete();
+    $model->orders()->delete();
+    $model->free_diagnostics()->delete();
+    return $model;
+  }
 }

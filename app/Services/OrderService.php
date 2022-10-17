@@ -118,4 +118,11 @@ class OrderService implements OrderServiceInterface
       Mail::to($item)->queue(new OrderCreated($model));
     }
   }
+
+  public function delete($model)
+  {
+    $model->order_photos()->delete();
+    $model->reviews()->delete();
+    return $model;
+  }
 }
