@@ -103,7 +103,7 @@ class User extends Authenticatable
 
     public function reminders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasManyThrough(Reminder::class, UserCar::class);
     }
 
     public function getFullNameAttribute()
