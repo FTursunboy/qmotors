@@ -115,6 +115,11 @@ class User extends Authenticatable
         return $this->gender ? 'Мужской' : 'Женский';
     }
 
+    public function getGenderKeyAttribute()
+    {
+        return $this->gender ? 'male' : 'female';
+    }
+
     public function getIsCompleteTextAttribute()
     {
         return $this->is_complete ? 'Да' : 'Нет';

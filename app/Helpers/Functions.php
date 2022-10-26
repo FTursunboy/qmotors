@@ -24,6 +24,11 @@ function filterPhone($phone)
 {
   return str_replace(['(', ')', ' ', '-'], '', $phone);
 }
+function filterPhone2($phone)
+{
+  $phone = str_replace('+7', '', $phone);
+  return filterPhone($phone);
+}
 
 function uploadFile($file, $path, $old = null)
 {

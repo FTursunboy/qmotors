@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginApiRequest;
 use App\Http\Requests\Api\SendSmsCodeRequest;
 use App\Models\User;
+use App\Services\Contracts\OneCServiceInterface;
 use App\Services\Contracts\SmsServiceInterface;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class AuthApiController extends Controller
             $user->sms_code = rand(100000, 999999);
             $result = $smsService->send(filterPhone($user->phone_number), 'Ваш код для авторизация: ' . $user->sms_code);
         }
-        $user->save();  
+        $user->save();
 
         if ($result)
             return $this->success();
