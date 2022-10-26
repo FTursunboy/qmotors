@@ -59,7 +59,7 @@ class OneCService implements OneCServiceInterface
     {
         $body = [
             'service_id' => $this->config['service_id'],
-            'lines' => $data
+            'lines' => [$data]
         ];
         $response = Http::withHeaders([
             'Secret' => $this->config['Secret']
