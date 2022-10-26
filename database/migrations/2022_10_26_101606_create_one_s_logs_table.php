@@ -15,6 +15,10 @@ class CreateOneSLogsTable extends Migration
     {
         Schema::create('one_s_logs', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
+            $table->text('data');
+            $table->text('response');
+            $table->integer('status');
             $table->timestamps();
         });
     }

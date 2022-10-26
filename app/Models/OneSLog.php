@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class OneSLog extends Model
 {
     use HasFactory;
+    public $guarded = [];
 }
