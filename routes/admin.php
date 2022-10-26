@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     });
     Route::get('/push-token', [UserController::class, 'pushToken']);
     Route::get('/firebase-log', [UserController::class, 'firebaseLog']);
+    Route::get('/1c-log', [UserController::class, 'oneCLog']);
     Route::group(['prefix' => 'users', 'as' => 'user'], function () {
         Route::get('/', [UserController::class, 'index']);
         Route::get('/list', [UserController::class, 'list'])->name('.list');

@@ -94,5 +94,10 @@ return [
 			'title' => 'Firebase логи',
 			'url' => '/firebase-log',
 		],
+		[
+			'icon' => 'fa fa-history',
+			'title' => '1С логи',
+			'url' => '/1c-log',
+		],
 	]
 ];

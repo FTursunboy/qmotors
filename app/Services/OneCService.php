@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\OneSLog;
 use App\Services\Contracts\OneCServiceInterface;
 use Illuminate\Support\Facades\Http;
 
@@ -56,16 +57,23 @@ class OneCService implements OneCServiceInterface
 
     public function send($data)
     {
-        $response = Http::withHeaders([
-            'Secret' => $this->config['Secret']
-        ])->post($this->config['URL'], [
+        $body = [
             'service_id' => $this->config['service_id'],
             'lines' => $data
-        ]);
+        ];
+        $response = Http::withHeaders([
+            'Secret' => $this->config['Secret']
+        ])->post($this->config['URL'], $body);
         // dd($response->body(), $response->status(), [
         //     'service_id' => $this->config['service_id'],
         //     'lines' => $data
         // ]);
+        OneSLog::create([
+            'type' => $data['type'],
+            'data' => json_encode($body, JSON_UNESCAPED_SLASHES),
+            'response' => json_encode($response->body(), JSON_UNESCAPED_SLASHES),
+            'status' => $response->status()
+        ]);
         return $response->status();
     }
 }
