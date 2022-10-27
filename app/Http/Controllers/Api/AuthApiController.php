@@ -6,14 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginApiRequest;
 use App\Http\Requests\Api\SendSmsCodeRequest;
 use App\Models\User;
-use App\Services\Contracts\OneCServiceInterface;
 use App\Services\Contracts\SmsServiceInterface;
 use App\Traits\ApiResponse;
-use Illuminate\Http\Request;
 
 class AuthApiController extends Controller
 {
     use ApiResponse;
+
     public function sendSmsCode(SendSmsCodeRequest $request, SmsServiceInterface $smsService)
     {
         $user = User::where('phone_number', $request->phone_number)->first();
@@ -23,7 +22,7 @@ class AuthApiController extends Controller
             $user->id = $id;
             $user->phone_number = $request->phone_number;
         }
-        if ($request->phone_number == User::TEST_ACCOUNT_PHONE_NUMBER) {
+        if (in_array($request->phone_number, User::TEST_ACCOUNT_PHONE_NUMBERS)) {
             $user->sms_code = 111111;
             $result = true;
         } else {
@@ -36,6 +35,7 @@ class AuthApiController extends Controller
             return $this->success();
         return $this->error();
     }
+
     public function login(LoginApiRequest $request)
     {
         $user = User::where('phone_number', $request->phone_number)->first();
@@ -45,7 +45,7 @@ class AuthApiController extends Controller
         if ($user->sms_code != $request->sms_code) {
             return $this->error(['message' => __('auth.failed')], 422);
         }
-        if ($request->phone_number == User::TEST_ACCOUNT_PHONE_NUMBER) {
+        if (in_array($request->phone_number, User::TEST_ACCOUNT_PHONE_NUMBERS)) {
             $user->sms_code = 111111;
         } else {
             $user->sms_code = null;

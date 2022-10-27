@@ -14,6 +14,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, ModelCommonMethods;
     const TEST_ACCOUNT_PHONE_NUMBER = '+7 (999) 999-99-99';
+    const TEST_ACCOUNT_PHONE_NUMBERS = ['+7 (999) 999-99-99','+7 (999) 999-99-07'];
     const STATUSES = [
         [
             'id' => 1,
