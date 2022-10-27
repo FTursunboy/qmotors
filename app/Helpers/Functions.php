@@ -3,7 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
-function requestOrder()
+function requestOrder(): array
 {
   $order = request()->get('order', '-id');
   if ($order[0] == '-') {
@@ -30,7 +30,7 @@ function filterPhone2($phone)
   return filterPhone($phone);
 }
 
-function uploadFile($file, $path, $old = null)
+function uploadFile($file, $path, $old = null): ?string
 {
   $result = null;
   deleteFile($old);

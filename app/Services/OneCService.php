@@ -36,7 +36,11 @@ class OneCService implements OneCServiceInterface
             'birthday' => $model->birthday,
             'email' => $model->email,
             'contact_phone' => filterPhone2($model->additional_phone_number),
-            'photo' => $model->avatar
+            'photo' => $model->avatar,
+            'agr_sms'=>$model->agree_sms,
+            'agr_push'=>$model->agree_notification,
+            'agr_data'=>$model->agree_data,
+            'agr_calls'=>$model->agree_calls,
         ]);
     }
     public function car($model)
