@@ -22,14 +22,14 @@ class OneCService implements OneCServiceInterface
     {
         return $this->send([
             'type' => 'user',
-            'user_id' => $model->id,
-            'phone' => filterPhone2($model->phone_number)
+            'lines' => [['user_id' => $model->id,
+                'phone' => filterPhone2($model->phone_number)]]
         ]);
     }
 
     public function updateUser($model): int
     {
-        return $this->send(new UserResource($model));
+        return $this->send(array_merge(['lines' => new UserResource($model)], ['type' => 'user']));
     }
 
     public function car($model): int
@@ -46,7 +46,7 @@ class OneCService implements OneCServiceInterface
     {
         $body = [
             'service_id' => $this->config['service_id'],
-            'lines' => [$data]
+            'lines' => $data['lines']
         ];
         $response = Http::withHeaders([
             'Secret' => $this->config['Secret']
@@ -55,6 +55,7 @@ class OneCService implements OneCServiceInterface
         //     'service_id' => $this->config['service_id'],
         //     'lines' => $data
         // ]);
+        dd($data);
         OneSLog::create([
             'type' => $data['type'],
             'data' => json_encode($body, JSON_UNESCAPED_SLASHES),
