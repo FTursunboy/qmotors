@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources\OneC;
 
+use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PushResource extends JsonResource
+class BonusResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,15 +15,16 @@ class PushResource extends JsonResource
      */
     public function toArray($request)
     {
-        $data = json_decode($this->data);
         return [
-            'type' => 'push',
-            'service_id' => $this->service_id,
-            'push_id' => $this->id,
+            'type' => 'bonus',
+            'bonus_id' => $this->id,
+            'date' => $this->created_at,
             'user_id' => $this->user_id,
-            'title' => $data['title'],
-            'text' => $data['text'],
-            'date' => $this->created_at
+            'bonus_type' => $this->bonus_type,
+            'order_id' => $this->order_id,
+            'count' => $this->points,
+            'burn_date' => $this->burn_date,
+            'burn_count' => User::find($this->user_id)->balance
         ];
     }
 }

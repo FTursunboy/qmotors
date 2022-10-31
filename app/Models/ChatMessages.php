@@ -20,6 +20,11 @@ class ChatMessages extends Model
         return $this->belongsTo(User::class);
     }
 
+    function chat()
+    {
+        return $this->belongsTo(Chat::class);
+    }
+
     public function admin_user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(AdminUser::class);

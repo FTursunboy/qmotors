@@ -79,7 +79,8 @@ class PushNotificationService implements PushNotificationServiceInterface
                 FirebaseLog::create([
                     'fcmtokens' => json_encode($tokens),
                     'data' => $dataString,
-                    'response' => $response
+                    'response' => $response,
+                    'user_id' => $user_id ?? 0
                 ]);
                 Log::channel('firebase')->info($response . '  ' . $dataString);
                 // dd($response);
