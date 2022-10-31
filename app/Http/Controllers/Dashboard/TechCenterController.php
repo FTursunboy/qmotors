@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TechCenter\StoreTechCenterRequest;
 use App\Models\TechCenter;
 use App\Services\Contracts\TechCenterServiceInterface;
 use Illuminate\Http\Request;
@@ -11,7 +10,7 @@ use Throwable;
 
 class TechCenterController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         return view('dashboard.pages.tech-center.index');
     }

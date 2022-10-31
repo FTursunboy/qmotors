@@ -10,9 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 class Notification extends Model
 {
     use HasFactory, ModelCommonMethods, Excludable;
+
     public $guarded = [];
 
-    public function user()
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }

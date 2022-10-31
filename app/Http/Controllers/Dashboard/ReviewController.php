@@ -20,11 +20,13 @@ class ReviewController extends Controller
         $model = Review::findOrFail($id);
         return view('dashboard.pages.review.show', compact('model'));
     }
+
     public function edit($id)
     {
         $model = Review::findOrFail($id);
         return view('dashboard.pages.review.edit', compact('model'));
     }
+
     public function update($id, Request $request, ReviewServiceInterface $reviewService)
     {
         $result = $reviewService->update($id, $request);
@@ -33,6 +35,7 @@ class ReviewController extends Controller
         // }
         // return back()->with('not-allowed', $result['message'])->withInput();
     }
+
     public function delete($id)
     {
         try {

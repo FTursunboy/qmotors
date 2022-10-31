@@ -8,7 +8,6 @@ use App\Http\Requests\Reminder\UpdateReminderRequest;
 use App\Models\Reminder;
 use App\Services\Contracts\ReminderServiceInterface;
 use App\Traits\ApiResponse;
-use Illuminate\Http\Request;
 
 class ReminderApiController extends Controller
 {
@@ -24,12 +23,12 @@ class ReminderApiController extends Controller
 
     public function store(StoreReminderRequest $request, ReminderServiceInterface $reminderService)
     {
-        return  $this->success($reminderService->store($request));
+        return $this->success($reminderService->store($request));
     }
 
     public function update($id, UpdateReminderRequest $request, ReminderServiceInterface $reminderService)
     {
-        return  $this->success($reminderService->update($id, $request));
+        return $this->success($reminderService->update($id, $request));
     }
 
     public function show($id, UpdateReminderRequest $request)

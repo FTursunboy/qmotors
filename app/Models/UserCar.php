@@ -10,48 +10,45 @@ use Illuminate\Database\Eloquent\Model;
 class UserCar extends Model
 {
     use HasFactory, ModelCommonMethods;
+
     const  STATUSES = [
         ['id' => 0, 'name' => 'Активный'],
         ['id' => 1, 'name' => 'Проданный'],
         ['id' => 2, 'name' => 'Удаленный'],
     ];
     protected $guarded = [];
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    public function model()
+
+    public function model(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(CarModel::class, 'car_model_id');
     }
 
-    public function user()
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function freeDiagnostics()
+    public function freeDiagnostics(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(FreeDiagnostic::class);
     }
 
-    public function reminders()
+    public function reminders(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Reminder::class);
     }
 
-    public function orders()
+    public function orders(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Order::class);
     }
 
-    public function free_diagnostics()
+    public function free_diagnostics(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(FreeDiagnostic::class);
     }
 
-    public function user_car_photos()
+    public function user_car_photos(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(UserCarPhoto::class);
     }
@@ -62,6 +59,7 @@ class UserCar extends Model
             return self::STATUSES[$this->status]['name'];
         return 'Недействительный статус';
     }
+
     public function getLastVisitDateAttribute()
     {
         if (!empty($this->last_visit))
@@ -69,7 +67,7 @@ class UserCar extends Model
         return $this->last_visit;
     }
 
-    public function getTitleAttribute()
+    public function getTitleAttribute(): string
     {
         return $this->model->name . ' (' . $this->id . ')[' . $this->number . ']';
     }

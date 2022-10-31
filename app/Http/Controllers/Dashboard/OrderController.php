@@ -14,26 +14,31 @@ class OrderController extends Controller
     {
         return view('dashboard.pages.order.index');
     }
+
     public function create()
     {
         $model = new Order();
         return view('dashboard.pages.order.create', compact('model'));
     }
+
     public function store(Request $request, OrderServiceInterface $orderService)
     {
         $result = $orderService->store($request);
         return redirect()->route('order.show', $result->id)->with('success', 'Успешно создано!');
     }
+
     public function show($id)
     {
         $model = Order::findOrFail($id);
         return view('dashboard.pages.order.show', compact('model'));
     }
+
     public function edit($id)
     {
         $model = Order::findOrFail($id);
         return view('dashboard.pages.order.edit', compact('model'));
     }
+
     public function update($id, Request $request, OrderServiceInterface $orderService)
     {
         $result = $orderService->update($id, $request);
@@ -42,11 +47,12 @@ class OrderController extends Controller
         }
         return back()->with('not-allowed', $result['message'])->withInput();
     }
+
     public function delete($id)
     {
         try {
             $model = Order::findOrFail($id);
-            $model->order_photos()->delete();;
+            $model->order_photos()->delete();
             $model->delete();
         } catch (Throwable $e) {
             return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");

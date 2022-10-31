@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TechCenter\TechCentersResource;
-use App\Models\Reminder;
 use App\Models\TechCenter;
 use App\Traits\ApiResponse;
 

@@ -9,7 +9,7 @@ class FreeDiagnosticType extends Model
 {
     use HasFactory;
 
-    public function free_diagnostics()
+    public function free_diagnostics(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(FreeDiagnostic::class);
     }

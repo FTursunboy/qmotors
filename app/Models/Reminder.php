@@ -9,8 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 class Reminder extends Model
 {
     use HasFactory, ModelCommonMethods;
+
     protected $guarded = [];
-    public function user_car()
+
+    public function user_car(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(UserCar::class);
     }

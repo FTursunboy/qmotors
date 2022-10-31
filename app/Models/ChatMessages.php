@@ -8,17 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class ChatMessages extends Model
 {
     use HasFactory;
+
     public $guarded = [];
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',
         'read_at' => 'datetime:Y-m-d H:i:s',
     ];
-    public function user()
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function admin_user()
+    public function admin_user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(AdminUser::class);
     }

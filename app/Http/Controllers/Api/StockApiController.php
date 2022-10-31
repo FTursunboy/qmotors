@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Stock;
 use App\Traits\ApiResponse;
-use Illuminate\Http\Request;
 
 class StockApiController extends Controller
 {
     use ApiResponse;
+
     public function index()
     {
         return $this->success(Stock::exclude('text')->latest()->get());

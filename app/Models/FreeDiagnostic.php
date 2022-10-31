@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class FreeDiagnostic extends Model
 {
     use HasFactory, ModelCommonMethods;
+
     public $fillable = ['tech_center_id', 'user_car_id', 'date', 'free_diagnostic_type_id'];
 
     const TYPES = [
@@ -74,17 +75,17 @@ class FreeDiagnostic extends Model
         ]
     ];
 
-    public function tech_center()
+    public function tech_center(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(TechCenter::class);
     }
 
-    public function user_car()
+    public function user_car(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(UserCar::class);
     }
 
-    public function free_diagnostic_type()
+    public function free_diagnostic_type(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(FreeDiagnosticType::class);
     }

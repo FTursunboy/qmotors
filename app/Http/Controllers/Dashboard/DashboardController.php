@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Services\SmsService;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -12,6 +10,7 @@ class DashboardController extends Controller
     {
         return view('dashboard.pages.index');
     }
+
     public function index1()
     {
         return view('dashboard.pages.dashboard.version-1');

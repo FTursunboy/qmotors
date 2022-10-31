@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Traits\ModelCommonMethods;
 use App\View\Components\Dashboard\ChatMessage;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -13,8 +12,9 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, ModelCommonMethods;
+
     const TEST_ACCOUNT_PHONE_NUMBER = '+7 (999) 999-99-99';
-    const TEST_ACCOUNT_PHONE_NUMBERS = ['+7 (999) 999-99-99','+7 (999) 999-99-07'];
+    const TEST_ACCOUNT_PHONE_NUMBERS = ['+7 (999) 999-99-99', '+7 (999) 999-99-07'];
     const STATUSES = [
         [
             'id' => 1,
@@ -67,42 +67,42 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function user_cars()
+    public function user_cars(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(UserCar::class);
     }
 
-    public function bonuses()
+    public function bonuses(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Bonus::class)->latest();
     }
 
-    public function chat()
+    public function chat(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Chat::class);
     }
 
-    public function chat_messages()
+    public function chat_messages(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(ChatMessage::class);
     }
 
-    public function free_diagnostics()
+    public function free_diagnostics(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(FreeDiagnostic::class);
     }
 
-    public function notifications()
+    public function notifications(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Notification::class);
     }
 
-    public function reminders()
+    public function reminders(): \Illuminate\Database\Eloquent\Relations\HasManyThrough
     {
         return $this->hasManyThrough(Reminder::class, UserCar::class);
     }
 
-    public function getFullNameAttribute()
+    public function getFullNameAttribute(): string
     {
         $fullname = $this->surname . ' ' . $this->name . ' ' . $this->patronymic;
         if (strlen($fullname) < 3) {
@@ -111,17 +111,17 @@ class User extends Authenticatable
         return $fullname . ' [' . $this->phone_number . ']';
     }
 
-    public function getGenderTextAttribute()
+    public function getGenderTextAttribute(): string
     {
         return $this->gender ? 'Мужской' : 'Женский';
     }
 
-    public function getGenderKeyAttribute()
+    public function getGenderKeyAttribute(): string
     {
         return $this->gender ? 'male' : 'female';
     }
 
-    public function getIsCompleteTextAttribute()
+    public function getIsCompleteTextAttribute(): string
     {
         return $this->is_complete ? 'Да' : 'Нет';
     }
@@ -130,11 +130,10 @@ class User extends Authenticatable
     {
         $sum = 0;
         foreach ($this->bonuses as $item) {
-            if ($item->bonus_type === 0) {
-                $sum += $item->points;
-            }
-            if ($item->bonus_type === 1) {
+            if ($item->bonus_type == 'utilization') {
                 $sum -= $item->points;
+            } else {
+                $sum += $item->points;
             }
         }
         return $sum;

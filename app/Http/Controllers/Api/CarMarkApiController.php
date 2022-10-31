@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ListResource;
 use App\Models\CarMark;
 use App\Traits\ApiResponse;
-use Illuminate\Http\Request;
 
 class CarMarkApiController extends Controller
 {

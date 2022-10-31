@@ -7,11 +7,10 @@ use App\Http\Requests\User\StoreUserRequest;
 use App\Models\User;
 use App\Services\Contracts\UserServiceInterface;
 use Illuminate\Http\Request;
-use Throwable;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         return view('dashboard.pages.user.index');
     }
@@ -21,15 +20,17 @@ class UserController extends Controller
         return $service->list($request);
     }
 
-    public function pushToken(Request $request)
+    public function pushToken()
     {
         return view('dashboard.pages.user.push-token');
     }
-    public function firebaseLog(Request $request)
+
+    public function firebaseLog()
     {
         return view('dashboard.pages.user.firebase-log');
     }
-    public function oneCLog(Request $request)
+
+    public function oneCLog()
     {
         return view('dashboard.pages.user.one-c-log');
     }

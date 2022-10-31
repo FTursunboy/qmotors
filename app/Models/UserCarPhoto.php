@@ -12,7 +12,7 @@ class UserCarPhoto extends Model
 
     protected $guarded = [];
 
-    public function user_car()
+    public function user_car(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(UserCar::class);
     }

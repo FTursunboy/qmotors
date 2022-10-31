@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 class TechCenter extends Model
 {
     use HasFactory, ModelCommonMethods;
+
     protected $guarded = [];
 
-    public function reviews()
+    public function reviews(): \Illuminate\Database\Eloquent\Relations\HasManyThrough
     {
         return $this->hasManyThrough(Review::class, Order::class);
     }

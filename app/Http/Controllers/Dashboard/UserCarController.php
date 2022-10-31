@@ -11,7 +11,7 @@ use Throwable;
 
 class UserCarController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         return view('dashboard.pages.user-car.index');
     }
@@ -21,7 +21,7 @@ class UserCarController extends Controller
         return $service->list($request);
     }
 
-    public function show($id, Request $request)
+    public function show($id)
     {
         $model = UserCar::findOrFail($id);
         return view('dashboard.pages.user-car.show', compact('model'));
@@ -41,6 +41,7 @@ class UserCarController extends Controller
         }
         return back()->with('not-allowed', $result['message']);
     }
+
     public function edit($id)
     {
         $model = UserCar::findOrFail($id);

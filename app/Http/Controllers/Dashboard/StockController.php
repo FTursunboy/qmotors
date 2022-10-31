@@ -20,26 +20,31 @@ class StockController extends Controller
         $model = Stock::findOrFail($id);
         return view('dashboard.pages.stock.show', compact('model'));
     }
+
     public function edit($id)
     {
         $model = Stock::findOrFail($id);
         return view('dashboard.pages.stock.edit', compact('model'));
     }
+
     public function create()
     {
         $model = new Stock();
         return view('dashboard.pages.stock.create', compact('model'));
     }
+
     public function store(Request $request, StockServiceInterface $stockService)
     {
         $result = $stockService->store($request);
         return redirect()->route('stock.show', $result->id)->with('success', 'Успешно создано!');
     }
+
     public function update($id, Request $request, StockServiceInterface $stockService)
     {
         $result = $stockService->update($id, $request);
         return redirect()->route('stock.show', $id)->with('success', 'Успешно обновлено!');
     }
+
     public function delete($id)
     {
         try {
