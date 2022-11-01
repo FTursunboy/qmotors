@@ -33,7 +33,7 @@ class OrderResource extends JsonResource
             "date" => $this->created_at,
             "number" => $this->id,
             "mileage" => $this->mileage,
-            "sum" => $this->sun,
+            "sum" => $this->sum,
             "works" => $this->order_works,
             "parts" => $this->order_spares,
         ];

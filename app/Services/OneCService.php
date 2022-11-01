@@ -8,7 +8,10 @@ use App\Http\Resources\OneC\ChatResource;
 use App\Http\Resources\OneC\OrderResource;
 use App\Http\Resources\OneC\PushResource;
 use App\Http\Resources\OneC\UserResource;
+use App\Models\ChatMessages;
 use App\Models\OneSLog;
+use App\Models\Setting;
+use App\Models\User;
 use App\Services\Contracts\OneCServiceInterface;
 use Illuminate\Support\Facades\Http;
 
@@ -87,26 +90,84 @@ class OneCService implements OneCServiceInterface
 
     public function receive($data = []): int
     {
+        $message = Setting::firstOrCreate(['key' => 'msg_id']);
+        $msg_id = $message->value;
         $body = [
-            'service_id' => $this->config['service_id'],
-            'clear' => 0,
+            'id' => $this->config['service_id'],
+            'clear' => $msg_id,
         ];
         $response = Http::withHeaders([
             'Secret' => $this->config['Secret']
         ])->get($this->config['URL'], $body);
+        $res = json_decode($response->body(), true);
+//        dd($res['lines']);
+        foreach ($res['lines'] as $item) {
+//            dd($item);
+            switch ($item['msg_type']) {
+                case 'chat':
+                    $this->receiveChat($item['data']);
+                    break;
+                case 'user':
+                    $this->receiveUser($item['data']);
+                    break;
+                case 'push':
+                    $this->receivePush($item['data']);
+                    break;
+                case 'order':
+                    $this->receiveOrder($item['data']);
+                    break;
+                case 'bonus':
+                    $this->receiveBonus($item['data']);
+                    break;
+                default:
+                    break;
+            }
+            if ($item['msg_id'] > $msg_id) $msg_id = $item['msg_id'];
+        }
+//        dd($msg_id);
+        $message->update(['value' => $msg_id]);
+//        dd([
+//            $response->body(),
+//            $response->status(),
+//            'service_id' => $this->config['service_id'],
+//            'lines' => $body
+//        ]);
 
-        dd([
-            $response->body(),
-            $response->status(),
-            'service_id' => $this->config['service_id'],
-            'lines' => $body
-        ]);
-        
         return $response->status();
     }
 
     private function format($data)
     {
         return $data->toArray(request());
+    }
+
+    private function receiveChat($data)
+    {
+        ChatMessages::create([
+            'chat_id' => User::find($data['user_id'])->chat->id,
+            'message' => $data['text'],
+            'photo' => $data['image'],
+            'video' => $data['video'],
+            'user_id' => $data['incoming'] ? $data['user_id'] : null,
+            'admin_user_id' => !$data['incoming'] ? 1 : null,
+            'created_at' => $data['date']
+        ]);
+    }
+
+    private function receiveUser($data)
+    {
+
+    }
+
+    private function receivePush($data)
+    {
+    }
+
+    private function receiveOrder($data)
+    {
+    }
+
+    private function receiveBonus($data)
+    {
     }
 }
