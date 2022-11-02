@@ -8,6 +8,7 @@ use App\Http\Resources\OneC\ChatResource;
 use App\Http\Resources\OneC\OrderResource;
 use App\Http\Resources\OneC\PushResource;
 use App\Http\Resources\OneC\UserResource;
+use App\Models\Bonus;
 use App\Models\ChatMessages;
 use App\Models\OneSLog;
 use App\Models\Setting;
@@ -126,7 +127,7 @@ class OneCService implements OneCServiceInterface
             if ($item['msg_id'] > $msg_id) $msg_id = $item['msg_id'];
         }
 //        $message->update(['value' => $msg_id]);
-        
+
 //        dd([
 //            $response->body(),
 //            $response->status(),
@@ -158,7 +159,23 @@ class OneCService implements OneCServiceInterface
 
     private function receiveUser($data)
     {
-
+        User::updateOrCreate([
+            'id' => $data['user_id'] ?? User::nextID()
+        ], [
+            'phone_number' => $data['phone_number'],
+            'name' => $data['fio_1'],
+            'surname' => $data['fio_2'],
+            'patronymic' => $data['fio_3'],
+            'gender' => $data['gender'] == 'male' ? 1 : 0,
+            'birthday' => $data['birthday'],
+            'email' => $data['email'],
+            'additional_phone_number' => $data['contact_phone'],
+            'avatar' => $data['photo'],
+            'agree_sms' => $data['agr_sms'],
+            'agree_notification' => $data['agr_push'],
+            'agree_data' => $data['agr_data'],
+            'agree_calls' => $data['agr_calls'],
+        ]);
     }
 
     private function receivePush($data)
@@ -171,5 +188,14 @@ class OneCService implements OneCServiceInterface
 
     private function receiveBonus($data)
     {
+        Bonus::updateOrCreate([
+            'id' => Bonus::nextID()
+        ], [
+            'created_at' => $data['date'],
+            'user_id' => $data['user_id'],
+            'bonus_type' => $data['bonus_type'],
+//            'order_id' => $data['order_id'],
+            'points' => $data['count'],
+        ]);
     }
 }
