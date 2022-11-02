@@ -14,6 +14,7 @@ use App\Models\Setting;
 use App\Models\User;
 use App\Services\Contracts\OneCServiceInterface;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class OneCService implements OneCServiceInterface
 {
@@ -132,6 +133,7 @@ class OneCService implements OneCServiceInterface
 //            'service_id' => $this->config['service_id'],
 //            'lines' => $body
 //        ]);
+        Log::channel('1C')->info($response);
 
         return $response->status();
     }

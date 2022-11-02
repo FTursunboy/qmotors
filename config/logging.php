@@ -118,6 +118,11 @@ return [
             'path' => storage_path('logs/firebase.log'),
             'level' => 'info',
         ],
+        '1C' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/1C.log'),
+            'level' => 'info',
+        ],
     ],
 
 ];
