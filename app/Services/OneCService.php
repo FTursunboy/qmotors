@@ -125,8 +125,8 @@ class OneCService implements OneCServiceInterface
             }
             if ($item['msg_id'] > $msg_id) $msg_id = $item['msg_id'];
         }
-//        dd($msg_id);
-        $message->update(['value' => $msg_id]);
+//        $message->update(['value' => $msg_id]);
+        
 //        dd([
 //            $response->body(),
 //            $response->status(),
