@@ -15,6 +15,7 @@ class AuthApiController extends Controller
 
     public function sendSmsCode(SendSmsCodeRequest $request, SmsServiceInterface $smsService)
     {
+        $result = false;
         $user = User::where('phone_number', $request->phone_number)->first();
         if ($user == null) {
             $id = User::nextID();
@@ -27,7 +28,7 @@ class AuthApiController extends Controller
             $result = true;
         } else {
             $user->sms_code = rand(100000, 999999);
-            $result = $smsService->send(filterPhone($user->phone_number), 'Ваш код для авторизация: ' . $user->sms_code);
+//            $result = $smsService->send(filterPhone($user->phone_number), 'Ваш код для авторизация: ' . $user->sms_code);
         }
         $user->save();
 
