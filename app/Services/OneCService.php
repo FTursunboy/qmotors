@@ -73,6 +73,7 @@ class OneCService implements OneCServiceInterface
 
     public function send($data): int
     {
+        dd($data);
         $body = [
             'service_id' => $this->config['service_id'],
             'lines' => [$data]
