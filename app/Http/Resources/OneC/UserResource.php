@@ -26,7 +26,7 @@ class UserResource extends JsonResource
             'birthday' => $this->birthday,
             'email' => $this->email,
             'contact_phone' => filterPhone2($this->additional_phone_number),
-            'photo' => $this->avatar,
+            'photo' => customAsset($this, 'avatar'),
             'agr_sms' => $this->agree_sms,
             'agr_push' => $this->agree_notification,
             'agr_data' => $this->agree_data,

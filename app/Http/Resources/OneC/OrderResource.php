@@ -25,7 +25,9 @@ class OrderResource extends JsonResource
             "desired_date" => $this->date,
             "description" => $this->description,
             "guarantee" => $this->guarantee,
-            "photos" => $this->order_photos->pluck('photo'),
+            "photos" => $this->order_photos->map(function ($item) {
+                $item->photo = customAsset($item, 'photo');
+            })->pluck('photo')->all(),
             "order_status" => '',
             "order_new" => $this->order_works == null,
             "order_done" => $this->order_works != null,

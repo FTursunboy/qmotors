@@ -23,7 +23,9 @@ class CarResource extends JsonResource
             'vin' => $this->vin,
             'year' => $this->year,
             'mileage' => $this->mileage,
-            'photos' => $this->user_car_photos->pluck('photo')->all(),
+            'photos' => $this->user_car_photos->map(function ($item) {
+                $item->photo = customAsset($item, 'photo');
+            })->pluck('photo')->all(),
             'date' => $this->last_visit,
         ];
     }
