@@ -94,7 +94,7 @@ class OneCService implements OneCServiceInterface
     public function receive($data = []): int
     {
         $message = Setting::firstOrCreate(['key' => 'msg_id']);
-        $msg_id = $message->value;
+        $msg_id = $message->value ?? 0;
         $body = [
             'id' => $this->config['service_id'],
             'clear' => $msg_id,
@@ -163,7 +163,7 @@ class OneCService implements OneCServiceInterface
         User::updateOrCreate([
             'id' => $data['user_id'] ?? User::nextID()
         ], [
-            'phone_number' => $data['phone_number'],
+            'phone_number' => $data['phone'],
             'name' => $data['fio_1'],
             'surname' => $data['fio_2'],
             'patronymic' => $data['fio_3'],
