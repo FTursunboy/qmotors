@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Services\OneCService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
@@ -38,10 +39,12 @@ class OneCReceiveCommand extends Command
      */
     public function handle(): int
     {
-        Log::channel('1C')->info('cron test');
+        Log::channel('1C')->info('cron test 1');
 
-//        $service = new OneCService();
-//        $service->receive();
+        $service = new OneCService();
+        Log::channel('1C')->info('cron test 2');
+        $service->receive();
+        Log::channel('1C')->info('cron test 3');
         return 0;
     }
 }
