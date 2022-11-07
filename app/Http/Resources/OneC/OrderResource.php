@@ -19,7 +19,7 @@ class OrderResource extends JsonResource
             "service_id" => $this->tech_center_id,
             "order_id" => $this->id,
             "order_uuid" => $this->uuid,
-            "user_id" => $this->user_id,
+            "user_id" => optional($this->user_car)->user_id,
             "car_id" => $this->user_car_id,
             "order_type" => optional($this->order_type_relation)->key,
             "desired_date" => $this->date,
