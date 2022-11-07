@@ -9,10 +9,19 @@ use App\Http\Resources\OneC\OrderResource;
 use App\Http\Resources\OneC\PushResource;
 use App\Http\Resources\OneC\UserResource;
 use App\Models\Bonus;
+use App\Models\CarMark;
+use App\Models\CarModel;
 use App\Models\ChatMessages;
 use App\Models\OneSLog;
+use App\Models\Order;
+use App\Models\OrderPhoto;
+use App\Models\OrderSpare;
+use App\Models\OrderType;
+use App\Models\OrderWork;
 use App\Models\Setting;
 use App\Models\User;
+use App\Models\UserCar;
+use App\Models\UserCarPhoto;
 use App\Services\Contracts\OneCServiceInterface;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -137,7 +146,7 @@ class OneCService implements OneCServiceInterface
             if ($item['msg_id'] > $msg_id) $msg_id = $item['msg_id'];
         }
         $message->value = $msg_id;
-        $message->save();
+//        $message->save();
 
 //        dd([
 //            $response->body(),
@@ -158,7 +167,9 @@ class OneCService implements OneCServiceInterface
     private function receiveChat($data)
     {
         ChatMessages::withoutEvents(function () use ($data) {
-            ChatMessages::create([
+            ChatMessages::updateOrCreate([
+                'id' => $data['chat_id']
+            ], [
                 'chat_id' => User::find($data['user_id'])->chat->id,
                 'message' => $data['text'],
                 'photo' => $data['image'],
@@ -199,18 +210,62 @@ class OneCService implements OneCServiceInterface
 
     private function receiveOrder($data)
     {
+        $order_type = OrderType::where('key', $data['order_type'])->first();
+        Order::withoutEvents(function () use ($data, $order_type) {
+            Order::updateOrCreate([
+                'id' => $data['order_id']
+            ], [
+                'uuid' => $data['order_uuid'],
+                'tech_center_id' => $data['service_id'],
+                'user_car_id' => $data['car_id'],
+                'order_type' => $order_type->id,
+                'date' => $data['desired_date'],
+                'description' => $data['description'],
+                'guarantee' => $data['guarantee'],
+                'order_status' => $data['order_status'],
+                'order_number' => $data['number'],
+                'mileage' => $data['mileage'],
+                'sum' => $data['sum'],
+            ]);
+        });
+        foreach ($data['photos'] as $item) {
+            OrderPhoto::updateOrCreate([
+                'order_id' => $data['order_id'],
+                'photo' => $item
+            ], []);
+        }
+        foreach ($data['works'] as $item) {
+            OrderWork::updateOrCreate([
+                'order_id' => $data['order_id'],
+                'title' => $item['name']
+            ], [
+                'count' => $item['count'],
+                'hours' => $item['hours'],
+                'price' => $item['price'],
+                'sum' => $item['sum'],
+            ]);
+        }
+        foreach ($data['parts'] as $item) {
+            OrderSpare::updateOrCreate([
+                'order_id' => $data['order_id'],
+                'title' => $item['name']
+            ], [
+                'count' => $item['count'],
+                'price' => $item['price'],
+                'sum' => $item['sum'],
+            ]);
+        }
     }
 
     private function receiveBonus($data)
     {
-        User::withoutEvents(function () use ($data) {
+        Bonus::withoutEvents(function () use ($data) {
             Bonus::updateOrCreate([
                 'id' => Bonus::nextID()
             ], [
                 'created_at' => $data['date'],
                 'user_id' => $data['user_id'],
                 'bonus_type' => $data['bonus_type'],
-//            'order_id' => $data['order_id'],
                 'points' => $data['count'],
             ]);
         });
@@ -218,5 +273,25 @@ class OneCService implements OneCServiceInterface
 
     private function receiveCar($data)
     {
+        $mark = CarMark::firstOrCreate(['name' => $data['brand']]);
+        $model = CarModel::firstOrCreate(['mark_id' => $mark->id, 'name' => $data['model']]);
+        UserCar::withoutEvents(function () use ($data, $model) {
+            UserCar::updateOrCreate([
+                'id' => $data['car_id']
+            ], [
+                'user_id' => $data['user_id'],
+                'vin' => $data['vin'],
+                'car_model_id' => $model->id,
+                'year' => $data['year'],
+                'mileage' => $data['mileage'],
+                'created_at' => $data['date'],
+            ]);
+        });
+        foreach ($data['photos'] as $item) {
+            UserCarPhoto::updateOrCreate([
+                'user_car_id' => $data['car_id'],
+                'photo' => $item
+            ], []);
+        }
     }
 }

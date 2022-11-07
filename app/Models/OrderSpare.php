@@ -9,6 +9,8 @@ class OrderSpare extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function order(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Order::class);

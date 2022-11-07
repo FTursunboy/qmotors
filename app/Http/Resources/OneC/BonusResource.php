@@ -19,7 +19,7 @@ class BonusResource extends JsonResource
             'type' => 'bonus',
             'bonus_id' => $this->id,
             'date' => $this->created_at,
-            'user_id' => $this->user_id,
+            'user_id' => intval($this->user_id),
             'bonus_type' => $this->bonus_type,
             'order_id' => $this->order_id,
             'count' => $this->points,
