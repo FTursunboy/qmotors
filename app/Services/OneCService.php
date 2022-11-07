@@ -185,10 +185,10 @@ class OneCService implements OneCServiceInterface
                 'email' => $data['email'],
                 'additional_phone_number' => $data['contact_phone'],
                 'avatar' => $data['photo'],
-//                'agree_sms' => $data['agr_sms'],
-//                'agree_notification' => $data['agr_push'],
-//                'agree_data' => $data['agr_data'],
-//                'agree_calls' => $data['agr_call'],
+                'agree_sms' => $data['agr_sms'],
+                'agree_notification' => $data['agr_push'],
+                'agree_data' => $data['agr_data'],
+                'agree_calls' => $data['agr_calls'],
             ]);
         });
     }
