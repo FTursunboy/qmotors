@@ -128,6 +128,9 @@ class OneCService implements OneCServiceInterface
                 case 'bonus':
                     $this->receiveBonus($item['data']);
                     break;
+                case 'car':
+                    $this->receiveCar($item['data']);
+                    break;
                 default:
                     break;
             }
@@ -182,10 +185,10 @@ class OneCService implements OneCServiceInterface
                 'email' => $data['email'],
                 'additional_phone_number' => $data['contact_phone'],
                 'avatar' => $data['photo'],
-                'agree_sms' => $data['agr_sms'],
-                'agree_notification' => $data['agr_push'],
-                'agree_data' => $data['agr_data'],
-                'agree_calls' => $data['agr_call'],
+//                'agree_sms' => $data['agr_sms'],
+//                'agree_notification' => $data['agr_push'],
+//                'agree_data' => $data['agr_data'],
+//                'agree_calls' => $data['agr_call'],
             ]);
         });
     }
@@ -211,5 +214,9 @@ class OneCService implements OneCServiceInterface
                 'points' => $data['count'],
             ]);
         });
+    }
+
+    private function receiveCar($data)
+    {
     }
 }
