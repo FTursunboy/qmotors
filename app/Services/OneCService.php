@@ -9,7 +9,6 @@ use App\Http\Resources\OneC\OrderResource;
 use App\Http\Resources\OneC\PushResource;
 use App\Http\Resources\OneC\UserResource;
 use App\Models\Bonus;
-use App\Models\CarMark;
 use App\Models\CarModel;
 use App\Models\ChatMessages;
 use App\Models\OneSLog;
@@ -273,7 +272,7 @@ class OneCService implements OneCServiceInterface
 
     private function receiveCar($data)
     {
-        $mark = CarMark::firstOrCreate(['name' => $data['brand']]);
+//        $mark = CarMark::firstOrCreate(['name' => $data['brand']]);
         $model = CarModel::firstOrCreate(['mark_id' => $mark->id, 'name' => $data['model']]);
         UserCar::withoutEvents(function () use ($data, $model) {
             UserCar::updateOrCreate([
