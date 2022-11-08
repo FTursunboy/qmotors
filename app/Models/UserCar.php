@@ -76,4 +76,11 @@ class UserCar extends Model
     {
         return collect(self::STATUSES)->firstWhere('name', 'Удаленный')['id'];
     }
+
+    public function getAllPhotosAttribute()
+    {
+        return $this->user_car_photos->map(function ($item) {
+            return customAsset($item, 'photo');
+        })->all();
+    }
 }
