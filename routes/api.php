@@ -17,7 +17,6 @@ use App\Http\Controllers\Api\ReviewApiController;
 use App\Http\Controllers\Api\StockApiController;
 use App\Http\Controllers\Api\TechCenterApiController;
 use App\Http\Controllers\Api\UserApiController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +50,9 @@ Route::group(['prefix' => 'free-diagnostic'], function () {
     // Route::get('history', [FreeDiagnosticApiController::class, 'history']);
     Route::get('{id}', [FreeDiagnosticApiController::class, 'show']);
 });
+
+Route::get('/1c', [UserApiController::class, 'oneC'])->middleware('1c');
+
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'profile'], function () {
         Route::get('', [UserApiController::class, 'profile']);

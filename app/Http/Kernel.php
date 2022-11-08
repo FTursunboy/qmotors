@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\Car\CarOwner;
+use App\Http\Middleware\OneC;
 use App\Http\Middleware\Order\OrderOwner;
 use App\Http\Middleware\Reminder\ReminderOwner;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -69,6 +70,7 @@ class Kernel extends HttpKernel
 
         'car-owner' => CarOwner::class,
         'order-owner' => OrderOwner::class,
-        'reminder-owner' => ReminderOwner::class
+        'reminder-owner' => ReminderOwner::class,
+        '1c' => OneC::class
     ];
 }
