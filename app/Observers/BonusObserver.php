@@ -10,7 +10,7 @@ class BonusObserver
     /**
      * Handle the Bonus "created" event.
      *
-     * @param \App\Models\Bonus $bonus
+     * @param Bonus $bonus
      * @return void
      */
     public function created(Bonus $bonus)
@@ -22,7 +22,7 @@ class BonusObserver
     /**
      * Handle the Bonus "updated" event.
      *
-     * @param \App\Models\Bonus $bonus
+     * @param Bonus $bonus
      * @return void
      */
     public function updated(Bonus $bonus)
@@ -33,7 +33,7 @@ class BonusObserver
     /**
      * Handle the Bonus "deleted" event.
      *
-     * @param \App\Models\Bonus $bonus
+     * @param Bonus $bonus
      * @return void
      */
     public function deleted(Bonus $bonus)
@@ -49,7 +49,7 @@ class BonusObserver
     /**
      * Handle the Bonus "restored" event.
      *
-     * @param \App\Models\Bonus $bonus
+     * @param Bonus $bonus
      * @return void
      */
     public function restored(Bonus $bonus)
@@ -60,7 +60,7 @@ class BonusObserver
     /**
      * Handle the Bonus "force deleted" event.
      *
-     * @param \App\Models\Bonus $bonus
+     * @param Bonus $bonus
      * @return void
      */
     public function forceDeleted(Bonus $bonus)
