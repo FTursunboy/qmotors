@@ -14,7 +14,7 @@ class PushResource extends JsonResource
      */
     public function toArray($request)
     {
-        $data = json_decode($this->data);
+        $data = json_decode($this->data, true);
         return [
             'type' => 'push',
             'service_id' => $this->service_id,

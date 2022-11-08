@@ -10,7 +10,7 @@ class UserCarObserver
     /**
      * Handle the UserCar "created" event.
      *
-     * @param  \App\Models\UserCar  $userCar
+     * @param UserCar $userCar
      * @return void
      */
     public function created(UserCar $userCar)
@@ -21,7 +21,7 @@ class UserCarObserver
     /**
      * Handle the UserCar "updated" event.
      *
-     * @param  \App\Models\UserCar  $userCar
+     * @param UserCar $userCar
      * @return void
      */
     public function updated(UserCar $userCar)
@@ -32,7 +32,7 @@ class UserCarObserver
     /**
      * Handle the UserCar "deleted" event.
      *
-     * @param  \App\Models\UserCar  $userCar
+     * @param UserCar $userCar
      * @return void
      */
     public function deleted(UserCar $userCar)
@@ -43,7 +43,7 @@ class UserCarObserver
     /**
      * Handle the UserCar "restored" event.
      *
-     * @param  \App\Models\UserCar  $userCar
+     * @param UserCar $userCar
      * @return void
      */
     public function restored(UserCar $userCar)
@@ -54,7 +54,7 @@ class UserCarObserver
     /**
      * Handle the UserCar "force deleted" event.
      *
-     * @param  \App\Models\UserCar  $userCar
+     * @param UserCar $userCar
      * @return void
      */
     public function forceDeleted(UserCar $userCar)
