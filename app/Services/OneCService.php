@@ -146,7 +146,7 @@ class OneCService implements OneCServiceInterface
             if ($item['msg_id'] > $msg_id) $msg_id = $item['msg_id'];
         }
         $message->value = $msg_id;
-//        $message->save();
+        $message->save();
 
 //        dd([
 //            $response->body(),
@@ -295,7 +295,7 @@ class OneCService implements OneCServiceInterface
             UserCarPhoto::updateOrCreate([
                 'user_car_id' => $data['car_id'],
                 'photo' => $item
-            ], []);
+            ], ['id' => UserCarPhoto::nextID()]);
         }
     }
 }
