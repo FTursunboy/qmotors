@@ -273,8 +273,12 @@ class OneCService implements OneCServiceInterface
 
     private function receiveCar($data)
     {
-        $mark = CarMark::firstOrCreate(['name' => $data['brand']]);
-        $model = CarModel::firstOrCreate(['car_mark_id' => $mark->id, 'name' => $data['model']]);
+        $mark = CarMark::firstOrCreate(['name' => $data['brand']], [
+            'id' => CarMark::nextID()
+        ]);
+        $model = CarModel::firstOrCreate(['car_mark_id' => $mark->id, 'name' => $data['model']], [
+            'id' => CarMark::nextID()
+        ]);
         UserCar::withoutEvents(function () use ($data, $model) {
             UserCar::updateOrCreate([
                 'id' => $data['car_id']
