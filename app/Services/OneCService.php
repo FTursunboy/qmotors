@@ -277,7 +277,7 @@ class OneCService implements OneCServiceInterface
             'id' => CarMark::nextID()
         ]);
         $model = CarModel::firstOrCreate(['car_mark_id' => $mark->id, 'name' => $data['model']], [
-            'id' => CarMark::nextID()
+            'id' => CarModel::nextID()
         ]);
         UserCar::withoutEvents(function () use ($data, $model) {
             UserCar::updateOrCreate([
