@@ -23,8 +23,8 @@ class ChatResource extends JsonResource
             'text' => $this->message,
             'date' => $this->created_at,
             'incoming' => $this->admin_user_id == null,
-            'image' => $this->photo,
-            'video' => $this->video
+            'image' => customAsset($this, 'photo'),
+            'video' => customAsset($this, 'video')
         ];
     }
 }

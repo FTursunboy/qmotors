@@ -11,6 +11,7 @@ use App\Http\Resources\OneC\UserResource;
 use App\Models\Bonus;
 use App\Models\CarMark;
 use App\Models\CarModel;
+use App\Models\Chat;
 use App\Models\ChatMessages;
 use App\Models\OneSLog;
 use App\Models\Order;
@@ -167,17 +168,20 @@ class OneCService implements OneCServiceInterface
     private function receiveChat($data)
     {
         ChatMessages::withoutEvents(function () use ($data) {
-            ChatMessages::updateOrCreate([
-                'id' => $data['chat_id']
-            ], [
-                'chat_id' => User::find($data['user_id'])->chat->id,
-                'message' => $data['text'],
-                'photo' => $data['image'],
-                'video' => $data['video'],
-                'user_id' => $data['incoming'] ? $data['user_id'] : null,
-                'admin_user_id' => !$data['incoming'] ? 1 : null,
-                'created_at' => $data['date']
-            ]);
+            if ($data['user_id'] != null && User::where('id', $data['user_id'])->exists()) {
+                ChatMessages::updateOrCreate([
+                    'chat_id' => Chat::firstOrCreate(['user_id' => $data['user_id']])->id,
+//                'id' => $data['chat_id']
+                ], [
+                    'id' => ChatMessages::nextID(),
+                    'message' => $data['text'],
+                    'photo' => $data['image'],
+                    'video' => $data['video'],
+                    'user_id' => $data['incoming'] ? $data['user_id'] : null,
+                    'admin_user_id' => !$data['incoming'] ? 1 : null,
+                    'created_at' => $data['date']
+                ]);
+            }
         });
     }
 
@@ -218,7 +222,7 @@ class OneCService implements OneCServiceInterface
                 'uuid' => $data['order_uuid'],
                 'tech_center_id' => $data['service_id'],
                 'user_car_id' => $data['car_id'],
-                'order_type' => $order_type->id,
+                'order_type_id' => $order_type->id,
                 'date' => $data['desired_date'],
                 'description' => $data['description'],
                 'guarantee' => $data['guarantee'],
