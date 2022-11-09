@@ -55,6 +55,8 @@ function customAsset($model, $field): string
 {
     if (str_contains($model->$field, 'storage')) {
         return asset($model->$field);
+    } elseif (str_contains($model->$field, 'http')) {
+        return $model->$field;
     }
     return asset('storage/uploads/' . Str::singular($model->getTable()) . "/$field/" . $model->id . '/' . $model->$field);
 }

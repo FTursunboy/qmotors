@@ -172,9 +172,9 @@ class OneCService implements OneCServiceInterface
             if ($data['user_id'] != null && User::where('id', $data['user_id'])->exists()) {
                 ChatMessages::updateOrCreate([
                     'chat_id' => Chat::firstOrCreate(['user_id' => $data['user_id']])->id,
+                    'uuid' => $data['chat_id']
 //                'id' => $data['chat_id']
                 ], [
-                    'id' => ChatMessages::nextID(),
                     'message' => $data['text'],
                     'photo' => $data['image'],
                     'video' => $data['video'],
@@ -203,8 +203,8 @@ class OneCService implements OneCServiceInterface
                 'avatar' => $data['photo'],
                 'agree_sms' => $data['agr_sms'],
                 'agree_notification' => $data['agr_push'],
-                'agree_data' => $data['agr_data'],
-                'agree_calls' => $data['agr_calls'],
+                'agree_data' => $data['agr_mobile'],
+                'agree_calls' => $data['agr_call'],
             ]);
         });
     }
@@ -216,23 +216,23 @@ class OneCService implements OneCServiceInterface
     private function receiveOrder($data)
     {
         $order_type = OrderType::where('key', $data['order_type'])->first();
-        Order::withoutEvents(function () use ($data, $order_type) {
-            Order::updateOrCreate([
-                'id' => $data['order_id']
-            ], [
-                'uuid' => $data['order_uuid'],
-                'tech_center_id' => $data['service_id'],
-                'user_car_id' => $data['car_id'],
-                'order_type_id' => $order_type->id,
-                'date' => $data['desired_date'],
-                'description' => $data['description'],
-                'guarantee' => $data['guarantee'],
-                'order_status' => $data['order_status'],
-                'order_number' => $data['number'],
-                'mileage' => $data['mileage'],
-                'sum' => $data['sum'],
-            ]);
-        });
+//        Order::withoutEvents(function () use ($data, $order_type) {
+        Order::updateOrCreate([
+            'id' => is_integer($data['order_id']) ? $data['order_id'] : Order::nextID()
+        ], [
+            'uuid' => $data['order_uuid'],
+            'tech_center_id' => $data['service_id'],
+            'user_car_id' => $data['car_id'],
+            'order_type_id' => $order_type->id,
+            'date' => $data['desired_date'],
+            'description' => $data['description'],
+            'guarantee' => $data['guarantee'],
+            'order_status' => $data['order_status'],
+            'order_number' => $data['number'],
+            'mileage' => $data['mileage'],
+            'sum' => $data['sum'],
+        ]);
+//        });
         foreach ($data['photos'] as $item) {
             OrderPhoto::updateOrCreate([
                 'order_id' => $data['order_id'],
@@ -264,16 +264,16 @@ class OneCService implements OneCServiceInterface
 
     private function receiveBonus($data)
     {
-        Bonus::withoutEvents(function () use ($data) {
-            Bonus::updateOrCreate([
-                'id' => Bonus::nextID()
-            ], [
-                'created_at' => $data['date'],
-                'user_id' => $data['user_id'],
-                'bonus_type' => $data['bonus_type'],
-                'points' => $data['count'],
-            ]);
-        });
+//        Bonus::withoutEvents(function () use ($data) {
+        Bonus::updateOrCreate([
+            'id' => is_integer($data['bonus_id']) ? $data['bonus_id'] : Bonus::nextID()
+        ], [
+            'created_at' => $data['date'],
+            'user_id' => $data['user_id'],
+            'bonus_type' => $data['bonus_type'],
+            'points' => $data['count'],
+        ]);
+//        });
     }
 
     private function receiveCar($data)
@@ -284,20 +284,20 @@ class OneCService implements OneCServiceInterface
         $model = CarModel::firstOrCreate(['car_mark_id' => $mark->id, 'name' => $data['model']], [
             'id' => CarModel::nextID()
         ]);
-        UserCar::withoutEvents(function () use ($data, $model) {
-            UserCar::updateOrCreate([
-                'id' => $data['car_id']
-            ], [
-                'user_id' => $data['user_id'],
-                'vin' => $data['vin'],
-                'car_model_id' => $model->id,
-                'year' => $data['year'],
-                'last_visit' => $data['date'],
-                'mileage' => $data['mileage'],
-                'status' => $data['status'],
-                'created_at' => $data['date'],
-            ]);
-        });
+//        UserCar::withoutEvents(function () use ($data, $model) {
+        UserCar::updateOrCreate([
+            'id' => is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID()
+        ], [
+            'user_id' => $data['user_id'],
+            'vin' => $data['vin'],
+            'car_model_id' => $model->id,
+            'year' => $data['year'],
+            'last_visit' => $data['date'],
+            'mileage' => $data['mileage'],
+            'status' => $data['status'],
+            'created_at' => $data['date'],
+        ]);
+//        });
         foreach ($data['photos'] as $item) {
             UserCarPhoto::updateOrCreate([
                 'user_car_id' => $data['car_id'],

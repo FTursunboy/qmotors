@@ -29,8 +29,8 @@ class UserResource extends JsonResource
             'photo' => customAsset($this, 'avatar'),
             'agr_sms' => $this->agree_sms,
             'agr_push' => $this->agree_notification,
-            'agr_data' => $this->agree_data,
-            'agr_calls' => $this->agree_calls,
+            'agr_mobile' => $this->agree_data,
+            'agr_call' => $this->agree_calls,
         ];
     }
 }
