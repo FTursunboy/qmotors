@@ -40,7 +40,7 @@ class OneCService implements OneCServiceInterface
     public function registerUser($model): int
     {
         return $this->send([
-            'type' => 'user',
+            'type' => 'reg',
             'user_id' => $model->id,
             'phone' => filterPhone2($model->phone_number)
         ]);
@@ -120,6 +120,7 @@ class OneCService implements OneCServiceInterface
             'response' => json_encode($response->body(), JSON_UNESCAPED_SLASHES),
             'status' => $response->status()
         ]);
+//        dd($res['lines']);
         foreach ($res['lines'] as $item) {
 //            dd($item);
             switch ($item['msg_type']) {
@@ -147,7 +148,7 @@ class OneCService implements OneCServiceInterface
             if ($item['msg_id'] > $msg_id) $msg_id = $item['msg_id'];
         }
         $message->value = $msg_id;
-        $message->save();
+//        $message->save();
 
 //        dd([
 //            $response->body(),
@@ -291,7 +292,9 @@ class OneCService implements OneCServiceInterface
                 'vin' => $data['vin'],
                 'car_model_id' => $model->id,
                 'year' => $data['year'],
+                'last_visit' => $data['date'],
                 'mileage' => $data['mileage'],
+                'status' => $data['status'],
                 'created_at' => $data['date'],
             ]);
         });

@@ -38,7 +38,7 @@ $chat = $attributes['chat'];
 <script src="{{ asset('dash/assets/js/moment.js') }}"></script>
 
 <script type="module">
-    import { createApp } from"{{ asset('dash/assets/js/vue-petite.js') }}";
+    import { createApp } from '{{ asset('dash/assets/js/vue-petite.js') }}';
     createApp({
         admin: @json(auth()->guard('admin')->user()),
         messages: [],
@@ -73,10 +73,12 @@ $chat = $attributes['chat'];
             return this.isAdmin(item) && this.user(item).id == this.admin.id;
         },
         asset(item){
+            if(typeof(item) !='undefined' && item.includes('http'))
+                return item;
             return window.location.origin + item;
         },
         messageClass(item){
-            return this.isOwn(item) 
+            return this.isOwn(item)
                 ? 'message bg-gradient-aqua text-white'
                 : 'message';
         },
