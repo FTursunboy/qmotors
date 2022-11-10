@@ -51,14 +51,17 @@ function deleteFile($path)
     }
 }
 
-function customAsset($model, $field): string
+function customAsset($model, $field)
 {
-    if (str_contains($model->$field, 'storage')) {
-        return asset($model->$field);
-    } elseif (str_contains($model->$field, 'http')) {
-        return $model->$field;
+    if ($model->$field) {
+        if (str_contains($model->$field, 'storage')) {
+            return asset($model->$field);
+        } elseif (str_contains($model->$field, 'http')) {
+            return $model->$field;
+        }
+        return asset('storage/uploads/' . Str::singular($model->getTable()) . "/$field/" . $model->id . '/' . $model->$field);
     }
-    return asset('storage/uploads/' . Str::singular($model->getTable()) . "/$field/" . $model->id . '/' . $model->$field);
+    return $model->$field;
 }
 
 function localDatetime($date, $timezone = 'Europe/Moscow')

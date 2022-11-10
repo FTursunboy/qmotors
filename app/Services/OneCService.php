@@ -305,11 +305,15 @@ class OneCService implements OneCServiceInterface
 //            'created_at' => $data['date'],
         ]);
 //        });
-        foreach ($data['photos'] as $item) {
-            UserCarPhoto::updateOrCreate([
-                'user_car_id' => $data['car_id'],
-                'photo' => $item
-            ], ['id' => UserCarPhoto::nextID()]);
-        }
+
+        UserCarPhoto::withoutEvents(function () use ($data, $model) {
+            foreach ($data['photos'] as $item) {
+                UserCarPhoto::updateOrCreate([
+                    'user_car_id' => $data['car_id'],
+                    'photo' => $item
+                ], ['id' => UserCarPhoto::nextID()]);
+            }
+        });
+
     }
 }
