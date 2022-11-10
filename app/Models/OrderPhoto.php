@@ -10,5 +10,11 @@ class OrderPhoto extends Model
 {
     use ModelCommonMethods;
     use HasFactory;
+
     protected $guarded = [];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }
