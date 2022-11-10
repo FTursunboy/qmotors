@@ -245,7 +245,7 @@ class OneCService implements OneCServiceInterface
                 ], []);
             }
         });
-        
+
         foreach ($data['works'] as $item) {
             OrderWork::updateOrCreate([
                 'order_id' => $data['order_id'],
@@ -302,7 +302,7 @@ class OneCService implements OneCServiceInterface
             'last_visit' => $data['date'],
             'mileage' => $data['mileage'],
             'status' => $data['status'],
-            'created_at' => $data['date'],
+//            'created_at' => $data['date'],
         ]);
 //        });
         foreach ($data['photos'] as $item) {
