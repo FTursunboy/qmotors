@@ -6,12 +6,14 @@ use App\Models\Bonus;
 use App\Models\ChatMessages;
 use App\Models\FirebaseLog;
 use App\Models\Order;
+use App\Models\OrderPhoto;
 use App\Models\User;
 use App\Models\UserCar;
 use App\Observers\BonusObserver;
 use App\Observers\ChatMessageObserver;
 use App\Observers\FirebaseLogObserver;
 use App\Observers\OrderObserver;
+use App\Observers\OrderPhotoObserver;
 use App\Observers\UserCarObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -43,6 +45,7 @@ class EventServiceProvider extends ServiceProvider
         ChatMessages::observe(ChatMessageObserver::class);
         Bonus::observe(BonusObserver::class);
         Order::observe(OrderObserver::class);
+        OrderPhoto::observe(OrderPhotoObserver::class);
         FirebaseLog::observe(FirebaseLogObserver::class);
     }
 }
