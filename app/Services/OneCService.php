@@ -120,7 +120,6 @@ class OneCService implements OneCServiceInterface
             'response' => json_encode($response->body(), JSON_UNESCAPED_SLASHES),
             'status' => $response->status()
         ]);
-//        dd($res['lines']);
         foreach ($res['lines'] as $item) {
 //            dd($item);
             switch ($item['msg_type']) {
@@ -148,7 +147,7 @@ class OneCService implements OneCServiceInterface
             if ($item['msg_id'] > $msg_id) $msg_id = $item['msg_id'];
         }
         $message->value = $msg_id;
-        $message->save();
+//        $message->save();
 
 //        dd([
 //            $response->body(),
