@@ -29,9 +29,9 @@ class OrderResource extends JsonResource
                 return customAsset($item, 'photo');
             })->all(),
             "order_status" => $this->order_status,
-            "order_new" => $this->order_works == null,
-            "order_done" => $this->order_works != null,
-            "order_close" => $this->order_works != null,
+            "order_new" => $this->order_new,
+            "order_done" => $this->order_done,
+            "order_close" => $this->order_close,
             "date" => $this->created_at,
             "number" => $this->order_number,
             "mileage" => $this->mileage,

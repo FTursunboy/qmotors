@@ -231,14 +231,21 @@ class OneCService implements OneCServiceInterface
             'order_number' => $data['number'],
             'mileage' => $data['mileage'],
             'sum' => $data['sum'],
+            'order_new' => $data['order_new'],
+            'order_close' => $data['order_close'],
+            'order_done' => $data['order_done'],
         ]);
 //        });
-        foreach ($data['photos'] as $item) {
-            OrderPhoto::updateOrCreate([
-                'order_id' => $data['order_id'],
-                'photo' => $item
-            ], []);
-        }
+
+        OrderPhoto::withoutEvents(function () use ($data) {
+            foreach ($data['photos'] as $item) {
+                OrderPhoto::updateOrCreate([
+                    'order_id' => $data['order_id'],
+                    'photo' => $item
+                ], []);
+            }
+        });
+        
         foreach ($data['works'] as $item) {
             OrderWork::updateOrCreate([
                 'order_id' => $data['order_id'],
