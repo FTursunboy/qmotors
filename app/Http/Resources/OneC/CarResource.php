@@ -25,6 +25,7 @@ class CarResource extends JsonResource
             'mileage' => $this->mileage,
             'photos' => $this->all_photos,
             'date' => $this->last_visit,
+            'car_number' => $this->number
         ];
     }
 }

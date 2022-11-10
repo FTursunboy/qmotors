@@ -278,6 +278,8 @@ class OneCService implements OneCServiceInterface
             'user_id' => $data['user_id'],
             'bonus_type' => $data['bonus_type'],
             'points' => $data['count'],
+            'bonus_count' => $data['bonus_count'],
+            'bonus_date' => $data['bonus_date'],
         ]);
 //        });
     }
@@ -300,6 +302,7 @@ class OneCService implements OneCServiceInterface
             'year' => $data['year'],
             'last_visit' => $data['date'],
             'mileage' => $data['mileage'],
+            'number' => $data['car_number'],
             'status' => $data['status'],
 //            'created_at' => $data['date'],
         ]);
