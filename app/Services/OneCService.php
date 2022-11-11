@@ -278,8 +278,8 @@ class OneCService implements OneCServiceInterface
             'user_id' => $data['user_id'],
             'bonus_type' => $data['bonus_type'],
             'points' => $data['count'],
-            'bonus_count' => $data['bonus_count'],
-            'bonus_date' => $data['bonus_date'],
+            'burn_count' => $data['burn_count'],
+            'burn_date' => $data['burn_date'],
         ]);
 //        });
     }
