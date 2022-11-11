@@ -274,7 +274,7 @@ class OneCService implements OneCServiceInterface
         Bonus::updateOrCreate([
             'id' => is_integer($data['bonus_id']) ? $data['bonus_id'] : Bonus::nextID()
         ], [
-            'created_at' => $data['date'],
+//            'created_at' => $data['date'],
             'user_id' => $data['user_id'],
             'bonus_type' => $data['bonus_type'],
             'points' => $data['count'],
