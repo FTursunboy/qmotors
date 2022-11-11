@@ -271,17 +271,23 @@ class OneCService implements OneCServiceInterface
     private function receiveBonus($data)
     {
 //        Bonus::withoutEvents(function () use ($data) {
-        Bonus::updateOrCreate([
+        $model = Bonus::updateOrCreate([
             'id' => is_integer($data['bonus_id']) ? $data['bonus_id'] : Bonus::nextID()
         ], [
 //            'created_at' => $data['date'],
             'user_id' => $data['user_id'],
+//            'bonus_uuid' => $data['bonus_id'],
             'bonus_type' => $data['bonus_type'],
             'points' => $data['count'],
             'burn_count' => $data['burn_count'],
             'burn_date' => $data['burn_date'],
         ]);
 //        });
+        if (!is_integer($data['bonus_id'])) {
+            $model->update([
+                'bonus_uuid' => $data['bonus_id'],
+            ]);
+        }
     }
 
     private function receiveCar($data)
