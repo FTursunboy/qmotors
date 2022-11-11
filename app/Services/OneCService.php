@@ -13,6 +13,7 @@ use App\Models\CarMark;
 use App\Models\CarModel;
 use App\Models\Chat;
 use App\Models\ChatMessages;
+use App\Models\Notification;
 use App\Models\OneSLog;
 use App\Models\Order;
 use App\Models\OrderPhoto;
@@ -210,6 +211,21 @@ class OneCService implements OneCServiceInterface
 
     private function receivePush($data)
     {
+        $model = Notification::updateOrCreate([
+            'id' => is_integer($data['push_id']) ? $data['push_id'] : Notification::nextID()
+        ], [
+            'service_id' => $data['service_id'],
+            'user_id' => $data['user_id'],
+            'title' => $data['title'],
+            'text' => $data['text'],
+            'created_at' => $data['date'] ?? date('Y-m-d H:i:s'),
+        ]);
+//        });
+        if (!is_integer($data['push_id'])) {
+            $model->update([
+                'push_uuid' => $data['push_id'],
+            ]);
+        }
     }
 
     private function receiveOrder($data)
