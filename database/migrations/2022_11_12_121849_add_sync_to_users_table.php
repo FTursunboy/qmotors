@@ -14,7 +14,7 @@ class AddSyncToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('sync')->nullable()->default(false);
+            $table->boolean('synch')->nullable()->default(false);
         });
     }
 
@@ -26,7 +26,7 @@ class AddSyncToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('sync');
+            $table->dropColumn('synch');
         });
     }
 }
