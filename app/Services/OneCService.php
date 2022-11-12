@@ -232,10 +232,10 @@ class OneCService implements OneCServiceInterface
     {
         $order_type = OrderType::where('key', $data['order_type'])->first();
 //        Order::withoutEvents(function () use ($data, $order_type) {
-        Order::updateOrCreate([
+        $model = Order::updateOrCreate([
             'id' => is_integer($data['order_id']) ? $data['order_id'] : Order::nextID()
         ], [
-            'uuid' => $data['order_uuid'],
+//            'uuid' => $data['order_uuid'],
             'tech_center_id' => $data['service_id'],
             'user_car_id' => $data['car_id'],
             'order_type_id' => $order_type->id,
@@ -251,11 +251,15 @@ class OneCService implements OneCServiceInterface
             'order_done' => $data['order_done'],
         ]);
 //        });
-
-        OrderPhoto::withoutEvents(function () use ($data) {
+        if (!is_integer($data['order_id'])) {
+            $model->update([
+                'uuid' => $data['order_id'],
+            ]);
+        }
+        OrderPhoto::withoutEvents(function () use ($data, $model) {
             foreach ($data['photos'] as $item) {
                 OrderPhoto::updateOrCreate([
-                    'order_id' => $data['order_id'],
+                    'order_id' => $model->id,
                     'photo' => $item
                 ], []);
             }
@@ -263,7 +267,7 @@ class OneCService implements OneCServiceInterface
 
         foreach ($data['works'] as $item) {
             OrderWork::updateOrCreate([
-                'order_id' => $data['order_id'],
+                'order_id' => $model->id,
                 'title' => $item['name']
             ], [
                 'count' => $item['count'],
@@ -274,7 +278,7 @@ class OneCService implements OneCServiceInterface
         }
         foreach ($data['parts'] as $item) {
             OrderSpare::updateOrCreate([
-                'order_id' => $data['order_id'],
+                'order_id' => $model->id,
                 'title' => $item['name']
             ], [
                 'count' => $item['count'],
