@@ -17,6 +17,7 @@ class BonusResource extends JsonResource
         return [
             'type' => 'bonus',
             'bonus_id' => $this->id,
+            'comment' => $this->title,
             'bonus_uuid' => $this->bonus_uuid,
             'date' => $this->created_at,
             'user_id' => intval($this->user_id),
