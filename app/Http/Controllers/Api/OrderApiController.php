@@ -16,7 +16,11 @@ class OrderApiController extends Controller
 
     public function show($id)
     {
-        return $this->success(Order::findOrFail($id));
+        return $this->success(Order::with([
+            'stock',
+            'order_works',
+            'order_spares'
+        ])->findOrFail($id));
     }
 
     public function store(StoreOrderRequest $request, OrderServiceInterface $orderService)
