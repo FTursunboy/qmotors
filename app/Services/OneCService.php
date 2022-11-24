@@ -296,10 +296,11 @@ class OneCService implements OneCServiceInterface
         ], [
             'user_id' => $data['user_id'],
             'title' => $data['comment'],
-            'bonus_type' => $data['bonus_type'],
+            'bonus_type' => $data['bonus_accrual_id'] ? 'burn' : $data['bonus_type'],
             'points' => $data['count'],
             'burn_count' => $data['burn_count'],
             'burn_date' => $data['burn_date'],
+            'bonus_accrual_id' => $data['bonus_accrual_id'],
         ]);
 //        });
         if (!is_integer($data['bonus_id'])) {

@@ -24,6 +24,7 @@ class BonusResource extends JsonResource
             'bonus_type' => $this->bonus_type,
             'order_id' => $this->order_id,
             'count' => $this->points,
+            'bonus_accrual_id' => $this->bonus_accrual_id,
 //            'burn_date' => $this->burn_date,
 //            'burn_count' => User::find($this->user_id)->balance
         ];

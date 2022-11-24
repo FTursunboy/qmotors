@@ -48,6 +48,10 @@ class Bonus extends Model
             'id' => 'order',
             'name' => 'Начисление за заказ'
         ],
+        [
+            'id' => 'burn',
+            'name' => 'Сгорел'
+        ],
     ];
     protected $guarded = [];
 

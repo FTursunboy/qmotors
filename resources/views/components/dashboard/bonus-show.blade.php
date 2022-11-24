@@ -1,5 +1,5 @@
 @php
-$model = $attributes['model'];
+    $model = $attributes['model'];
 @endphp
 <x-dashboard.info route="bonus" :model="$model">
     <tr>
@@ -34,7 +34,7 @@ $model = $attributes['model'];
     </tr>
     <tr>
         <td><b>Дейсвителен до</b></td>
-        <td></td>
+        <td>{{$model->burn_date}}</td>
     </tr>
     <tr>
         <td><b>Обновлено</b></td>

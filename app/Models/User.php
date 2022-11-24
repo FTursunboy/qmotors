@@ -132,6 +132,12 @@ class User extends Authenticatable
         foreach ($this->bonuses as $item) {
             if ($item->bonus_type == 'utilization') {
                 $sum -= $item->points;
+//            } elseif ($item->bonus_type == 'burn') {
+//                if ($item->burn_date > date('Y-m-d')) {
+//                    $sum += $item->points;
+//                } else {
+//                    $sum += $item->points;
+//                }
             } else {
                 $sum += $item->points;
             }
