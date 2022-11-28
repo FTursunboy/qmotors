@@ -11,6 +11,7 @@ use Illuminate\Validation\Rule;
 class UpdateCarRequest extends FormRequest
 {
     use RequestID;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -32,7 +33,8 @@ class UpdateCarRequest extends FormRequest
             'id' => 'required|exists:' . with(new UserCar)->getTable(),
             'car_model_id' => 'required|exists:' . with(new CarModel())->getTable() . ',id',
             'status' => Rule::in([0, 1, 2]),
-            'last_visit' => 'date'
+            'last_visit' => 'date',
+            'vin' => 'unique:' . with(new UserCar)->getTable(),
         ];
     }
 }

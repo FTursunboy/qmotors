@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Car\StoreCarRequest;
+use App\Http\Requests\Car\UpdateCarRequest;
 use App\Models\UserCar;
 use App\Services\Contracts\CarServiceInterface;
 use App\Services\Contracts\UserCarServiceInterface;
@@ -33,7 +35,7 @@ class UserCarController extends Controller
         return view('dashboard.pages.user-car.create', compact('model'));
     }
 
-    public function store(Request $request, UserCarServiceInterface $userCarService)
+    public function store(StoreCarRequest $request, UserCarServiceInterface $userCarService)
     {
         $result = $userCarService->store($request);
         if ($result['status']) {
@@ -48,7 +50,7 @@ class UserCarController extends Controller
         return view('dashboard.pages.user-car.edit', compact('model'));
     }
 
-    public function update($id, Request $request, UserCarServiceInterface $userCarService)
+    public function update($id, UpdateCarRequest $request, UserCarServiceInterface $userCarService)
     {
         $result = $userCarService->update($id, $request);
         if ($result['status']) {

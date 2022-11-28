@@ -30,6 +30,7 @@ class StoreCarRequest extends FormRequest
             'car_model_id' => 'required|exists:' . with(new CarModel)->getTable() . ',id',
             'status' => Rule::in([0, 1, 2]),
             // 'number' => 'unique:' . with(new UserCar)->getTable(),
+            'vin' => 'unique:' . with(new UserCar)->getTable(),
             'last_visit' => 'date'
         ];
     }
