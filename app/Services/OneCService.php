@@ -343,6 +343,8 @@ class OneCService implements OneCServiceInterface
                 ], ['id' => UserCarPhoto::nextID()]);
             }
         });
-
+        if (!is_integer($data['car_id'])) {
+            $this->car($model);
+        }
     }
 }
