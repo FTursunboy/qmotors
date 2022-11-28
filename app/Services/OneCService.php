@@ -319,10 +319,11 @@ class OneCService implements OneCServiceInterface
             'id' => CarModel::nextID()
         ]);
 //        UserCar::withoutEvents(function () use ($data, $model) {
+
         UserCar::updateOrCreate([
             'vin' => $data['vin'],
         ], [
-            'id' => is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID(),
+//            'id' => is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID(),
             'user_id' => $data['user_id'],
             'car_model_id' => $model->id,
             'year' => $data['year'],
