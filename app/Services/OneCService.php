@@ -320,7 +320,7 @@ class OneCService implements OneCServiceInterface
         ]);
 //        UserCar::withoutEvents(function () use ($data, $model) {
 
-        UserCar::updateOrCreate([
+        $model = UserCar::updateOrCreate([
             'vin' => $data['vin'],
         ], [
 //            'id' => is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID(),
@@ -338,7 +338,7 @@ class OneCService implements OneCServiceInterface
         UserCarPhoto::withoutEvents(function () use ($data, $model) {
             foreach ($data['photos'] as $item) {
                 UserCarPhoto::updateOrCreate([
-                    'user_car_id' => $data['car_id'],
+                    'user_car_id' => $model->id,
                     'photo' => $item
                 ], ['id' => UserCarPhoto::nextID()]);
             }
