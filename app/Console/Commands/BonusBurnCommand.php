@@ -34,7 +34,7 @@ class BonusBurnCommand extends Command
 
     public function handle()
     {
-        $bonuses = Bonus::whereNotIn('bonus_accrual_id', [null, 0])->whereDate('burn_date', date('Y-m-d'))->where('bonus_type', '!=', 'utilization')->get();
+        $bonuses = Bonus::whereDate('burn_date', date('Y-m-d'))->where('bonus_type', '!=', 'utilization')->get();
         foreach ($bonuses as $bonus) {
             $accrual = $bonus->replicate();
             $accrual->bonus_accrual_id = $bonus->id;
