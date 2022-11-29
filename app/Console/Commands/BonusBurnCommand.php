@@ -41,6 +41,7 @@ class BonusBurnCommand extends Command
             $accrual->burn_date = null;
             $accrual->bonus_type = 'utilization';
             $accrual->created_at = Carbon::now();
+            $accrual->id = Bonus::nextID();
             $accrual->save();
         }
     }
