@@ -8,6 +8,7 @@ use App\Http\Resources\OneC\ChatResource;
 use App\Http\Resources\OneC\OrderResource;
 use App\Http\Resources\OneC\PushResource;
 use App\Http\Resources\OneC\UserResource;
+use App\Jobs\ProcessPushNotification;
 use App\Models\Bonus;
 use App\Models\CarMark;
 use App\Models\CarModel;
@@ -225,6 +226,11 @@ class OneCService implements OneCServiceInterface
             $model->update([
                 'push_uuid' => $data['push_id'],
             ]);
+            ProcessPushNotification::dispatch(
+                collect(['send' => true, 'user_id' => $model->user_id]),
+                $model,
+                ['title' => 'Новое уведомление', 'body' => $model->title]
+            );
         }
     }
 
