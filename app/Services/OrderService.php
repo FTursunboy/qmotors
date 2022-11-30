@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\ProcessOrderMail;
 use App\Mail\OrderCreated;
 use App\Models\Order;
 use App\Models\OrderPhoto;
@@ -53,19 +54,19 @@ class OrderService implements OrderServiceInterface
                 'order_number' => $request->order_number
             ],
         ));
-        $this->sendMail($model);
+//        $this->sendMail($model);
+        ProcessOrderMail::dispatch($model);
         return $model;
     }
 
     public function photo($id, $request)
     {
         $photo = uploadFile($request->file('photo'), 'order');
-        $model = OrderPhoto::create([
+        return OrderPhoto::create([
             'id' => OrderPhoto::nextID(),
             'order_id' => $id,
             'photo' => $photo
         ]);
-        return $model;
     }
 
     public function history($request)
