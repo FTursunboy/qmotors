@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Order;
 
-use App\Models\CarModel;
 use App\Models\OrderType;
 use App\Models\Stock;
 use App\Models\TechCenter;
@@ -33,7 +32,7 @@ class StoreOrderRequest extends FormRequest
         return [
             'user_car_id' => [
                 'required',
-                'exists:' . with(new UserCar)->getTable() . ',id'
+                Rule::in(UserCar::where('user_id', auth()->id())->select(['id'])->pluck('id')->all())
             ],
             // 'number' => 'required',
             'order_type_id' => 'required|exists:' . with(new OrderType)->getTable() . ',id',
