@@ -236,7 +236,7 @@ class OneCService implements OneCServiceInterface
 
     private function receiveOrder($data)
     {
-        $order_type = OrderType::where('key', $data['order_type'])->first();
+        $order_type = OrderType::firstOrCreate(['key' => $data['order_type']]);
 //        Order::withoutEvents(function () use ($data, $order_type) {
         $model = Order::updateOrCreate([
             'id' => is_integer($data['order_id']) ? $data['order_id'] : Order::nextID()
