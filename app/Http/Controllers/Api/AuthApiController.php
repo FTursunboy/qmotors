@@ -21,6 +21,7 @@ class AuthApiController extends Controller
             $id = User::nextID();
             $user = new User();
             $user->id = $id;
+            $user->gender = 1;
             $user->phone_number = $request->phone_number;
         }
         if (in_array($request->phone_number, User::TEST_ACCOUNT_PHONE_NUMBERS)) {

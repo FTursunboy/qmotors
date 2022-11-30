@@ -196,7 +196,7 @@ class OneCService implements OneCServiceInterface
                 'name' => $data['fio_1'],
                 'surname' => $data['fio_2'],
                 'patronymic' => $data['fio_3'],
-                'gender' => $data['gender'] == 'male' ? 1 : 0,
+                'gender' => $data['gender'] == 'female' ? 0 : 1,
                 'birthday' => $data['birthday'],
                 'email' => $data['email'],
                 'additional_phone_number' => $data['contact_phone'],
