@@ -14,7 +14,7 @@ class ChangeGenderOnUsersTable extends Migration
     public function up()
     {
         Schema::table('bonuses', function (Blueprint $table) {
-            $table->integer('bonus_accrual_id')->nullable()->default(1)->change();
+            $table->integer('bonus_accrual_id')->nullable()->default(null)->change();
         });
     }
 
