@@ -24,7 +24,7 @@ class ChatRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'image',
+            'photo' => 'image',
             'video' => 'file',
             'file' => 'file'
         ];
