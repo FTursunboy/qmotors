@@ -42,10 +42,14 @@ class FilterPhone extends Command
 //            do {
             $data = User::where('phone_number', 'not like', '%' . '+' . '%')->orWhere('phone_number', 'not like', '%' . '(' . '%')->orderBy('id')->limit(2000)->get();
 //            dd($data->count());
-            foreach ($data as $item) {
-                $item->phone_number = buildPhone($item->phone_number);
-                $item->additional_phone_number = buildPhone($item->additional_phone_number);
-                $item->save();
+            try {
+                foreach ($data as $item) {
+                    $item->phone_number = buildPhone($item->phone_number);
+                    $item->additional_phone_number = buildPhone($item->additional_phone_number);
+                    $item->save();
+                }
+
+            } catch (\Throwable $e) {
             }
 //            } while ($data->count() > 0);
         });
