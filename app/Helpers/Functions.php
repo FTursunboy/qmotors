@@ -37,7 +37,7 @@ function uploadFile($file, $path, $old = null): ?string
     deleteFile($old);
     if ($file != null) {
         $names = explode(".", $file->getClientOriginalName());
-        $model = time() . '.' . $names[count($names) - 1];
+        $model = floor(microtime(true) * 1000) . '.' . $names[count($names) - 1];
         $file->storeAs("public/$path", $model);
         $result = "/storage/$path/" . $model;
     }

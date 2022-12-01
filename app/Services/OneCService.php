@@ -221,7 +221,6 @@ class OneCService implements OneCServiceInterface
             'text' => $data['text'],
             'created_at' => $data['date'] ?? date('Y-m-d H:i:s'),
         ]);
-//        });
         if (!is_integer($data['push_id'])) {
             $model->update([
                 'push_uuid' => $data['push_id'],
@@ -327,9 +326,11 @@ class OneCService implements OneCServiceInterface
 //        UserCar::withoutEvents(function () use ($data, $model) {
 
         $model = UserCar::updateOrCreate([
-            'vin' => $data['vin'],
+//            'vin' => $data['vin'],
+            'id' => is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID(),
         ], [
 //            'id' => is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID(),
+            'vin' => $data['vin'],
             'user_id' => $data['user_id'],
             'car_model_id' => $model->id,
             'year' => $data['year'],

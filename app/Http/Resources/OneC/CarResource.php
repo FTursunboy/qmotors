@@ -21,6 +21,7 @@ class CarResource extends JsonResource
             'brand' => optional(optional($this->model)->mark)->name,
             'model' => optional($this->model)->name,
             'vin' => $this->vin,
+            'status' => $this->status,
             'year' => $this->year,
             'mileage' => $this->mileage,
             'photos' => $this->all_photos,
