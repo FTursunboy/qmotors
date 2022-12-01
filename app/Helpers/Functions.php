@@ -37,6 +37,27 @@ function filterPhone3($phone)
     return filterPhone($phone);
 }
 
+function nudePhone($phone)
+{
+    if (strlen($phone) > 0)
+        $phone = str_replace(['(', ')', ' ', '-', '+'], '', $phone);
+    if (strlen($phone) > 0) {
+        if ($phone[0] == '7') {
+            $phone = substr($phone, 1);
+        }
+    }
+    return $phone;
+}
+
+function buildPhone($phone): string
+{
+    $phone = nudePhone($phone);
+    return '+7 ' . '(' . substr($phone, 0, 3) . ') '
+        . substr($phone, 3, 3) . '-'
+        . substr($phone, 6, 2) . '-'
+        . substr($phone, 8, 2);
+}
+
 function uploadFile($file, $path, $old = null): ?string
 {
     $result = null;

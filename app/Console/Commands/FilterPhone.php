@@ -38,12 +38,17 @@ class FilterPhone extends Command
      */
     public function handle()
     {
-        $data = User::where('phone_number', 'like', '%' . '+' . '%')->orderBy('id')->get();
-        foreach ($data as $item) {
-            $item->phone_number = filterPhone3(filterPhone($item->phone_number));
-            $item->additional_phone_number = filterPhone3(filterPhone($item->additional_phone_number));
-            $item->save();
-        }
+        User::withoutEvents(function () {
+//            do {
+            $data = User::where('phone_number', 'not like', '%' . '+' . '%')->orWhere('phone_number', 'not like', '%' . '(' . '%')->orderBy('id')->limit(2000)->get();
+//            dd($data->count());
+            foreach ($data as $item) {
+                $item->phone_number = buildPhone($item->phone_number);
+                $item->additional_phone_number = buildPhone($item->additional_phone_number);
+                $item->save();
+            }
+//            } while ($data->count() > 0);
+        });
         return 0;
     }
 }

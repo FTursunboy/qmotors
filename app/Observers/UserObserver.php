@@ -26,7 +26,7 @@ class UserObserver
      */
     public function updated(User $user)
     {
-//        with(new OneCService)->updateUser($user);
+        with(new OneCService)->updateUser($user);
     }
 
     /**

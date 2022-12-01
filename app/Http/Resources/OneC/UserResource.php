@@ -17,7 +17,7 @@ class UserResource extends JsonResource
         return [
             'type' => 'user',
             'user_id' => $this->id,
-            'phone' => filterPhone2($this->phone_number),
+            'phone' => nudePhone($this->phone_number),
             'fio' => $this->full_name,
             'fio_1' => $this->name,
             'fio_2' => $this->surname,
@@ -25,7 +25,7 @@ class UserResource extends JsonResource
             'gender' => $this->gender_key,
             'birthday' => $this->birthday,
             'email' => $this->email,
-            'contact_phone' => filterPhone2($this->additional_phone_number),
+            'contact_phone' => nudePhone($this->additional_phone_number),
             'photo' => customAsset($this, 'avatar'),
             'agr_sms' => $this->agree_sms,
             'agr_push' => $this->agree_notification,

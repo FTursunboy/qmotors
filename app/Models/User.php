@@ -108,7 +108,7 @@ class User extends Authenticatable
         if (strlen($fullname) < 3) {
             $fullname = 'фио нет';
         }
-        return $fullname . ' [' . $this->phone_number . ']';
+        return $fullname . ' [' . buildPhone($this->phone_number) . ']';
     }
 
     public function getGenderTextAttribute(): string

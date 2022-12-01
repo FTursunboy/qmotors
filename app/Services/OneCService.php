@@ -193,14 +193,14 @@ class OneCService implements OneCServiceInterface
             User::updateOrCreate([
                 'id' => $data['user_id'] ?? User::nextID()
             ], [
-                'phone_number' => $data['phone'],
+                'phone_number' => buildPhone($data['phone']),
                 'name' => $data['fio_1'],
                 'surname' => $data['fio_2'],
                 'patronymic' => $data['fio_3'],
                 'gender' => $data['gender'] == 'female' ? 0 : 1,
                 'birthday' => $data['birthday'],
                 'email' => $data['email'],
-                'additional_phone_number' => $data['contact_phone'],
+                'additional_phone_number' => buildPhone($data['contact_phone']),
                 'avatar' => $data['photo'],
                 'agree_sms' => $data['agr_sms'],
                 'agree_notification' => $data['agr_push'],

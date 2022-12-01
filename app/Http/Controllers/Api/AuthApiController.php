@@ -16,13 +16,13 @@ class AuthApiController extends Controller
     public function sendSmsCode(SendSmsCodeRequest $request, SmsServiceInterface $smsService)
     {
         $result = false;
-        $user = User::where('phone_number', $request->phone_number)->first();
+        $user = User::where('phone_number', nudePhone($request->phone_number))->orWhere('phone_number', buildPhone($request->phone_number))->first();
         if ($user == null) {
             $id = User::nextID();
             $user = new User();
             $user->id = $id;
             $user->gender = 1;
-            $user->phone_number = $request->phone_number;
+            $user->phone_number = buildPhone($request->phone_number);
         }
         if (in_array($request->phone_number, User::TEST_ACCOUNT_PHONE_NUMBERS)) {
             $user->sms_code = 111111;
@@ -40,7 +40,7 @@ class AuthApiController extends Controller
 
     public function login(LoginApiRequest $request)
     {
-        $user = User::where('phone_number', $request->phone_number)->first();
+        $user = User::where('phone_number', nudePhone($request->phone_number))->orWhere('phone_number', buildPhone($request->phone_number))->first();
         if (is_null($user)) {
             return $this->error(['message' => __('auth.failed')], 422);
         }
@@ -52,6 +52,7 @@ class AuthApiController extends Controller
         } else {
             $user->sms_code = null;
         }
+        $user->phone_number = buildPhone($user->phone_number);
         $user->save();
         $token = $user->createToken('name')->plainTextToken;
         $response = [
