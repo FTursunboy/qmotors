@@ -183,7 +183,7 @@ class UserService implements UserServiceInterface
             ),
             ['avatar' => $avatar]
         ));
-        return User::find($model->id);
+        return $model;
     }
 
     public function delete($id)
