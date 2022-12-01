@@ -36,8 +36,8 @@ function uploadFile($file, $path, $old = null): ?string
     $result = null;
     deleteFile($old);
     if ($file != null) {
-        $names = explode(".", $file->getClientOriginalName());
-        $model = floor(microtime(true) * 1000) . '.' . $names[count($names) - 1];
+//        $names = explode(".", $file->getOrinalExtension());
+        $model = floor(microtime(true) * 1000) . '.' . $file->extension();
         $file->storeAs("public/$path", $model);
         $result = "/storage/$path/" . $model;
     }
