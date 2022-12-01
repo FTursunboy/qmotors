@@ -24,7 +24,7 @@ class AuthApiController extends Controller
             $user->gender = 1;
             $user->phone_number = buildPhone($request->phone_number);
         }
-        if (in_array($request->phone_number, User::TEST_ACCOUNT_PHONE_NUMBERS)) {
+        if (in_array(buildPhone($request->phone_number), User::TEST_ACCOUNT_PHONE_NUMBERS)) {
             $user->sms_code = 111111;
             $result = true;
         } else {
