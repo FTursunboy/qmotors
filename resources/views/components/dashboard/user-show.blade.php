@@ -8,7 +8,7 @@
     </tr>
     <tr>
         <td><b>Телефон</b></td>
-        <td><a href="tel:{{ buildPhone($model->phone_number) }}">{{ buildPhone($model->phone_number) }}</a></td>
+        <td><a href="tel:{{ buildPhone($model->phone_number) }}">{{ $model->phone_number }}</a></td>
     </tr>
     <tr>
         <td><b>ФИО</b></td>

@@ -38,7 +38,7 @@
             <tr>
                 <td><a href="{{ route('user.show', $item->id) }}">{{ $item->id }}</a></td>
                 <td class="with-img"><img src="{{ asset($item->avatar) }}" alt="avatar" width="100"></td>
-                <td><a href="tel:{{ buildPhone($item->phone_number) }}">{{ buildPhone($item->phone_number) }}</a></td>
+                <td><a href="tel:{{ buildPhone($item->phone_number) }}">{{ $item->phone_number }}</a></td>
                 <td>{{ $item->surname }}</td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->patronymic }}</td>
