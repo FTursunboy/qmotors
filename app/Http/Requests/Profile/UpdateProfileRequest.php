@@ -32,7 +32,7 @@ class UpdateProfileRequest extends FormRequest
             'agree_sms' => 'boolean',
             'agree_calls' => 'boolean',
             'agree_data' => 'boolean',
-            'phone_number' => 'unique:users'
+            'phone_number' => 'unique:users,' . auth()->id()
         ];
     }
 }
