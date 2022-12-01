@@ -20,8 +20,8 @@ class PushResource extends JsonResource
             'service_id' => $this->service_id,
             'push_id' => $this->id,
             'user_id' => $this->user_id,
-            'title' => $data['title'],
-            'text' => $data['text'],
+            'title' => $this->title,
+            'text' => $this->text,
             'date' => $this->created_at
         ];
     }
