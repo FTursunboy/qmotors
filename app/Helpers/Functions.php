@@ -31,6 +31,12 @@ function filterPhone2($phone)
     return filterPhone($phone);
 }
 
+function filterPhone3($phone)
+{
+    $phone = str_replace('+', '', $phone);
+    return filterPhone($phone);
+}
+
 function uploadFile($file, $path, $old = null): ?string
 {
     $result = null;
