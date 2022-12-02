@@ -2,8 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Bonus;
-use Carbon\Carbon;
+use App\Services\BonusService;
 use Illuminate\Console\Command;
 
 class BonusBurnCommand extends Command
@@ -34,15 +33,6 @@ class BonusBurnCommand extends Command
 
     public function handle()
     {
-        $bonuses = Bonus::whereDate('burn_date', date('Y-m-d'))->where('bonus_type', '!=', 'utilization')->get();
-        foreach ($bonuses as $bonus) {
-            $accrual = $bonus->replicate();
-            $accrual->bonus_accrual_id = $bonus->id;
-            $accrual->burn_date = null;
-            $accrual->bonus_type = 'utilization';
-            $accrual->created_at = Carbon::now();
-            $accrual->id = Bonus::nextID();
-            $accrual->save();
-        }
+        with(new BonusService())->burn();
     }
 }

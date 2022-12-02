@@ -1,6 +1,11 @@
 <div class="d-flex mb-2">
     <x-dashboard.table-search-form/>
-    <a href="{{ route('bonus.create') }}" class="ml-auto btn btn-primary">Добавить</a>
+    <form action="{{ route('bonus.burn') }}" class="ml-auto" method="POST">
+        @csrf
+        @method('PUT')
+        <button type="submit" onclick="return confirm('Вы уверен?')" class="btn btn-danger">Сгорит</button>
+    </form>
+    <a href="{{ route('bonus.create') }}" class="ml-1 btn btn-primary">Добавить</a>
 </div>
 <x-dashboard.default-table length="{{ count($list) }}">
     <x-slot name="header">

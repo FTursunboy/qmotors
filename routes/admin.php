@@ -14,7 +14,6 @@ use App\Http\Controllers\Dashboard\StockController;
 use App\Http\Controllers\Dashboard\TechCenterController;
 use App\Http\Controllers\Dashboard\UserCarController;
 use App\Http\Controllers\Dashboard\UserController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,6 +86,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::delete('/{id}', [ReminderController::class, 'delete'])->name('.delete');
     });
     Route::group(['prefix' => 'bonus', 'as' => 'bonus'], function () {
+        Route::put('/burn', [BonusController::class, 'burn'])->name('.burn');
         Route::get('/', [BonusController::class, 'index']);
         Route::get('/create', [BonusController::class, 'create'])->name('.create');
         Route::post('/store', [BonusController::class, 'store'])->name('.store');

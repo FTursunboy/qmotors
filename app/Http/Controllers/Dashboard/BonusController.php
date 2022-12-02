@@ -21,6 +21,7 @@ class BonusController extends Controller
         $model = Bonus::findOrFail($id);
         return view('dashboard.pages.bonus.show', compact('model'));
     }
+
     public function create()
     {
         $model = new Bonus();
@@ -42,6 +43,7 @@ class BonusController extends Controller
         $model = Bonus::findOrFail($id);
         return view('dashboard.pages.bonus.edit', compact('model'));
     }
+
     public function update($id, Request $request, BonusServiceInterface $bonusService)
     {
         $result = $bonusService->update($id, $request);
@@ -50,6 +52,7 @@ class BonusController extends Controller
         // }
         // return back()->with('not-allowed', $result['message'])->withInput();
     }
+
     public function delete($id)
     {
         try {
@@ -58,5 +61,11 @@ class BonusController extends Controller
             return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");
         }
         return redirect()->route('bonus')->with('success', "Успешно удалено: $id!");
+    }
+
+    public function burn(BonusServiceInterface $service)
+    {
+        $service->burn();
+        return back()->with('success', 'Успешно!');
     }
 }
