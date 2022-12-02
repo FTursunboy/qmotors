@@ -201,7 +201,7 @@ class OneCService implements OneCServiceInterface
                 'birthday' => $data['birthday'],
                 'email' => $data['email'],
                 'additional_phone_number' => buildPhone($data['contact_phone']),
-                'avatar' => $data['photo'],
+//                'avatar' => $data['photo'],
                 'agree_sms' => $data['agr_sms'],
                 'agree_notification' => $data['agr_push'],
                 'agree_data' => $data['agr_mobile'],
@@ -235,7 +235,9 @@ class OneCService implements OneCServiceInterface
 
     private function receiveOrder($data)
     {
-        $order_type = OrderType::firstOrCreate(['key' => $data['order_type']]);
+        $order_type = OrderType::firstOrNew(['key' => $data['order_type']]);
+        $order_type->id = $order_type->id ?? OrderType::nextID();
+        $order_type->save();
 //        Order::withoutEvents(function () use ($data, $order_type) {
         $model = Order::updateOrCreate([
             'id' => is_integer($data['order_id']) ? $data['order_id'] : Order::nextID()
