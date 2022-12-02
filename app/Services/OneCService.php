@@ -190,23 +190,37 @@ class OneCService implements OneCServiceInterface
     private function receiveUser($data)
     {
         User::withoutEvents(function () use ($data) {
-            User::updateOrCreate([
-                'id' => $data['user_id'] ?? User::nextID()
-            ], [
-                'phone_number' => buildPhone($data['phone']),
-                'name' => $data['fio_1'],
-                'surname' => $data['fio_2'],
-                'patronymic' => $data['fio_3'],
-                'gender' => $data['gender'] == 'female' ? 0 : 1,
-                'birthday' => $data['birthday'],
-                'email' => $data['email'],
-                'additional_phone_number' => buildPhone($data['contact_phone']),
-//                'avatar' => $data['photo'],
-                'agree_sms' => $data['agr_sms'],
-                'agree_notification' => $data['agr_push'],
-                'agree_data' => $data['agr_mobile'],
-                'agree_calls' => $data['agr_call'],
-            ]);
+            $user = User::firstOrNew(['id' => $data['user_id'] ?? User::nextID()]);
+            if (!empty($data['phone'])) $user->phone_number = buildPhone($data['phone']);
+            if (!empty($data['fio_1'])) $user->name = $data['fio_1'];
+            if (!empty($data['fio_2'])) $user->surname = $data['fio_2'];
+            if (!empty($data['fio_3'])) $user->patronymic = $data['fio_3'];
+            if (!empty($data['gender'])) $user->gender = $data['gender'] == 'female' ? 0 : 1;
+            if (!empty($data['birthday'])) $user->birthday = $data['birthday'];
+            if (!empty($data['email'])) $user->email = $data['email'];
+            if (!empty($data['contact_phone'])) $user->additional_phone_number = buildPhone($data['contact_phone']);
+            if (!empty($data['agr_sms'])) $user->agree_sms = $data['agr_sms'];
+            if (!empty($data['agr_push'])) $user->agree_notification = $data['agr_push'];
+            if (!empty($data['agr_mobile'])) $user->agree_data = $data['agr_mobile'];
+            if (!empty($data['agr_call'])) $user->agree_calls = $data['agr_call'];
+            $user->save();
+//            User::updateOrCreate([
+//                'id' => $data['user_id'] ?? User::nextID()
+//            ], [
+//                'phone_number' => buildPhone($data['phone']),
+//                'name' => $data['fio_1'],
+//                'surname' => $data['fio_2'],
+//                'patronymic' => $data['fio_3'],
+//                'gender' => $data['gender'] == 'female' ? 0 : 1,
+//                'birthday' => $data['birthday'],
+//                'email' => $data['email'],
+//                'additional_phone_number' => buildPhone($data['contact_phone']),
+////                'avatar' => $data['photo'],
+//                'agree_sms' => $data['agr_sms'],
+//                'agree_notification' => $data['agr_push'],
+//                'agree_data' => $data['agr_mobile'],
+//                'agree_calls' => $data['agr_call'],
+//            ]);
         });
     }
 
