@@ -106,7 +106,7 @@ class User extends Authenticatable
     {
         $fullname = $this->surname . ' ' . $this->name . ' ' . $this->patronymic;
         if (strlen($fullname) < 3) {
-            $fullname = 'фио нет';
+            $fullname = 'Новый Клиент';
         }
         return $fullname . ' [' . buildPhone($this->phone_number) . ']';
     }
