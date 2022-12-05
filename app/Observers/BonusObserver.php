@@ -16,7 +16,6 @@ class BonusObserver
     public function created(Bonus $bonus)
     {
         with(new OneCService)->bonus($bonus);
-
     }
 
     /**

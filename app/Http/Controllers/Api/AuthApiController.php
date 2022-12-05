@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Services\Contracts\BonusServiceInterface;
 use App\Services\Contracts\SmsServiceInterface;
 use App\Traits\ApiResponse;
+use Illuminate\Http\Request;
 
 class AuthApiController extends Controller
 {
@@ -24,7 +25,7 @@ class AuthApiController extends Controller
             $user->gender = 1;
             $user->phone_number = buildPhone($request->phone_number);
             $user->save();
-            $bonusService->store(collect([
+            $bonusService->store(new Request([
                 'user_id' => $user->id,
                 'points' => 350,
                 'bonus_type' => 'install',

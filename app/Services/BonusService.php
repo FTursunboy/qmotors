@@ -67,7 +67,7 @@ class BonusService implements BonusServiceInterface
     public function store($request)
     {
         $model = $this->class::create(array_merge(
-            $request->only('user_id', 'title', 'points', 'bonus_type')->all(),
+            $request->only('user_id', 'title', 'points', 'bonus_type'),
             [
                 'id' => $this->class::nextID(),
                 'status' => $request->get('status', 0) ?? 0,
