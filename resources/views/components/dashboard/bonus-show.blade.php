@@ -2,10 +2,10 @@
     $model = $attributes['model'];
 @endphp
 <x-dashboard.info route="bonus" :model="$model">
-    <tr>
-        <td><b>Статус</b></td>
-        <td>{{ $model->status_text }}</td>
-    </tr>
+    {{--    <tr>--}}
+    {{--        <td><b>Статус</b></td>--}}
+    {{--        <td>{{ $model->status_text }}</td>--}}
+    {{--    </tr>--}}
     <tr>
         <td><b>Тип</b></td>
         <td>{{ $model->bonus_type_text }}</td>
@@ -18,10 +18,10 @@
         <td><b>Баллы</b></td>
         <td>{{ $model->points }}</td>
     </tr>
-    <tr>
-        <td><b>Остаток</b></td>
-        <td>{{ $model->remainder }}</td>
-    </tr>
+    {{--    <tr>--}}
+    {{--        <td><b>Остаток</b></td>--}}
+    {{--        <td>{{ $model->remainder }}</td>--}}
+    {{--    </tr>--}}
     <tr>
         <td><b>Пользователь</b></td>
         <td><a href="{{ route('user.show', $model->user_id) }}">{{ $model->user->full_name }} ({{ $model->user_id

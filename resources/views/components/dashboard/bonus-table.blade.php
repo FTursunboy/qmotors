@@ -12,9 +12,9 @@
         <th>
             <x-column-order-caret column="id">ID</x-column-order-caret>
         </th>
-        <th>
-            <x-column-order-caret column="status">Статус</x-column-order-caret>
-        </th>
+        {{--        <th>--}}
+        {{--            <x-column-order-caret column="status">Статус</x-column-order-caret>--}}
+        {{--        </th>--}}
         <th>
             <x-column-order-caret column="bonus_type">Тип</x-column-order-caret>
         </th>
@@ -24,9 +24,9 @@
         <th>
             <x-column-order-caret column="points">Баллы</x-column-order-caret>
         </th>
-        <th>
-            <x-column-order-caret column="remainder">Остаток</x-column-order-caret>
-        </th>
+        {{--        <th>--}}
+        {{--            <x-column-order-caret column="remainder">Остаток</x-column-order-caret>--}}
+        {{--        </th>--}}
         <th>
             <x-column-order-caret column="user_id">Пользователь</x-column-order-caret>
         </th>
@@ -42,11 +42,11 @@
         @foreach ($list as $index => $item)
             <tr>
                 <td><a href="{{ route('bonus.show', $item->id) }}">{{ $item->id }}</a></td>
-                <td>{{ $item->status_text }}</td>
+                {{--                <td>{{ $item->status_text }}</td>--}}
                 <td>{{ $item->bonus_type_text }}</td>
                 <td>{{ $item->title }}</td>
                 <td>{{ $item->points }}</td>
-                <td>{{ $item->remainder }}</td>
+                {{--                <td>{{ $item->remainder }}</td>--}}
                 <td><a href="{{ route('user.show', $item->user_id??1) }}">{{ optional($item->user)->full_name }} ({{
                     $item->user_id
                     }})</a></td>

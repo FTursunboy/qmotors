@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\LoginApiRequest;
 use App\Http\Requests\Api\SendSmsCodeRequest;
 use App\Models\User;
+use App\Services\Contracts\BonusServiceInterface;
 use App\Services\Contracts\SmsServiceInterface;
 use App\Traits\ApiResponse;
 
@@ -13,9 +14,8 @@ class AuthApiController extends Controller
 {
     use ApiResponse;
 
-    public function sendSmsCode(SendSmsCodeRequest $request, SmsServiceInterface $smsService)
+    public function sendSmsCode(SendSmsCodeRequest $request, SmsServiceInterface $smsService, BonusServiceInterface $bonusService)
     {
-        $result = false;
         $user = User::where('phone_number', nudePhone($request->phone_number))->orWhere('phone_number', buildPhone($request->phone_number))->first();
         if ($user == null) {
             $id = User::nextID();
@@ -23,6 +23,14 @@ class AuthApiController extends Controller
             $user->id = $id;
             $user->gender = 1;
             $user->phone_number = buildPhone($request->phone_number);
+            $bonusService->store(collect([
+                'user_id' => $user->id,
+                'points' => 350,
+                'bonus_type' => 'install',
+                'title' => 'Установка Приложения',
+                'status' => 1,
+                'burn_date' => null
+            ]));
         }
         if (in_array(buildPhone($request->phone_number), User::TEST_ACCOUNT_PHONE_NUMBERS)) {
             $user->sms_code = 111111;

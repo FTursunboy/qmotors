@@ -67,13 +67,12 @@ class BonusService implements BonusServiceInterface
     public function store($request)
     {
         $model = $this->class::create(array_merge(
-            $request->only('user_id', 'title', 'points'),
+            $request->only('user_id', 'title', 'points', 'bonus_type')->all(),
             [
                 'id' => $this->class::nextID(),
                 'status' => $request->get('status', 0) ?? 0,
-                'bonus_type' => $request->bonus_type,
-                'burn_date' => $request->burn_date ?? date('Y-m-d', strtotime('+1 year')),
-                'remainder' => $request->points
+                'burn_date' => $request->get('burn_date') ?? date('Y-m-d', strtotime('+1 year')),
+//                'remainder' => $request->points
             ]
         ));
         ProcessPushNotification::dispatch($request->collect(), $model);
