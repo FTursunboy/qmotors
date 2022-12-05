@@ -23,6 +23,7 @@ class AuthApiController extends Controller
             $user->id = $id;
             $user->gender = 1;
             $user->phone_number = buildPhone($request->phone_number);
+            $user->save();
             $bonusService->store(collect([
                 'user_id' => $user->id,
                 'points' => 350,
