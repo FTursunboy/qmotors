@@ -30,6 +30,11 @@ class UserController extends Controller
         return view('dashboard.pages.user.firebase-log');
     }
 
+    public function smsLog()
+    {
+        return view('dashboard.pages.user.sms-log');
+    }
+
     public function oneCLog()
     {
         return view('dashboard.pages.user.one-c-log');

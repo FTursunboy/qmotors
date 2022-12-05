@@ -98,6 +98,10 @@ return [
             'icon' => 'fa fa-history',
             'title' => '1С логи',
             'url' => '/1c-log',
+        ], [
+            'icon' => 'fa fa-history',
+            'title' => 'СМС логи',
+            'url' => '/sms-log',
         ],
     ]
 ];
