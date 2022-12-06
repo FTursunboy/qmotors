@@ -19,7 +19,6 @@ class AddSumToOrderWorks extends Migration
             $table->float('discount')->nullable();
             $table->float('price')->nullable();
             $table->float('sum')->nullable();
-
         });
     }
 
