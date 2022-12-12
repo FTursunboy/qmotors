@@ -314,18 +314,40 @@ class OneCService implements OneCServiceInterface
 
     private function receiveBonus($data)
     {
+        $model = Bonus::find(is_integer($data['bonus_id']) ? $data['bonus_id'] : Bonus::nextID());
+        if ($model) {
+            $model = Bonus::create([
+                'user_id' => $data['user_id'],
+                'title' => $data['comment'],
+                'bonus_type' => $data['bonus_accrual_id'] ? 'burn' : $data['bonus_type'],
+                'points' => $data['count'],
+                'burn_count' => $data['burn_count'],
+                'burn_date' => $data['burn_date'],
+                'bonus_accrual_id' => $data['bonus_accrual_id'],
+            ]);
+        } else {
+            $model->update([
+                'user_id' => $data['user_id'],
+                'title' => $data['comment'],
+                'bonus_type' => $data['bonus_accrual_id'] ? 'burn' : $data['bonus_type'],
+                'points' => $data['count'],
+                'burn_count' => $data['burn_count'],
+                'burn_date' => $data['burn_date'],
+                'bonus_accrual_id' => $data['bonus_accrual_id'],
+            ]);
+        }
 //        Bonus::withoutEvents(function () use ($data) {
-        $model = Bonus::updateOrCreate([
-            'id' => is_integer($data['bonus_id']) ? $data['bonus_id'] : Bonus::nextID()
-        ], [
-            'user_id' => $data['user_id'],
-            'title' => $data['comment'],
-            'bonus_type' => $data['bonus_accrual_id'] ? 'burn' : $data['bonus_type'],
-            'points' => $data['count'],
-            'burn_count' => $data['burn_count'],
-            'burn_date' => $data['burn_date'],
-            'bonus_accrual_id' => $data['bonus_accrual_id'],
-        ]);
+//        $model = Bonus::updateOrCreate([
+//            'id' => is_integer($data['bonus_id']) ? $data['bonus_id'] : Bonus::nextID()
+//        ], [
+//            'user_id' => $data['user_id'],
+//            'title' => $data['comment'],
+//            'bonus_type' => $data['bonus_accrual_id'] ? 'burn' : $data['bonus_type'],
+//            'points' => $data['count'],
+//            'burn_count' => $data['burn_count'],
+//            'burn_date' => $data['burn_date'],
+//            'bonus_accrual_id' => $data['bonus_accrual_id'],
+//        ]);
 //        });
         if (!is_integer($data['bonus_id'])) {
             $model->update([
@@ -344,21 +366,42 @@ class OneCService implements OneCServiceInterface
         ]);
 //        UserCar::withoutEvents(function () use ($data, $model) {
 
-        $model = UserCar::updateOrCreate([
-//            'vin' => $data['vin'],
-            'id' => is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID(),
-        ], [
+        $model = UserCar::find(is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID());
+        if ($model) {
+            $model = UserCar::create([
+                'vin' => $data['vin'],
+                'user_id' => $data['user_id'],
+                'car_model_id' => $model->id,
+                'year' => $data['year'],
+                'last_visit' => $data['date'],
+                'mileage' => $data['mileage'],
+                'number' => $data['car_number'],
+                'status' => $data['status'],
+            ]);
+        } else {
+            $model->update([
+                'vin' => $data['vin'],
+                'user_id' => $data['user_id'],
+                'car_model_id' => $model->id,
+                'year' => $data['year'],
+                'last_visit' => $data['date'],
+                'mileage' => $data['mileage'],
+                'number' => $data['car_number'],
+                'status' => $data['status'],
+            ]);
+        }
+//        $model = UserCar::updateOrCreate([
 //            'id' => is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID(),
-            'vin' => $data['vin'],
-            'user_id' => $data['user_id'],
-            'car_model_id' => $model->id,
-            'year' => $data['year'],
-            'last_visit' => $data['date'],
-            'mileage' => $data['mileage'],
-            'number' => $data['car_number'],
-            'status' => $data['status'],
-//            'created_at' => $data['date'],
-        ]);
+//        ], [
+//            'vin' => $data['vin'],
+//            'user_id' => $data['user_id'],
+//            'car_model_id' => $model->id,
+//            'year' => $data['year'],
+//            'last_visit' => $data['date'],
+//            'mileage' => $data['mileage'],
+//            'number' => $data['car_number'],
+//            'status' => $data['status'],
+//        ]);
 //        });
 
         UserCarPhoto::withoutEvents(function () use ($data, $model) {
