@@ -366,9 +366,9 @@ class OneCService implements OneCServiceInterface
         ]);
 //        UserCar::withoutEvents(function () use ($data, $model) {
 
-        $model = UserCar::find(is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID());
-        if (is_null($model)) {
-            $model = UserCar::create([
+        $modell = UserCar::find(is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID());
+        if (is_null($modell)) {
+            $modell = UserCar::create([
                 'vin' => $data['vin'],
                 'user_id' => $data['user_id'],
                 'car_model_id' => $model->id,
@@ -379,7 +379,7 @@ class OneCService implements OneCServiceInterface
                 'status' => $data['status'],
             ]);
         } else {
-            $model->update([
+            $modell->update([
                 'vin' => $data['vin'],
                 'user_id' => $data['user_id'],
                 'car_model_id' => $model->id,
@@ -404,10 +404,10 @@ class OneCService implements OneCServiceInterface
 //        ]);
 //        });
 
-        UserCarPhoto::withoutEvents(function () use ($data, $model) {
+        UserCarPhoto::withoutEvents(function () use ($data, $modell) {
             foreach ($data['photos'] as $item) {
                 UserCarPhoto::updateOrCreate([
-                    'user_car_id' => $model->id,
+                    'user_car_id' => $modell->id,
                     'photo' => $item
                 ], ['id' => UserCarPhoto::nextID()]);
             }
