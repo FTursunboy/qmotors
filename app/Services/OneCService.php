@@ -317,6 +317,7 @@ class OneCService implements OneCServiceInterface
         $model = Bonus::find(is_integer($data['bonus_id']) ? $data['bonus_id'] : Bonus::nextID());
         if (is_null($model)) {
             $model = Bonus::create([
+                'id' => Bonus::nextID(),
                 'user_id' => $data['user_id'],
                 'title' => $data['comment'],
                 'bonus_type' => $data['bonus_accrual_id'] ? 'burn' : $data['bonus_type'],
@@ -369,6 +370,7 @@ class OneCService implements OneCServiceInterface
         $modell = UserCar::find(is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID());
         if (is_null($modell)) {
             $modell = UserCar::create([
+                'id' => UserCar::nextID(),
                 'vin' => $data['vin'],
                 'user_id' => $data['user_id'],
                 'car_model_id' => $model->id,
