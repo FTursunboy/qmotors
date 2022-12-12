@@ -315,7 +315,7 @@ class OneCService implements OneCServiceInterface
     private function receiveBonus($data)
     {
         $model = Bonus::find(is_integer($data['bonus_id']) ? $data['bonus_id'] : Bonus::nextID());
-        if ($model != null) {
+        if (is_null($model)) {
             $model = Bonus::create([
                 'user_id' => $data['user_id'],
                 'title' => $data['comment'],
@@ -367,7 +367,7 @@ class OneCService implements OneCServiceInterface
 //        UserCar::withoutEvents(function () use ($data, $model) {
 
         $model = UserCar::find(is_integer($data['car_id']) ? $data['car_id'] : UserCar::nextID());
-        if ($model != null) {
+        if (is_null($model)) {
             $model = UserCar::create([
                 'vin' => $data['vin'],
                 'user_id' => $data['user_id'],
