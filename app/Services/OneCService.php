@@ -122,31 +122,34 @@ class OneCService implements OneCServiceInterface
             'response' => json_encode($response->body(), JSON_UNESCAPED_SLASHES),
             'status' => $response->status()
         ]);
-        foreach ($res['lines'] as $item) {
+        if (isset($res['lines'])) {
+
+            foreach ($res['lines'] as $item) {
 //            dd($item);
-            switch ($item['msg_type']) {
-                case 'chat':
-                    $this->receiveChat($item['data']);
-                    break;
-                case 'user':
-                    $this->receiveUser($item['data']);
-                    break;
-                case 'push':
-                    $this->receivePush($item['data']);
-                    break;
-                case 'order':
-                    $this->receiveOrder($item['data']);
-                    break;
-                case 'bonus':
-                    $this->receiveBonus($item['data']);
-                    break;
-                case 'car':
-                    $this->receiveCar($item['data']);
-                    break;
-                default:
-                    break;
+                switch ($item['msg_type']) {
+                    case 'chat':
+                        $this->receiveChat($item['data']);
+                        break;
+                    case 'user':
+                        $this->receiveUser($item['data']);
+                        break;
+                    case 'push':
+                        $this->receivePush($item['data']);
+                        break;
+                    case 'order':
+                        $this->receiveOrder($item['data']);
+                        break;
+                    case 'bonus':
+                        $this->receiveBonus($item['data']);
+                        break;
+                    case 'car':
+                        $this->receiveCar($item['data']);
+                        break;
+                    default:
+                        break;
+                }
+                if ($item['msg_id'] > $msg_id) $msg_id = $item['msg_id'];
             }
-            if ($item['msg_id'] > $msg_id) $msg_id = $item['msg_id'];
         }
         $message->value = $msg_id;
         $message->save();
