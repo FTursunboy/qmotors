@@ -316,16 +316,29 @@ class OneCService implements OneCServiceInterface
     {
         $model = Bonus::find(is_integer($data['bonus_id']) ? $data['bonus_id'] : Bonus::nextID());
         if (is_null($model)) {
-            $model = Bonus::create([
-                'id' => Bonus::nextID(),
-                'user_id' => $data['user_id'],
-                'title' => $data['comment'],
-                'bonus_type' => $data['bonus_accrual_id'] ? 'burn' : $data['bonus_type'],
-                'points' => $data['count'],
-                'burn_count' => $data['burn_count'],
-                'burn_date' => $data['burn_date'],
-                'bonus_accrual_id' => $data['bonus_accrual_id'],
-            ]);
+            try {
+                $model = Bonus::create([
+                    'id' => Bonus::nextID(),
+                    'user_id' => $data['user_id'],
+                    'title' => $data['comment'],
+                    'bonus_type' => $data['bonus_accrual_id'] ? 'burn' : $data['bonus_type'],
+                    'points' => $data['count'],
+                    'burn_count' => $data['burn_count'],
+                    'burn_date' => $data['burn_date'],
+                    'bonus_accrual_id' => $data['bonus_accrual_id'],
+                ]);
+            } catch (\Throwable $e) {
+                $model = Bonus::create([
+                    'id' => Bonus::nextID() + 1,
+                    'user_id' => $data['user_id'],
+                    'title' => $data['comment'],
+                    'bonus_type' => $data['bonus_accrual_id'] ? 'burn' : $data['bonus_type'],
+                    'points' => $data['count'],
+                    'burn_count' => $data['burn_count'],
+                    'burn_date' => $data['burn_date'],
+                    'bonus_accrual_id' => $data['bonus_accrual_id'],
+                ]);
+            }
         } else {
             $model->update([
                 'user_id' => $data['user_id'],
