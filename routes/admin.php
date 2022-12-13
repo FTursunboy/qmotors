@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/sms-log', [UserController::class, 'smsLog']);
     Route::group(['prefix' => 'users', 'as' => 'user'], function () {
         Route::get('/', [UserController::class, 'index']);
+        Route::get('/balance', [UserController::class, 'exportBalance'])->name('.balance');
         Route::get('/list', [UserController::class, 'list'])->name('.list');
         Route::get('/create', [UserController::class, 'create'])->name('.create');
         Route::post('/', [UserController::class, 'store'])->name('.store');

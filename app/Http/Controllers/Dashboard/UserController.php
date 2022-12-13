@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Exports\UserBalanceExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Models\User;
 use App\Services\Contracts\UserServiceInterface;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -85,5 +87,10 @@ class UserController extends Controller
         //     return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");
         // }
         return redirect()->route('user')->with('success', "Успешно удалено: $id!");
+    }
+
+    public function exportBalance(Request $request)
+    {
+        return Excel::download(new UserBalanceExport(), 'balances.xlsx');
     }
 }
