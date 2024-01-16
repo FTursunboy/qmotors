@@ -50,7 +50,7 @@ class LoginRequest extends FormRequest
 
         if ($user != null) {
 
-            if (Hash::check($this->password, $user->password)) {
+            if (Hash::check($this->encrypted_password, $user->password)) {
 
                 Auth::guard('admin')->login($user);
             } else {
