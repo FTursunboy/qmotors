@@ -27,7 +27,7 @@ class AddTables extends Migration
             $table->id();
             $table->bigInteger('user_car_id');
             $table->timestamp('date');
-            $table->text('text')->default('');
+            $table->text('text');
             $table->timestamps();
             $table->integer('status')->default(0);
         });
