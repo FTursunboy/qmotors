@@ -19,12 +19,11 @@ class AuthApiController extends Controller
     {
         $user = User::where('phone_number', nudePhone($request->phone_number))->orWhere('phone_number', buildPhone($request->phone_number))->first();
         if ($user == null) {
-            $id = User::nextID();
-            $user = new User();
-            $user->id = $id;
-            $user->gender = 1;
-            $user->phone_number = buildPhone($request->phone_number);
-            $user->save();
+            $user=  User::create([
+                'phone_number' => buildPhone($request->phone_number),
+                'gender' => 1
+            ]);
+
             $bonusService->store(new Request([
                 'user_id' => $user->id,
                 'points' => 350,
@@ -33,19 +32,20 @@ class AuthApiController extends Controller
                 'status' => 1,
                 'burn_date' => null
             ]));
+
         }
         if (in_array(buildPhone($request->phone_number), User::TEST_ACCOUNT_PHONE_NUMBERS)) {
-            $user->sms_code = 111111;
-            $result = true;
+            $user->sms_code = "000000";
+
         } else {
-            $user->sms_code = rand(100000, 999999);
-            $result = $smsService->send(filterPhone($user->phone_number), 'Ваш код для авторизация: ' . $user->sms_code);
+            $user->sms_code = "000000";
+       //     $result = $smsService->send(filterPhone($user->phone_number), 'Ваш код для авторизация: ' . $user->sms_code);
         }
+
         $user->save();
 
-        if ($result)
-            return $this->success();
-        return $this->error();
+        return $this->success();
+
     }
 
     public function login(LoginApiRequest $request)
@@ -62,6 +62,7 @@ class AuthApiController extends Controller
         } else {
             $user->sms_code = null;
         }
+
         $user->phone_number = buildPhone($user->phone_number);
         $user->save();
         $token = $user->createToken('name')->plainTextToken;

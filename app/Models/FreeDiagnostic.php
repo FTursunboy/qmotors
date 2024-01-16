@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FreeDiagnostic extends Model
 {
-    use HasFactory, ModelCommonMethods;
+    use ModelCommonMethods;
 
     public $fillable = ['tech_center_id', 'user_car_id', 'date', 'free_diagnostic_type_id'];
 

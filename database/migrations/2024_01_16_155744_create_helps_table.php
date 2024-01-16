@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CancelNumberUniqueUserCarsTable extends Migration
+class CreateHelpsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CancelNumberUniqueUserCarsTable extends Migration
      */
     public function up()
     {
-//        Schema::table('user_cars', function (Blueprint $table) {
-//            $table->dropUnique('user_cars_number_unique');
-//        });
+        Schema::create('helps', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('text');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -25,6 +28,6 @@ class CancelNumberUniqueUserCarsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('helps');
     }
 }

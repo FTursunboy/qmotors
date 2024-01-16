@@ -38,8 +38,8 @@ class OrderService implements OrderServiceInterface
         // }
         $model = $this->class::create(array_merge(
             $request->only(
-                'order_type_id',
                 'tech_center_id',
+                'order_type_id',
                 'description',
                 'date',
                 'guarantee',
@@ -50,10 +50,13 @@ class OrderService implements OrderServiceInterface
             ),
             [
                 'user_car_id' => $request->user_car_id,
+                'order_type' => $request->order_type_id,
                 'id' => $this->class::nextID(),
+                'order_id' => $this->class::nextID(),
                 'order_number' => $request->order_number
             ],
         ));
+
 //        $this->sendMail($model);
         ProcessOrderMail::dispatch($model);
         return $model;

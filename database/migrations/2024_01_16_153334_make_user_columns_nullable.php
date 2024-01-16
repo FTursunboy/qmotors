@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CancelNumberUniqueUserCarsTable extends Migration
+class MakeUserColumnsNullable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CancelNumberUniqueUserCarsTable extends Migration
      */
     public function up()
     {
-//        Schema::table('user_cars', function (Blueprint $table) {
-//            $table->dropUnique('user_cars_number_unique');
-//        });
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('surname')->nullable()->change();
+            $table->string('name')->nullable()->change();
+            $table->string('patronymic')->nullable()->change();
+        });
     }
 
     /**

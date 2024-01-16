@@ -17,6 +17,6 @@ class ArticleApiController extends Controller
 
     public function show($id)
     {
-        return $this->success(Article::find($id)->append('preview_path'));
+        return $this->success(Article::findOrFail($id)->append('preview_path'));
     }
 }

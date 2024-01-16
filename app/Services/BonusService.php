@@ -66,6 +66,7 @@ class BonusService implements BonusServiceInterface
 
     public function store($request)
     {
+
         $model = $this->class::create(array_merge(
             $request->only('user_id', 'title', 'points', 'bonus_type'),
             [
@@ -75,6 +76,7 @@ class BonusService implements BonusServiceInterface
 //                'remainder' => $request->points
             ]
         ));
+
         ProcessPushNotification::dispatch($request->collect(), $model);
 
         return $model;

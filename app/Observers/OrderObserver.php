@@ -13,11 +13,11 @@ class OrderObserver
      * @param \App\Models\Order $order
      * @return void
      */
-    public function created(Order $order)
-    {
-        with(new OneCService)->order($order);
-
-    }
+//    public function created(Order $order)
+//    {
+//        with(new OneCService)->order($order);
+//
+//    }
 
     /**
      * Handle the Order "updated" event.

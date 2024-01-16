@@ -21,7 +21,7 @@ class CarOwner
      * @param Closure(Request): (Response|RedirectResponse) $next
      * @return JsonResponse
      */
-    public function handle(Request $request, Closure $next): JsonResponse
+    public function handle(Request $request, Closure $next)
     {
         if (UserCar::findOrFail($request->id)->user_id == auth()->id())
             return $next($request);

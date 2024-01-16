@@ -14,8 +14,7 @@ class AddNumberToUserCarsTable extends Migration
     public function up()
     {
         Schema::table('user_cars', function (Blueprint $table) {
-            $table->string('number')->nullable()->unique();
-
+//            $table->string('number')->nullable()->unique();
         });
     }
 

@@ -13,9 +13,9 @@ class AddOrderTypeIdToOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->foreignId('order_type_id')->nullable()->constrained('order_types')->after('order_type');
-        });
+//        Schema::table('orders', function (Blueprint $table) {
+//            $table->foreignId('order_type_id')->nullable()->constrained('order_types')->after('order_type');
+//        });
     }
 
     /**
