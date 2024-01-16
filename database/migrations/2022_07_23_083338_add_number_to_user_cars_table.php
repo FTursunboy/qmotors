@@ -13,9 +13,9 @@ class AddNumberToUserCarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_cars', function (Blueprint $table) {
+        Schema::table('user_cars', function (Blueprint $table) {
             $table->string('number')->nullable()->unique();
-            $table->timestamps();
+
         });
     }
 
