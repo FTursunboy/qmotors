@@ -19,45 +19,45 @@ class Statistics2 extends Component
      */
     public function __construct()
     {
-        $this->statistics = [];
-//        $this->statistics = [
-//            [
-//                'title' => 'Пользователи',
-//                'count' => User::count(),
-//                'info' => 'Статистика пользователей',
-//                'counts' => [
-//                    'Последние 7 дней' => User::whereDate('created_at', '>=', date('Y-m-d', strtotime('-7 days')))->count(),
-//                    'Последние 30 дней' => User::whereDate('created_at', '>=', date('Y-m-d', strtotime('-30 days')))->count(),
-//                ]
-//            ],
-//            [
-//                'title' => 'Автомобили',
-//                'count' => UserCar::count(),
-//                'info' => 'Статистика автомобиля',
-//                'counts' => [
-//                    'Последние 7 дней' => UserCar::whereDate('created_at', '>=', date('Y-m-d', strtotime('-7 days')))->count(),
-//                    'Последние 30 дней' => UserCar::whereDate('created_at', '>=', date('Y-m-d', strtotime('-30 days')))->count(),
-//                ]
-//            ],
-//            [
-//                'title' => 'Бесплатные диагностики',
-//                'count' => FreeDiagnostic::count(),
-//                'info' => 'Статистика бесплатной диагностики',
-//                'counts' => [
-//                    'Последние 7 дней' => FreeDiagnostic::whereDate('date', '>=', date('Y-m-d', strtotime('-7 days')))->count(),
-//                    'Новый' => FreeDiagnostic::whereDate('date', '>=', date('Y-m-d'))->count(),
-//                ]
-//            ],
-//            [
-//                'title' => 'Заказы',
-//                'count' => Order::count(),
-//                'info' => 'Статистика заказов',
-//                'counts' => [
-//                    'Сегодня' => Order::whereDate('date', date('Y-m-d'))->count(),
-//                    'Завтра' => Order::whereDate('date', date('Y-m-d', strtotime('+1 day')))->count(),
-//                ]
-//            ],
-//        ];
+
+        $this->statistics = [
+            [
+                'title' => 'Пользователи',
+                'count' => User::count(),
+                'info' => 'Статистика пользователей',
+                'counts' => [
+                    'Последние 7 дней' => User::whereDate('created_at', '>=', date('Y-m-d', strtotime('-7 days')))->count(),
+                    'Последние 30 дней' => User::whereDate('created_at', '>=', date('Y-m-d', strtotime('-30 days')))->count(),
+                ]
+            ],
+            [
+                'title' => 'Автомобили',
+                'count' => UserCar::count(),
+                'info' => 'Статистика автомобиля',
+                'counts' => [
+                    'Последние 7 дней' => UserCar::whereDate('created_at', '>=', date('Y-m-d', strtotime('-7 days')))->count(),
+                    'Последние 30 дней' => UserCar::whereDate('created_at', '>=', date('Y-m-d', strtotime('-30 days')))->count(),
+                ]
+            ],
+            [
+                'title' => 'Бесплатные диагностики',
+                'count' => FreeDiagnostic::count(),
+                'info' => 'Статистика бесплатной диагностики',
+                'counts' => [
+                    'Последние 7 дней' => FreeDiagnostic::whereDate('date', '>=', date('Y-m-d', strtotime('-7 days')))->count(),
+                    'Новый' => FreeDiagnostic::whereDate('date', '>=', date('Y-m-d'))->count(),
+                ]
+            ],
+            [
+                'title' => 'Заказы',
+                'count' => Order::count(),
+                'info' => 'Статистика заказов',
+                'counts' => [
+                    'Сегодня' => Order::whereDate('date', date('Y-m-d'))->count(),
+                    'Завтра' => Order::whereDate('date', date('Y-m-d', strtotime('+1 day')))->count(),
+                ]
+            ],
+        ];
     }
 
     /**
