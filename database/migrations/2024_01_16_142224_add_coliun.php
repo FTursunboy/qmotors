@@ -110,13 +110,7 @@ class AddColiun extends Migration
         });
 
         // free_diagnostics
-        Schema::create('free_diagnostics', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('tech_center_id');
-            $table->bigInteger('user_car_id');
-            $table->timestamp('date')->nullable();
-            $table->timestamps();
-        });
+
 
         Schema::create('messages', function (Blueprint $table) {
             $table->id();

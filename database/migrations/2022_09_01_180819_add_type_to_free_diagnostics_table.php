@@ -13,9 +13,14 @@ class AddTypeToFreeDiagnosticsTable extends Migration
      */
     public function up()
     {
-        Schema::table('free_diagnostics', function (Blueprint $table) {
-            $table->foreignId('free_diagnostic_type_id')->nullable()->constrained('free_diagnostic_types')->after('free_diagnostic_type');
+        Schema::create('free_diagnostics', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('tech_center_id');
+            $table->bigInteger('user_car_id');
+            $table->timestamp('date')->nullable();
+            $table->timestamps();
         });
+
     }
 
     /**
