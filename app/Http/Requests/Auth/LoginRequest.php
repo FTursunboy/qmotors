@@ -47,8 +47,11 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
         $user = AdminUser::where('email', $this->email)->first();
+
         if ($user != null) {
-            if (Hash::check($this->password, $user->encrypted_password)) {
+
+            if (Hash::check($this->password, $user->password)) {
+
                 Auth::guard('admin')->login($user);
             } else {
                 RateLimiter::hit($this->throttleKey());
