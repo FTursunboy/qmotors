@@ -13,6 +13,12 @@ class AddSumToOrderWorks extends Migration
      */
     public function up()
     {
+        Schema::create('order_works', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('order_id')->unsigned();
+            $table->string('title');
+            $table->timestamps();
+        });
         Schema::table('order_works', function (Blueprint $table) {
             $table->integer('count')->nullable()->default(0);
             $table->integer('hours')->nullable()->default(0);

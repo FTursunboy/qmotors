@@ -13,6 +13,16 @@ class AddEmailsToTechCentersTable extends Migration
      */
     public function up()
     {
+        Schema::create('tech_centers', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('address');
+            $table->string('phone');
+            $table->double('lat');
+            $table->double('lng');
+            $table->timestamps();
+            $table->string('url')->nullable();
+        });
         Schema::table('tech_centers', function (Blueprint $table) {
             $table->text('emails')->nullable();
         });

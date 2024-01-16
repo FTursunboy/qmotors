@@ -15,9 +15,9 @@ class CreateChatMessagesTable extends Migration
     {
         Schema::create('chat_messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('chat_id')->nullable()->constrained('chats')->nullOnDelete();
-            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->foreignId('admin_user_id')->nullable()->constrained('admin_users')->nullOnDelete();
+            $table->unsignedBigInteger('chat_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('admin_user_id')->nullable();
             $table->text('message')->nullable();
             $table->string('file')->nullable();
             $table->string('video')->nullable();

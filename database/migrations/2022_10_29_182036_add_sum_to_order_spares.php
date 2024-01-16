@@ -13,6 +13,11 @@ class AddSumToOrderSpares extends Migration
      */
     public function up()
     {
+        Schema::create('order_spares', function (Blueprint $table) {
+            $table->id();
+
+            $table->timestamps();
+        });
         Schema::table('order_spares', function (Blueprint $table) {
             $table->integer('count')->nullable()->default(0);
             $table->float('discount')->nullable();

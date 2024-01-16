@@ -55,16 +55,7 @@ class AddColiun extends Migration
         });
 
         // bonuses
-        Schema::create('bonuses', function (Blueprint $table) {
-            $table->id();
-            $table->integer('status')->default(0);
-            $table->integer('bonus_type')->default(0);
-            $table->string('title')->nullable();
-            $table->integer('points')->default(0);
-            $table->integer('remainder')->default(0);
-            $table->bigInteger('user_id')->nullable();
-            $table->timestamps();
-        });
+
 
         // call_requests
         Schema::create('call_requests', function (Blueprint $table) {
@@ -126,15 +117,7 @@ class AddColiun extends Migration
         // migrations
 
         // notifications
-        Schema::create('notifications', function (Blueprint $table) {
-            $table->id();
-            $table->string('title')->nullable();
-            $table->text('text');
-            $table->bigInteger('user_id')->nullable();
-            $table->timestamps();
-            $table->integer('notification_type')->default(0);
-            $table->integer('additional_id')->nullable();
-        });
+
 
         Schema::create('notifications_users', function (Blueprint $table) {
             $table->bigInteger('user_id')->unsigned();
@@ -158,11 +141,7 @@ class AddColiun extends Migration
         });
 
         // order_spares
-        Schema::create('order_spares', function (Blueprint $table) {
-            $table->id();
-            // Добавь столбцы для order_spares
-            $table->timestamps();
-        });
+
 
         // Добавим ALTER TABLE для каждой из таблиц
 
@@ -177,38 +156,12 @@ class AddColiun extends Migration
 //        });
 
         // order_types
-        Schema::create('order_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->timestamps();
-        });
 
         // order_works
-        Schema::create('order_works', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('order_id')->unsigned();
-            $table->string('title');
-            $table->timestamps();
-        });
+
 
         // orders
-        Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('user_car_id')->unsigned();
-            $table->bigInteger('tech_center_id')->unsigned();
-            $table->bigInteger('order_id')->unsigned();
-            $table->timestamp('date')->nullable();
-            $table->integer('order_type');
-            $table->text('description');
-            $table->boolean('guarantee')->default(false);
-            $table->timestamps();
-            $table->bigInteger('stock_id')->unsigned();
-            $table->string('mileage')->nullable();
-            $table->string('order_number')->nullable();
-            $table->integer('status')->default(0);
-            $table->bigInteger('order_type_id')->unsigned();
-        });
+
 
     }
 
