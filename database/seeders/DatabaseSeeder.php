@@ -16,9 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         AdminUser::create([
-            'name' => 'admin',
             'email' => 'admin@gmail.com',
-            'password' => Hash::make('password')
+            'encrypted_password' => Hash::make('password')
         ]);
     }
 }
