@@ -15,7 +15,7 @@ $headerTopMenu = (!empty($headerTopMenu)) ? $headerTopMenu : '';
 			<span class="icon-bar"></span>
 		</button>
 		@endif
-		<a href="/" class="navbar-brand"><span class="navbar-logo"></span> <b>QMotors</b></a>
+		<a href="/" class="navbar-brand"><span class="navbar-logo"></span> <b>Ваш автосервис</b></a>
 		@if ($headerMegaMenu)
 		<button type="button" class="navbar-toggle pt-0 pb-0 mr-0" data-toggle="collapse" data-target="#top-navbar">
 			<span class="fa-stack fa-lg text-inverse">
