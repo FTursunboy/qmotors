@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 class PushNotificationService implements PushNotificationServiceInterface
 {
     const FCM_URL = 'https://fcm.googleapis.com/fcm/send';
-    const SERVER_KEY = 'AAAAg10Ahew:APA91bGySxHGYDiU6ZJEGliN5-b_tezhk33MajKDC58bkol3-qHbKAtWpzzf5BsRbCchNEA6lJ2XEveb3fa632Pbw5XwdjnczDB80Zg7K_UTV-Ii7Xdal15HaooP8xPEutUdh7YCSqTt';
+    const SERVER_KEY = 'AAAA-i9DEAA:APA91bFHskdG8QCm6rLIyOLzYiiC9RONVkIFRA8iNLu0TEZpWcS2vkvTVG3HNnFxk5px7wHfn4w9DIgYpMp3i6oe1jB5LnHMCWsZW1r6G1ONgkomeUFbW5JfwRK6FRY-JOW0oiqdCIci';
     const HEADERS = [
         'Authorization: key=' . self::SERVER_KEY,
         'Content-Type: application/json',
