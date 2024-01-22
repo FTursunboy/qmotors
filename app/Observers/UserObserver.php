@@ -13,10 +13,10 @@ class UserObserver
      * @param \App\Models\User $user
      * @return void
      */
-    public function created(User $user)
-    {
-        with(new OneCService)->registerUser($user);
-    }
+//    public function created(User $user)
+//    {
+//        with(new OneCService)->registerUser($user);
+//    }
 
     /**
      * Handle the User "updated" event.
@@ -24,10 +24,10 @@ class UserObserver
      * @param \App\Models\User $user
      * @return void
      */
-    public function updated(User $user)
-    {
-        with(new OneCService)->updateUser($user);
-    }
+//    public function updated(User $user)
+//    {
+//        with(new OneCService)->updateUser($user);
+//    }
 
     /**
      * Handle the User "deleted" event.

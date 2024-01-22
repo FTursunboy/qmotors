@@ -17,31 +17,29 @@ class AuthApiController extends Controller
     public function sendSmsCode(SendSmsCodeRequest $request, BonusServiceInterface $bonusService)
     {
         $user = User::where('phone_number', nudePhone($request->phone_number))->orWhere('phone_number', buildPhone($request->phone_number))->first();
+
         if ($user == null) {
+            dd(1);
             $user=  User::create([
                 'phone_number' => buildPhone($request->phone_number),
                 'gender' => 1
             ]);
+
 //
-//            $bonusService->store(new Request([
-//                'user_id' => $user->id,
-//                'points' => 350,
-//                'bonus_type' => 'install',
-//                'title' => 'Установка Приложения',
-//                'status' => 1,
-//                'burn_date' => null
-//            ]));
+            $bonusService->store(new Request([
+                'user_id' => $user->id,
+                'points' => 350,
+                'bonus_type' => 'install',
+                'title' => 'Установка Приложения',
+                'status' => 1,
+                'burn_date' => null
+            ]));
 
         }
-        if (in_array(buildPhone($request->phone_number), User::TEST_ACCOUNT_PHONE_NUMBERS)) {
-            $user->sms_code = "000000";
-
-        } else {
-            $user->sms_code = "000000";
-       //     $result = $smsService->send(filterPhone($user->phone_number), 'Ваш код для авторизация: ' . $user->sms_code);
-        }
+        $user->sms_code = "000000";
 
         $user->save();
+
 
         return $this->success();
 
