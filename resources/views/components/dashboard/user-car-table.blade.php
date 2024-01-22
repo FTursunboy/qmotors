@@ -39,10 +39,10 @@
     <x-slot name="body">
         @foreach ($list as $index => $item)
         <tr>
-            <td><a href="{{ route('user-car.show', $item->id ?? 1) }}">{{ $item->id }}</a></td>
+            <td><a href="{{ route('user-car.show', $item->id) }}">{{ $item->id }}</a></td>
             <td>{{ $item->number }}</td>
             <td>{{ optional($item->model)->name }}</td>
-            <td> <a href="{{ route('user.show', optional($item->user)->id) }}">{{
+            <td> <a href="{{ route('user.show', $item->id) }}">{{
                     optional($item->user)->full_name
                     }}</a></td>
             <td>{{ $item->year }}</td>
@@ -55,9 +55,9 @@
                 <div class="d-flex float-right">
                     <a class="btn btn-info mr-2" href="{{ route('user-car.show', $item->id) }}"><i
                             class="fa fa-eye"></i></a>
-                    <a href="{{ route('user-car.edit', $item->id ?? 1) }}" class="btn btn-primary mr-2"><i
+                    <a href="{{ route('user-car.edit', $item->id) }}" class="btn btn-primary mr-2"><i
                             class="fa fa-pen"></i></a>
-                    <form action="{{ route('user-car.delete', $item->id ?? 1) }}" method="POST">
+                    <form action="{{ route('user-car.delete', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" onclick="return confirm('Ты уверен?')" class="btn btn-danger"><i
