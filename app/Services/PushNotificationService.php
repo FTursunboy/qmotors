@@ -6,6 +6,7 @@ use App\Models\FirebaseLog;
 use App\Models\Notification;
 use App\Models\User;
 use App\Services\Contracts\PushNotificationServiceInterface;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class PushNotificationService implements PushNotificationServiceInterface
@@ -45,6 +46,9 @@ class PushNotificationService implements PushNotificationServiceInterface
             } else {
                 $registration_ids = User::where('id', $user_id)->get()->pluck('fcmtoken')->all();
             }
+            if ($request->user_id) {
+                $registration_ids = User::where('id', $request->user_id)->pluck('fcmtoken')->all();
+            }
 //            PushNotification::create([
 //                'service_id' => config('1c')['service_id'],
 //                'user_id' => $user_id ?? 0,
@@ -52,30 +56,32 @@ class PushNotificationService implements PushNotificationServiceInterface
 //                'text' => $notification['body'],
 //                'date' => date('Y-m-d H:i:s')
 //            ]);
+
+
             $chunks = array_chunk($registration_ids, 1000);
             foreach ($chunks as $tokens) {
                 $data = [
                     "registration_ids" => $tokens,
                     "data" => $model,
                     "notification" => $notification,
-                    // "notification" => [
-                    //   "title" => $request['title'],
-                    //   "text" => $request['text'],
-                    // ],
                     "content_available" => true,
                     "priority" => "high",
                 ];
 
                 $dataString = json_encode($data, JSON_UNESCAPED_SLASHES);
 
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, self::FCM_URL);
-                curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_HTTPHEADER, self::HEADERS);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
-                $response = curl_exec($ch);
+                $CM_URL = 'https://fcm.googleapis.com/fcm/send';
+                $HEADERS = [
+                    'Authorization' => 'key=' . self::SERVER_KEY,
+                    'Content-Type' => 'application/json',
+                ];
+
+
+                $response = Http::withHeaders($HEADERS)
+                    ->post($CM_URL, $data);
+
+
+
                 FirebaseLog::create([
                     'fcmtokens' => json_encode($tokens),
                     'data' => $dataString,
