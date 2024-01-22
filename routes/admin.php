@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     // Route::get('/version-1', [DashboardController::class, 'index1']);
     Route::group(['prefix' => 'user-car', 'as' => 'user-car'], function () {
-        Route::get('/', [UserCarController::class, 'index']);
+        Route::get('/', [UserCarController::class, 'index'])->name('user-cars');
         Route::get('/create', [UserCarController::class, 'create'])->name('.create');
         Route::post('/', [UserCarController::class, 'store'])->name('.store');
         Route::get('/list', [UserCarController::class, 'list'])->name('.list');

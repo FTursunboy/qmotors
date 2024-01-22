@@ -44,7 +44,7 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 
 			function renderSubMenu($value, $currentUrl) {
 			$subMenu = '';
-			$GLOBALS['sub_level'] += 1 ;
+			$GLOBALS['sub_level'] += 1;
 			$GLOBALS['active'][$GLOBALS['sub_level']] = '';
 			$currentLevel = $GLOBALS['sub_level'];
 			foreach ($value as $key => $menu) {
