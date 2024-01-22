@@ -30,7 +30,6 @@ class CarApiController extends Controller
 
     public function store(StoreCarRequest $request, CarServiceInterface $carService)
     {
-
         return $this->success($carService->store($request), 201);
     }
 
