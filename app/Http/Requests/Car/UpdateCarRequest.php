@@ -34,7 +34,7 @@ class UpdateCarRequest extends FormRequest
             'car_model_id' => 'required|exists:' . with(new CarModel())->getTable() . ',id',
             'status' => Rule::in([0, 1, 2]),
             'last_visit' => 'date',
-            'vin' => 'unique:' . with(new UserCar)->getTable(),
+            'vin' => 'nullable',
         ];
     }
 }
