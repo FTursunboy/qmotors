@@ -22,15 +22,15 @@ class AuthApiController extends Controller
                 'phone_number' => buildPhone($request->phone_number),
                 'gender' => 1
             ]);
-
-            $bonusService->store(new Request([
-                'user_id' => $user->id,
-                'points' => 350,
-                'bonus_type' => 'install',
-                'title' => 'Установка Приложения',
-                'status' => 1,
-                'burn_date' => null
-            ]));
+//
+//            $bonusService->store(new Request([
+//                'user_id' => $user->id,
+//                'points' => 350,
+//                'bonus_type' => 'install',
+//                'title' => 'Установка Приложения',
+//                'status' => 1,
+//                'burn_date' => null
+//            ]));
 
         }
         if (in_array(buildPhone($request->phone_number), User::TEST_ACCOUNT_PHONE_NUMBERS)) {
