@@ -2,14 +2,14 @@
 $model = $attributes['model'];
 @endphp
 <div class="row">
-    <x-dashboard.form-input name="title" label="Название" class="col-md-6" :value="$model->title" />
-    <x-dashboard.form-input name="phone" label="Телефон" class="col-md-6" :value="$model->phone" />
-    <x-dashboard.form-input name="address" label="Отчество" class="col-md-6" :value="$model->address" />
-    <x-dashboard.form-input name="url" label="Url" class="col-md-6" :value="$model->url" />
-    <x-dashboard.form-input name="emails" label="Адреса электронной почты (через запятую)" class="col-md-12"
+    <x-dashboard.form-input name="title" required label="Название" class="col-md-6" :value="$model->title" />
+    <x-dashboard.form-input name="phone" required label="Телефон" class="col-md-6" :value="$model->phone" />
+    <x-dashboard.form-input name="address" required label="Адрес" class="col-md-6" :value="$model->address" />
+    <x-dashboard.form-input name="url"  label="Url" class="col-md-6" :value="$model->url" />
+    <x-dashboard.form-input name="emails" required label="Адреса электронной почты (через запятую)" class="col-md-12"
         :value="$model->emails" />
-    <x-dashboard.form-input name="lat" label="Широта" class="col-md-6" :value="$model->lat" />
-    <x-dashboard.form-input name="lng" label="Долгота" class="col-md-6" :value="$model->lng" />
+    <x-dashboard.form-input name="lat" required label="Широта" class="col-md-6" :value="$model->lat" />
+    <x-dashboard.form-input name="lng" required label="Долгота" class="col-md-6" :value="$model->lng" />
     <div class="col-md-12">
         <div class="input-group" style="display: none;">
             <input type="text" class="form-control" onchange="$('#hidden-'+$(this).attr('id')).val($(this).val())"

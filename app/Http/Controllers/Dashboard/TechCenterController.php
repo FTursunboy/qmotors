@@ -35,6 +35,7 @@ class TechCenterController extends Controller
 
     public function store(Request $request, TechCenterServiceInterface $techCenterService)
     {
+
         $result = $techCenterService->store($request);
         if ($result['status']) {
             return redirect()->route('tech-center')->with('success', $result['message']);

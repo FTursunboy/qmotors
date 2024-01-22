@@ -7,7 +7,6 @@ use App\Http\Requests\Api\LoginApiRequest;
 use App\Http\Requests\Api\SendSmsCodeRequest;
 use App\Models\User;
 use App\Services\Contracts\BonusServiceInterface;
-use App\Services\Contracts\SmsServiceInterface;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 
@@ -15,7 +14,7 @@ class AuthApiController extends Controller
 {
     use ApiResponse;
 
-    public function sendSmsCode(SendSmsCodeRequest $request, SmsServiceInterface $smsService, BonusServiceInterface $bonusService)
+    public function sendSmsCode(SendSmsCodeRequest $request, BonusServiceInterface $bonusService)
     {
         $user = User::where('phone_number', nudePhone($request->phone_number))->orWhere('phone_number', buildPhone($request->phone_number))->first();
         if ($user == null) {
