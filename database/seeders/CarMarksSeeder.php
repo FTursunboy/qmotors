@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CarMark;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -26,6 +27,7 @@ class CarMarksSeeder extends Seeder
                     $data[] = [
                         'id'   => $car['id'],
                         'name' => $car['name'],
+                        'car_mark_id' => CarMark::query()->inRandomOrder()->first()->id,
                         'created_at' => Carbon::now()
                     ];
                 }

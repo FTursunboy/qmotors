@@ -29,7 +29,6 @@ class CarSeeder extends Seeder
                     $data[] = [
                         'id'   => $car['id'],
                         'name' => $car['name'],
-                        'car_mark_id' => CarModel::query()->inRandomOrder()->first()->id,
                         'created_at' => Carbon::now()
                     ];
                 }
