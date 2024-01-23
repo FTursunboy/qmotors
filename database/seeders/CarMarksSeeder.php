@@ -16,18 +16,7 @@ class CarMarksSeeder extends Seeder
      */
     public function run()
     {
-// Преобразуем JSON в ассоциативный массив
-        $arrayData = json_decode($data, true);
 
-// Инициализируем пустой массив для хранения сидов
-        $seeds = [];
 
-// Итерируем по элементам и добавляем сиды в массив
-        foreach ($arrayData['result'] as $car) {
-            $seeds[] = [
-                'id' => $car['id'],
-                'name' => $car['name'],
-            ];
-        }
     }
 }

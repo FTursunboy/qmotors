@@ -34,21 +34,26 @@ class PushNotificationService implements PushNotificationServiceInterface
 
     public static function send($request, $model, $notification = ['title' => 'Test', 'body' => 'Test'], $user_id = null)
     {
-        if ($request['send'] == 1) {
+
+        if (isset($request['send']) && $request['send'] == 1 || $request['user_id']) {
+
             if (!isset($request['user_id'])) {
                 $request['user_id'] = null;
             }
             if ($user_id == null && $request['user_id'] !== null) {
                 $user_id = $request['user_id'];
             }
+
             if ($user_id == null) {
                 $registration_ids = User::orderBy('id')->whereNotNull('fcmtoken')->get()->pluck('fcmtoken')->all();
             } else {
                 $registration_ids = User::where('id', $user_id)->get()->pluck('fcmtoken')->all();
             }
-            if ($request->user_id) {
+            if (isset($request->user_id)) {
                 $registration_ids = User::where('id', $request->user_id)->pluck('fcmtoken')->all();
             }
+
+
 //            PushNotification::create([
 //                'service_id' => config('1c')['service_id'],
 //                'user_id' => $user_id ?? 0,
@@ -56,7 +61,6 @@ class PushNotificationService implements PushNotificationServiceInterface
 //                'text' => $notification['body'],
 //                'date' => date('Y-m-d H:i:s')
 //            ]);
-
 
             $chunks = array_chunk($registration_ids, 1000);
             foreach ($chunks as $tokens) {
@@ -77,18 +81,18 @@ class PushNotificationService implements PushNotificationServiceInterface
                 ];
 
 
-                $response = Http::withHeaders($HEADERS)
-                    ->post($CM_URL, $data);
-
-
-
-                FirebaseLog::create([
-                    'fcmtokens' => json_encode($tokens),
-                    'data' => $dataString,
-                    'response' => $response,
-                    'user_id' => $user_id ?? 0
-                ]);
-                Log::channel('firebase')->info($response . '  ' . $dataString);
+//                $response = Http::withHeaders($HEADERS)
+//                    ->post($CM_URL, $data);
+//
+//
+//
+//                FirebaseLog::create([
+//                    'fcmtokens' => json_encode($tokens),
+//                    'data' => $dataString,
+//                    'response' => $response,
+//                    'user_id' => $user_id ?? 0
+//                ]);
+//                Log::channel('firebase')->info($response . '  ' . $dataString);
                 // dd($response);
             }
         }
