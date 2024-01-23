@@ -14,7 +14,12 @@ class MakeColumnsNullbaleToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            //
+            Schema::table('user_cars', function (Blueprint $table) {
+                $table->string('vin')->nullable()->change();
+            });
+            Schema::table('orders', function (Blueprint $table) {
+                $table->string('stock_id')->nullable()->change();
+            });
         });
     }
 
