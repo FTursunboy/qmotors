@@ -34,23 +34,33 @@ class PushNotificationService implements PushNotificationServiceInterface
 
     public static function send($request, $model, $notification = ['title' => 'Test', 'body' => 'Test'], $user_id = null)
     {
-        if (isset($request['send']) && $request['send'] == 1 || $request['user_id']) {
+
+
+
+        if (isset($request['send']) && $request['send'] == 1 || isset($request['user_id']) && $request['user_id'] || $user_id == "all") {
+
 
             if (!isset($request['user_id'])) {
                 $request['user_id'] = null;
             }
-            if ($user_id == null && $request['user_id'] !== null) {
+            if ($user_id == null && isset($request['user_id']) !== null) {
                 $user_id = $request['user_id'];
             }
 
             if ($user_id == null) {
                 $registration_ids = User::orderBy('id')->whereNotNull('fcmtoken')->get()->pluck('fcmtoken')->all();
-            } else {
+            } else if ($user_id !== null && $user_id !== "all") {
                 $registration_ids = User::where('id', $user_id)->get()->pluck('fcmtoken')->all();
             }
+
             if (isset($request->user_id)) {
                 $registration_ids = User::where('id', $request->user_id)->pluck('fcmtoken')->all();
             }
+
+            if ($user_id == "all"){
+                $registration_ids = User::pluck('fcmtoken')->all();
+            }
+
 
 
 //            PushNotification::create([
