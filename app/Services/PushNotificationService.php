@@ -34,7 +34,6 @@ class PushNotificationService implements PushNotificationServiceInterface
 
     public static function send($request, $model, $notification = ['title' => 'Test', 'body' => 'Test'], $user_id = null)
     {
-        $notification = ['title' => 'Test', 'body' => 'Test'];
         if (isset($request['send']) && $request['send'] == 1 || $request['user_id']) {
 
             if (!isset($request['user_id'])) {

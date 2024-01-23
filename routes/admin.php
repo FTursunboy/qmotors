@@ -144,4 +144,5 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/', [HelpController::class, 'index']);
         Route::put('/', [HelpController::class, 'update'])->name('.update');
     });
+
 });

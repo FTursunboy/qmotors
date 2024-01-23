@@ -85,6 +85,16 @@ return [
             'url' => '/help',
         ],
         [
+            'icon' => 'fa fa-car',
+            'title' => 'Марки',
+            'url' => '/help',
+        ],
+        [
+            'icon' => 'fa fa-car',
+            'title' => 'Модели',
+            'url' => '/help',
+        ],
+        [
             'icon' => 'fa fa-key',
             'title' => 'Пуш токены',
             'url' => '/push-token',
@@ -93,15 +103,6 @@ return [
             'icon' => 'fa fa-fire',
             'title' => 'Firebase логи',
             'url' => '/firebase-log',
-        ],
-        [
-            'icon' => 'fa fa-history',
-            'title' => '1С логи',
-            'url' => '/1c-log',
-        ], [
-            'icon' => 'fa fa-history',
-            'title' => 'СМС логи',
-            'url' => '/sms-log',
         ],
     ]
 ];
