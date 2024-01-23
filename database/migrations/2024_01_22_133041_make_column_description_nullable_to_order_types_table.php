@@ -16,6 +16,13 @@ class MakeColumnDescriptionNullableToOrderTypesTable extends Migration
         Schema::table('order_types', function (Blueprint $table) {
             $table->text('description')->nullable()->change();
         });
+        Schema::table('user_cars', function (Blueprint $table) {
+            $table->string('vin')->nullable()->change();
+        });
+        Schema::table('orders', function (Blueprint $table) {
+            $table->string('stock_id')->nullable()->change();
+            $table->text('description')->nullable()->change();
+        });
     }
 
     /**
