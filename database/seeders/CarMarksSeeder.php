@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class CarMarksSeeder extends Seeder
 {
-
-
-
     /**
      * Run the database seeds.
      *

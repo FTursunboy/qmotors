@@ -81,18 +81,18 @@ class PushNotificationService implements PushNotificationServiceInterface
                 ];
 
 
-//                $response = Http::withHeaders($HEADERS)
-//                    ->post($CM_URL, $data);
-//
-//
-//
-//                FirebaseLog::create([
-//                    'fcmtokens' => json_encode($tokens),
-//                    'data' => $dataString,
-//                    'response' => $response,
-//                    'user_id' => $user_id ?? 0
-//                ]);
-//                Log::channel('firebase')->info($response . '  ' . $dataString);
+                $response = Http::withHeaders($HEADERS)
+                    ->post($CM_URL, $data);
+
+
+
+                FirebaseLog::create([
+                    'fcmtokens' => json_encode($tokens),
+                    'data' => $dataString,
+                    'response' => $response,
+                    'user_id' => $user_id ?? 0
+                ]);
+                Log::channel('firebase')->info($response . '  ' . $dataString);
                 // dd($response);
             }
         }
