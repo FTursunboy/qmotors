@@ -145,8 +145,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::put('/', [HelpController::class, 'update'])->name('.update');
     });
 
-    Route::get('privacy.html', function (){
-        return view('privacy');
-    });
 
+
+});
+
+Route::get('privacy.html', function (){
+    return view('privacy');
 });
