@@ -62,7 +62,7 @@ class NotificationService implements NotificationServiceInterface
     public function store($request)
     {
         $model = $this->class::create(array_merge(
-            $request->only('user_id', 'title', 'text', 'notification_type', 'additional_id'),
+            $request->only('user_id', 'title', 'text'),
             [
                 'id' => $this->class::nextID()
             ]

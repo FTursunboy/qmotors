@@ -8,10 +8,7 @@ $model = $attributes['model'];
     <x-dashboard.form-select label="Пользователь" name="user_id" option="full_name" :options="$users"
         :value="$model->user_id" class="col-md-6" default-option-label="Все пользователи" /> --}}
     <x-dashboard.user-select default-option-label="Все пользователи" :options="$users" class="col-md-6" />
-    <x-dashboard.form-input type="number" name="notification_type" label="Тип Уведомление" class="col-md-6"
-        :value="$model->notification_type" required />
-    <x-dashboard.form-input type="number" name="additional_id" label="Допонительная ссылка" class="col-md-6"
-        :value="$model->additional_id" required />
+
     <x-dashboard.form-textarea name="text" label="Текст" class="col-md-12" :value="$model->text" />
     <x-dashboard.form-switcher name="send" label="Отправить уведомление" class="col-md-12" />
 </div>
