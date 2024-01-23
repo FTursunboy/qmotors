@@ -10,7 +10,7 @@ use App\Services\Contracts\CarServiceInterface;
 class CarService implements CarServiceInterface
 {
     public $class = UserCar::class;
-    
+
     public function store($request)
     {
         return $this->class::create(array_merge(
@@ -41,6 +41,7 @@ class CarService implements CarServiceInterface
     public function photo($id, $request): UserCarPhoto
     {
         $photo = uploadFile($request->file('photo'), 'user_car');
+
         return UserCarPhoto::create([
             'id' => UserCarPhoto::nextID(),
             'user_car_id' => $id,
