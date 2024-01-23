@@ -17,22 +17,25 @@ class CarSeeder extends Seeder
      */
     public function run()
     {
-        $file_path = public_path('respons_marke.json');
-        $data =[];
+        $file_path = public_path('cars.json');
         if (file_exists($file_path)) {
             $json_content = file_get_contents($file_path);
 
             $cars = json_decode($json_content, true, 512, JSON_UNESCAPED_UNICODE);
 
             if ($cars !== null) {
-                foreach ($cars['result'] as $car) {
-                    $data[] = [
-                        'id'   => $car['id'],
+                foreach ($cars as $car) {
+                    $carMark = CarMark::create([
                         'name' => $car['name'],
-                        'created_at' => Carbon::now()
-                    ];
+                    ]);
+
+                    foreach ($car['models'] as $model) {
+                        CarModel::create([
+                            'name' => $model['name'],
+                            'car_mark_id' => $carMark->id,
+                        ]);
+                    }
                 }
-                DB::table('car_marks')->insert($data);
             }
         }
     }

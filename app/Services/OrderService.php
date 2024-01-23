@@ -45,6 +45,8 @@ class OrderService implements OrderServiceInterface
                 'guarantee',
                 'free_diagnostics',
                 'stock_id',
+                'url',
+                'phone',
                 'mileage',
                 'description'
             ),

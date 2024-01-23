@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use HasFactory, ModelCommonMethods;
+    use ModelCommonMethods;
 
     protected $guarded = [];
 

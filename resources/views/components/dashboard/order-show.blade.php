@@ -41,6 +41,14 @@
         <td>{{ $model->free_diagnostics_text }}</td>
     </tr>
     <tr>
+        <td><b>Номер телефона</b></td>
+        <td>{{ $model->phone }}</td>
+    <tr>
+    <tr>
+        <td><b>Url</b></td>
+        <td>{{ $model->url }}</td>
+    <tr>
+    <tr>
         <td><b>Запись по Акции</b></td>
         <td>{{ optional($model->stock)->title }}</td>
     <tr>
