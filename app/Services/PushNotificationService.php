@@ -34,7 +34,7 @@ class PushNotificationService implements PushNotificationServiceInterface
 
     public static function send($request, $model, $notification = ['title' => 'Test', 'body' => 'Test'], $user_id = null)
     {
-
+        $notification = ['title' => 'Test', 'body' => 'Test'];
         if (isset($request['send']) && $request['send'] == 1 || $request['user_id']) {
 
             if (!isset($request['user_id'])) {
@@ -72,6 +72,7 @@ class PushNotificationService implements PushNotificationServiceInterface
                     "priority" => "high",
                 ];
 
+
                 $dataString = json_encode($data, JSON_UNESCAPED_SLASHES);
 
                 $CM_URL = 'https://fcm.googleapis.com/fcm/send';
@@ -83,7 +84,6 @@ class PushNotificationService implements PushNotificationServiceInterface
 
                 $response = Http::withHeaders($HEADERS)
                     ->post($CM_URL, $data);
-
 
 
                 FirebaseLog::create([
