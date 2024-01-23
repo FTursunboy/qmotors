@@ -85,16 +85,6 @@ return [
             'url' => '/help',
         ],
         [
-            'icon' => 'fa fa-car',
-            'title' => 'Марки',
-            'url' => '/help',
-        ],
-        [
-            'icon' => 'fa fa-car',
-            'title' => 'Модели',
-            'url' => '/help',
-        ],
-        [
             'icon' => 'fa fa-key',
             'title' => 'Пуш токены',
             'url' => '/push-token',
