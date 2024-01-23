@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeColumnTypeMileageToOrdersTable extends Migration
+class ChangeColumnTypeMileageToUserCarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class ChangeColumnTypeMileageToOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
+        Schema::table('user_cars', function (Blueprint $table) {
             $table->integer('mileage')->nullable()->change();
         });
     }
@@ -25,8 +25,8 @@ class ChangeColumnTypeMileageToOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->string('mileage')->nullable()->change();
+        Schema::table('user_cars', function (Blueprint $table) {
+            //
         });
     }
 }
