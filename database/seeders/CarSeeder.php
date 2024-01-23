@@ -2,22 +2,21 @@
 
 namespace Database\Seeders;
 
+use App\Models\CarMark;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CarMarksSeeder extends Seeder
+class CarSeeder extends Seeder
 {
-
-
-
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run() {
-        $file_path = public_path('response.json');
+    public function run()
+    {
+        $file_path = public_path('respons_marke.json');
         $data =[];
         if (file_exists($file_path)) {
             $json_content = file_get_contents($file_path);
@@ -29,10 +28,11 @@ class CarMarksSeeder extends Seeder
                     $data[] = [
                         'id'   => $car['id'],
                         'name' => $car['name'],
+                        'car_mark_id' => CarMark::query()->inRandomOrder()->first()->id,
                         'created_at' => Carbon::now()
                     ];
                 }
-                DB::table('car_marks')->insert($data);
+                DB::table('car_models')->insert($data);
             }
         }
     }
