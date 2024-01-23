@@ -13,16 +13,16 @@ class AddTables extends Migration
      */
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
-            $table->id();
-            $table->string('tokenable_type');
-            $table->bigInteger('tokenable_id');
-            $table->string('name');
-            $table->string('token', 64);
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamps();
-        });
+//        Schema::create('personal_access_tokens', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('tokenable_type');
+//            $table->bigInteger('tokenable_id');
+//            $table->string('name');
+//            $table->string('token', 64);
+//            $table->text('abilities')->nullable();
+//            $table->timestamp('last_used_at')->nullable();
+//            $table->timestamps();
+//        });
         Schema::create('reminders', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_car_id');
