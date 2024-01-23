@@ -54,7 +54,7 @@ class StockService implements StockServiceInterface
         'id' => $this->class::nextID()
       ]
     ));
-    // PushNotificationService::send($request, $model);
+
     ProcessPushNotification::dispatch(
       $request->collect(),
       $model,
