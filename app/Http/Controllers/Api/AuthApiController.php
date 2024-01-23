@@ -19,7 +19,7 @@ class AuthApiController extends Controller
         $user = User::where('phone_number', nudePhone($request->phone_number))->orWhere('phone_number', buildPhone($request->phone_number))->first();
 
         if ($user == null) {
-            dd(1);
+
             $user=  User::create([
                 'phone_number' => buildPhone($request->phone_number),
                 'gender' => 1
