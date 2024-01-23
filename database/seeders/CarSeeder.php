@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\CarMark;
+use App\Models\CarModel;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -28,11 +29,11 @@ class CarSeeder extends Seeder
                     $data[] = [
                         'id'   => $car['id'],
                         'name' => $car['name'],
-                        'car_mark_id' => CarMark::query()->inRandomOrder()->first()->id,
+                        'car_mark_id' => CarModel::query()->inRandomOrder()->first()->id,
                         'created_at' => Carbon::now()
                     ];
                 }
-                DB::table('car_models')->insert($data);
+                DB::table('car_marks')->insert($data);
             }
         }
     }

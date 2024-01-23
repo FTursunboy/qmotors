@@ -29,7 +29,7 @@ class CarMarksSeeder extends Seeder
                         'created_at' => Carbon::now()
                     ];
                 }
-                DB::table('car_marks')->insert($data);
+                DB::table('car_models')->insert($data);
             }
         }
     }
