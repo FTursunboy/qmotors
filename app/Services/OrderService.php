@@ -173,14 +173,16 @@ class OrderService implements OrderServiceInterface
             case 1:
                 return OrderStatus::ORDER_CREATED;
             case 2:
-                return 'Ваш автомобиль ' . $model . ' на приемке';
+                return 'Ваша запись автомобиля ' . $model . ' подтверждена';
             case 3:
-                return 'Ваш автомобиль ' . $model . ' в работе';
+                return 'Ваш автомобиль ' . $model . ' на приемке';
             case 4:
-                return 'Ваш автомобиль ' . $model . ' ожидает вас в сервисе';
+                return 'Ваш автомобиль ' . $model . ' в работе';
             case 5:
-                return OrderStatus::ORDER_PAYED;
+                return 'Ваш автомобиль ' . $model . ' ожидает вас в сервисе';
             case 6:
+                return OrderStatus::ORDER_PAYED;
+            case 7:
                 return OrderStatus::ORDER_REJECTED;
             default:
                 return '';

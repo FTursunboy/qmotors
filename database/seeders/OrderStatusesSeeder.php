@@ -17,6 +17,7 @@ class OrderStatusesSeeder extends Seeder
     {
         OrderStatus::insert([
             ['title' => 'Создано'],
+            ['title' => 'Подтверждено'],
             ['title' => 'На приемке'],
             ['title' => 'В работе'],
             ['title' => 'Готово'],

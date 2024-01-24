@@ -11,7 +11,7 @@ class OrderStatus extends Model
 
     const ORDER_TITLE = 'Запись в сервис';
     const ORDER_CREATED = 'Ваша запись создана';
-    const ORDER_PAYED = 'работы по вашему заказу оплачены';
+    const ORDER_PAYED = 'Работы по вашему заказу оплачены';
     const ORDER_REJECTED = 'Ваша заявка в автосервис отменена';
 
 
