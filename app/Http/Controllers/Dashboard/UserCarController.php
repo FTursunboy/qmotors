@@ -68,6 +68,6 @@ class UserCarController extends Controller
         } catch (Throwable $e) {
             return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");
         }
-        return redirect()->route('user-car')->with('success', "Авто в статусе удаленно: $id!");
+        return redirect()->route('user-car.user-cars')->with('success', "Авто в статусе удаленно: $id!");
     }
 }
