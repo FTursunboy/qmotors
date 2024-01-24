@@ -37,7 +37,7 @@ class PushNotificationService implements PushNotificationServiceInterface
 
 
 
-        if (isset($request['send']) && $request['send'] == 1 || isset($request['user_id']) && $request['user_id'] || $user_id == "all") {
+        if (isset($request['send']) && $request['send'] == 1 || isset($request['user_id']) && $request['user_id'] || $user_id == "all" || $request['user_car_id']) {
 
 
             if (!isset($request['user_id'])) {
@@ -61,7 +61,6 @@ class PushNotificationService implements PushNotificationServiceInterface
                 $registration_ids = User::pluck('fcmtoken')->all();
             }
 
-
 //            PushNotification::create([
 //                'service_id' => config('1c')['service_id'],
 //                'user_id' => $user_id ?? 0,
@@ -69,6 +68,7 @@ class PushNotificationService implements PushNotificationServiceInterface
 //                'text' => $notification['body'],
 //                'date' => date('Y-m-d H:i:s')
 //            ]);
+
 
             $chunks = array_chunk($registration_ids, 1000);
             foreach ($chunks as $tokens) {

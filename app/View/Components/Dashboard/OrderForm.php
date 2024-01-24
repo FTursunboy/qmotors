@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Dashboard;
 
+use App\Models\OrderStatus;
 use App\Models\OrderType;
 use App\Models\Product;
 use App\Models\Stock;
@@ -15,6 +16,7 @@ class OrderForm extends Component
     public $techCenters = [];
     public $orderTypes = [];
     public $stocks = [];
+    public $orderStatuses = [];
     /**
      * Create a new component instance.
      *
@@ -26,6 +28,7 @@ class OrderForm extends Component
         $this->techCenters = TechCenter::latest('id')->get();
         $this->orderTypes = OrderType::latest('id')->get();
         $this->stocks = Stock::latest('id')->get();
+        $this->orderStatuses = OrderStatus::get();
     }
 
     /**

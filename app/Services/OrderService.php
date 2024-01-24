@@ -3,9 +3,12 @@
 namespace App\Services;
 
 use App\Jobs\ProcessOrderMail;
+use App\Jobs\ProcessPushNotification;
 use App\Mail\OrderCreated;
 use App\Models\Order;
 use App\Models\OrderPhoto;
+use App\Models\OrderStatus;
+use App\Models\User;
 use App\Models\UserCar;
 use App\Services\Contracts\OrderServiceInterface;
 use App\Traits\ApiResponse;
@@ -59,7 +62,9 @@ class OrderService implements OrderServiceInterface
             ],
         ));
 
-//        $this->sendMail($model);
+        $notification = ['title' => OrderStatus::ORDER_TITLE, 'body' => OrderStatus::ORDER_CREATED];
+
+        ProcessPushNotification::dispatch($request->collect(), $model, $notification);
         ProcessOrderMail::dispatch($model);
         return $model;
     }
@@ -101,8 +106,22 @@ class OrderService implements OrderServiceInterface
 
     public function update($id, $request)
     {
-        // dd($request->all());
         $model = $this->class::findOrFail($id);
+        $cr_model = UserCar::find($request->user_car_id);
+
+        if ($model->status != $request->status) {
+
+            $notification = [
+                'title' => OrderStatus::ORDER_TITLE,
+                'body' => $this->getNotificationText($request->status, $cr_model->model->name),
+            ];
+            $user_id = $cr_model->user_id;
+
+
+            ProcessPushNotification::dispatch($request->collect(), $model, $notification, $user_id);
+
+        }
+
         $model->update($request->only(
             'order_type_id',
             'tech_center_id',
@@ -114,7 +133,8 @@ class OrderService implements OrderServiceInterface
             'order_number',
             'stock_id',
             'mileage',
-            'description'
+            'description',
+            'status'
         ));
         $model->guarantee = $request->get('guarantee', false);
         $model->free_diagnostics = $request->get('free_diagnostics', false);
@@ -137,4 +157,28 @@ class OrderService implements OrderServiceInterface
         $model->reviews()->delete();
         return $model;
     }
+
+    private function getNotificationText($status, $model) :string
+    {
+        switch ($status) {
+            case 1:
+                return OrderStatus::ORDER_CREATED;
+            case 2:
+                return 'Ваш автомобиль ' . $model . ' на приемке';
+            case 3:
+                return 'Ваш автомобиль ' . $model . ' в работе';
+            case 4:
+                return 'Ваш автомобиль ' . $model . ' ожидает вас в сервисе';
+            case 5:
+                return OrderStatus::ORDER_PAYED;
+            case 6:
+                return OrderStatus::ORDER_REJECTED;
+            default:
+                return '';
+        }
+    }
+
+
+
+
 }

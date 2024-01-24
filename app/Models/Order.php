@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\ModelCommonMethods;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Order extends Model
 {
@@ -65,5 +66,10 @@ class Order extends Model
     public function getStockTextAttribute(): string
     {
         return $this->stock_id ? 'Да' : 'Нет';
+    }
+
+    public function orderStatus(): BelongsTo
+    {
+        return $this->belongsTo(OrderStatus::class, 'status', 'id');
     }
 }
