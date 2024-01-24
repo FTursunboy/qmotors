@@ -62,7 +62,6 @@ class PushNotificationService implements PushNotificationServiceInterface
             }
 
 
-
 //            PushNotification::create([
 //                'service_id' => config('1c')['service_id'],
 //                'user_id' => $user_id ?? 0,
