@@ -36,7 +36,6 @@ class PushNotificationService implements PushNotificationServiceInterface
     {
 
 
-
         if (isset($request['send']) && $request['send'] == 1 || isset($request['user_id']) && $request['user_id'] || $user_id == "all" || $request['user_car_id']) {
 
 

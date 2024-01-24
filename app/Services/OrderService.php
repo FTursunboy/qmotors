@@ -62,6 +62,16 @@ class OrderService implements OrderServiceInterface
             ],
         ));
 
+        $cr_model = UserCar::find($request->user_car_id);
+        $notification = [
+            'title' => OrderStatus::ORDER_TITLE,
+            'body' => $this->getNotificationText($request->status, $cr_model->model->name),
+        ];
+        $user_id = $cr_model->user_id;
+
+
+        ProcessPushNotification::dispatch($request->collect(), $model, $notification, $user_id);
+
         $notification = ['title' => OrderStatus::ORDER_TITLE, 'body' => OrderStatus::ORDER_CREATED];
 
         ProcessPushNotification::dispatch($request->collect(), $model, $notification);
