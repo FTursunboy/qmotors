@@ -69,7 +69,8 @@ class User extends Authenticatable
         'agree_notification' => 'bool',
         'agree_sms' => 'bool',
         'agree_calls' => 'bool',
-        'agree_data' => 'bool'
+        'agree_data' => 'bool',
+        'new_app' => 'bool'
     ];
 
     public function user_cars(): \Illuminate\Database\Eloquent\Relations\HasMany
