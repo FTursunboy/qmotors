@@ -65,6 +65,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_complete' => 'bool'
     ];
 
     public function user_cars(): \Illuminate\Database\Eloquent\Relations\HasMany
