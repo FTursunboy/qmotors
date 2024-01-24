@@ -38,8 +38,10 @@ class UserCarController extends Controller
     public function store(StoreCarRequest $request, UserCarServiceInterface $userCarService)
     {
         $result = $userCarService->store($request);
+
         if ($result['status']) {
-            return redirect()->route('user-car')->with('success', $result['message']);
+
+            return redirect()->route('user-car.user-cars')->with('success', $result['message']);
         }
         return back()->with('not-allowed', $result['message']);
     }

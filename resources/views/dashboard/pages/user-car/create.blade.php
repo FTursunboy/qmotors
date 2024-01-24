@@ -3,6 +3,7 @@
 @section('title', 'Автомобили пользователя')
 
 @section('content')
+
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="/">Дашборд</a></li>
   <li class="breadcrumb-item"><a href="/user-car">Автомобили пользователя</a></li>

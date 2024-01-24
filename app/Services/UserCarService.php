@@ -137,15 +137,17 @@ class UserCarService implements UserCarServiceInterface
                 'id' => $this->class::nextID(),
                 'user_id' => $request->user_id,
                 'number' => $request->number,
-                'car_model_id' => $request->model_id,
+                'car_model_id' => $request->car_model_id,
                 'status' => $request->status,
                 'year' => $request->year,
                 'mileage' => $request->mileage,
                 'vin' => $request->vin,
                 'last_visit' => $request->last_visit,
             ]);
+
             return ['status' => true, 'message' => "Успешно создано!"];
         } catch (Throwable $e) {
+
             return ['status' => false, 'message' => 'Что-то пошло не так: ' . $e->getMessage()];
         }
     }
