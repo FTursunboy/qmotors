@@ -25,6 +25,7 @@ class OrderForm extends Component
     public function __construct()
     {
         $this->user_cars = UserCar::latest('id')->get();
+
         $this->techCenters = TechCenter::latest('id')->get();
         $this->orderTypes = OrderType::latest('id')->get();
         $this->stocks = Stock::latest('id')->get();

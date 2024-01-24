@@ -55,7 +55,7 @@
                 <td>{{ optional($item->tech_center)->title }}</td>
                 <td>{{ $item->date }}</td>
                 <td>{{ optional($item->order_type_relation)->name }}</td>
-                <td>{{ $item->orderStatus->title }}</td>
+                <td>{{ $item->orderStatus->title ?? null }}</td>
                 <td>{{ $item->guarantee_text }}</td>
                 <td>{{ $item->guarantee_text }}</td>
                 <td>{{ $item->free_diagnostics_text }}</td>
