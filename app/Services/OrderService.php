@@ -69,11 +69,10 @@ class OrderService implements OrderServiceInterface
         ];
         $user_id = $cr_model->user_id;
 
+        $notification = ['title' => OrderStatus::ORDER_TITLE, 'body' => OrderStatus::ORDER_CREATED];
         ProcessPushNotification::dispatch($request->collect(), $model, $notification, $user_id);
 
-        $notification = ['title' => OrderStatus::ORDER_TITLE, 'body' => OrderStatus::ORDER_CREATED];
 
-        ProcessPushNotification::dispatch($request->collect(), $model, $notification);
         ProcessOrderMail::dispatch($model);
         return $model;
     }
