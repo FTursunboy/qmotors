@@ -50,7 +50,7 @@
             <tr>
                 <td><a href="{{ route('order.show', $item->id) }}">{{ $item->id }}</a></td>
                 <td>{{ $item->order_number }}</td>
-                <td><a href="{{ route('user-car.show', $item->user_car_id) }}">{{ $item->user_car->title }}</a></td>
+                <td><a href="{{ route('user-car.show', $item->user_car_id) }}">{{ $item->user_car->title ?? null }}</a></td>
                 <td>{{ $item->mileage }}</td>
                 <td>{{ optional($item->tech_center)->title }}</td>
                 <td>{{ $item->date }}</td>
