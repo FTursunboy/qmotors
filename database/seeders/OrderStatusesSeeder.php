@@ -15,6 +15,7 @@ class OrderStatusesSeeder extends Seeder
      */
     public function run()
     {
+        OrderStatus::query()->truncate();
         OrderStatus::insert([
             ['title' => 'Создано'],
             ['title' => 'Подтверждено'],
