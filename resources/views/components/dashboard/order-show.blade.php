@@ -7,10 +7,17 @@
         <td><b>Номер Заказа</b></td>
         <td>{{ $model->order_number }}</td>
     </tr>
-    {{-- <tr>
-        <td><b>Телефон</b></td>
-        <td>{{ $model->phone }}</td>
-    </tr> --}}
+     <tr>
+        <td><b>Номер телефон пользователя</b></td>
+        <td>@if($model->user_car && $model->user_car->user)
+                <a href="{{ route('user.show', $model->user_car->user_id ?? 1) }}">
+                    {{ $model->user_car->user->name ?? ' ' . ' ' . $model->user_car->user->phone_number ?? ' ' }}
+                </a>
+            @else
+                <a href=""> </a>
+            @endif
+        </td>
+    </tr>
     <tr>
         <td><b>Автомобиль</b></td>
         <td><a href="{{ route('user-car.show', $model->user_car_id) }}">{{ $model->user_car->title }}</a>
