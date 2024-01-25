@@ -25,22 +25,22 @@ class NotificationService implements NotificationServiceInterface
         return $this->class::where(function ($query) {
             if ($this->request->user != null) {
                 $query->whereHas('user', function ($query) {
-                    $query->where('surname', 'ilike', '%' . $this->request->user . '%')
-                        ->orWhere('name', 'ilike', '%' . $this->request->user . '%')
-                        ->orWhere('id', 'ilike', '%' . $this->request->user . '%');
+                    $query->where('surname', 'like', '%' . $this->request->user . '%')
+                        ->orWhere('name', 'like', '%' . $this->request->user . '%')
+                        ->orWhere('id', 'like', '%' . $this->request->user . '%');
                 });
             }
             if ($this->request->title != null) {
-                $query->where('title', 'ilike', '%' . $this->request->title . '%');
+                $query->where('title', 'like', '%' . $this->request->title . '%');
             }
             if ($this->request->text != null) {
-                $query->where('text', 'ilike', '%' . $this->request->text . '%');
+                $query->where('text', 'like', '%' . $this->request->text . '%');
             }
             if ($this->request->notification_type != null) {
-                $query->where('notification_type', 'ilike', '%' . $this->request->notification_type . '%');
+                $query->where('notification_type', 'like', '%' . $this->request->notification_type . '%');
             }
             if ($this->request->additional_id != null) {
-                $query->where('additional_id', 'ilike', '%' . $this->request->additional_id . '%');
+                $query->where('additional_id', 'like', '%' . $this->request->additional_id . '%');
             }
             if ($this->request->created_at_start != null) {
                 $query->whereDate('created_at', '>=', $this->request->created_at_start);

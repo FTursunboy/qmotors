@@ -28,7 +28,7 @@ class ReminderService implements ReminderServiceInterface
         });
       }
       if ($this->request->text != null) {
-        $query->where('text', 'ilike', '%' . $this->request->text . '%');
+        $query->where('text', 'like', '%' . $this->request->text . '%');
       }
       if ($this->request->date_start != null) {
         $query->whereDate('date', '>=', $this->request->date_start);

@@ -29,11 +29,11 @@ class UserCarService implements UserCarServiceInterface
     {
         $query = $this->class::where(function ($query) use ($request) {
             if ($request->search) {
-                $query->where('id', 'ilike', '%' . $this->request->search . '%')
+                $query->where('id', 'like', '%' . $this->request->search . '%')
                     ->orWhereHas('model', function ($query) use ($request) {
-                        $query->where('name', 'ilike', '%' . $request->search . '%');
+                        $query->where('name', 'like', '%' . $request->search . '%');
                     })
-                    ->orWhere('number', 'ilike', '%' . $this->request->search . '%');
+                    ->orWhere('number', 'like', '%' . $this->request->search . '%');
             }
         });
         $filteredCount = $query->count();
@@ -45,6 +45,7 @@ class UserCarService implements UserCarServiceInterface
     public function filter()
     {
         $order = requestOrder();
+
         return $this->class::where(function ($query) {
             if ($this->request->model_id != null) {
                 $query->where('car_model_id', $this->request->model_id);
@@ -52,18 +53,16 @@ class UserCarService implements UserCarServiceInterface
             if ($this->request->status != null) {
                 $query->where('status', $this->request->status);
             }
-            if ($this->request->user != null) {
+            if ($this->request->user_phone != null) {
                 $query->whereHas('user', function ($query) {
-                    $query->where('surname', 'ilike', '%' . $this->request->user . '%')
-                        ->orWhere('name', 'ilike', '%' . $this->request->user . '%')
-                        ->orWhere('id', 'ilike', '%' . $this->request->user . '%');
+                    $query->where('id', $this->request->user_phone);
                 });
             }
             if ($this->request->vin != null) {
-                $query->where('vin', 'ilike', '%' . $this->request->vin . '%');
+                $query->where('vin', 'like', '%' . $this->request->vin . '%');
             }
             if ($this->request->number != null) {
-                $query->where('number', 'ilike', '%' . $this->request->number . '%');
+                $query->where('number', 'like', '%' . $this->request->number . '%');
             }
             if ($this->request->year_start != null) {
                 $query->where('year', '>=', $this->request->year_start);

@@ -37,7 +37,11 @@
         @foreach ($list as $index => $item)
             <tr>
                 <td><a href="{{ route('user.show', $item->id) }}">{{ $item->id }}</a></td>
+                @if($item->avatar)
                 <td class="with-img"><img src="{{ asset($item->avatar) }}" alt="avatar" width="100"></td>
+                @else
+                    <td></td>
+                @endif
                 <td><a href="tel:{{ buildPhone($item->phone_number) }}">{{ $item->phone_number }}</a></td>
                 <td>{{ $item->surname }}</td>
                 <td>{{ $item->name }}</td>

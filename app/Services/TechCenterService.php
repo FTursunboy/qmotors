@@ -30,22 +30,22 @@ class TechCenterService implements TechCenterServiceInterface
     $order = requestOrder();
     return $this->class::where(function ($query) {
       if ($this->request->title != null) {
-        $query->where('title', 'ilike', '%' . $this->request->title . '%');
+        $query->where('title', 'like', '%' . $this->request->title . '%');
       }
       if ($this->request->phone != null) {
-        $query->where('phone', 'ilike', '%' . $this->request->phone . '%');
+        $query->where('phone', 'like', '%' . $this->request->phone . '%');
       }
       if ($this->request->address != null) {
-        $query->where('address', 'ilike', '%' . $this->request->address . '%');
+        $query->where('address', 'like', '%' . $this->request->address . '%');
       }
       if ($this->request->url != null) {
-        $query->where('url', 'ilike', '%' . $this->request->url . '%');
+        $query->where('url', 'like', '%' . $this->request->url . '%');
       }
       if ($this->request->lat != null) {
-        $query->where('lat', 'ilike', '%' . $this->request->lat . '%');
+        $query->where('lat', 'like', '%' . $this->request->lat . '%');
       }
       if ($this->request->lng != null) {
-        $query->where('lng', 'ilike', '%' . $this->request->lng . '%');
+        $query->where('lng', 'like', '%' . $this->request->lng . '%');
       }
       if ($this->request->created_at_start != null) {
         $query->whereDate('created_at', '>=', $this->request->created_at_start);

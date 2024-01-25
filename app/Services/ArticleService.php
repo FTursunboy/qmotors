@@ -21,13 +21,13 @@ class ArticleService implements ArticleServiceInterface
         $order = requestOrder();
         return $this->class::where(function ($query) {
             if ($this->request->title != null) {
-                $query->where('title', 'ilike', '%' . $this->request->title . '%');
+                $query->where('title', 'like', '%' . $this->request->title . '%');
             }
             if ($this->request->subtitle != null) {
-                $query->where('subtitle', 'ilike', '%' . $this->request->subtitle . '%');
+                $query->where('subtitle', 'like', '%' . $this->request->subtitle . '%');
             }
             if ($this->request->text != null) {
-                $query->where('text', 'ilike', '%' . $this->request->text . '%');
+                $query->where('text', 'like', '%' . $this->request->text . '%');
             }
             if ($this->request->created_at_start != null) {
                 $query->whereDate('created_at', '>=', $this->request->created_at_start);

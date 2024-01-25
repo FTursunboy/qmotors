@@ -11,6 +11,7 @@ class UserCarFilter extends Component
 {
     public $models = [];
     public $statuses = [];
+    public $users = [];
     /**
      * Create a new component instance.
      *
@@ -20,6 +21,7 @@ class UserCarFilter extends Component
     {
         $this->models = CarModel::all();
         $this->statuses = UserCar::STATUSES;
+        $this->users = User::all();
     }
 
     /**

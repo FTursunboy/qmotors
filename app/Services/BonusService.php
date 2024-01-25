@@ -24,9 +24,9 @@ class BonusService implements BonusServiceInterface
         return $this->class::where(function ($query) {
             if ($this->request->user != null) {
                 $query->whereHas('user', function ($query) {
-                    $query->where('surname', 'ilike', '%' . $this->request->user . '%')
-                        ->orWhere('name', 'ilike', '%' . $this->request->user . '%')
-                        ->orWhere('id', 'ilike', '%' . $this->request->user . '%');
+                    $query->where('surname', 'like', '%' . $this->request->user . '%')
+                        ->orWhere('name', 'like', '%' . $this->request->user . '%')
+                        ->orWhere('id', 'like', '%' . $this->request->user . '%');
                 });
             }
             if ($this->request->status != null) {

@@ -11,7 +11,7 @@
             <x-column-order-caret column="order_number">Номер Заказа</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="order_number">Пользователь</x-column-order-caret>
+            <x-column-order-caret column="user_car_id">Пользователь</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="user_car_id">Автомобиль</x-column-order-caret>
@@ -35,7 +35,7 @@
             <x-column-order-caret column="guarantee">Запрос по гарантии</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="guarantee">Запрос по бесплатной диагностике</x-column-order-caret>
+            <x-column-order-caret column="free_diagnostics">Запрос по бесплатной диагностике</x-column-order-caret>
         </th>
         <th>
             <x-column-order-caret column="stock_id">Запись по Акции</x-column-order-caret>
@@ -51,14 +51,14 @@
                 <td><a href="{{ route('order.show', $item->id) }}">{{ $item->id }}</a></td>
                 <td>{{ $item->order_number }}</td>
                 <td>
-                @if($item->user_car && $item->user_car->user)
-                    <a href="{{ route('user.show', $item->user_car->user_id ?? 1) }}">
-                        {{ $item->user_car->user->name ?? ' ' . ' ' . $item->user_car->user->phone_number ?? ' ' }}
-                    </a>
-                @else
+                    @if($item->user_car && $item->user_car->user)
+                        <a href="{{ route('user.show', $item->user_car->user_id ?? 1) }}">
+                            {{ $item->user_car->user->name ?? ' ' . ' ' . $item->user_car->user->phone_number ?? ' ' }}
+                        </a>
+                    @else
                         <a href=""> </a>
-                @endif
-                <td>
+                    @endif
+                </td>
                 <td><a href="{{ route('user-car.show', $item->user_car_id) }}">{{ $item->user_car->title ?? null }}</a></td>
                 <td>{{ $item->mileage }}</td>
                 <td>{{ optional($item->tech_center)->title }}</td>

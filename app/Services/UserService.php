@@ -32,10 +32,10 @@ class UserService implements UserServiceInterface
                 $query
                     // ->whereRaw('phone_number ilike %' . $request->search . '%')
                     // ->whereRaw('REPLACE(REPLACE(REPLACE(REPLACE(phone_number, " ", ""), "-", ""), ")", ""), "(", "") ilike %?%', [$request->phone_number])
-                    ->where('phone_number', 'ilike', '%' . $this->request->search . '%')
-                    ->orWhere('surname', 'ilike', '%' . $this->request->search . '%')
-                    ->orWhere('name', 'ilike', '%' . $this->request->search . '%')
-                    ->orWhere('patronymic', 'ilike', '%' . $this->request->search . '%');
+                    ->where('phone_number', 'like', '%' . $this->request->search . '%')
+                    ->orWhere('surname', 'like', '%' . $this->request->search . '%')
+                    ->orWhere('name', 'like', '%' . $this->request->search . '%')
+                    ->orWhere('patronymic', 'like', '%' . $this->request->search . '%');
             }
         });
         $filteredCount = $query->count();
@@ -54,16 +54,16 @@ class UserService implements UserServiceInterface
         $order = requestOrder();
         return $this->class::where(function ($query) use ($pushToken) {
             if ($this->request->phone_number != null) {
-                $query->where('phone_number', 'ilike', '%' . $this->request->phone_number . '%');
+                $query->where('phone_number', 'like', '%' . $this->request->phone_number . '%');
             }
             if ($this->request->surname != null) {
-                $query->where('surname', 'ilike', '%' . $this->request->surname . '%');
+                $query->where('surname', 'like', '%' . $this->request->surname . '%');
             }
             if ($this->request->name != null) {
-                $query->where('name', 'ilike', '%' . $this->request->name . '%');
+                $query->where('name', 'like', '%' . $this->request->name . '%');
             }
             if ($this->request->patronymic != null) {
-                $query->where('patronymic', 'ilike', '%' . $this->request->patronymic . '%');
+                $query->where('patronymic', 'like', '%' . $this->request->patronymic . '%');
             }
             if ($this->request->is_complete != null) {
                 $query->where('is_complete', $this->request->is_complete);
