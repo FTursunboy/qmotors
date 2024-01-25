@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserCar extends Model
 {
-    use HasFactory, ModelCommonMethods;
+    use ModelCommonMethods;
 
     const  STATUSES = [
         ['id' => 0, 'name' => 'Активный'],

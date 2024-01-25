@@ -11,6 +11,9 @@
             <x-column-order-caret column="order_number">Номер Заказа</x-column-order-caret>
         </th>
         <th>
+            <x-column-order-caret column="order_number">Пользователь</x-column-order-caret>
+        </th>
+        <th>
             <x-column-order-caret column="user_car_id">Автомобиль</x-column-order-caret>
         </th>
         <th>
@@ -47,6 +50,7 @@
             <tr>
                 <td><a href="{{ route('order.show', $item->id) }}">{{ $item->id }}</a></td>
                 <td>{{ $item->order_number }}</td>
+                <td><a href="{{route('user.show', $item->user_car->user_id)}}">{{ $item->user_car->user->name . ' ' . $item->user_car->user->phone_number }}</a></td>
                 <td><a href="{{ route('user-car.show', $item->user_car_id) }}">{{ $item->user_car->title ?? null }}</a></td>
                 <td>{{ $item->mileage }}</td>
                 <td>{{ optional($item->tech_center)->title }}</td>
