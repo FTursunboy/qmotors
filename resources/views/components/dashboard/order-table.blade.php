@@ -50,7 +50,11 @@
             <tr>
                 <td><a href="{{ route('order.show', $item->id) }}">{{ $item->id }}</a></td>
                 <td>{{ $item->order_number }}</td>
-                <td><a href="{{route('user.show', $item->user_car->user_id ?? 1)}}">{{ $item->user_car->user->name ?? ' ' . ' ' . $item->user_car->user->phone_number ?? ' ' }}</a></td>
+                @if($item->user_car && $item->user_car->user)
+                    <a href="{{ route('user.show', $item->user_car->user_id ?? 1) }}">
+                        {{ $item->user_car->user->name ?? ' ' . ' ' . $item->user_car->user->phone_number ?? ' ' }}
+                    </a>
+                @endif
                 <td><a href="{{ route('user-car.show', $item->user_car_id) }}">{{ $item->user_car->title ?? null }}</a></td>
                 <td>{{ $item->mileage }}</td>
                 <td>{{ optional($item->tech_center)->title }}</td>
