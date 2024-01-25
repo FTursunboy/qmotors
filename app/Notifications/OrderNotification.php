@@ -35,7 +35,7 @@ class OrderNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ["telegram"];
+        return [TelegramChannel::class];
     }
     /**
      * Get the mail representation of the notification.
