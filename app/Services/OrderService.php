@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Jobs\ProcessOrderMail;
 use App\Jobs\ProcessPushNotification;
+use App\Jobs\TelegramNotificationJob;
 use App\Mail\OrderCreated;
 use App\Models\Order;
 use App\Models\OrderPhoto;
@@ -71,6 +72,12 @@ class OrderService implements OrderServiceInterface
 
         $notification = ['title' => OrderStatus::ORDER_TITLE, 'body' => OrderStatus::ORDER_CREATED];
         ProcessPushNotification::dispatch($request->collect(), $model, $notification, $user_id);
+
+        $tech_center = $model->tech_center;
+        foreach ($tech_center->nicknames as $nickname) {
+            TelegramNotificationJob::dispatch($nickname, $model);
+        }
+
 
 
         ProcessOrderMail::dispatch($model);

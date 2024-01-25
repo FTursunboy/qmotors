@@ -138,7 +138,7 @@ $chat = $attributes['chat'];
                 method: 'POST',
                 body: formData
             }).then(function(response) {
-                // обрабатываем ответ сервера
+
             });
         }
 

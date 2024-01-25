@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\TechCenter;
 use App\Services\Contracts\TechCenterServiceInterface;
+use Illuminate\Support\Facades\DB;
 use Throwable;
 
 class TechCenterService implements TechCenterServiceInterface
@@ -68,13 +69,12 @@ class TechCenterService implements TechCenterServiceInterface
   {
     $avatar = null;
     try {
-      $this->class::create(
+      $model =  $this->class::create(
         array_merge(
           $request->only(
             "title",
             "phone",
             "address",
-            "url",
             "lat",
             "lng",
             "emails",
@@ -82,6 +82,21 @@ class TechCenterService implements TechCenterServiceInterface
           ['id' => $this->class::nextID()]
         )
       );
+
+        $nicknamesArray = explode(', ', $request->nicknames);
+
+        $filteredNicknames = array_filter($nicknamesArray, function ($nickname) {
+            return strpos($nickname, '@') !== 0;
+        });
+
+        $model->nicknames()->createMany(
+            array_map(function ($nickname) {
+                return ['nickname' => $nickname];
+            }, $filteredNicknames)
+        );
+
+        dd($model->nicknames);
+
       return ['status' => true, 'message' => "Успешно создано!"];
     } catch (Throwable $e) {
       return ['status' => false, 'message' => 'Что-то пошло не так: ' . $e->getMessage()];

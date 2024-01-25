@@ -15,8 +15,8 @@ $model = $attributes['model'];
         <td>{{ $model->address }}</td>
     </tr>
     <tr>
-        <td><b>Url</b></td>
-        <td><a href="{{ $model->url }}" target="blank">{{ $model->url }}</a></td>
+        <td><b>Никнеймы</b></td>
+        <td><a href="{{ $model->nicknames }}" target="blank">{{ $model->nicknames }}</a></td>
     </tr>
     <tr>
         <td><b>Широта</b></td>
