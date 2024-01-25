@@ -17,9 +17,6 @@
             <x-column-order-caret column="address">Адрес</x-column-order-caret>
         </th>
         <th>
-            <x-column-order-caret column="url">Ссылка</x-column-order-caret>
-        </th>
-        <th>
             <x-column-order-caret column="lat">Широта</x-column-order-caret>
         </th>
         <th>
@@ -37,7 +34,6 @@
             <td>{{ $item->title }}</td>
             <td>{{ $item->phone }}</td>
             <td>{{ $item->address }}</td>
-            <td><a href="{{ $item->url }}" target="blank">{{ $item->url }}</a></td>
             <td>{{ $item->lat }}</td>
             <td>{{ $item->lng }}</td>
             <td>{{ localDatetime($item->created_at) }}</td>

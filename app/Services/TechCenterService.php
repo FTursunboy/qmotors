@@ -95,7 +95,7 @@ class TechCenterService implements TechCenterServiceInterface
             }, $filteredNicknames)
         );
 
-        dd($model->nicknames);
+
 
       return ['status' => true, 'message' => "Успешно создано!"];
     } catch (Throwable $e) {
