@@ -52,10 +52,6 @@
         <td>{{ $model->phone }}</td>
     <tr>
     <tr>
-        <td><b>Url</b></td>
-        <td>{{ $model->url }}</td>
-    <tr>
-    <tr>
         <td><b>Запись по Акции</b></td>
         <td>{{ optional($model->stock)->title }}</td>
     <tr>
@@ -66,60 +62,5 @@
         <td><b>Создано</b></td>
         <td>{{ $model->created_at }}</td>
     </tr>
-    <tr>
-        <td><b>Работы</b></td>
-        <td>
-            <table class="table table-bordered table-striped">
-                <thead>
-                <th>ID</th>
-                <th>Заголовок</th>
-                <th>Кол-во</th>
-                <th>Часы</th>
-                <th>Цена</th>
-                <th>Скидка</th>
-                <th>Сумма</th>
-                </thead>
-                <tbody>
-                @foreach($model->order_works as $item)
-                    <tr>
-                        <td>{{$item->id}}</td>
-                        <td>{{$item->title}}</td>
-                        <td>{{$item->count}}</td>
-                        <td>{{$item->hours}}</td>
-                        <td>{{$item->price}}</td>
-                        <td>{{$item->discount}}</td>
-                        <td>{{$item->sum}}</td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td><b>Части</b></td>
-        <td>
-            <table class="table table-bordered table-striped">
-                <thead>
-                <th>ID</th>
-                <th>Заголовок</th>
-                <th>Кол-во</th>
-                <th>Цена</th>
-                <th>Скидка</th>
-                <th>Сумма</th>
-                </thead>
-                <tbody>
-                @foreach($model->order_spares as $item)
-                    <tr>
-                        <td>{{$item->id}}</td>
-                        <td>{{$item->title}}</td>
-                        <td>{{$item->count}}</td>
-                        <td>{{$item->price}}</td>
-                        <td>{{$item->discount}}</td>
-                        <td>{{$item->sum}}</td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </td>
-    </tr>
+
 </x-dashboard.info>

@@ -26,7 +26,7 @@
         <tr>
             <td><a href="{{ route('reminder.show', $item->id) }}">{{ $item->id }}</a></td>
             <td> <a href="{{ route('user-car.show', $item->user_car_id) }}">
-                    {{ $item->user_car->title }}</a></td>
+                    {{ optional($item->user_car)->title }}</a></td>
             <td>{{ $item->date }}</td>
             <td>{{ $item->text }}</td>
             <td>{{ localDatetime($item->created_at) }}</td>

@@ -18,7 +18,6 @@
     <x-dashboard.form-select name="status" label="Статус" option="title" :options="$orderStatuses"
                              class="col-md-6"
                              :value="$model->orderStatus->id ?? 1"/>
-    <x-dashboard.form-input name="url" label="Url" class="col-md-6" :value="$model->url"/>
     <x-dashboard.form-switcher name="guarantee" label="Запрос по гарантии" class="col-md-3" :value="$model->guarantee"/>
     <x-dashboard.form-switcher name="free_diagnostics" label="Запрос по бесплатной диагностике" class="col-md-3"
                                :value="$model->free_diagnostics"/>
