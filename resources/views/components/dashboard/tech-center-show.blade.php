@@ -16,8 +16,13 @@ $model = $attributes['model'];
     </tr>
     <tr>
         <td><b>Никнеймы</b></td>
-        <td><a href="{{ $model->nicknames }}" target="blank">{{ $model->nicknames }}</a></td>
+        <td>
+            @foreach ($model->nicknames as $nickname)
+                <a  target="_blank">{{ $nickname->nickname }}</a>@if (!$loop->last), @endif
+            @endforeach
+        </td>
     </tr>
+
     <tr>
         <td><b>Широта</b></td>
         <td>{{ $model->lat }}</td>

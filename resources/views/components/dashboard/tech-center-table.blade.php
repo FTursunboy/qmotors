@@ -17,6 +17,9 @@
             <x-column-order-caret column="address">Адрес</x-column-order-caret>
         </th>
         <th>
+            <x-column-order-caret column="nicknames">Никнеймы</x-column-order-caret>
+        </th>
+        <th>
             <x-column-order-caret column="lat">Широта</x-column-order-caret>
         </th>
         <th>
@@ -34,6 +37,11 @@
             <td>{{ $item->title }}</td>
             <td>{{ $item->phone }}</td>
             <td>{{ $item->address }}</td>
+            <td>
+                @foreach ($item->nicknames as $nickname)
+                    <a >{{ $nickname->nickname }}</a>@if (!$loop->last), @endif
+                @endforeach
+            </td>
             <td>{{ $item->lat }}</td>
             <td>{{ $item->lng }}</td>
             <td>{{ localDatetime($item->created_at) }}</td>
