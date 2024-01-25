@@ -31,7 +31,7 @@ class StoreCarRequest extends FormRequest
             'status' => Rule::in([0, 1, 2]),
             // 'number' => 'unique:' . with(new UserCar)->getTable(),
             'vin' => 'nullable',
-            'last_visit' => 'date'
+            'last_visit' => 'date|nullable'
         ];
     }
 }

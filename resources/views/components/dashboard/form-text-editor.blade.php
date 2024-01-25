@@ -20,9 +20,8 @@
                         console.error( error );
                 } );
     </script> --}}
+    <script src="https://cdn.tiny.cloud/1/qs5a9zjliej8aieywgmwbqqu2byny8b59f9j8mvgy8xmv55r/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
-    <script src="https://cdn.tiny.cloud/1/maf5d5cmdz73at7pcujnkatb57j1j428e4flg31x7o5vgmws/tinymce/5/tinymce.min.js"
-            referrerpolicy="origin"></script>
     <script>
         tinymce.init({
             selector: 'textarea.text-editor', // Replace this CSS selector to match the placeholder element for TinyMCE

@@ -154,12 +154,13 @@ class UserCarService implements UserCarServiceInterface
 
     public function update($id, $request): array
     {
+
         try {
             $model = $this->class::findOrFail($id);
             $model->update([
                 'user_id' => $request->user_id,
                 'number' => $request->number,
-                'car_model_id' => $request->model_id,
+                'car_model_id' => $request->car_model_id,
                 'status' => $request->status,
                 'year' => $request->year,
                 'mileage' => $request->mileage,

@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.default')
 
-@section('title', 'Изменит Бонус')
+@section('title', 'Напишите вопрос-ответ')
 
 @section('content')
 <ol class="breadcrumb float-xl-right">
@@ -11,7 +11,7 @@
 <h1 class="page-header">Помощь</h1>
 <!-- end page-header -->
 
-<x-dashboard.panel title="Изменит Бонус">
+<x-dashboard.panel title="Напишите вопрос-ответ">
     <form action="{{ route('help.update') }}" method="POST">
         @csrf
         @method('PUT')
