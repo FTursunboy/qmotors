@@ -59,22 +59,29 @@ class OrderNotification extends Notification
         $cr_model = UserCar::find($this->order->user_car_id);
         $user = User::find($cr_model->user_id);
 
-        $cr_model = UserCar::find($this->order->user_car_id);
-        $user = User::find($cr_model->user_id);
-
         return TelegramMessage::create()
             ->content("
- Новая запись в автосервис
+Новая запись в автосервис
 {$user->name}, {$user->phone_number}
 {$cr_model->model->name}, {$cr_model->number}
 {$this->order->order_type_relation->name}
 {$this->order->description}
-{$this->order->order_photos()->pluck('photo')->implode(', ')}
+{$this->getFullImageUrls($this->order->order_photos()->pluck('photo')->toArray())}
 {$this->order->date}
 ");
-
-
     }
+
+    protected function getFullImageUrls(array $photoPaths)
+    {
+        $domain = 'https://autoservice.jeleapps.ru/';
+
+        $fullImageUrls = array_map(function ($photoPath) use ($domain) {
+            return $domain . ltrim($photoPath, '/');
+        }, $photoPaths);
+
+        return implode(', ', $fullImageUrls);
+    }
+
 
     /**
      * Get the array representation of the notification.
