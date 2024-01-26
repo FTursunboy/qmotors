@@ -64,10 +64,7 @@ class OrderService implements OrderServiceInterface
         ));
 
         $cr_model = UserCar::find($request->user_car_id);
-        $notification = [
-            'title' => OrderStatus::ORDER_TITLE,
-            'body' => $this->getNotificationText($request->status, $cr_model->model->name),
-        ];
+
         $user_id = $cr_model->user_id;
 
         $notification = ['title' => OrderStatus::ORDER_TITLE, 'body' => OrderStatus::ORDER_CREATED];
@@ -159,7 +156,7 @@ class OrderService implements OrderServiceInterface
 
     public function sendMail($model)
     {
-        $emails = explode(',', $model->tech_center->emails);
+        $emails = explode(', ', $model->tech_center->emails);
         foreach ($emails as $item) {
             $item = trim($item);
             Mail::to($item)->queue(new OrderCreated($model));
