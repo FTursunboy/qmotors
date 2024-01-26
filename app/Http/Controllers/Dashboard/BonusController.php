@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Bonus\StoreBonusRequest;
+use App\Jobs\ProcessPushNotification;
 use App\Models\Bonus;
 use App\Services\Contracts\BonusServiceInterface;
 use Illuminate\Http\Request;
@@ -53,11 +54,17 @@ class BonusController extends Controller
         // return back()->with('not-allowed', $result['message'])->withInput();
     }
 
-    public function delete($id)
+    public function delete($id, Request $request)
     {
         try {
-            Bonus::findOrFail($id)->delete();
+           $bonus = Bonus::findOrFail($id);
+           $notification = ['title' => 'Бонус', 'body' => "Списано $bonus->points баллов"];
+
+            ProcessPushNotification::dispatch($request->collect(), $bonus, $notification, $bonus->user_id);
+            $bonus->delete();
+
         } catch (Throwable $e) {
+            dd($e);
             return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");
         }
         return redirect()->route('bonus')->with('success', "Успешно удалено: $id!");

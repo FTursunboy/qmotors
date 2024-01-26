@@ -35,11 +35,9 @@ class PushNotificationService implements PushNotificationServiceInterface
     public static function send($request, $model, $notification = ['title' => 'Test', 'body' => 'Test'], $user_id = null)
     {
 
+        if (isset($request['send']) && $request['send'] == 1 || isset($request['user_id']) && $request['user_id'] || $user_id == "all" || isset($request['user_car_id']) || $user_id) {
 
-        if (isset($request['send']) && $request['send'] == 1 || isset($request['user_id']) && $request['user_id'] || $user_id == "all" || $request['user_car_id']) {
-
-
-            if (!isset($request['user_id'])) {
+           if (!isset($request['user_id'])) {
                 $request['user_id'] = null;
             }
             if ($user_id == null && isset($request['user_id']) !== null) {
@@ -59,6 +57,8 @@ class PushNotificationService implements PushNotificationServiceInterface
             if ($user_id == "all"){
                 $registration_ids = User::pluck('fcmtoken')->all();
             }
+
+
 
 //            PushNotification::create([
 //                'service_id' => config('1c')['service_id'],

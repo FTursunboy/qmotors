@@ -77,7 +77,7 @@ class BonusService implements BonusServiceInterface
             ]
         ));
 
-        $notification = ['title' => 'Новый Бонус', 'body' => $request->title];
+        $notification = ['title' => 'Новый Бонус', 'body' => "Вам начислено $request->points баллов"];
 
         ProcessPushNotification::dispatch($request->collect(), $model, $notification);
 
