@@ -57,14 +57,14 @@ class BonusController extends Controller
     public function delete($id, Request $request)
     {
         try {
-           $bonus = Bonus::findOrFail($id);
+           $bonus = Bonus::find($id);
            $notification = ['title' => 'Бонус', 'body' => "Списано $bonus->points баллов"];
 
             ProcessPushNotification::dispatch($request->collect(), $bonus, $notification, $bonus->user_id);
             $bonus->delete();
 
         } catch (Throwable $e) {
-            dd($e);
+
             return back()->with('not-allowed', "Эта информация не может быть удалена: $id. Потому что к нему прикреплены данные.");
         }
         return redirect()->route('bonus')->with('success', "Успешно удалено: $id!");
