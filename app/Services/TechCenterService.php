@@ -89,6 +89,8 @@ class TechCenterService implements TechCenterServiceInterface
             return strpos($nickname, '@') !== 0;
         });
 
+        $model->nicknames()->delete();
+
         $model->nicknames()->createMany(
             array_map(function ($nickname) {
                 return ['nickname' => $nickname];
@@ -106,17 +108,31 @@ class TechCenterService implements TechCenterServiceInterface
   public function update($id, $request)
   {
     try {
-      $this->class::where('id', $id)->update(
+      $model = $this->class::where('id', $id)->update(
         $request->only(
           "title",
           "phone",
           "address",
-          "url",
           "lat",
           "lng",
           "emails",
         ),
       );
+
+        $nicknamesArray = explode(', ', $request->nicknames);
+
+        $filteredNicknames = array_filter($nicknamesArray, function ($nickname) {
+            return strpos($nickname, '@') !== 0;
+        });
+        $model = TechCenter::find($id);
+        $model->nicknames()->delete();
+
+        $model->nicknames()->createMany(
+            array_map(function ($nickname) {
+                return ['nickname' => $nickname];
+            }, $filteredNicknames)
+        );
+
       return ['status' => true, 'message' => "Успешно обновлено: $id"];
     } catch (Throwable $e) {
       return ['status' => false, 'message' => 'Что-то пошло не так: ' . $e->getMessage()];

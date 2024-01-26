@@ -5,10 +5,13 @@
     <x-dashboard.form-input name="title" required label="Название" class="col-md-6" :value="$model->title"/>
     <x-dashboard.form-input name="phone" required label="Телефон" class="col-md-6" :value="$model->phone"/>
     <x-dashboard.form-input name="address" required label="Адрес" class="col-md-6" :value="$model->address"/>
-    <x-dashboard.form-input name="nicknames" label="Никнеймы телеграм аккаунтов (через запятую)" class="col-md-6"
-                            :value="$model->nicknames->pluck('nickname')->implode(', ')"/>
-{{--    <span style="font-size: 12px; color: red">В телеграм боте <a--}}
-{{--            href="https://t.me/autoservice01_bot">autoservice01_bot</a> нажмите кнопку start/старт чтобы получать уведомления</span>--}}
+    <div class="form-group col-md-6" style="display: flex; flex-direction: column;">
+        <label for="nicknames-id">Никнемы телеграм аккаунтов (через запятую)</label>
+        <input type="text" name="nicknames" class="form-control" value="{{ $model->nicknames->pluck('nickname')->implode(', ')  }}" style="margin-bottom: 5px;" />
+        <span style="font-size: 12px; color: red;">В телеграм боте <a href="https://t.me/autoservice01_bot">autoservice01_bot</a> нажмите кнопку start/старт чтобы получать уведомления</span>
+    </div>
+
+
 
     <x-dashboard.form-input name="emails" required label="Адреса электронной почты (через запятую)" class="col-md-12"
                             :value="$model->emails"/>
