@@ -80,7 +80,7 @@ class OrderService implements OrderServiceInterface
 
 
 
-        ProcessOrderMail::dispatch($model);
+       // ProcessOrderMail::dispatch($model);
         return $model;
     }
 

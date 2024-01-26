@@ -17,6 +17,7 @@ class OrderNotification extends Notification
     use Queueable;
 
     private $order;
+
     /**
      * Create a new notification instance.
      *
@@ -30,25 +31,26 @@ class OrderNotification extends Notification
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function via($notifiable)
     {
         return [TelegramChannel::class];
     }
+
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('The introduction to the notification.')
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 
 
@@ -57,18 +59,27 @@ class OrderNotification extends Notification
         $cr_model = UserCar::find($this->order->user_car_id);
         $user = User::find($cr_model->user_id);
 
+        $cr_model = UserCar::find($this->order->user_car_id);
+        $user = User::find($cr_model->user_id);
+
         return TelegramMessage::create()
-            ->content("Новая запись в автосервис
-                \n Номер  Заказа: {$this->order->order_number}
-                \n Дата: {$this->order->date}
-                \n Тип заказа: {$this->order->order_type_relation->name}
-                \n Пользователь: {$user->name} {$user->phone_number}");
+            ->content("
+ Новая запись в автосервис
+{$user->name}, {$user->phone_number}
+{$cr_model->model->name}, {$cr_model->number}
+{$this->order->order_type_relation->name}
+{$this->order->description}
+{$this->order->order_photos()->pluck('photo')->implode(', ')}
+{$this->order->date}
+");
+
+
     }
 
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function toArray($notifiable)
