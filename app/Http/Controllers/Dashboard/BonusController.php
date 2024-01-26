@@ -54,13 +54,13 @@ class BonusController extends Controller
         // return back()->with('not-allowed', $result['message'])->withInput();
     }
 
-    public function delete($id, Request $request)
+    public function delete($id)
     {
         try {
            $bonus = Bonus::find($id);
-           $notification = ['title' => 'Бонус', 'body' => "Списано $bonus->points баллов"];
+           $notification = ['title' => 'Бонус', 'body' => "У Вас списано $bonus->points баллов"];
 
-            ProcessPushNotification::dispatch($request->collect(), $bonus, $notification, $bonus->user_id);
+            ProcessPushNotification::dispatch(null, $bonus, $notification, $bonus->user_id);
             $bonus->delete();
 
         } catch (Throwable $e) {
