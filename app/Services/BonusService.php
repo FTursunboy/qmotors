@@ -77,9 +77,18 @@ class BonusService implements BonusServiceInterface
             ]
         ));
 
-        $notification = ['title' => 'Новый Бонус', 'body' => "Вам начислено $request->points баллов"];
+      if ($model->bonus_type == 'utilization') {
 
-        ProcessPushNotification::dispatch($request->collect(), $model, $notification);
+          $notification = ['title' => 'Бонус', 'body' => "У Вас списано $request->points баллов"];
+
+          ProcessPushNotification::dispatch($request->collect(), $model, $notification);
+
+      }
+      else {
+          $notification = ['title' => 'Новый Бонус', 'body' => "Вам начислено $request->points баллов"];
+
+          ProcessPushNotification::dispatch($request->collect(), $model, $notification);
+      }
 
         return $model;
     }
@@ -96,6 +105,8 @@ class BonusService implements BonusServiceInterface
                 'burn_date' => $request->burn_date ?? date('Y-m-d', strtotime('+1 year'))
             ]
         ));
+
+
         return $model;
     }
 
