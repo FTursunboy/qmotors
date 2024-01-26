@@ -39,7 +39,8 @@ class StoreOrderRequest extends FormRequest
             'tech_center_id' => 'required|exists:' . with(new TechCenter)->getTable() . ',id',
             'date' => 'required|date|after:yesterday',
             'guarantee' => 'boolean',
-            'stock_id' => 'exists:' . with(new Stock)->getTable() . ',id'
+            'stock_id' => 'exists:' . with(new Stock)->getTable() . ',id',
+            'free_diagnostics' => 'bool'
         ];
     }
 }

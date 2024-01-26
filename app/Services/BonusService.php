@@ -101,18 +101,9 @@ class BonusService implements BonusServiceInterface
 
     public function burn()
     {
-        $burnBonuses = Bonus::whereNotNull('bonus_accrual_id')->get();
-        $bonuses = Bonus::whereDate('burn_date', date('Y-m-d'))->where('bonus_type', '!=', 'utilization')->get();
-        foreach ($bonuses as $bonus) {
-            if ($burnBonuses->firstWhere('bonus_accrual_id', $bonus->id) == null) {
-                $accrual = $bonus->replicate();
-                $accrual->bonus_accrual_id = $bonus->id;
-                $accrual->burn_date = null;
-                $accrual->bonus_type = 'utilization';
-                $accrual->created_at = Carbon::now();
-                $accrual->id = Bonus::nextID();
-                $accrual->save();
-            }
-        }
+        Bonus::create([
+            'status' => 0,
+            'title' => 'Аннулирование баллов'
+        ]);
     }
 }

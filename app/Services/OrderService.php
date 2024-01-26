@@ -6,6 +6,7 @@ use App\Jobs\ProcessOrderMail;
 use App\Jobs\ProcessPushNotification;
 use App\Jobs\TelegramNotificationJob;
 use App\Mail\OrderCreated;
+use App\Models\FreeDiagnostic;
 use App\Models\Order;
 use App\Models\OrderPhoto;
 use App\Models\OrderStatus;
@@ -28,18 +29,7 @@ class OrderService implements OrderServiceInterface
 
     public function store($request)
     {
-        // if ($request->has('user_car_id')) {
-        //   $car = UserCar::find($request->user_car_id);
-        // } else {
-        //   $car = UserCar::firstOrCreate($request->only('number'), [
-        //     'id' => UserCar::nextID(),
-        //     'user_id' => auth()->id(),
-        //     'car_model_id' => $request->car_model_id
-        //   ]);
-        // }
-        // if ($car->user_id != auth()->id()) {
-        //   return $this->notAccess();
-        // }
+
         $model = $this->class::create(array_merge(
             $request->only(
                 'tech_center_id',
@@ -68,6 +58,7 @@ class OrderService implements OrderServiceInterface
         $user_id = $cr_model->user_id;
 
         $notification = ['title' => OrderStatus::ORDER_TITLE, 'body' => OrderStatus::ORDER_CREATED];
+
         ProcessPushNotification::dispatch($request->collect(), $model, $notification, $user_id);
 
         $tech_center = $model->tech_center;
@@ -75,9 +66,14 @@ class OrderService implements OrderServiceInterface
             TelegramNotificationJob::dispatch($nickname, $model);
         }
 
-
-
         ProcessOrderMail::dispatch($model);
+
+
+
+        if($model->free_diagnostics) {
+            $this->createFreeDiagnostic($model);
+        }
+
         return $model;
     }
 
@@ -190,6 +186,14 @@ class OrderService implements OrderServiceInterface
             default:
                 return '';
         }
+    }
+
+    private function createFreeDiagnostic(Order $order) {
+        FreeDiagnostic::create([
+            'user_car_id' => $order->user_car_id,
+            'tech_center_id' => $order->tech_center_id,
+            'date' => $order->date
+        ]);
     }
 
 

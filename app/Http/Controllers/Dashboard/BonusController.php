@@ -59,7 +59,7 @@ class BonusController extends Controller
         try {
            $bonus = Bonus::find($id);
            $notification = ['title' => 'Бонус', 'body' => "У Вас списано $bonus->points баллов"];
-
+            dump($notification);
             ProcessPushNotification::dispatch(null, $bonus, $notification, $bonus->user_id);
             $bonus->delete();
 

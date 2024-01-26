@@ -3,7 +3,7 @@
     <form action="{{ route('bonus.burn') }}" class="ml-auto" method="POST">
         @csrf
         @method('PUT')
-        <button type="submit" onclick="return confirm('Вы уверен?')" class="btn btn-danger">Сгорит</button>
+        <button type="submit" onclick="return confirm('Вы уверен?')" class="btn btn-danger">Аннулировать все баллы</button>
     </form>
     <a href="{{ route('bonus.create') }}" class="ml-1 btn btn-primary">Добавить</a>
 </div>
