@@ -31,6 +31,6 @@ class OrderCreated extends Mailable
      */
     public function build()
     {
-        return $this->subject('СОЗДАН ЗАКАЗ')->view('dashboard.pages.order.mail');
+        return $this->subject('Новая запись в автосервис')->view('dashboard.pages.order.mail');
     }
 }
