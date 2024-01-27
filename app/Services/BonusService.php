@@ -112,9 +112,6 @@ class BonusService implements BonusServiceInterface
 
     public function burn()
     {
-        Bonus::create([
-            'status' => 0,
-            'title' => 'Аннулирование баллов'
-        ]);
+        Bonus::query()->truncate();
     }
 }
